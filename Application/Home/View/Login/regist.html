@@ -33,19 +33,24 @@
                 data-validation-message="密码长度要求在6-32位之间。" required/>-->
                 <input type="password" class="" name="regist_password" placeholder="Enter password (At least 6 character)" 
                 minlength="6" maxlength="32" id="doc-vld-pwd-1" 
-                data-validation-message="密码长度要求在6-32位之间。" required/>
+                data-validation-message="password length should be 6-32 characters" required/>
             </div>
         
             <div class="am-form-group">
-              <label for="regist_password">确认密码</label>
-              <input type="password" class="" name="regist_password2" placeholder="请再次输入密码" 
+              <!--<label for="regist_password">确认密码</label>-->
+              <label for="regist_password">Confirm Password</label>
+              <!--<input type="password" class="" name="regist_password2" placeholder="请再次输入密码" 
                 data-equal-to="#doc-vld-pwd-1" id="doc-vld-pwd-2" 
-                data-validation-message="请与上面输入的密码保持一致" required/>
+                data-validation-message="请与上面输入的密码保持一致" required/>-->
+                <input type="password" class="" name="regist_password2" placeholder="Please Enter Password again" 
+                data-equal-to="#doc-vld-pwd-1" id="doc-vld-pwd-2" 
+                data-validation-message="Please Enter the same Password you have Entered" required/>
             </div>
             
             <p><input type="submit" class="am-btn am-btn-success am-btn-block am-radius" name="regist_submit" value="注册"></p>
 
-            <p><a class="am-btn am-btn-block am-btn-default am-radius" href="__APP__/Home/Login/index">返回登录</a></p>
+            <!-- <p><a class="am-btn am-btn-block am-btn-default am-radius" href="__APP__/Home/Login/index">返回登录</a></p>-->
+            <p><a class="am-btn am-btn-block am-btn-default am-radius" href="__APP__/Home/Login/index">Back to Login</a></p>
             
           </fieldset>
         </form>
