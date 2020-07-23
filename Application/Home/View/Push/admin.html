@@ -11,8 +11,10 @@
   <!-- 默认配置表单 -->
   <form class="am-form" method="post">
     <fieldset>
-      <legend>默认推送配置</legend>
+      <!-- <legend>默认推送配置</legend> -->
+      <legend>Default push configuration</legend>
       <div class="am-form-group">
+        <!-- <label for="doc-select-2">月账单推送</label> -->
         <label for="doc-select-2">月账单推送</label>
         <select name="default_push_month" id="doc-select-2" value="">
           <option value="0" <eq name='push_month' value='0'>selected</eq>>关闭</option>
@@ -20,38 +22,54 @@
         </select>
       </div>
       <div class="am-form-group">
+        <!-- <label for="doc-select-2">打卡推送提醒（天）</label> -->
         <label for="doc-select-2">打卡推送提醒（天）</label>
         <select name="default_push_punch" id="doc-select-2">
-          <option value="0" <eq name='push_punch' value='0'>selected</eq>>关闭</option>
-          <option value="1" <eq name='push_punch' value='1'>selected</eq>>1天</option>
-          <option value="2" <eq name='push_punch' value='2'>selected</eq>>2天</option>
-          <option value="3" <eq name='push_punch' value='3'>selected</eq>>3天</option>
-          <option value="4" <eq name='push_punch' value='4'>selected</eq>>4天</option>
-          <option value="5" <eq name='push_punch' value='5'>selected</eq>>5天</option>
-          <option value="6" <eq name='push_punch' value='6'>selected</eq>>6天</option>
-          <option value="7" <eq name='push_punch' value='7'>selected</eq>>7天</option>
+          <!-- <option value="0" <eq name='push_punch' value='0'>selected</eq>>关闭</option> -->
+          <option value="0" <eq name='push_punch' value='0'>selected</eq>>Close</option>
+          <!-- <option value="1" <eq name='push_punch' value='1'>selected</eq>>1天</option> -->
+          <option value="1" <eq name='push_punch' value='1'>selected</eq>>Day 1</option>
+          <!-- <option value="2" <eq name='push_punch' value='2'>selected</eq>>2天</option> -->
+          <option value="2" <eq name='push_punch' value='2'>selected</eq>>Day 2</option>
+          <!-- <option value="3" <eq name='push_punch' value='3'>selected</eq>>3天</option> -->
+          <option value="3" <eq name='push_punch' value='3'>selected</eq>>Day 3</option>
+          <!-- <option value="4" <eq name='push_punch' value='4'>selected</eq>>4天</option> -->
+          <option value="4" <eq name='push_punch' value='4'>selected</eq>>Day 4</option>
+          <!-- <option value="5" <eq name='push_punch' value='5'>selected</eq>>5天</option> -->
+          <option value="5" <eq name='push_punch' value='5'>selected</eq>>Day 5</option>
+          <!-- <option value="6" <eq name='push_punch' value='6'>selected</eq>>6天</option> -->
+          <option value="6" <eq name='push_punch' value='6'>selected</eq>>Day 6</option>
+          <!-- <option value="7" <eq name='push_punch' value='7'>selected</eq>>7天</option> -->
+          <option value="7" <eq name='push_punch' value='7'>selected</eq>>Day 7</option>
         </select>
       </div>
       <input type="hidden" name="form" value="default" >
-      <p><button type="submit" class="am-btn am-btn-success am-btn-block">提交</button></p>
+      <!-- <p><button type="submit" class="am-btn am-btn-success am-btn-block">提交</button></p> -->
+      <p><button type="submit" class="am-btn am-btn-success am-btn-block">Submit</button></p>
     </fieldset>
   </form>
 
   <!-- 授权管理 -->
   <div class="am-form">
     <fieldset>
-      <legend>授权管理</legend>
+      <!-- <legend>授权管理</legend> -->
+      <legend>Authorization Management</legend>
       <form class="am-form-inline" role="form" method="post">
         <div class="am-form-group am-form-select">
-          <label class="am-form-field" style="border-width: 0;">微信密钥：</label>
+          <!-- <label class="am-form-field" style="border-width: 0;">微信密钥：</label> -->
+          <label class="am-form-field" style="border-width: 0;">WeChat key: </label>
           <input type="hidden" name="push_name" value="Weixin" >
         </div>
         <div class="am-form-group">
-          <input type="text" name="push_key" class="am-form-field" placeholder="密钥" value="{$push_key}">
+          <!-- <input type="text" name="push_key" class="am-form-field" placeholder="密钥" value="{$push_key}"> -->
+          <input type="text" name="push_key" class="am-form-field" placeholder="Key" value="{$push_key}">
           <input type="hidden" name="form" value="add_key" >
         </div>
-        <button type="submit" class="am-btn am-btn-success">修改</button>
+        <!-- <button type="submit" class="am-btn am-btn-success">修改</button> -->
+        <button type="submit" class="am-btn am-btn-success">Edit</button>
+        <!-- <a href="__APP__/Home/Push/month/token/{$tokenObj['token']}/time/{$tokenObj['time']}" class="am-btn am-btn-secondary" target="_blank">执行月账单推送</a> -->
         <a href="__APP__/Home/Push/month/token/{$tokenObj['token']}/time/{$tokenObj['time']}" class="am-btn am-btn-secondary" target="_blank">执行月账单推送</a>
+        <!-- <a href="__APP__/Home/Push/punch/token/{$tokenObj['token']}/time/{$tokenObj['time']}" class="am-btn am-btn-secondary" target="_blank">执行提醒推送</a> -->
         <a href="__APP__/Home/Push/punch/token/{$tokenObj['token']}/time/{$tokenObj['time']}" class="am-btn am-btn-secondary" target="_blank">执行提醒推送</a>
       </form>
     </fieldset>
