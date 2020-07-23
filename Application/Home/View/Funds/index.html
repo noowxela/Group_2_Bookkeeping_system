@@ -1,0 +1,114 @@
+<extend name="Public:common"/>
+<block name="main">
+    <form class="am-form am-form-horizontal" method="post" data-am-validator="H5validation:false">
+        <fieldset id="accordion">
+            <legend>新建资金账户</legend>
+            <div class="am-input-group">
+                <span class="am-input-group-label"><b>账户名称</b></span>
+                <input type="text" class="am-form-field" id="text-funds" name="funds_name" placeholder="输入资金账户名称">
+            </div>
+            <p></p>
+            <div class="am-input-group">
+                <span class="am-input-group-label"><b>初始金额</b></span>
+                <input type="number" class="am-form-field" id="text-money" name="funds_money" placeholder="输入资金账户初始金额">
+            </div>
+            <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="funds_submit" value="新建"></p>
+        </fieldset>
+    </form>
+
+    <p></p>
+    <fieldset id="accordion">
+        <legend class="am-cf">
+            <div class="am-fl">管理资金账户</div>
+            <div class="am-fr">
+                <button class="am-btn am-btn-sm am-btn-success am-round sortEnable" style="display: none;" id="sortSave">保存</button>
+                <button class="am-btn am-btn-sm am-btn-default am-round" id="sortButton">排序</button>
+            </div>
+        </legend>
+        <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
+            <thead>
+                <tr>
+                    <th bgcolor="#FFFFFF">资金账户</th>
+                    <th bgcolor="#FFFFFF">初始金额</th>
+                    <th bgcolor="#FFFFFF">收入金额</th>
+                    <th bgcolor="#FFFFFF">支出金额</th>
+                    <th bgcolor="#FFFFFF">账户金额</th>
+                    <th bgcolor="#FFFFFF">记录数</th>
+                    <th bgcolor="#FFFFFF" class="sortDisable">编辑</th>
+                    <th bgcolor="#FFFFFF" class="sortEnable" style="display: none;">排序</th>
+                </tr>
+            </thead>
+            <tbody id="sortFunds">
+                <volist name="FundsData" id="data">
+                <tr data-id="{$data['id']}">
+                    <td class="am-text-middle">{$data.name}</td>
+                    <td class="am-text-middle money-format">{$data.money.init}</td>
+                    <td class="am-text-middle money-format">{$data.money.in}</td>
+                    <td class="am-text-middle money-format">{$data.money.out}</td>
+                    <td class="am-text-middle money-format">{$data.money.over}</td>
+                    <td class="am-text-middle">{$data.money.count}</td>
+                    <if condition="$data.id eq -1 ">
+                        <td class="am-text-middle">
+                            <a href="__APP__/Home/Funds/edit/id/{$data['id']}">移除</a>
+                        </td>
+                    <else />
+                        <td class="am-text-middle sortDisable">
+                            <a href="__APP__/Home/Funds/edit/id/{$data['id']}">编辑</a>
+                        </td>
+                        <td class="am-text-middle sortEnable" style="display: none;">
+                            <i class="am-icon-arrows"></i>
+                        </td>
+                    </if>
+                </tr>
+                </volist>
+            </tbody>
+        </table>
+    </fieldset>
+
+    <p></p>
+    <fieldset id="transfer-table">
+        <legend>账户转账明细</legend>
+        <include file="Public:list_transfer"/>
+    </fieldset>
+</block>
+
+<block name="javascript">
+    <script src="__PUBLIC__/Home/js/sortable.min.js"></script>
+    <script type="text/javascript">
+        var el = document.getElementById('sortFunds');
+        var sortable = Sortable.create(el, {
+            handle: ".sortEnable",
+            ghostClass: "am-active",
+            animation: 200,
+            onMove: function (evt) {
+                return evt.related.dataset.id !== "-1";
+            },
+        });
+        if (sortable) {
+            $("#sortButton").click(function(){
+                if ($("#sortButton").text() === "排序") {
+                    $("#sortButton").text("取消");
+                    $(".sortDisable").hide();
+                    $(".sortEnable").show();
+                } else {
+                    $("#sortButton").text("排序");
+                    $(".sortEnable").hide();
+                    $(".sortDisable").show();
+                }
+            });
+            $("#sortSave").click(function(){
+                var order = sortable.toArray();
+                if (parseInt(order[0]) === -1) {
+                    order.splice(0, 1); 
+                }
+                console.log(JSON.stringify(order).replace(/"/g, ''));
+                try {
+                    FormPost("__APP__/Home/Funds/sort", {'data': JSON.stringify(order).replace(/"/g, '')});
+                }catch(e){
+                    console.log(e);
+                    alert("缺少FormPost组件，请联系管理员。");
+                }
+            });
+        }
+    </script>
+</block>

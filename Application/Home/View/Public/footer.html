@@ -1,0 +1,36 @@
+
+<footer class="am-margin-top">
+<!--   <hr/>
+  <p class="am-text-center">
+    <small>由小歆工作室提供</small>
+  </p> -->
+</footer>
+<!-- 以上页面内容 开发时删除 -->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/Home/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<script src="__PUBLIC__/Home/js/function.min.js"></script>
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__PUBLIC__/Home/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="__PUBLIC__/Home/js/amazeui.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+    var div_money_arr = document.getElementsByClassName('money-format');
+    for (var i = 0; i < div_money_arr.length; i++) {
+        div_money_arr[i].innerText= number_format(div_money_arr[i].innerText,{$Think.config.MONEY_FORMAT_DECIMALS},'{$Think.config.MONEY_FORMAT_POINT}','{$Think.config.MONEY_FORMAT_THOUSANDS}');
+    }
+});
+</script>
+
+<block name="javascript">
+</block>
+
+</body>
+</html>

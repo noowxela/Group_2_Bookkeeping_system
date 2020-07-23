@@ -1,0 +1,181 @@
+<extend name="Public:common"/>
+<block name="main">
+
+<ul class="am-pagination am-pagination-centered" >
+    <li class="am-pagination-prev"><a href="__APP__/Home/Chart/index/year/{$y-1}">&laquo; {$y-1}年</a></li>
+    <li class=""><a href="__APP__/Home/Chart/index">今年</a></li>
+    <li class="am-pagination-next"><a href="__APP__/Home/Chart/index/year/{$y+1}">{$y+1}年 &raquo;</a></li>
+</ul>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- 引入 echarts.js -->
+    <!-- <script src="echarts.min.js"></script> -->
+    <script src="//cdn.bootcss.com/echarts/3.2.1/echarts.min.js"></script>
+</head>
+<body style="text-align:center;">
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="chart-year" style="height:350px"></div>
+    <hr>
+    <div id="chart-InClass" style="height:320px"></div>
+    <hr>
+    <div id="chart-OutClass" style="height:320px"></div>
+    <hr>
+
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var chartYear = echarts.init(document.getElementById('chart-year'));
+        var chartInClass = echarts.init(document.getElementById('chart-InClass'));
+        var chartOutClass = echarts.init(document.getElementById('chart-OutClass'));
+
+        // 指定图表的配置项和数据
+        var optionYear = {
+            title: {
+                text: '{$y}年收入与支出金额汇总',
+                top: 'top',
+                x: 'center'
+            },
+            color: ['#90ee7e','#ff0066','#f7a35c','#7cb5ec'],  //蓝色：3398DB 红色：c23531 青色：61a0a8 橙色：d48265 绿色：91c7ae
+            tooltip : {
+                trigger: 'axis',
+                extraCssText: 'text-align: left;',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data:['收入','支出','月剩余','年剩余'],
+                selected:{
+                    '收入' : true,
+                    '支出' : true,
+                    '月剩余' : false,
+                    '年剩余' : false
+                },
+                top: 'bottom',
+                x: 'center'
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '12%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]
+            },
+            yAxis: {
+                type : 'value'
+            },
+            barGap: '5%',
+            series: [{
+                name: '收入',
+                type: 'bar',
+                data: {$JsonInMoney}
+            },{
+                name: '支出',
+                type: 'bar',
+                data: {$JsonOutMoney}
+            },{
+                name: '月剩余',
+                type: 'line',
+                smooth: true,
+                data: {$JsonSurplusMoney}
+            },{
+                name: '年剩余',
+                type: 'line',
+                smooth: true,
+                data: {$JsonSurplusSumMoney}
+            }]
+        };
+
+        var optionInClass = {
+            title : {
+                text: '{$y}年收入分类汇总',
+                subtext: '总收入{$DataArray.InSumMoney}元',
+                x:'center'
+            },
+            color: ["#7cb5ec", "#f7a35c", "#90ee7e", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+        "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+            tooltip : {
+                trigger: 'item',
+                formatter: "{b} : ({d}%)<br/>{c} 元"
+            },
+            series : [
+                {
+                    name: '收入分类',
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data: {$JsonInClassPer},
+                    labelLine : {
+                        normal: {
+                            smooth: true
+                        }
+                    },
+                    itemStyle: {
+                        normal :{
+                            borderColor: "#FFF",
+                            borderWidth: 1
+                        },
+                        emphasis: {
+                            borderWidth: 0,
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        var optionOutClass = {
+            title : {
+                text: '{$y}年支出分类汇总',
+                subtext: '总支出{$DataArray.OutSumMoney}元',
+                x:'center'
+            },
+            color: ["#7cb5ec", "#f7a35c", "#90ee7e", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+        "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+            tooltip : {
+                trigger: 'item',
+                formatter: "{b} : ({d}%)<br/>{c} 元"
+            },
+            series : [
+                {
+                    name: '支出分类',
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data: {$JsonOutClassPer},
+                    labelLine : {
+                        normal: {
+                            smooth: true
+                        }
+                    },
+                    itemStyle: {
+                        normal :{
+                            borderColor: "#FFF",
+                            borderWidth: 1
+                        },
+                        emphasis: {
+                            borderWidth: 0,
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        chartYear.setOption(optionYear);
+        chartInClass.setOption(optionInClass);
+        chartOutClass.setOption(optionOutClass);
+    </script>
+</body>
+</html>
+</block>

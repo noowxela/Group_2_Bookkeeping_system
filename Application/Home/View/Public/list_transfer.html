@@ -1,0 +1,66 @@
+<table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
+    <thead>
+        <tr>
+            <th bgcolor="#FFFFFF">转出账户</th>
+            <th bgcolor="#FFFFFF">金额</th>
+            <th bgcolor="#FFFFFF">转入账户</th>
+            <th bgcolor="#FFFFFF">时间</th>
+            <th bgcolor="#FFFFFF">备注</th>
+            <th bgcolor="#FFFFFF">编辑</th>
+        </tr>
+    </thead>
+    <tbody class="">
+        <volist name="TransferData" id="data">
+        <tr>
+            <td class="am-text-middle">{$data.source_fname|default='创建账户'}</td>
+            <td class="am-text-middle money-format">{$data.money}</td>
+            <td class="am-text-middle">{$data.target_fname}</td>
+            <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
+            <td class="am-text-middle">{$data.mark}</td>
+            <td class="am-text-middle">
+                <if condition="$data.source_fid eq 0 ">
+                    <php>
+                        echo "<a href=".U("Home/Funds/edit?id=".$data['target_fid']).">账户</a>";
+                    </php>
+                <else />
+                    <php>
+                        echo "<a href=".U("Home/Edit/transfer?id=".$data['tid']).">编辑</a>";
+                    </php>
+                </if>
+            </td>
+        </tr>
+        </volist>
+    </tbody>
+</table>
+
+<!--分页大于1时显示-->
+<if condition="$TransferPageMax gt 1">
+    <ul data-am-widget="pagination" class="am-pagination am-pagination-select">
+        <li class="am-pagination-prev ">
+            <if condition="1 neq $TransferPage "> <a href="__ACTION__/p/{$TransferPage-1}#transfer-table" class="">上一页</a> 
+            <else /> <a href="__ACTION__/p/{$TransferPage}#transfer-table" class="">上一页</a> 
+            </if>
+        </li>
+        
+        <li class="am-pagination-select">
+            <select id="pid" onchange="SelectChange()" style="-webkit-appearance: button;">
+                <for start="1" end="$TransferPageMax + 1">
+                    <if condition="$i eq $TransferPage "> 
+                        <option value="__ACTION__/p/{$i}#transfer-table" selected="selected">&nbsp;{$i}</option>
+                    <else /> 
+                        <option value="__ACTION__/p/{$i}#transfer-table" class="">&nbsp;{$i}</option>
+                    </if>
+                </for>
+            </select>
+        </li>
+        
+        
+        <li class="am-pagination-next ">
+            <if condition="$TransferPageMax neq $TransferPage "> <a href="__ACTION__/p/{$TransferPage+1}#transfer-table" class="">下一页</a>
+            <else /> <a href="__ACTION__/p/{$TransferPage}#transfer-table" class="">下一页</a> 
+            </if>
+        </li>
+    </ul>
+<elseif condition="$TransferPageMax eq null"/>
+    <p><a href="__APP__/Home/Funds/index#transfer-table" class="am-btn am-btn-block am-btn-default">更多转账记录</a></p>
+</if>

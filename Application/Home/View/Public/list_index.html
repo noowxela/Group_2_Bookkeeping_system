@@ -1,0 +1,79 @@
+<p></p>
+<table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered">
+    <thead>
+        <tr>
+            <th width="22%" bgcolor="#FFFFFF">统计</th>
+            <th width="26%" bgcolor="#FFFFFF">本日</th>
+            <th width="26%" bgcolor="#FFFFFF">本月</th>
+            <th width="26%" bgcolor="#FFFFFF">本年</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="am-danger">
+            <td>支出</td>
+            <td class="money-format">{$AccountStatistic['TodayOutMoney']}</td>
+            <td class="money-format">{$AccountStatistic['MonthOutMoney']}</td>
+            <td class="money-format">{$AccountStatistic['YearOutMoney']}</td>
+        </tr>
+        <tr class="am-success">
+            <td>收入</td>
+            <td class="money-format">{$AccountStatistic['TodayInMoney']}</td>
+            <td class="money-format">{$AccountStatistic['MonthInMoney']}</td>
+            <td class="money-format">{$AccountStatistic['YearInMoney']}</td>
+        </tr>
+        <tr class="am-primary"><!--class="am-active"-->
+            <td>剩余</td>
+            <td class="money-format">{$AccountStatistic['TodayInMoney']-$AccountStatistic['TodayOutMoney']}</td>
+            <td class="money-format">{$AccountStatistic['MonthInMoney']-$AccountStatistic['MonthOutMoney']}</td>
+            <td class="money-format">{$AccountStatistic['YearInMoney']-$AccountStatistic['YearOutMoney']}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered">
+    <thead>
+        <tr>
+            <th width="22%" bgcolor="#FFFFFF">统计</th>
+            <th width="26%" bgcolor="#FFFFFF">昨日</th>
+            <th width="26%" bgcolor="#FFFFFF">上月</th>
+            <th width="26%" bgcolor="#FFFFFF">去年</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="am-danger">
+            <td>支出</td>
+            <td class="money-format">{$AccountStatistic['LastTodayOutMoney']}</td>
+            <td class="money-format">{$AccountStatistic['LastMonthOutMoney']}</td>
+            <td class="money-format">{$AccountStatistic['LastYearOutMoney']}</td>
+        </tr>
+        <tr class="am-success">
+            <td>收入</td>
+            <td class="money-format">{$AccountStatistic['LastTodayInMoney']}</td>
+            <td class="money-format">{$AccountStatistic['LastMonthInMoney']}</td>
+            <td class="money-format">{$AccountStatistic['LastYearInMoney']}</td>
+        </tr>
+        <tr class="am-primary"><!--class="am-active"-->
+            <td>剩余</td>
+            <td class="money-format">{$AccountStatistic['LastTodayInMoney']-$AccountStatistic['LastTodayOutMoney']}</td>
+            <td class="money-format">{$AccountStatistic['LastMonthInMoney']-$AccountStatistic['LastMonthOutMoney']}</td>
+            <td class="money-format">{$AccountStatistic['LastYearInMoney']-$AccountStatistic['LastYearOutMoney']}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
