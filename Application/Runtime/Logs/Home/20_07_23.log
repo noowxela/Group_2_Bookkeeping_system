@@ -95,3 +95,523 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001594s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001647s ]
 
+[ 2020-07-23T11:28:26+08:00 ] ::1 /Accounting-page/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000542s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026593s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.026632s ]
+
+[ 2020-07-23T11:28:26+08:00 ] ::1 /Accounting-page/index.php?s=/Home/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000431s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002145s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002208s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000063s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000097s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.053017s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.053061s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001898s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001940s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.059722s ]
+INFO: [ app_end ] --END-- [ RunTime:0.059782s ]
+
+[ 2020-07-23T11:28:30+08:00 ] ::1 /Accounting-page/index.php?s=/Home/Login/regist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000929s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001104s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001136s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000047s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000074s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.045941s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045976s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000630s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000653s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001194s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001222s ]
+
+[ 2020-07-23T11:29:11+08:00 ] ::1 /Accounting-page/index.php?s=/Home/Login/regist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000347s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001343s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001385s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0431s ]
+SQL: SELECT `uid` FROM `xxjzuser` WHERE `username` = 'pleomocha' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `uid` FROM `xxjzuser` WHERE `email` = 'ngshunhui@gmail.com' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `xxjzuser` (`username`,`password`,`email`,`utime`) VALUES ('pleomocha','7ebbcb06c526d6dd6533f853965d7b60','ngshunhui@gmail.com','1595474951') [ RunTime:0.0006s ]
+NOTIC: [2] Use of undefined constant url - assumed 'url' (this will throw an Error in a future version of PHP) C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 228 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000047s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000076s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012098s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012137s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000598s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000623s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000721s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000744s ]
+
+[ 2020-07-23T11:29:18+08:00 ] ::1 /Accounting-page/index.php?s=/Home/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000752s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001022s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001074s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000062s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000089s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.046741s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046779s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000429s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000449s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002233s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002280s ]
+
+[ 2020-07-23T11:29:26+08:00 ] ::1 /Accounting-page/index.php?s=/Home/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000442s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001046s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001096s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0703s ]
+SQL: SELECT * FROM `xxjzuser` WHERE `username` = 'pleomocha' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [2] unlink(./Application/Runtime/Temp/6f0c7a7a95a0907e0b2fd4cab687f5c4.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/e9c1b81678e0cb7d74bbb28751073562.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/51f25d28109783f5a017e7a8195d9203.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/0a5073c44df96476d2b9454fc2fc9006.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/d08d9752770fa51261511f0be3e9801c.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/017e30ffba9d7590e7ed66bb780298ca.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/473015e926deccb8d3f0f62c5f1fab7a.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/39551e7974c4a6d8ce441728f1098ef2.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/f60e67711592bb779553190b81e3f2be.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+
+[ 2020-07-23T11:29:26+08:00 ] ::1 /Accounting-page/index.php?s=/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001096s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000919s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000948s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0169s ]
+SQL: SELECT `password` FROM `xxjzuser` WHERE `username` = 'pleomocha' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `xxjzaccount` [ RunTime:0.0205s ]
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1363 行.
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1366 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1369 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1373 行.
+NOTIC: [8] Undefined index: acclassid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1382 行.
+NOTIC: [8] Undefined index: zhifu C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1385 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `xxjzaccount` WHERE `jiid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1329 行.
+SQL: SHOW COLUMNS FROM `xxjzaccount_transfer` [ RunTime:0.0218s ]
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1341 行.
+SQL: SELECT COUNT(*) AS tp_count FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.source_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0 LIMIT 1   [ RunTime:0.0012s ]
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1329 行.
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1349 行.
+SQL: SELECT COUNT(*) AS tp_count FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.target_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: zhifu C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1415 行.
+NOTIC: [8] Undefined index: zhifu C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1417 行.
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 335 行.
+NOTIC: [8] Undefined index: acid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 338 行.
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 344 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 347 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 351 行.
+NOTIC: [8] Undefined index: acclassid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 360 行.
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE `jiid` = 1 AND `zhifu` = 1 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 335 行.
+NOTIC: [8] Undefined index: acid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 338 行.
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 344 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 347 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 351 行.
+NOTIC: [8] Undefined index: acclassid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 360 行.
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE `jiid` = 1 AND `zhifu` = 2 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1329 行.
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1341 行.
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1329 行.
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1349 行.
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1363 行.
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1366 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1369 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1373 行.
+NOTIC: [8] Undefined index: acclassid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1382 行.
+NOTIC: [8] Undefined index: zhifu C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1385 行.
+SQL: SELECT account.acid as id,account.acmoney as money,account.acclassid as classid,class.classname as class,account.acremark as mark,account.actime as time,account.zhifu as typeid,case account.zhifu when 1 then '收入'  when 2 then '支出' end as type,account.fid as fundsid,funds.fundsname as funds,account.jiid as uid FROM xxjzaccount account LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = account.fid LEFT JOIN xxjzaccount_class AS class ON class.classid = account.acclassid  WHERE account.jiid = '1' UNION SELECT transfer.tid,transfer.money,0,'转账',transfer.mark,transfer.time,2,'支出',transfer.source_fid,funds.fundsname as funds,transfer.uid FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.source_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0  UNION SELECT transfer.tid,transfer.money,0,'转账',transfer.mark,transfer.time,1,'收入',transfer.target_fid,funds.fundsname as funds,transfer.uid FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.target_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0  ORDER BY time DESC, id DESC LIMIT 0,15 [ RunTime:0.0022s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1595433600 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1595433600 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1593532800 and actime <= 1596124800 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1593532800 and actime <= 1596124800 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1577808000 and actime <= 1609344000 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1577808000 and actime <= 1609344000 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1594828800 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1594828800 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1592928000 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1592928000 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1590249600 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1590249600 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1587657600 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1587657600 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1579795200 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1579795200 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1563897600 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1563897600 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1595347200 and actime <= 1595433599 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1595347200 and actime <= 1595433599 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1590940800 and actime <= 1593532799 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1590940800 and actime <= 1593532799 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1546272000 and actime <= 1577721600 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1546272000 and actime <= 1577721600 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000118s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000170s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.160039s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.160083s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000676s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000701s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001069s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001106s ]
+
+[ 2020-07-23T11:33:03+08:00 ] ::1 /Accounting-page/index.php?s=/Home/Class/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000788s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000842s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000887s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0314s ]
+SQL: SHOW COLUMNS FROM `xxjzaccount_class` [ RunTime:0.0161s ]
+SQL: SELECT * FROM `xxjzaccount_class` WHERE `ufid` = 1 AND `classtype` = 1 ORDER BY sort,classid  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: ret C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 480 行.
+SQL: SELECT * FROM `xxjzaccount_class` WHERE `ufid` = 1 AND `classtype` = 2 ORDER BY sort,classid  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: ret C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 480 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000067s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000092s ]
+NOTIC: [8] Undefined variable: PushAdminUrl C:\xampp\htdocs\Accounting-page\Application\Runtime\Cache\Home\7fde59dcc6730b00f0ea2d8c62973961.php 第 90 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.080014s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.080062s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001277s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001320s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001741s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001784s ]
+
+[ 2020-07-23T11:42:39+08:00 ] ::1 /Accounting-page/index.php?s=/Home/Class/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001187s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001022s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001070s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0395s ]
+SQL: SHOW COLUMNS FROM `xxjzaccount_class` [ RunTime:0.0161s ]
+SQL: SELECT * FROM `xxjzaccount_class` WHERE `ufid` = 1 AND `classname` = 'food'  [ RunTime:0.0003s ]
+SQL: INSERT INTO `xxjzaccount_class` (`classname`,`classtype`,`ufid`) VALUES ('food','2','1') [ RunTime:0.0004s ]
+NOTIC: [2] unlink(./Application/Runtime/Temp/3432100d141a8b7708db09ea64cbd646.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/d3a8dfbd3121b4a3ceabea32ea538d10.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/e9c1b81678e0cb7d74bbb28751073562.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/51f25d28109783f5a017e7a8195d9203.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/0a5073c44df96476d2b9454fc2fc9006.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/25b836c4b97d69ef97a9ba2119f6ce1c.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/d08d9752770fa51261511f0be3e9801c.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/017e30ffba9d7590e7ed66bb780298ca.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/473015e926deccb8d3f0f62c5f1fab7a.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/3432100d141a8b7708db09ea64cbd646.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/d3a8dfbd3121b4a3ceabea32ea538d10.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/e9c1b81678e0cb7d74bbb28751073562.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/51f25d28109783f5a017e7a8195d9203.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/0d7c4e7978b48e6ff322d7df1c99011a.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/db109f8b299b6bb900d9b4d53fc91ebc.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/5469c0033ebe75231356816c1c5608ef.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/0a5073c44df96476d2b9454fc2fc9006.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/25b836c4b97d69ef97a9ba2119f6ce1c.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/d08d9752770fa51261511f0be3e9801c.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/017e30ffba9d7590e7ed66bb780298ca.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] unlink(./Application/Runtime/Temp/473015e926deccb8d3f0f62c5f1fab7a.php): No such file or directory C:\xampp\htdocs\Accounting-page\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+NOTIC: [2] Use of undefined constant url - assumed 'url' (this will throw an Error in a future version of PHP) C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 228 行.
+SQL: SELECT * FROM `xxjzaccount_class` WHERE `ufid` = 1 AND `classtype` = 1 ORDER BY sort,classid  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: ret C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 480 行.
+SQL: SELECT * FROM `xxjzaccount_class` WHERE `ufid` = 1 AND `classtype` = 2 ORDER BY sort,classid  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000097s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000131s ]
+NOTIC: [8] Undefined variable: PushAdminUrl C:\xampp\htdocs\Accounting-page\Application\Runtime\Cache\Home\7fde59dcc6730b00f0ea2d8c62973961.php 第 90 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.084365s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.084398s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000796s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000816s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001287s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001327s ]
+
+[ 2020-07-23T11:42:42+08:00 ] ::1 /Accounting-page/index.php?s=/Home/Class/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000482s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000885s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000917s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0759s ]
+SQL: SHOW COLUMNS FROM `xxjzaccount_class` [ RunTime:0.0563s ]
+NOTIC: [8] Undefined variable: ret C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 480 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000117s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000189s ]
+NOTIC: [8] Undefined variable: PushAdminUrl C:\xampp\htdocs\Accounting-page\Application\Runtime\Cache\Home\7fde59dcc6730b00f0ea2d8c62973961.php 第 90 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.163471s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.163529s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000898s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000939s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002123s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002174s ]
+
+[ 2020-07-23T11:44:58+08:00 ] ::1 /Accounting-page/index.php?s=/Home/Chart/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000508s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000916s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000946s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0354s ]
+SQL: SHOW COLUMNS FROM `xxjzaccount_class` [ RunTime:0.0520s ]
+NOTIC: [8] Undefined variable: ret C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 480 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SHOW COLUMNS FROM `xxjzaccount` [ RunTime:0.0210s ]
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1577808000 AND `actime` <= 1580486399  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: food C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [8] Undefined offset: 1 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [8] Undefined variable: mOutSumClassMoney C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1791 行.
+NOTIC: [8] Undefined index: food C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1791 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1580486400 AND `actime` <= 1582991999  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined offset: 2 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1582992000 AND `actime` <= 1585670399  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined offset: 3 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1585670400 AND `actime` <= 1588262399  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined offset: 4 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1588262400 AND `actime` <= 1590940799  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 5 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1590940800 AND `actime` <= 1593532799  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined offset: 6 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1593532800 AND `actime` <= 1596211199  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 7 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1596211200 AND `actime` <= 1598889599  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined offset: 8 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1598889600 AND `actime` <= 1601481599  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined offset: 9 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1601481600 AND `actime` <= 1604159999  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 10 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1604160000 AND `actime` <= 1606751999  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined offset: 11 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1781 行.
+SQL: SELECT SUM(acmoney) AS tp_sum FROM `xxjzaccount` WHERE ( `actime` >= 1606752000 AND `actime` <= 1609430399  ) AND `jiid` = 1 AND `acclassid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined offset: 12 C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1790 行.
+NOTIC: [8] Undefined variable: mInSumClassMoney C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1808 行.
+NOTIC: [2] Invalid argument supplied for foreach() C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1907 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000062s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000087s ]
+NOTIC: [8] Undefined variable: PushAdminUrl C:\xampp\htdocs\Accounting-page\Application\Runtime\Cache\Home\c222922493680472260a522c23da11ab.php 第 90 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.057412s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.057446s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001015s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001048s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001808s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001894s ]
+
+[ 2020-07-23T11:47:19+08:00 ] ::1 /Accounting-page/index.php?s=/Home/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000495s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001352s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001394s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0258s ]
+SQL: SELECT `email` FROM `xxjzuser` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000063s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000089s ]
+NOTIC: [8] Undefined variable: PushAdminUrl C:\xampp\htdocs\Accounting-page\Application\Runtime\Cache\Home\6830cbac89ff06451c77cd8769d6d4ca.php 第 90 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.034062s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034098s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000611s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000631s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001106s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001142s ]
+
+[ 2020-07-23T11:49:12+08:00 ] ::1 /Accounting-page/index.php?s=/Home/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000441s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000968s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0253s ]
+SQL: SELECT `email` FROM `xxjzuser` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000061s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000089s ]
+NOTIC: [8] Undefined variable: PushAdminUrl C:\xampp\htdocs\Accounting-page\Application\Runtime\Cache\Home\6830cbac89ff06451c77cd8769d6d4ca.php 第 90 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036331s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036367s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000627s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000650s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001520s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001571s ]
+
+[ 2020-07-23T11:49:15+08:00 ] ::1 /Accounting-page/index.php?s=/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000336s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000705s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000735s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0322s ]
+SQL: SHOW COLUMNS FROM `xxjzaccount` [ RunTime:0.0193s ]
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1363 行.
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1366 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1369 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1373 行.
+NOTIC: [8] Undefined index: acclassid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1382 行.
+NOTIC: [8] Undefined index: zhifu C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1385 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `xxjzaccount` WHERE `jiid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1329 行.
+SQL: SHOW COLUMNS FROM `xxjzaccount_transfer` [ RunTime:0.0193s ]
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1341 行.
+SQL: SELECT COUNT(*) AS tp_count FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.source_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0 LIMIT 1   [ RunTime:0.0013s ]
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1329 行.
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1349 行.
+SQL: SELECT COUNT(*) AS tp_count FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.target_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0 LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: zhifu C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1415 行.
+NOTIC: [8] Undefined index: zhifu C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1417 行.
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 335 行.
+NOTIC: [8] Undefined index: acid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 338 行.
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 344 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 347 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 351 行.
+NOTIC: [8] Undefined index: acclassid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 360 行.
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE `jiid` = 1 AND `zhifu` = 1 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 335 行.
+NOTIC: [8] Undefined index: acid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 338 行.
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 344 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 347 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 351 行.
+NOTIC: [8] Undefined index: acclassid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 360 行.
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE `jiid` = 1 AND `zhifu` = 2 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1329 行.
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1341 行.
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1329 行.
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1349 行.
+NOTIC: [8] Undefined index: fid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1363 行.
+NOTIC: [8] Undefined index: acremark C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1366 行.
+NOTIC: [8] Undefined index: starttime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1369 行.
+NOTIC: [8] Undefined index: endtime C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1373 行.
+NOTIC: [8] Undefined index: acclassid C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1382 行.
+NOTIC: [8] Undefined index: zhifu C:\xampp\htdocs\Accounting-page\Application\Home\Common\function.php 第 1385 行.
+SQL: SELECT account.acid as id,account.acmoney as money,account.acclassid as classid,class.classname as class,account.acremark as mark,account.actime as time,account.zhifu as typeid,case account.zhifu when 1 then '收入'  when 2 then '支出' end as type,account.fid as fundsid,funds.fundsname as funds,account.jiid as uid FROM xxjzaccount account LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = account.fid LEFT JOIN xxjzaccount_class AS class ON class.classid = account.acclassid  WHERE account.jiid = '1' UNION SELECT transfer.tid,transfer.money,0,'转账',transfer.mark,transfer.time,2,'支出',transfer.source_fid,funds.fundsname as funds,transfer.uid FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.source_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0  UNION SELECT transfer.tid,transfer.money,0,'转账',transfer.mark,transfer.time,1,'收入',transfer.target_fid,funds.fundsname as funds,transfer.uid FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.target_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0  ORDER BY time DESC, id DESC LIMIT 0,15 [ RunTime:0.0007s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1595433600 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1595433600 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1593532800 and actime <= 1596124800 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1593532800 and actime <= 1596124800 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1577808000 and actime <= 1609344000 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1577808000 and actime <= 1609344000 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1594828800 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1594828800 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1592928000 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1592928000 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1590249600 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1590249600 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1587657600 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1587657600 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1579795200 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1579795200 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1563897600 and actime <= 1595519999 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1563897600 and actime <= 1595519999 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1595347200 and actime <= 1595433599 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1595347200 and actime <= 1595433599 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1590940800 and actime <= 1593532799 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1590940800 and actime <= 1593532799 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1546272000 and actime <= 1577721600 and jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( actime >= 1546272000 and actime <= 1577721600 and jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( jiid = '1' and zhifu = '1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE ( jiid = '1' and zhifu = '2' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000076s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000103s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.129013s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.129050s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000458s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000479s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001008s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001051s ]
+

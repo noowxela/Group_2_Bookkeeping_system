@@ -11,8 +11,8 @@
   
   <title><?php echo (C("XXJZ_TITLE")); ?></title>
   
-  <!--<script src="/Evo/xxjzWeb-master/Public/Home/js/pace.min.js"></script>-->
-  <!--<link rel="stylesheet" href="/Evo/xxjzWeb-master/Public/Home/css/pace/pace-theme-center-circle.css"/>-->
+  <!--<script src="/Accounting-page/Public/Home/js/pace.min.js"></script>-->
+  <!--<link rel="stylesheet" href="/Accounting-page/Public/Home/css/pace/pace-theme-center-circle.css"/>-->
   <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
   <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
 
@@ -22,20 +22,20 @@
   <!-- No Baidu Siteapp-->
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
-  <link rel="icon" type="image/png" href="/Evo/xxjzWeb-master/Public/Home/i/favicon.png">
+  <link rel="icon" type="image/png" href="/Accounting-page/Public/Home/i/favicon.png">
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="/Evo/xxjzWeb-master/Public/Home/i/app-icon72x72@2x.png">
+  <link rel="icon" sizes="192x192" href="/Accounting-page/Public/Home/i/app-icon72x72@2x.png">
 
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="<?php echo (C("XXJZ_TITLE")); ?>"/>
-  <link rel="apple-touch-icon-precomposed" href="/Evo/xxjzWeb-master/Public/Home/i/app-icon72x72@2x.png">
+  <link rel="apple-touch-icon-precomposed" href="/Accounting-page/Public/Home/i/app-icon72x72@2x.png">
 
   <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <meta name="msapplication-TileImage" content="/Evo/xxjzWeb-master/Public/Home/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileImage" content="/Accounting-page/Public/Home/i/app-icon72x72@2x.png">
   <meta name="msapplication-TileColor" content="#0e90d2">
 
   <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
@@ -43,8 +43,8 @@
   <link rel="canonical" href="https://jz.xxgzs.org/">
   -->
   
-  <link rel="stylesheet" href="/Evo/xxjzWeb-master/Public/Home/css/amazeui.min.css">
-  <link rel="stylesheet" href="/Evo/xxjzWeb-master/Public/Home/css/app.css">
+  <link rel="stylesheet" href="/Accounting-page/Public/Home/css/amazeui.min.css">
+  <link rel="stylesheet" href="/Accounting-page/Public/Home/css/app.css">
 </head>
 
 <style>
@@ -61,7 +61,7 @@
   <header data-am-widget="header" style="background-color:#19a7f0"
           class="am-header am-header-default am-header-fixed">
       <div class="am-header-left am-header-nav">
-          <a href="/Evo/xxjzWeb-master/index.php?s=/Home/User/index" class="">
+          <a href="/Accounting-page/index.php?s=/Home/User/index" class="">
 
                 <i class="am-header-icon am-icon-user"></i>
           </a>
@@ -79,17 +79,17 @@
             <i class="am-header-icon am-icon-reorder" data-am-dropdown-toggle> </i>
         </ul>
         <ul class="am-dropdown-content">
-            <li class=""><a href="/Evo/xxjzWeb-master/index.php?s=/Home/Chart/index" class="am-icon-pie-chart" > &nbsp;年度统计</a></li>
+            <li class=""><a href="/Accounting-page/index.php?s=/Home/Chart/index" class="am-icon-pie-chart" > &nbsp;年度统计</a></li>
             <li class="am-divider"></li>
-            <li class=""><a href="/Evo/xxjzWeb-master/index.php?s=/Home/Funds/index" class="am-icon-credit-card"> &nbsp;资金账户</a></li>
+            <li class=""><a href="/Accounting-page/index.php?s=/Home/Funds/index" class="am-icon-credit-card"> &nbsp;资金账户</a></li>
             <li class="am-divider"></li>            
-            <li class=""><a href="/Evo/xxjzWeb-master/index.php?s=/Home/Class/index" class="am-icon-list-ul"> &nbsp;分类管理</a></li>
+            <li class=""><a href="/Accounting-page/index.php?s=/Home/Class/index" class="am-icon-list-ul"> &nbsp;分类管理</a></li>
             <li class="am-divider"></li>
-            <li class=""><a href="/Evo/xxjzWeb-master/index.php?s=/Home/User/index" class="am-icon-cog" > &nbsp;设置选项</a></li>
+            <li class=""><a href="/Accounting-page/index.php?s=/Home/User/index" class="am-icon-cog" > &nbsp;设置选项</a></li>
             <li class="am-divider"></li>
-            <?php if($PushAdminUrl): ?><!-- <li class=""><a href="/Evo/xxjzWeb-master/index.php?s=<?php echo ($PushAdminUrl); ?>" class="am-icon-chain" > &nbsp;推送管理</a></li>
+            <?php if($PushAdminUrl): ?><!-- <li class=""><a href="/Accounting-page/index.php?s=<?php echo ($PushAdminUrl); ?>" class="am-icon-chain" > &nbsp;推送管理</a></li>
               <li class="am-divider"></li> --><?php endif; ?>
-            <li class=""><a href="/Evo/xxjzWeb-master/index.php?s=/Home/Login/logout" class="am-icon-sign-out"> &nbsp;退出登录</a></li>
+            <li class=""><a href="/Accounting-page/index.php?s=/Home/Login/logout" class="am-icon-sign-out"> &nbsp;退出登录</a></li>
         </ul>
       </div>
     </div>    
@@ -135,7 +135,7 @@
                     </div>
                     <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
                     <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="user_submit" value="修改账号"></p>
-                    <p><a href="/Evo/xxjzWeb-master/index.php?s=/Home/Index/index" class="am-btn am-btn-block am-btn-default">返回</a></p>
+                    <p><a href="/Accounting-page/index.php?s=/Home/Index/index" class="am-btn am-btn-block am-btn-default">返回</a></p>
                 </form>
             </div>
 
@@ -161,7 +161,7 @@
                     </div>
                     <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
                     <p><input type="submit" class="am-btn am-btn-success am-btn-block" name="user_submit" value="修改密码"></p>
-                    <p><a href="/Evo/xxjzWeb-master/index.php?s=/Home/Index/index" class="am-btn am-btn-block am-btn-default">返回</a></p>
+                    <p><a href="/Accounting-page/index.php?s=/Home/Index/index" class="am-btn am-btn-block am-btn-default">返回</a></p>
                 </form>
             </div>
         </div>
@@ -170,19 +170,19 @@
   <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default" style="height: 60px;    line-height: 60px;">
       <ul class="am-navbar-nav am-cf am-avg-sm-4" style="background-color:#19a7f0">
           <li >
-            <a href="/Evo/xxjzWeb-master/index.php?s=/Home/Index/index" class="">
+            <a href="/Accounting-page/index.php?s=/Home/Index/index" class="">
                 <span class="am-icon-home am-icon-sm"></span>
                 <span class="am-navbar-label">主页</span>
             </a>
           </li>
           <li >
-            <a href="/Evo/xxjzWeb-master/index.php?s=/Home/Add/index" class="">
+            <a href="/Accounting-page/index.php?s=/Home/Add/index" class="">
                 <span class="am-icon-plus-square am-icon-sm"></span>
                 <span class="am-navbar-label">记账</span>
             </a>
           </li>
           <li >
-            <a href="/Evo/xxjzWeb-master/index.php?s=/Home/Find/index" class="">
+            <a href="/Accounting-page/index.php?s=/Home/Find/index" class="">
                 <span class="am-icon-search am-icon-sm"></span>
                 <span class="am-navbar-label">查询</span>
             </a>
@@ -202,15 +202,15 @@
 <!--[if lt IE 9]>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="/Evo/xxjzWeb-master/Public/Home/js/amazeui.ie8polyfill.min.js"></script>
+<script src="/Accounting-page/Public/Home/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 
-<script src="/Evo/xxjzWeb-master/Public/Home/js/function.min.js"></script>
+<script src="/Accounting-page/Public/Home/js/function.min.js"></script>
 
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="/Evo/xxjzWeb-master/Public/Home/js/jquery.min.js"></script>
+<script src="/Accounting-page/Public/Home/js/jquery.min.js"></script>
 <!--<![endif]-->
-<script src="/Evo/xxjzWeb-master/Public/Home/js/amazeui.min.js"></script>
+<script src="/Accounting-page/Public/Home/js/amazeui.min.js"></script>
 
 <script type="text/javascript">
 $(function(){
