@@ -23,18 +23,15 @@
 
     <form class="am-form am-form-horizontal" enctype="multipart/form-data" method="post" data-am-validator="H5validation:false">
         <fieldset>
-            <!-- <legend>编辑</legend> -->
-            <legend>Edit</legend>
+            <legend>编辑</legend>
                 <div class="am-input-group">
-                    <!-- <span class="am-input-group-label"><b>金额</b></span> -->
-                    <span class="am-input-group-label"><b>Amount</b></span>
+                    <span class="am-input-group-label"><b>金额</b></span>
                     <input type="number" class="am-form-field" id="text-money" name="edit_money" step=0.01 value="{$ShowData.money}">
                     <p></p>
                 </div>
                 <div><p></p></div>
                 <div class="am-input-group">
-                    <!-- <span class="am-input-group-label"><b>账户</b></span> -->
-                    <span class="am-input-group-label"><b>Account</b></span>
+                    <span class="am-input-group-label"><b>账户</b></span>
                     <select id="select-funds" class="am-form-field" name="edit_funds">
                     <foreach name="FundsData" item="data">
                         <if condition="$data['id'] eq $DbFunds">
@@ -48,27 +45,20 @@
                 </div>
                 <div><p></p></div>
                 <div class="am-input-group">
-                    <!-- <span class="am-input-group-label"><b>类别</b></span> -->
-                    <span class="am-input-group-label"><b>Type</b></span>
+                    <span class="am-input-group-label"><b>类别</b></span>
                     <select id="select-type" class="am-form-field" name="edit_type" onchange="ChangClass({$MoneyClass},'select-type','select-class')">
-                        <!-- <if condition="$ShowData['type'] eq '收入'">
+                        <if condition="$ShowData['type'] eq '收入'">
                             <option value="1">收入</option>
-                            <option value="2">支出</option> -->
-                          <if condition="$ShowData['type'] eq 'Income'">
-                            <option value="1">Income</option>
-                            <option value="2">Expense</option>
+                            <option value="2">支出</option>
                         <else/>
-                            <!-- <option value="2">支出</option>
-                            <option value="1">收入</option> -->
-                            <option value="2">Income</option>
-                            <option value="1">Expense</option>
+                            <option value="2">支出</option>
+                            <option value="1">收入</option>
                         </if>
                     </select>
                 </div>
                 <div><p></p></div>
                 <div class="am-input-group">
-                    <!-- <span class="am-input-group-label"><b>分类</b></span> -->
-                    <span class="am-input-group-label"><b>Category</b></span>
+                    <span class="am-input-group-label"><b>分类</b></span>
                     <select id="select-class" class="am-form-field" name="edit_class">
                     <option value="{$ShowData.classid}">{$ShowData.class}</option>
                     <foreach name="DbClass" item="ClassName">
@@ -81,21 +71,18 @@
                 </div>
                 <div><p></p></div>
                 <div class="am-input-group">
-                    <!-- <span class="am-input-group-label"><b>备注</b></span> -->
-                    <span class="am-input-group-label"><b>Remark</b></span>
+                    <span class="am-input-group-label"><b>备注</b></span>
                     <input type="text" class="am-form-field" id="text-mark" name="edit_mark" value="{$ShowData.mark}">
                     <span class="am-input-group-btn am-form-file">
                         <button type="button" class="am-btn am-btn-default" id="btn-upload-image" data-am-loading="{spinner: 'circle-o-notch', loadingText: '上传中...', resetText: '上传完成'}">
-                            <!-- <i class="am-icon-cloud-upload"></i> 上传图片 -->
-                            <i class="am-icon-cloud-upload"></i> Upload Image
+                            <i class="am-icon-cloud-upload"></i> 上传图片
                         </button>
                         <input id="doc-form-file" type="file" name="edit_photo[]" accept=".{$Think.config.IMAGE_EXT|implode=', .', ###}" multiple />
                     </span>
                 </div>
                 <div><p></p></div>
                 <div class="am-input-group">
-                    <!-- <span class="am-input-group-label"><b>时间</b></span> -->
-                    <span class="am-input-group-label"><b>Date</b></span>
+                    <span class="am-input-group-label"><b>时间</b></span>
                     <input type="date" class="am-form-field" id="text-time" name="edit_time" value="<php>echo date('Y-m-d',$ShowData['time']);</php>" style="height: auto;" />
                 </div>
 
@@ -124,31 +111,24 @@
                 </if>
 
                 <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
-                <!-- <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="edit_submit" value="修改"></p> -->
-                <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="edit_submit" value="Change"></p>
-                <!-- <p><a href="javascript:void(0);" class="am-btn am-btn-block am-btn-danger" 
-                    onclick="isDelete('__APP__/Home/Edit/del/id/{$ShowData['id']}')" >删除</a></p> -->
-                <p><a href="javascript:void(0);" class="am-btn am-btn-block am-btn-danger" 
-                  onclick="isDelete('__APP__/Home/Edit/del/id/{$ShowData['id']}')" >Delete</a></p>
+                <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="edit_submit" value="修改"></p>
                 
-                <!-- <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">返回</a></p> -->
-                <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">Back</a></p>
+                <p><a href="javascript:void(0);" class="am-btn am-btn-block am-btn-danger" 
+                    onclick="isDelete('__APP__/Home/Edit/del/id/{$ShowData['id']}')" >删除</a></p>
+                
+                <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">返回</a></p>
                 
         </fieldset>
     </form>
     <div class="am-modal am-modal-confirm" tabindex="-1" id="delete-confirm">
       <div class="am-modal-dialog">
-        <!-- <div class="am-modal-hd">删除图片</div> -->
-        <div class="am-modal-hd">Delete Image</div>
+        <div class="am-modal-hd">删除图片</div>
         <div class="am-modal-bd">
-          <!-- 您确定要删除这张图片附件吗？ -->
-          Are you sure to delete this image?
+          您确定要删除这张图片附件吗？
         </div>
         <div class="am-modal-footer">
-          <!-- <span class="am-modal-btn" data-am-modal-confirm>删除</span>
-          <span class="am-modal-btn" data-am-modal-cancel>取消</span> -->
-          <span class="am-modal-btn" data-am-modal-confirm>Delete</span>
-          <span class="am-modal-btn" data-am-modal-cancel>Cancel</span>
+          <span class="am-modal-btn" data-am-modal-confirm>删除</span>
+          <span class="am-modal-btn" data-am-modal-cancel>取消</span>
         </div>
       </div>
     </div>
@@ -202,7 +182,7 @@
             processData: false,
             contentType: false,
             success: function (json) {
-                //上传成功的处理 // upload complete
+                //上传成功的处理
                 console.log(json);
                 $('#btn-upload-image').button('reset');
                 if (callback) {
@@ -217,8 +197,7 @@
           var fileNames = '';
           var fileSize = 0;
           if (this.files.length + GetImageLength() > IMAGE_COUNT) {
-            // alert("每个账单图片数量不能超过" + IMAGE_COUNT + "个，请筛选后重新上传。");
-            alert("Every account cannot upload more than " + IMAGE_COUNT + " image, please reupload again.");
+            alert("每个账单图片数量不能超过" + IMAGE_COUNT + "个，请筛选后重新上传。");
             ResetFormFile();
             return;
           }
@@ -227,8 +206,7 @@
             fileSize += this.size;
           });
           if (fileSize > IMAGE_SIZE) {
-            // alert("单次上传文件体积不能超过" + (IMAGE_SIZE/1024/1024) + "MB，请压缩后重新上传。");
-            alert("The file is more than " + (IMAGE_SIZE/1024/1024) + "MB，please reupload again.");
+            alert("单次上传文件体积不能超过" + (IMAGE_SIZE/1024/1024) + "MB，请压缩后重新上传。");
             ResetFormFile();
             return;
           }
