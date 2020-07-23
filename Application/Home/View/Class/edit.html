@@ -2,13 +2,16 @@
 <block name="main">
     <form class="am-form am-form-horizontal" method="post" data-am-validator="H5validation:false">
         <fieldset>
-        <legend>编辑分类</legend>
+        <!-- <legend>编辑分类</legend> -->
+        <legend>Edit Category</legend>
         <div class="am-input-group">
-            <span class="am-input-group-label"><b>名称</b></span>
+            <!-- <span class="am-input-group-label"><b>名称</b></span> -->
+            <span class="am-input-group-label"><b>Name</b></span>
             <input type="text" class="am-form-field" id="text-class" name="class_name" value="{$ClassName}">
         </div>
         <div><p></p></div>
         <div class="am-input-group">
+            <!-- <span class="am-input-group-label"><b>类别</b></span> -->
             <span class="am-input-group-label"><b>类别</b></span>
             <select id="select-type" class="am-form-field" name="class_type" >
                 <if condition="$ClassType eq 1">
