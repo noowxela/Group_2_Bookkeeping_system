@@ -241,7 +241,7 @@
         
         <li class="am-pagination-select">
             <select id="pid" onchange="SelectChange()" style="-webkit-appearance: button;">
-                <?php $__FOR_START_671970202__=1;$__FOR_END_671970202__=$PageMax + 1;for($i=$__FOR_START_671970202__;$i < $__FOR_END_671970202__;$i+=1){ if($i == $Page ): ?><option value="/Evo/xxjzWeb-master/index.php?s=/Home/Index/index/p/<?php echo ($i); ?>#money-table" selected="selected">&nbsp;<?php echo ($i); ?></option>
+                <?php $__FOR_START_835651831__=1;$__FOR_END_835651831__=$PageMax + 1;for($i=$__FOR_START_835651831__;$i < $__FOR_END_835651831__;$i+=1){ if($i == $Page ): ?><option value="/Evo/xxjzWeb-master/index.php?s=/Home/Index/index/p/<?php echo ($i); ?>#money-table" selected="selected">&nbsp;<?php echo ($i); ?></option>
                     <?php else: ?> 
                         <option value="/Evo/xxjzWeb-master/index.php?s=/Home/Index/index/p/<?php echo ($i); ?>#money-table" class="">&nbsp;<?php echo ($i); ?></option><?php endif; } ?>
             </select>

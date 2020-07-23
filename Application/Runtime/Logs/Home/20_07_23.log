@@ -95,3 +95,122 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001594s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001647s ]
 
+[ 2020-07-23T11:31:15+08:00 ] ::1 /Evo/xxjzWeb-master/index.php?s=/Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000561s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001064s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001108s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0078s ]
+SQL: SHOW COLUMNS FROM `xxjzaccount` [ RunTime:0.0066s ]
+NOTIC: [8] Undefined index: fid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1363 行.
+NOTIC: [8] Undefined index: acremark Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1366 行.
+NOTIC: [8] Undefined index: starttime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1369 行.
+NOTIC: [8] Undefined index: endtime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1373 行.
+NOTIC: [8] Undefined index: acclassid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1382 行.
+NOTIC: [8] Undefined index: zhifu Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1385 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `xxjzaccount` WHERE `jiid` = 1 LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: acremark Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1329 行.
+SQL: SHOW COLUMNS FROM `xxjzaccount_transfer` [ RunTime:0.0029s ]
+NOTIC: [8] Undefined index: fid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1341 行.
+SQL: SELECT COUNT(*) AS tp_count FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.source_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: acremark Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1329 行.
+NOTIC: [8] Undefined index: fid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1349 行.
+SQL: SELECT COUNT(*) AS tp_count FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.target_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: zhifu Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1415 行.
+NOTIC: [8] Undefined index: zhifu Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1417 行.
+NOTIC: [8] Undefined index: fid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 335 行.
+NOTIC: [8] Undefined index: acid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 338 行.
+NOTIC: [8] Undefined index: acremark Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 344 行.
+NOTIC: [8] Undefined index: starttime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 347 行.
+NOTIC: [8] Undefined index: endtime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 351 行.
+NOTIC: [8] Undefined index: acclassid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 360 行.
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE `jiid` = 1 AND `zhifu` = 1 LIMIT 1   [ RunTime:0.0001s ]
+NOTIC: [8] Undefined index: fid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 335 行.
+NOTIC: [8] Undefined index: acid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 338 行.
+NOTIC: [8] Undefined index: acremark Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 344 行.
+NOTIC: [8] Undefined index: starttime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 347 行.
+NOTIC: [8] Undefined index: endtime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 351 行.
+NOTIC: [8] Undefined index: acclassid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 360 行.
+SQL: SELECT SUM(acmoney) AS tp_Sum FROM `xxjzaccount` WHERE `jiid` = 1 AND `zhifu` = 2 LIMIT 1   [ RunTime:0.0001s ]
+NOTIC: [8] Undefined index: acremark Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1329 行.
+NOTIC: [8] Undefined index: fid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1341 行.
+NOTIC: [8] Undefined index: acremark Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1322 行.
+NOTIC: [8] Undefined index: starttime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1325 行.
+NOTIC: [8] Undefined index: endtime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1329 行.
+NOTIC: [8] Undefined index: fid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1349 行.
+NOTIC: [8] Undefined index: fid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1363 行.
+NOTIC: [8] Undefined index: acremark Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1366 行.
+NOTIC: [8] Undefined index: starttime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1369 行.
+NOTIC: [8] Undefined index: endtime Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1373 行.
+NOTIC: [8] Undefined index: acclassid Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1382 行.
+NOTIC: [8] Undefined index: zhifu Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Home\Common\function.php 第 1385 行.
+SQL: SELECT account.acid as id,account.acmoney as money,account.acclassid as classid,class.classname as class,account.acremark as mark,account.actime as time,account.zhifu as typeid,case account.zhifu when 1 then '收入'  when 2 then '支出' end as type,account.fid as fundsid,funds.fundsname as funds,account.jiid as uid FROM xxjzaccount account LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = account.fid LEFT JOIN xxjzaccount_class AS class ON class.classid = account.acclassid  WHERE account.jiid = '1' UNION SELECT transfer.tid,transfer.money,0,'转账',transfer.mark,transfer.time,2,'支出',transfer.source_fid,funds.fundsname as funds,transfer.uid FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.source_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0  UNION SELECT transfer.tid,transfer.money,0,'转账',transfer.mark,transfer.time,1,'收入',transfer.target_fid,funds.fundsname as funds,transfer.uid FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS funds ON funds.fundsid = transfer.target_fid  WHERE transfer.uid = '1' AND transfer.source_fid <> 0  ORDER BY time DESC, id DESC LIMIT 0,15 [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000094s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000121s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016783s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016814s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000642s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000674s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002043s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002087s ]
+
+[ 2020-07-23T11:39:44+08:00 ] ::1 /Evo/xxjzWeb-master/index.php?s=/Home/Funds/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000805s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001410s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001459s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0091s ]
+SQL: SHOW COLUMNS FROM `xxjzaccount_transfer` [ RunTime:0.0042s ]
+SQL: SELECT COUNT(*) AS tp_count FROM xxjzaccount_transfer transfer WHERE transfer.uid = '1' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT transfer.*,source.fundsname as source_fname,target.fundsname as target_fname FROM xxjzaccount_transfer transfer LEFT JOIN xxjzaccount_funds AS target ON transfer.target_fid = target.fundsid LEFT JOIN xxjzaccount_funds AS source ON transfer.source_fid = source.fundsid  WHERE transfer.uid = '1' ORDER BY transfer.time DESC , transfer.tid DESC LIMIT 0,15   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000194s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000240s ]
+NOTIC: [8] Undefined variable: PushAdminUrl Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Runtime\Cache\Home\b30cb37fccad853b7a6726e74158e16f.php 第 90 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019312s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019352s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000968s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001013s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003292s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003343s ]
+
+[ 2020-07-23T11:40:14+08:00 ] ::1 /Evo/xxjzWeb-master/index.php?s=/Home/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000673s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001017s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001052s ]
+SQL: SHOW COLUMNS FROM `xxjzuser` [ RunTime:0.0054s ]
+SQL: SELECT `email` FROM `xxjzuser` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000068s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000094s ]
+NOTIC: [8] Undefined variable: PushAdminUrl Z:\xampp\htdocs\Evo\xxjzWeb-master\Application\Runtime\Cache\Home\6830cbac89ff06451c77cd8769d6d4ca.php 第 90 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010135s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010163s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000764s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000795s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001254s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001297s ]
+
