@@ -3,21 +3,28 @@
 
     <form class="am-form am-form-horizontal" method="post" data-am-validator="H5validation:false">
         <fieldset id="new">
-            <legend>新建分类</legend>
+            <!-- <legend>新建分类</legend> -->
+            <legend>Create Category</legend>
             <div class="am-input-group">
-                <span class="am-input-group-label"><b>名称</b></span>
+                <!-- <span class="am-input-group-label"><b>名称</b></span> -->
+                <span class="am-input-group-label"><b>Name</b></span>
                 <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="输入分类名称">
             </div>
             <div><p></p></div>
             <div class="am-input-group">
+                <!-- <span class="am-input-group-label"><b>类别</b></span> -->
                 <span class="am-input-group-label"><b>类别</b></span>
                 <select id="select-type" class="am-form-field" name="class_type" >
                     <if condition="$ClassType eq 1">
-                        <option value="1">收入</option>
-                        <option value="2">支出</option>
+                        <!-- <option value="1">收入</option> -->
+                        <option value="1">Income</option>
+                        <!-- <option value="2">支出</option> -->
+                        <option value="2">Expense</option>
                     <else/>
-                        <option value="2">支出</option>
-                        <option value="1">收入</option>
+                        <!-- <option value="2">支出</option> -->
+                        <option value="2">Expense</option>
+                        <!-- <option value="1">收入</option> -->
+                        <option value="1">Income</option>
                     </if>
                 </select>
             </div>

@@ -15,11 +15,15 @@
             <span class="am-input-group-label"><b>类别</b></span>
             <select id="select-type" class="am-form-field" name="class_type" >
                 <if condition="$ClassType eq 1">
-                    <option value="1">收入</option>
-                    <option value="2">支出</option>
+                    <!-- <option value="1">收入</option> -->
+                    <option value="1">Income</option>
+                    <!-- <option value="2">支出</option> -->
+                    <option value="2">Expense</option>
                 <else/>
-                    <option value="2">支出</option>
-                    <option value="1">收入</option>
+                    <!-- <option value="2">支出</option> -->
+                    <option value="2">Expense</option>
+                    <!-- <option value="1">收入</option> -->
+                    <option value="1">Income</option>
                 </if>
             </select>
         </div>
@@ -28,7 +32,8 @@
         <p><a href="javascript:void(0);" class="am-btn am-btn-block am-btn-danger" 
                     onclick="isDelete('__APP__/Home/Class/del/id/{$ClassId}')" >删除</a></p>
                 
-        <p><a href="__APP__/Home/Class/index/type/{$ClassType}" class="am-btn am-btn-block am-btn-default">返回</a></p>
+        <!-- <p><a href="__APP__/Home/Class/index/type/{$ClassType}" class="am-btn am-btn-block am-btn-default">返回</a></p> -->
+        <p><a href="__APP__/Home/Class/index/type/{$ClassType}" class="am-btn am-btn-block am-btn-default">Back</a></p>
         </fieldset>
     </form>
 </block>
