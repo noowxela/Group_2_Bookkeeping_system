@@ -5,16 +5,22 @@
     <div data-am-widget="tabs" class="am-tabs am-tabs-secondary" >
         <ul class="am-tabs-nav am-cf">
             <if condition="$type eq 1">
-                <li class=""><a href="[data-tab-panel-0]">账号设置</a></li>
-                <li class="am-active"><a href="[data-tab-panel-1]">修改密码</a></li>
+                <!-- <li class=""><a href="[data-tab-panel-0]">账号设置</a></li> -->
+                <li class=""><a href="[data-tab-panel-0]">Change Username</a></li>
+                <!-- <li class="am-active"><a href="[data-tab-panel-1]">修改密码</a></li> -->
+                <li class="am-active"><a href="[data-tab-panel-1]">Change password</a></li>
                 <!-- <li class=""><a href="[data-tab-panel-2]">其他设置</a></li> -->
             <elseif condition="$type eq 2"/>
-                <li class=""><a href="[data-tab-panel-0]">账号设置</a></li>
-                <li class=""><a href="[data-tab-panel-1]">修改密码</a></li>
+                <!-- <li class=""><a href="[data-tab-panel-0]">账号设置</a></li> -->
+                <li class=""><a href="[data-tab-panel-0]">Account settings</a></li>
+                <!-- <li class=""><a href="[data-tab-panel-1]">修改密码</a></li> -->
+                <li class=""><a href="[data-tab-panel-1]">Change password</a></li>
                 <!-- <li class="am-active"><a href="[data-tab-panel-2]">其他设置</a></li> -->
             <else/>
-                <li class="am-active"><a href="[data-tab-panel-0]">账号设置</a></li>
-                <li class=""><a href="[data-tab-panel-1]">修改密码</a></li>
+                <!-- <li class="am-active"><a href="[data-tab-panel-0]">账号设置</a></li> -->
+                <li class="am-active"><a href="[data-tab-panel-0]">Account settings</a></li>
+                <!-- <li class=""><a href="[data-tab-panel-1]">修改密码</a></li> -->
+                <li class=""><a href="[data-tab-panel-1]">Change password</a></li>
                 <!-- <li class=""><a href="[data-tab-panel-2]">其他设置</a></li> -->
             </if>
         </ul>
@@ -29,22 +35,30 @@
                 <form class="am-form am-form-horizontal" id="from-msg" method="post" data-am-validator>
                     <div><p></p></div>
                     <div class="am-input-group">
-                        <span class="am-input-group-label"><b>登录账号</b></span>
-                        <input type="text" class="am-form-field" id="text-money" name="user_name" placeholder="输入新的登录账号" minlength="2" required/>
+                        <!-- <span class="am-input-group-label"><b>登录账号</b></span> -->
+                        <span class="am-input-group-label"><b>Username</b></span>
+                        <!-- <input type="text" class="am-form-field" id="text-money" name="user_name" placeholder="输入新的登录账号" minlength="2" required/> -->
+                        <input type="text" class="am-form-field" id="text-money" name="user_name" placeholder="Please enter new username" minlength="2" required/>
                     </div>
                     <div><p></p></div>
                     <div class="am-input-group">
-                        <span class="am-input-group-label"><b>验证邮箱</b></span>
-                        <input type="email" class="am-form-field" id="text-mark" name="user_email" placeholder="输入注册时填写的邮箱({$Email})" required/>
+                        <!-- <span class="am-input-group-label"><b>验证邮箱</b></span> -->
+                        <span class="am-input-group-label"><b>Email address</b></span>
+                        <!-- <input type="email" class="am-form-field" id="text-mark" name="user_email" placeholder="输入注册时填写的邮箱({$Email})" required/> -->
+                        <input type="email" class="am-form-field" id="text-mark" name="user_email" placeholder="Please enter email address eg: Testing123@gmail.com" required/>
                     </div>
                     <div><p></p></div>
                     <div class="am-input-group">
-                        <span class="am-input-group-label"><b>验证密码</b></span>
-                        <input type="password" class="am-form-field" id="text-time" name="user_password" placeholder="输入登录密码" required/>
+                        <!-- <span class="am-input-group-label"><b>验证密码</b></span> -->
+                        <span class="am-input-group-label"><b>Password</b></span>
+                        <!-- <input type="password" class="am-form-field" id="text-time" name="user_password" placeholder="输入登录密码" required/> -->
+                        <input type="password" class="am-form-field" id="text-time" name="user_password" placeholder="Please enter password" required/>
                     </div>
                     <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
-                    <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="user_submit" value="修改账号"></p>
-                    <p><a href="__APP__/Home/Index/index" class="am-btn am-btn-block am-btn-default">返回</a></p>
+                    <!-- <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="user_submit" value="修改账号"></p> -->
+                    <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="user_submit" value="Change username"></p>
+                    <!-- <p><a href="__APP__/Home/Index/index" class="am-btn am-btn-block am-btn-default">返回</a></p> -->
+                    <p><a href="__APP__/Home/Index/index" class="am-btn am-btn-block am-btn-default">Back</a></p>
                 </form>
             </div>
 
@@ -57,25 +71,32 @@
                 <form class="am-form am-form-horizontal" id="from-msg" method="post" data-am-validator>
                     <div><p></p></div>
                     <div class="am-input-group">
-                        <span class="am-input-group-label"><b>输入旧密码</b></span>
-                        <input type="password" class="am-form-field" id="user-password" name="user_password" placeholder="请输入当前登录密码" required/>
+                        <!-- <span class="am-input-group-label"><b>输入旧密码</b></span> -->
+                        <span class="am-input-group-label"><b>Current password</b></span>
+                        <!-- <input type="password" class="am-form-field" id="user-password" name="user_password" placeholder="请输入当前登录密码" required/> -->
+                        <input type="password" class="am-form-field" id="user-password" name="user_password" placeholder="Please enter current password" required/>
                     </div>
                     <div><p></p></div>
                     <div class="am-input-group">
-                        <span class="am-input-group-label"><b>输入新密码</b></span>
-                        <input type="password" class="am-form-field" id="user-password-1" name="user_password_new" placeholder="请输入新密码" minlength="6" required/>
+                        <!-- <span class="am-input-group-label"><b>输入新密码</b></span> -->
+                        <span class="am-input-group-label"><b>New password</b></span>
+                        <!-- <input type="password" class="am-form-field" id="user-password-1" name="user_password_new" placeholder="请输入新密码" minlength="6" required/> -->
+                        <input type="password" class="am-form-field" id="user-password-1" name="user_password_new" placeholder="Please enter new password" minlength="6" required/>
                     </div>
                     <div><p></p></div>
                     <div class="am-input-group">
-                        <span class="am-input-group-label"><b>确认新密码</b></span>
-                        <input type="password" class="am-form-field" id="user-password-2" name="user_password_new2" placeholder="再次输入新密码" data-equal-to="#user-password-1" required/>
+                        <!-- <span class="am-input-group-label"><b>确认新密码</b></span> -->
+                        <span class="am-input-group-label"><b>Confirm password</b></span>
+                        <!-- <input type="password" class="am-form-field" id="user-password-2" name="user_password_new2" placeholder="再次输入新密码" data-equal-to="#user-password-1" required/> -->
+                        <input type="password" class="am-form-field" id="user-password-2" name="user_password_new2" placeholder="Please enter new password again" data-equal-to="#user-password-1" required/>
                     </div>
                     <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
-                    <p><input type="submit" class="am-btn am-btn-success am-btn-block" name="user_submit" value="修改密码"></p>
-                    <p><a href="__APP__/Home/Index/index" class="am-btn am-btn-block am-btn-default">返回</a></p>
+                    <!-- <p><input type="submit" class="am-btn am-btn-success am-btn-block" name="user_submit" value="修改密码"></p> -->
+                    <p><input type="submit" class="am-btn am-btn-success am-btn-block" name="user_submit" value="Change password"></p>
+                    <!-- <p><a href="__APP__/Home/Index/index" class="am-btn am-btn-block am-btn-default">返回</a></p> -->
+                    <p><a href="__APP__/Home/Index/index" class="am-btn am-btn-block am-btn-default">Back</a></p>
                 </form>
             </div>
         </div>
     </div>
 </block>
-
