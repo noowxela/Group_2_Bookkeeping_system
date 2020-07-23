@@ -2,19 +2,12 @@
 <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
     <thead>
         <tr>
-            <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
-            <th width='80' bgcolor="#FFFFFF">Category</th>
-            <!--<th width='80' bgcolor="#FFFFFF">金额</th>-->
-            <th width='80' bgcolor="#FFFFFF">Amount</th>
-            <!--<th width='80' bgcolor="#FFFFFF">收支</th>-->
-            <th width='80' bgcolor="#FFFFFF">Income/Expenses</th>
-            <!--<th width='110' bgcolor="#FFFFFF">时间</th>-->
-            <th width='110' bgcolor="#FFFFFF">Time</th>
-            <!--<th width='100' bgcolor="#FFFFFF">备注</th>-->
-            <th width='100' bgcolor="#FFFFFF">Remarks</th>
-            <!--<th width='80' bgcolor="#FFFFFF">操作</th>-->
-            <th width='80' bgcolor="#FFFFFF">Manage</th>
-
+            <th width='80' bgcolor="#FFFFFF">分类</th>
+            <th width='80' bgcolor="#FFFFFF">金额</th>
+            <th width='80' bgcolor="#FFFFFF">收支</th>
+            <th width='110' bgcolor="#FFFFFF">时间</th>
+            <th width='100' bgcolor="#FFFFFF">备注</th>
+            <th width='80' bgcolor="#FFFFFF">操作</th>
         </tr>
     </thead>
     <tbody class="">
@@ -39,12 +32,10 @@
             <td class="am-text-middle">{$data.mark}</td>
             <td class="am-text-middle">
                 <if condition="$data.classid gt 0">
-                    <!--<a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>-->
-                    <a href="__APP__/Home/Edit/index/id/{$data.id}">Edit </a>
+                    <a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>
                     <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> 删除</a>
                 <else />
-                    <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
-                    <a href="__APP__/Home/Edit/transfer/id/{$data.id}">Edit</a>
+                    <a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>
                     <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>
                 </if>
             </td>
@@ -57,10 +48,8 @@
 <if condition="$PageMax gt 1">
     <ul data-am-widget="pagination" class="am-pagination am-pagination-select">
         <li class="am-pagination-prev ">
-            <!--<if condition="1 neq $Page "> <a href="__ACTION__/p/{$Page-1}#money-table" class="">上一页</a>-->
-            <if condition="1 neq $Page "> <a href="__ACTION__/p/{$Page-1}#money-table" class="">Previous Page</a>      
-            <!--<else /> <a href="__ACTION__/p/{$Page}#money-table" class="">上一页</a>-->
-            <else /> <a href="__ACTION__/p/{$Page}#money-table" class="">Previous Page</a>  
+            <if condition="1 neq $Page "> <a href="__ACTION__/p/{$Page-1}#money-table" class="">上一页</a> 
+            <else /> <a href="__ACTION__/p/{$Page}#money-table" class="">上一页</a> 
             </if>
         </li>
         
@@ -78,14 +67,11 @@
         
         
         <li class="am-pagination-next ">
-            <!--<if condition="$PageMax neq $Page "> <a href="__ACTION__/p/{$Page+1}#money-table" class="">下一页</a> -->
-                <if condition="$PageMax neq $Page "> <a href="__ACTION__/p/{$Page+1}#money-table" class="">Next Page</a>
-            <!--<else /> <a href="__ACTION__/p/{$Page}#money-table" class="">下一页</a> -->
-            <else /> <a href="__ACTION__/p/{$Page}#money-table" class="">Next Page</a>
+            <if condition="$PageMax neq $Page "> <a href="__ACTION__/p/{$Page+1}#money-table" class="">下一页</a>
+            <else /> <a href="__ACTION__/p/{$Page}#money-table" class="">下一页</a> 
             </if>
         </li>
     </ul>
 <elseif condition="$PageMax eq null"/>
-    <!--<p><a href="__APP__/Home/Index/index#money-table" class="am-btn am-btn-block am-btn-default">更多记账明细</a></p>-->
-    <p><a href="__APP__/Home/Index/index#money-table" class="am-btn am-btn-block am-btn-default">More Accounting details</a></p>
+    <p><a href="__APP__/Home/Index/index#money-table" class="am-btn am-btn-block am-btn-default">更多记账明细</a></p>
 </if>
