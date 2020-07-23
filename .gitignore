@@ -5,4 +5,5 @@ Application/Home/sftp-config.json
 *.txt
 
 
-Application/Runtime/*
+Application/Runtime/
+# Application/Runtime/* 
