@@ -5,26 +5,35 @@
     <div class="am-container">
         <form class="am-form" method="post" data-am-validator>
           <fieldset>
-            <legend>重置用户密码</legend>
+            <!-- <legend>重置用户密码</legend> -->
+            <legend>Reset user password</legend>
         
             <div class="am-form-group">
-              <label for="forget_username">账号</label>
+              <!-- <label for="forget_username">账号</label> -->
+              <label for="forget_username">User Account</label>
               <input type="text" class="" name="forget_username" placeholder="{$username}" disabled/>
             </div>
         
             <div class="am-form-group">
-              <label for="forget_password">密码</label>
-              <input type="password" class="" name="forget_password" placeholder="输入新密码" 
-                minlength="4" maxlength="24" id="doc-vld-pwd-1" required/>
+              <!-- <label for="forget_password">密码</label> -->
+              <label for="forget_password">Password</label>
+              <!-- <input type="password" class="" name="forget_password" placeholder="输入新密码" 
+                minlength="4" maxlength="24" id="doc-vld-pwd-1" required/> -->
+                <input type="password" class="" name="forget_password" placeholder="Enter new password" 
+                  minlength="4" maxlength="24" id="doc-vld-pwd-1" required/>
             </div>
         
             <div class="am-form-group">
-              <label for="forget_password">确认密码</label>
-              <input type="password" class="" name="forget_password2" placeholder="请与上面输入的密码值一致" 
+              <!-- <label for="forget_password">确认密码</label> -->
+              <label for="forget_password">Confirm Password</label>
+              <!-- <input type="password" class="" name="forget_password2" placeholder="请与上面输入的密码值一致" 
+                data-equal-to="#doc-vld-pwd-1" id="doc-vld-pwd-2" required/> -->
+                <input type="password" class="" name="forget_password2" placeholder="Please enter the same password" 
                 data-equal-to="#doc-vld-pwd-1" id="doc-vld-pwd-2" required/>
             </div>
             
-            <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="forget_submit" value="提交"></p>
+            <!-- <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="forget_submit" value="提交"></p>-->
+            <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="forget_submit" value="Submit"></p>
             
           </fieldset>
         </form>
