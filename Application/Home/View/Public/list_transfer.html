@@ -1,12 +1,18 @@
 <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
     <thead>
         <tr>
-            <th bgcolor="#FFFFFF">转出账户</th>
-            <th bgcolor="#FFFFFF">金额</th>
-            <th bgcolor="#FFFFFF">转入账户</th>
-            <th bgcolor="#FFFFFF">时间</th>
-            <th bgcolor="#FFFFFF">备注</th>
-            <th bgcolor="#FFFFFF">编辑</th>
+            <!--<th bgcolor="#FFFFFF">转出账户</th>-->
+            <th bgcolor="#FFFFFF">Transfer out</th>
+            <!--<th bgcolor="#FFFFFF">金额</th>-->
+            <th bgcolor="#FFFFFF">Amount</th>
+            <!--<th bgcolor="#FFFFFF">转入账户</th>-->
+            <th bgcolor="#FFFFFF">Transfer In</th>
+            <!--<th bgcolor="#FFFFFF">时间</th>-->
+            <th bgcolor="#FFFFFF">time</th>
+            <!--<th bgcolor="#FFFFFF">备注</th>-->
+            <th bgcolor="#FFFFFF">Remarks</th>
+            <!--<th bgcolor="#FFFFFF">编辑</th>-->
+            <th bgcolor="#FFFFFF">Edit</th>
         </tr>
     </thead>
     <tbody class="">
@@ -20,11 +26,13 @@
             <td class="am-text-middle">
                 <if condition="$data.source_fid eq 0 ">
                     <php>
-                        echo "<a href=".U("Home/Funds/edit?id=".$data['target_fid']).">账户</a>";
+                        <!--echo "<a href=".U("Home/Funds/edit?id=".$data['target_fid']).">账户</a>";-->
+                        echo "<a href=".U("Home/Funds/edit?id=".$data['target_fid']).">Account</a>";
                     </php>
                 <else />
                     <php>
-                        echo "<a href=".U("Home/Edit/transfer?id=".$data['tid']).">编辑</a>";
+                        <!--echo "<a href=".U("Home/Edit/transfer?id=".$data['tid']).">编辑</a>";-->
+                        echo "<a href=".U("Home/Edit/transfer?id=".$data['tid']).">Edit</a>";
                     </php>
                 </if>
             </td>
@@ -37,8 +45,10 @@
 <if condition="$TransferPageMax gt 1">
     <ul data-am-widget="pagination" class="am-pagination am-pagination-select">
         <li class="am-pagination-prev ">
-            <if condition="1 neq $TransferPage "> <a href="__ACTION__/p/{$TransferPage-1}#transfer-table" class="">上一页</a> 
-            <else /> <a href="__ACTION__/p/{$TransferPage}#transfer-table" class="">上一页</a> 
+            <!--<if condition="1 neq $TransferPage "> <a href="__ACTION__/p/{$TransferPage-1}#transfer-table" class="">上一页</a> -->
+            <if condition="1 neq $TransferPage "> <a href="__ACTION__/p/{$TransferPage-1}#transfer-table" class="">Previous Page</a> 
+            <!--<else /> <a href="__ACTION__/p/{$TransferPage}#transfer-table" class="">上一页</a>-->
+            <else /> <a href="__ACTION__/p/{$TransferPage}#transfer-table" class="">Previous Page</a> 
             </if>
         </li>
         
@@ -56,11 +66,14 @@
         
         
         <li class="am-pagination-next ">
-            <if condition="$TransferPageMax neq $TransferPage "> <a href="__ACTION__/p/{$TransferPage+1}#transfer-table" class="">下一页</a>
-            <else /> <a href="__ACTION__/p/{$TransferPage}#transfer-table" class="">下一页</a> 
+            <!--<if condition="$TransferPageMax neq $TransferPage "> <a href="__ACTION__/p/{$TransferPage+1}#transfer-table" class="">下一页</a>-->
+            <if condition="$TransferPageMax neq $TransferPage "> <a href="__ACTION__/p/{$TransferPage+1}#transfer-table" class="">Next Page</a>
+            <!--<else /> <a href="__ACTION__/p/{$TransferPage}#transfer-table" class="">下一页</a> -->
+            <else /> <a href="__ACTION__/p/{$TransferPage}#transfer-table" class="">Next Page</a> 
             </if>
         </li>
     </ul>
 <elseif condition="$TransferPageMax eq null"/>
-    <p><a href="__APP__/Home/Funds/index#transfer-table" class="am-btn am-btn-block am-btn-default">更多转账记录</a></p>
+    <!--<p><a href="__APP__/Home/Funds/index#transfer-table" class="am-btn am-btn-block am-btn-default">更多转账记录</a></p>-->
+    <p><a href="__APP__/Home/Funds/index#transfer-table" class="am-btn am-btn-block am-btn-default">More Transfer Records</a></p>
 </if>
