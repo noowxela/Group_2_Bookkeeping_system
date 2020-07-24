@@ -27,7 +27,8 @@
                 type: 'column'
             },
             title: {
-                text: '<? echo $y.'年收入与支出金额汇总'; ?>'
+                // text: '<? echo $y.'年收入与支出金额汇总'; ?>'
+                text: '<? echo $y.'Anualy income and expand amount '; ?>'
             },
             subtitle: {
                 text: null
@@ -36,25 +37,40 @@
                 enabled: false
             },
             xAxis: {
+                // categories: [
+                //     '1月',
+                //     '2月',
+                //     '3月',
+                //     '4月',
+                //     '5月',
+                //     '6月',
+                //     '7月',
+                //     '8月',
+                //     '9月',
+                //     '10月',
+                //     '11月',
+                //     '12月'
+                // ]
                 categories: [
-                    '1月',
-                    '2月',
-                    '3月',
-                    '4月',
-                    '5月',
-                    '6月',
-                    '7月',
-                    '8月',
-                    '9月',
-                    '10月',
-                    '11月',
-                    '12月'
+                    'Jan',
+                    'Feb',
+                    'March',
+                    'April',
+                    'May',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec'
                 ]
             },
             yAxis: {
                 min: 0,
                 labels: {
                     formatter:function(){
+                        // return this.value + "元";
                         return this.value + "元";
                     }
                 },
@@ -77,12 +93,14 @@
                 }
             },
             series: [{
-                name: '收入',
+                // name: '收入',
+                name: 'income',
                 color: '#69cf8a',
                 data: <? echo $JsonInMoney; ?>
 
             }, {
-                name: '支出',
+                // name: '支出',
+                name: 'expense',
                 color: '#ff922b',
                 data: <? echo $JsonOutMoney; ?>
 
@@ -97,10 +115,12 @@
                 plotShadow: false
             },
             title: {
-                text: '<? echo $y.'年收入分类汇总'; ?>'
+                // text: '<? echo $y.'年收入分类汇总'; ?>'
+                text: '<? echo $y.'Anualy income'; ?>'
             },
             subtitle: {
-                text: '<? echo '总收入'.$DataArray['InSumMoney'].'元'; ?>',
+                // text: '<? echo '总收入'.$DataArray['InSumMoney'].'元'; ?>',
+                text: '<? echo 'Total income'.$DataArray['InSumMoney'].'元'; ?>',
                 style: {
                     color: 'green',
                     fontWeight: 'bold'
@@ -123,7 +143,8 @@
             },
             series: [{
                 type: 'pie',
-                name: '收入',
+                // name: '收入',
+                name: 'Income',
                 data: <? echo $JsonInClassPer; ?>
             }]
         });
@@ -136,10 +157,12 @@
                 plotShadow: false
             },
             title: {
-                text: '<? echo $y.'年支出分类汇总'; ?>'
+                // text: '<? echo $y.'年支出分类汇总'; ?>'
+                text: '<? echo $y.'Anually expense'; ?>'
             },
             subtitle: {
-                text: '<? echo '总支出'.$DataArray['OutSumMoney'].'元'; ?>',
+                // text: '<? echo '总支出'.$DataArray['OutSumMoney'].'元'; ?>',
+                text: '<? echo 'Total expense'.$DataArray['OutSumMoney'].'元'; ?>',
                 style: {
                     color: 'red',
                     fontWeight: 'bold'
@@ -162,7 +185,8 @@
             },
             series: [{
                 type: 'pie',
-                name: '支出',
+                // name: '支出',
+                name: 'Expand',
                 data: <? echo $JsonOutClassPer; ?>
             }]
         });
