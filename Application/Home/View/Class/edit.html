@@ -1,4 +1,5 @@
 <extend name="Public:common"/>
+
 <block name="main">
     <form class="am-form am-form-horizontal" method="post" data-am-validator="H5validation:false">
         <fieldset>
@@ -27,10 +28,15 @@
                 </if>
             </select>
         </div>
-        <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="编辑"></p>
+        <!-- <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="编辑"></p> -->
+        <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="edit"></p>
         
-        <p><a href="javascript:void(0);" class="am-btn am-btn-block am-btn-danger" 
-                    onclick="isDelete('__APP__/Home/Class/del/id/{$ClassId}')" >删除</a></p>
+        <p>
+            <!-- <a href="javascript:void(0);" class="am-btn am-btn-block am-btn-danger" 
+                onclick="isDelete('__APP__/Home/Class/del/id/{$ClassId}')" >删除</a> -->
+            <a href="javascript:void(0);" class="am-btn am-btn-block am-btn-danger" 
+                onclick="isDelete('__APP__/Home/Class/del/id/{$ClassId}')" >delete</a>
+        </p>
                 
         <!-- <p><a href="__APP__/Home/Class/index/type/{$ClassType}" class="am-btn am-btn-block am-btn-default">返回</a></p> -->
         <p><a href="__APP__/Home/Class/index/type/{$ClassType}" class="am-btn am-btn-block am-btn-default">Back</a></p>

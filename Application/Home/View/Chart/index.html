@@ -2,9 +2,12 @@
 <block name="main">
 
 <ul class="am-pagination am-pagination-centered" >
-    <li class="am-pagination-prev"><a href="__APP__/Home/Chart/index/year/{$y-1}">&laquo; {$y-1}年</a></li>
-    <li class=""><a href="__APP__/Home/Chart/index">今年</a></li>
-    <li class="am-pagination-next"><a href="__APP__/Home/Chart/index/year/{$y+1}">{$y+1}年 &raquo;</a></li>
+    <!-- <li class="am-pagination-prev"><a href="__APP__/Home/Chart/index/year/{$y-1}">&laquo; {$y-1}年</a></li> -->
+    <li class="am-pagination-prev"><a href="__APP__/Home/Chart/index/year/{$y-1}">&laquo; {$y-1} year</a></li>
+    <!-- <li class=""><a href="__APP__/Home/Chart/index">今年</a></li> -->
+    <li class=""><a href="__APP__/Home/Chart/index">Current year</a></li>
+    <!-- <li class="am-pagination-next"><a href="__APP__/Home/Chart/index/year/{$y+1}">{$y+1}年 &raquo;</a></li> -->
+    <li class="am-pagination-next"><a href="__APP__/Home/Chart/index/year/{$y+1}">{$y+1} year &raquo;</a></li>
 </ul>
 
 <!DOCTYPE html>
@@ -33,7 +36,8 @@
         // 指定图表的配置项和数据
         var optionYear = {
             title: {
-                text: '{$y}年收入与支出金额汇总',
+                // text: '{$y}年收入与支出金额汇总',
+                text: '{$y}anualy income/expense',
                 top: 'top',
                 x: 'center'
             },
@@ -46,7 +50,8 @@
                 }
             },
             legend: {
-                data:['收入','支出','月剩余','年剩余'],
+                // data:['收入','支出','月剩余','年剩余'],
+                data:['income','expense','month balance','anual balance'],
                 selected:{
                     '收入' : true,
                     '支出' : true,

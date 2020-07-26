@@ -2,16 +2,18 @@
 <block name="main">
     <div class="am-alert am-alert-danger " data-am-alert>
         <button type="button" class="am-close">&times;</button>
-        <p class="am-icon-exclamation-triangle"> 此页面设置不可恢复，请谨慎操作！</p>
+        <!-- <p class="am-icon-exclamation-triangle"> 此页面设置不可恢复，请谨慎操作！</p> -->
+        <p class="am-icon-exclamation-triangle"> The settings on this page cannot be restored, please operate with caution!</p>
     </div>
     <fieldset>
     <!-- <legend>分类删除处理</legend> -->
-    <legend>分类删除处理</legend>
+    <legend>category delete process</legend>
         <div class="am-panel-group" id="accordion">
         <!-- 方案一 -->
         <div class="am-panel am-panel-default">
             <div class="am-panel-hd">
                 <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
+                    <!-- <i class="am-icon-angle-double-right"> 将【{$ClassName}】数据转移到其他分类</i> -->
                     <i class="am-icon-angle-double-right"> 将【{$ClassName}】数据转移到其他分类</i>
                 </h4>
             </div>
@@ -19,12 +21,14 @@
             <form class="am-form am-form-horizontal" method="post" data-am-validator="H5validation:false">
                 <div><p></p></div>
                 <div class="am-input-group">
-                    <span class="am-input-group-label"><b>分类名</b></span>
+                    <!-- <span class="am-input-group-label"><b>分类名</b></span> -->
+                    <span class="am-input-group-label"><b>category name</b></span>
                     <input type="text" class="am-form-field" id="text-class" name="class_name" value="{$ClassName}" disabled>
                 </div>
                 <div><p></p></div>
                 <div class="am-input-group">
-                    <span class="am-input-group-label"><b>转移到</b></span>
+                    <!-- <span class="am-input-group-label"><b>转移到</b></span> -->
+                    <span class="am-input-group-label"><b>convert into</b></span>
                     <select id="select-type" class="am-form-field" name="class_id_2" >
                         <foreach name="ClassData" item="iClassName">
                             <if condition="$key neq $ClassId">
@@ -33,13 +37,15 @@
                         </foreach>
                     </select>
                 </div>
-                <p><input type="submit" class="am-btn am-btn-success am-btn-block" name="proc_submit" value="转移并删除"></p>
+                <!-- <p><input type="submit" class="am-btn am-btn-success am-btn-block" name="proc_submit" value="转移并删除"></p> -->
+                <p><input type="submit" class="am-btn am-btn-success am-btn-block" name="proc_submit" value="convert and delete"></p>
             </form>
             </div>
         </div>
         <!-- 方案二 -->
         </div>
-        <p><a href="__APP__/Home/Class/index/type/{$ClassType}" class="am-btn am-btn-default am-btn-block">返回</a></p>
+        <!-- <p><a href="__APP__/Home/Class/index/type/{$ClassType}" class="am-btn am-btn-default am-btn-block">返回</a></p> -->
+        <p><a href="__APP__/Home/Class/index/type/{$ClassType}" class="am-btn am-btn-default am-btn-block">return</a></p>
     </fieldset>
     <include file="Public:list_account"/>
 </block>
