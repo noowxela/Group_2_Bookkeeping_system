@@ -2,32 +2,41 @@
 <block name="main">
     <form class="am-form am-form-horizontal" method="post" data-am-validator="H5validation:false">
         <fieldset id="accordion">
-            <legend>新建资金账户</legend>
+            <!-- <legend>新建资金账户</legend> -->
+            <legend>New Funding Account</legend>
             <div class="am-input-group">
-                <span class="am-input-group-label"><b>账户名称</b></span>
-                <input type="text" class="am-form-field" id="text-funds" name="funds_name" placeholder="输入资金账户名称">
+                <!-- <span class="am-input-group-label"><b>账户名称</b></span> -->
+                <span class="am-input-group-label"><b>Account name</b></span>
+                <!-- <input type="text" class="am-form-field" id="text-funds" name="funds_name" placeholder="输入资金账户名称"> -->
+                <input type="text" class="am-form-field" id="text-funds" name="funds_name" placeholder="Please enter fund account name">
             </div>
             <p></p>
             <div class="am-input-group">
-                <span class="am-input-group-label"><b>初始金额</b></span>
-                <input type="number" class="am-form-field" id="text-money" name="funds_money" placeholder="输入资金账户初始金额">
+                <!-- <span class="am-input-group-label"><b>初始金额</b></span> -->
+                <span class="am-input-group-label"><b>Initial amount</b></span>
+                <!-- <input type="number" class="am-form-field" id="text-money" name="funds_money" placeholder="输入资金账户初始金额"> -->
+                <input type="number" class="am-form-field" id="text-money" name="funds_money" placeholder="Please enter initial amount">
             </div>
-            <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="funds_submit" value="新建"></p>
+            <!-- <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="funds_submit" value="新建"></p> -->
+            <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="funds_submit" value="Create"></p>
         </fieldset>
     </form>
 
     <p></p>
     <fieldset id="accordion">
         <legend class="am-cf">
-            <div class="am-fl">管理资金账户</div>
+            <!-- <div class="am-fl">管理资金账户</div> -->
+            <div class="am-fl">Manage Funding Account</div>
             <div class="am-fr">
-                <button class="am-btn am-btn-sm am-btn-success am-round sortEnable" style="display: none;" id="sortSave">保存</button>
-                <button class="am-btn am-btn-sm am-btn-default am-round" id="sortButton">排序</button>
+                <!-- <button class="am-btn am-btn-sm am-btn-success am-round sortEnable" style="display: none;" id="sortSave">保存</button> -->
+                <button class="am-btn am-btn-sm am-btn-success am-round sortEnable" style="display: none;" id="sortSave">Save</button>
+                <!-- <button class="am-btn am-btn-sm am-btn-default am-round" id="sortButton">排序</button> -->
+                <button class="am-btn am-btn-sm am-btn-default am-round" id="sortButton">Sort</button>
             </div>
         </legend>
         <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
             <thead>
-                <tr>
+                <!-- <tr>
                     <th bgcolor="#FFFFFF">资金账户</th>
                     <th bgcolor="#FFFFFF">初始金额</th>
                     <th bgcolor="#FFFFFF">收入金额</th>
@@ -36,6 +45,16 @@
                     <th bgcolor="#FFFFFF">记录数</th>
                     <th bgcolor="#FFFFFF" class="sortDisable">编辑</th>
                     <th bgcolor="#FFFFFF" class="sortEnable" style="display: none;">排序</th>
+                </tr> -->
+                <tr>
+                    <th bgcolor="#FFFFFF">Fund Account</th>
+                    <th bgcolor="#FFFFFF">Initial Amount</th>
+                    <th bgcolor="#FFFFFF">Income</th>
+                    <th bgcolor="#FFFFFF">Expense</th>
+                    <th bgcolor="#FFFFFF">Total Amount</th>
+                    <th bgcolor="#FFFFFF">Records</th>
+                    <th bgcolor="#FFFFFF" class="sortDisable">Edit</th>
+                    <th bgcolor="#FFFFFF" class="sortEnable" style="display: none;">Sort</th>
                 </tr>
             </thead>
             <tbody id="sortFunds">
@@ -49,11 +68,13 @@
                     <td class="am-text-middle">{$data.money.count}</td>
                     <if condition="$data.id eq -1 ">
                         <td class="am-text-middle">
-                            <a href="__APP__/Home/Funds/edit/id/{$data['id']}">移除</a>
+                            <!-- <a href="__APP__/Home/Funds/edit/id/{$data['id']}">移除</a> -->
+                            <a href="__APP__/Home/Funds/edit/id/{$data['id']}">Remove</a>
                         </td>
                     <else />
                         <td class="am-text-middle sortDisable">
-                            <a href="__APP__/Home/Funds/edit/id/{$data['id']}">编辑</a>
+                            <!-- <a href="__APP__/Home/Funds/edit/id/{$data['id']}">编辑</a> -->
+                            <a href="__APP__/Home/Funds/edit/id/{$data['id']}">Edit</a>
                         </td>
                         <td class="am-text-middle sortEnable" style="display: none;">
                             <i class="am-icon-arrows"></i>
@@ -67,7 +88,8 @@
 
     <p></p>
     <fieldset id="transfer-table">
-        <legend>账户转账明细</legend>
+        <!-- <legend>账户转账明细</legend> -->
+        <legend>Account Transfer Detail</legend>
         <include file="Public:list_transfer"/>
     </fieldset>
 </block>
@@ -86,12 +108,21 @@
         });
         if (sortable) {
             $("#sortButton").click(function(){
-                if ($("#sortButton").text() === "排序") {
-                    $("#sortButton").text("取消");
+                // if ($("#sortButton").text() === "排序") {
+                //     $("#sortButton").text("取消");
+                //     $(".sortDisable").hide();
+                //     $(".sortEnable").show();
+                // } else {
+                //     $("#sortButton").text("排序");
+                //     $(".sortEnable").hide();
+                //     $(".sortDisable").show();
+                // }
+                if ($("#sortButton").text() === "Sort") {
+                    $("#sortButton").text("Cancel");
                     $(".sortDisable").hide();
                     $(".sortEnable").show();
                 } else {
-                    $("#sortButton").text("排序");
+                    $("#sortButton").text("Sort");
                     $(".sortEnable").hide();
                     $(".sortDisable").show();
                 }
@@ -106,7 +137,8 @@
                     FormPost("__APP__/Home/Funds/sort", {'data': JSON.stringify(order).replace(/"/g, '')});
                 }catch(e){
                     console.log(e);
-                    alert("缺少FormPost组件，请联系管理员。");
+                    // alert("缺少FormPost组件，请联系管理员。");
+                    aler("The FormPost component is missing, please contact the administrator.");
                 }
             });
         }

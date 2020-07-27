@@ -87,7 +87,7 @@
                     <span class="am-input-group-btn am-form-file">
                         <button type="button" class="am-btn am-btn-default" id="btn-upload-image" data-am-loading="{spinner: 'circle-o-notch', loadingText: '上传中...', resetText: '上传完成'}">
                             <!-- <i class="am-icon-cloud-upload"></i> 上传图片 -->
-                            <i class="am-icon-cloud-upload"></i> Upload Image
+                            <i class="am-icon-cloud-upload"></i> Upload image
                         </button>
                         <input id="doc-form-file" type="file" name="edit_photo[]" accept=".{$Think.config.IMAGE_EXT|implode=', .', ###}" multiple />
                     </span>
@@ -100,7 +100,7 @@
                 </div>
 
                 <if condition="$ImageData neq false ">
-                <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
+                <p><hr data-am-widget="divider" class="am-divider am-divider-dashed" /></p>
                 <ul data-am-widget="gallery" class="am-gallery am-avg-sm-3
   am-avg-md-4 am-avg-lg-5 am-gallery-bordered" data-am-gallery="{pureview:{target: 'a'}}" id="doc-image-list" >
                     <foreach name="ImageData" item="image">
@@ -123,7 +123,7 @@
                 </ul>
                 </if>
 
-                <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
+                <p><hr data-am-widget="divider" class="am-divider am-divider-dashed" /></p>
                 <!-- <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="edit_submit" value="修改"></p> -->
                 <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="edit_submit" value="Change"></p>
                 <!-- <p><a href="javascript:void(0);" class="am-btn am-btn-block am-btn-danger" 
