@@ -12,24 +12,28 @@ class UserController extends BaseController {
                 exit;
             }
             $Submit = I('post.user_submit');
-            if($Submit === '修改账号') {
+            // if($Submit === '修改账号') {
+                if($Submit === 'Change username') {
                 $Username = I('post.user_name');
                 $Email = I('post.user_email');
                 $Password = I('post.user_password');
                 $Updata = UpdataUserName($uid, $Username, $Email ,$Password);
                 if($Updata[0]) {
-                    ShowAlert('登录账号已改为【'.$Updata[1].'】请重新登录!',U('Home/Login/logout'));
+                    //ShowAlert('登录账号已改为【'.$Updata[1].'】请重新登录!',U('Home/Login/logout'));
+                    ShowAlert('The login account username has been changed to ['.$Updata[1].'] Please log in again!',U('Home/Login/logout'));
                     $this -> display('Public/base');
                 }else{
                     ShowAlert($Updata[1],U('Home/User/index'));
                     $this -> display('Public/base');
                 }
-            }elseif($Submit === '修改密码') {
+            // }elseif($Submit === '修改密码') {
+            }elseif($Submit === 'Change password') {
                 $OldPassword = I('post.user_password');
                 $NewPassword = I('post.user_password_new');
                 $Updata = UpdataPassword($uid, $OldPassword, $NewPassword);
                 if($Updata[0]) {
-                    ShowAlert('【'.$Updata[1].'】登录密码修改成功，请重新登录!',U('Home/Login/logout'));
+                    // ShowAlert('【'.$Updata[1].'】登录密码修改成功，请重新登录!',U('Home/Login/logout'));
+                    ShowAlert('['.$Updata[1].'] The login password is changed successfully, please log in again!',U('Home/Login/logout'));
                     $this -> display('Public/base');
                 }else{
                     ShowAlert($Updata[1],U('Home/User/index/type/1'));
