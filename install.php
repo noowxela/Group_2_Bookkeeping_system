@@ -127,56 +127,60 @@
         } else {
     ?>
     <div id="formwrapper">
-        <h3 class="enter"><p>小歆记账Web安装向导</p></h3><br/>
+        <!-- <h3 class="enter"><p>小歆记账Web安装向导</p></h3><br/> -->
+        <h3 class="enter"><p>小歆记账Web installation guilde</p></h3><br/>
         <form action="install.php" method="post">   
             <fieldset>
-                <legend>数据库配置</legend>
+                <!-- <legend>数据库配置</legend> -->
+                <legend>database config</legend>
                 <div>
-                    <label>数据库主机</label>
+                    <!-- <label>数据库主机</label> -->
+                    <label>db_host</label>
                     <input type="text" name="db_host" value="localhost">
                 </div>
                 <div>
-                    <label>数据库用户名</label>
+                    <label>db_user</label>
                     <input type="text" name="db_user" value="root">
                 </div>
                 <div>
-                    <label>数据库密码</label>
+                    <label>db_psw</label>
                     <input type="password" name="db_psw" value="">
                 </div>
                 <div>
-                    <label>数据库名称</label>
+                    <label>db_name</label>
                     <input type="text" name="db_name" value="">
                 </div>
                 <div>
-                    <label>数据库表前缀</label>
+                    <label>db_prefix</label>
                     <input type="text" name="db_prefix" value="xxjz_">
                 </div>
             </fieldset>
                 
             <fieldset>
-                <legend>邮箱配置(可选)</legend>
+                <!-- <legend>邮箱配置(可选)</legend> -->
+                <legend>mail config(optional)</legend>
                 <div>
-                    <label>邮箱SMTP主机</label>
+                    <label>mail_smtp 主机</label>
                     <input type="text" name="mail_smtp" value="smtp.163.com">
                 </div>
                 <div>
-                    <label>邮箱安全认证</label>
+                    <label>mail_secure认证</label>
                     <input type="text" name="mail_secure" value="none">
                 </div>
                 <div>
-                    <label>邮箱端口号</label>
+                    <label>mail_port</label>
                     <input type="text" name="mail_port" value="25">
                 </div>
                 <div>
-                    <label>邮箱用户名</label>
+                    <label>mail_user</label>
                     <input type="text" name="mail_user" value="">
                 </div>
                 <div>
-                    <label>邮箱密码</label>
+                    <label>mail_psw</label>
                     <input type="password" name="mail_psw" value="">
                 </div>
                 <div>
-                    <label>发件人邮箱</label>
+                    <label>mail_from</label>
                     <input type="email" name="mail_from" value="xxjz@163.com">
                 </div>
             </fieldset>
