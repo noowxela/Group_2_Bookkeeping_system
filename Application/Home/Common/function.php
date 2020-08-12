@@ -484,9 +484,11 @@
     function ArrDataToShowData($ArrData, $ArrClass, $ArrFunds = null) {
         $retShowData = array();
         if($ArrData['zhifu'] == 1){
-            $classType = '收入';
+            // $classType = '收入';
+            $classType = '<< Income >>';
         }else{
-            $classType = '支出';
+            // $classType = '支出';
+            $classType = '<< Expense >>';
         }
 
         if (is_array($ArrFunds)) {
