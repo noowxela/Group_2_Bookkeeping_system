@@ -18,7 +18,8 @@
     <tbody class="">
         <volist name="TransferData" id="data">
         <tr>
-            <td class="am-text-middle">{$data.source_fname|default='创建账户'}</td>
+            <!-- <td class="am-text-middle">{$data.source_fname|default='创建账户'}</td> -->
+            <td class="am-text-middle">{$data.source_fname|default='Create Account'}</td>
             <td class="am-text-middle money-format">{$data.money}</td>
             <td class="am-text-middle">{$data.target_fname}</td>
             <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
