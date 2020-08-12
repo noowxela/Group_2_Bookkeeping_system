@@ -484,11 +484,9 @@
     function ArrDataToShowData($ArrData, $ArrClass, $ArrFunds = null) {
         $retShowData = array();
         if($ArrData['zhifu'] == 1){
-            // $classType = '收入';
-            $classType = '<< Income >>';
+            $classType = '收入';
         }else{
-            // $classType = '支出';
-            $classType = '<< Expenses >>';
+            $classType = '支出';
         }
 
         if (is_array($ArrFunds)) {
@@ -1905,7 +1903,7 @@
     }
 
     //数组键转表格数据
-    function ArrayKeyToNumData($arr){ 
+    function ArrayKeyToNumData($arr){
         $str = "[";
         foreach($arr as $key => $value){
             $str = "$str {value:$value,name:'$key'} ,";
