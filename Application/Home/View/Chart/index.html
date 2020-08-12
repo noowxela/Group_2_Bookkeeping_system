@@ -37,7 +37,7 @@
         var optionYear = {
             title: {
                 // text: '{$y}年收入与支出金额汇总',
-                text: '{$y}anualy income/expense',
+                text: '{$y} Anualy Income/Expense',
                 top: 'top',
                 x: 'center'
             },
@@ -51,7 +51,7 @@
             },
             legend: {
                 // data:['收入','支出','月剩余','年剩余'],
-                data:['income','expense','month balance','anual balance'],
+                data:['Income','Expense','month balance','anual balance'],
                 selected:{
                     '收入' : true,
                     '支出' : true,
@@ -69,18 +69,21 @@
             },
             xAxis: {
                 type: 'category',
-                data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]
+                // data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]
+                data: ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
             },
             yAxis: {
                 type : 'value'
             },
             barGap: '5%',
             series: [{
-                name: '收入',
+                // name: '收入',
+                name: 'Income',
                 type: 'bar',
                 data: {$JsonInMoney}
             },{
-                name: '支出',
+                // name: '支出',
+                name: 'Expense',
                 type: 'bar',
                 data: {$JsonOutMoney}
             },{
@@ -98,8 +101,10 @@
 
         var optionInClass = {
             title : {
-                text: '{$y}年收入分类汇总',
-                subtext: '总收入{$DataArray.InSumMoney}元',
+                // text: '{$y}年收入分类汇总',
+                // subtext: '总收入{$DataArray.InSumMoney}元',
+                text: '{$y} Year INcome category Show',
+                subtext: 'Total Income: RM{$DataArray.InSumMoney}',
                 x:'center'
             },
             color: ["#7cb5ec", "#f7a35c", "#90ee7e", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
@@ -138,8 +143,10 @@
 
         var optionOutClass = {
             title : {
-                text: '{$y}年支出分类汇总',
-                subtext: '总支出{$DataArray.OutSumMoney}元',
+                // text: '{$y}年支出分类汇总',
+                // subtext: '总支出{$DataArray.OutSumMoney}元',
+                text: '{$y} year Expenses category show',
+                subtext: 'Total Expenses : RM{$DataArray.OutSumMoney}',
                 x:'center'
             },
             color: ["#7cb5ec", "#f7a35c", "#90ee7e", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",

@@ -22,11 +22,11 @@
     <div data-am-widget="tabs" class="am-tabs am-tabs-secondary" id="doc-form-tabs" >
         <ul class="am-tabs-nav am-cf">
             <!-- <li class=""><a href="__APP__/Home/Add/index/type/2">支出</a></li> -->
-            <li class=""><a href="__APP__/Home/Add/index/type/2">expense</a></li>
+            <li class=""><a href="__APP__/Home/Add/index/type/2">Expense</a></li>
             <!-- <li class=""><a href="__APP__/Home/Add/index/type/1">收入</a></li> -->
-            <li class=""><a href="__APP__/Home/Add/index/type/1">income</a></li>
+            <li class=""><a href="__APP__/Home/Add/index/type/1">Income</a></li>
             <!-- <li class="am-active"><a href="__APP__/Home/Add/transfer">转账</a></li> -->
-            <li class="am-active"><a href="__APP__/Home/Add/transfer">transfer</a></li>
+            <li class="am-active"><a href="__APP__/Home/Add/transfer">Transfer</a></li>
         </ul>
         <div class="am-tabs-bd">
             <div data-tab-panel-1 class="am-tab-panel">
@@ -38,10 +38,10 @@
             <div data-tab-panel-3 class="am-tab-panel am-active">
                 <form class="am-form am-form-horizontal" enctype="multipart/form-data" method="post" data-am-validator="H5validation:false" id="transfer-form">
                     <!-- <legend>账户转账</legend> -->
-                    <legend>Account transfer</legend>
+                    <legend>Account Transfer</legend>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>转账金额</b></span> -->
-                        <span class="am-input-group-label"><b>transfer amount</b></span>
+                        <span class="am-input-group-label"><b>Transfer Amount</b></span>
                         <!-- <input type="number" class="am-form-field" id="text-money" name="transfer_money" step=0.01 placeholder="输入转账金额" required> -->
                         <input type="number" class="am-form-field" id="text-money" name="transfer_money" step=0.01 placeholder="enter transfer amount" required>
                         <p></p>
@@ -49,11 +49,11 @@
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>转出账户</b></span> -->
-                        <span class="am-input-group-label"><b>transfer out</b></span>
+                        <span class="am-input-group-label"><b>Transfer From</b></span>
                         <!-- <select id="select-funds-source" class="am-form-field" name="transfer_funds_source" placeholder="选择转出账户" required> -->
                         <select id="select-funds-source" class="am-form-field" name="transfer_funds_source" placeholder="pick the Account" required>
                             <!-- <option value="">选择转出账户</option> -->
-                            <option value="">pick the Account</option>
+                            <option value="">Choose the Account</option>
                             <foreach name="FundsData" item="data">
                                 <if condition="$data.id gt 0">
                                     <option value="{$data.id}">{$data.name}</option>
@@ -65,11 +65,11 @@
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>转入账户</b></span> -->
-                        <span class="am-input-group-label"><b>transfer in</b></span>
+                        <span class="am-input-group-label"><b>Transfer TO</b></span>
                         <!-- <select id="select-funds-target" class="am-form-field" name="transfer_funds_target" placeholder="选择转入账户" required> -->
                         <select id="select-funds-target" class="am-form-field" name="transfer_funds_target" placeholder="enter transfer in" required>
                             <!-- <option value="">选择转入账户</option> -->
-                            <option value="">pick the Account</option>
+                            <option value="">Choose the Account</option>
                             <foreach name="FundsData" item="data">
                                 <if condition="$data.id gt 0">
                                     <option value="{$data.id}">{$data.name}</option>
@@ -81,23 +81,23 @@
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>转账备注</b></span> -->
-                        <span class="am-input-group-label"><b>transfer remarks</b></span>
+                        <span class="am-input-group-label"><b>Transfer Remarks</b></span>
                         <!-- <input type="text" class="am-form-field" id="text-mark" name="transfer_mark" placeholder="输入支出信息"> -->
                         <input type="text" class="am-form-field" id="text-mark" name="transfer_mark" placeholder="enter expense message">
                     </div>
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>转账时间</b></span> -->
-                        <span class="am-input-group-label"><b>transfer time</b></span>
+                        <span class="am-input-group-label"><b>Transfer Time</b></span>
                         <input type="date" class="am-form-field" id="text-time" name="transfer_time" value="<php>echo date('Y-m-d',time());</php>" style="height: auto;" />
                     </div>
 
                     <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
                     
                     <!-- <p><button type="submit" name="submit" class="am-btn am-btn-secondary am-btn-block">转账</button></p> -->
-                    <p><button type="submit" name="submit" class="am-btn am-btn-secondary am-btn-block">transfer</button></p>
+                    <p><button type="submit" name="submit" class="am-btn am-btn-secondary am-btn-block">Transfer</button></p>
                     <!-- <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">返回</a></p> -->
-                    <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">return</a></p>
+                    <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">Return to Homepage</a></p>
                 </form>
             </div>
         </div>
