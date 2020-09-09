@@ -484,9 +484,11 @@
     function ArrDataToShowData($ArrData, $ArrClass, $ArrFunds = null) {
         $retShowData = array();
         if($ArrData['zhifu'] == 1){
-            $classType = '收入';
+            // $classType = '收入';
+            $classType = '<< Income >>';
         }else{
-            $classType = '支出';
+            // $classType = '支出';
+            $classType = '<< Expense >>';
         }
 
         if (is_array($ArrFunds)) {
@@ -926,7 +928,8 @@
                         'source_fid' => 0,
                         'target_fid' => $fid,
                         'time' => strtotime(date('Y-m-d', time())),
-                        'mark' => $FundsName.'账户的默认金额',
+                        // 'mark' => $FundsName.' 账户的默认金额',
+                        'mark' => $FundsName.' Account Default Amount',
                     ));
                     if ($ret[0] == false) {
                         return array(false, $ret[1]);

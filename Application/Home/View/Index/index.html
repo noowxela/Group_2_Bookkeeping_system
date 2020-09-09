@@ -11,10 +11,14 @@
     <div id="money-table" class="am-alert am-alert-secondary" data-am-alert>
         <button type="button" class="am-close">&times;</button>
         <p class="am-text-sm">
-        总收入: <font class="am-text-success money-format">{$AccountStatistic['SumInMoney']}</font> &nbsp;
+        <!-- 总收入: <font class="am-text-success money-format">{$AccountStatistic['SumInMoney']}</font> &nbsp;
         总支出: <font class="am-text-danger money-format" >{$AccountStatistic['SumOutMoney']}</font> &nbsp;
           剩余: <font class="am-text-primary money-format">{$AccountStatistic['SumInMoney']-$AccountStatistic['SumOutMoney']}</font> 
-          <span class="am-badge am-round" style="margin-left: 6px;">不含转账</span>
+          <span class="am-badge am-round" style="margin-left: 6px;">不含转账</span> -->
+        Total IncomeS: <font class="am-text-success money-format">{$AccountStatistic['SumInMoney']}</font> &nbsp;
+        Total Expenses: <font class="am-text-danger money-format" >{$AccountStatistic['SumOutMoney']}</font> &nbsp;
+          Balance: <font class="am-text-primary money-format">{$AccountStatistic['SumInMoney']-$AccountStatistic['SumOutMoney']}</font> 
+          <span class="am-badge am-round" style="margin-left: 6px;">Not include Interbank transfer</span>
         </p>
 
     </div>

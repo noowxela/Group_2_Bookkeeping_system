@@ -3,42 +3,57 @@
 
     <form class="am-form am-form-horizontal" method="post" data-am-validator="H5validation:false">
         <fieldset id="new">
-            <legend>新建分类</legend>
+            <!-- <legend>新建分类</legend> -->
+            <legend>Create new category</legend>
             <div class="am-input-group">
-                <span class="am-input-group-label"><b>名称</b></span>
-                <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="输入分类名称">
+                <!-- <span class="am-input-group-label"><b>名称</b></span> -->
+                <span class="am-input-group-label"><b>name</b></span>
+                <!-- <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="输入分类名称"> -->
+                <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="Enter category name">
             </div>
             <div><p></p></div>
             <div class="am-input-group">
-                <span class="am-input-group-label"><b>类别</b></span>
+                <!-- <span class="am-input-group-label"><b>类别</b></span> -->
+				<span class="am-input-group-label"><b>category</b></span>
                 <select id="select-type" class="am-form-field" name="class_type" >
                     <if condition="$ClassType eq 1">
-                        <option value="1">收入</option>
-                        <option value="2">支出</option>
+                        <!-- <option value="1">收入</option> -->
+                        <option value="1">Income</option>
+                        <!-- <option value="2">支出</option> -->
+                        <option value="2">Expense</option>
                     <else/>
-                        <option value="2">支出</option>
-                        <option value="1">收入</option>
+                        <!-- <option value="2">支出</option> -->
+                        <option value="2">Expense</option>
+                        <!-- <option value="1">收入</option> -->
+                        <option value="1">Income</option>
                     </if>
                 </select>
             </div>
-            <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="新建"></p>
+            <!-- <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="新建"></p> -->
+            <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="create"></p>
         </fieldset>
     </form>
 
     <fieldset id="in">
         <legend class="am-cf">
-            <div class="am-fl">收入分类</div>
+            <!-- <div class="am-fl">收入分类</div> -->
+            <div class="am-fl">income category</div>
             <div class="am-fr">
-                <button class="am-btn am-btn-xs am-btn-success am-round sortInEnable" style="display: none;" id="sortInSave">保存排序</button>
+                <!-- <button class="am-btn am-btn-xs am-btn-success am-round sortInEnable" style="display: none;" id="sortInSave">保存排序</button> -->
+                <button class="am-btn am-btn-xs am-btn-success am-round sortInEnable" style="display: none;" id="sortInSave">save sort</button>
             </div>
         </legend>
         <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
             <thead>
                 <tr>
-                    <th bgcolor="#FFFFFF">分类名称</th>
+                    <!-- <th bgcolor="#FFFFFF">分类名称</th>
                     <th bgcolor="#FFFFFF">收入</th>
                     <th bgcolor="#FFFFFF">操作</th>
-                    <th bgcolor="#FFFFFF">排序</th>
+                    <th bgcolor="#FFFFFF">排序</th> -->
+                    <th bgcolor="#FFFFFF">category name</th>
+                    <th bgcolor="#FFFFFF">income</th>
+                    <th bgcolor="#FFFFFF">operation</th>
+                    <th bgcolor="#FFFFFF">sort</th>
                 </tr>
             </thead>
             <tbody id="sortClassIn">
@@ -47,15 +62,18 @@
                     <td class="am-text-middle">{$data}</td>
                     <td class="am-text-middle">
                         <a href="<php>echo U("Home/Class/change?id=".$key);</php>" class="am-btn am-btn-success am-btn-xs">
-                            转为支出
+                            <!-- 转为支出 -->
+                            convert into expenses
                         </a>
                     </td>
                     <td class="am-text-middle">
                         <a href="<php>echo U("Home/Class/edit?id=".$key);</php>" class="am-btn am-btn-secondary am-btn-xs">
-                            编辑
+                            <!-- 编辑 -->
+                            edit
                         </a>
                         <a href="javascript:void(0);" onclick="isDelete('<php>echo U("Home/Class/del?id=".$key);</php>')" class="am-btn am-btn-danger am-btn-xs">
-                            删除
+                            <!-- 删除 -->
+                            delete
                         </a>
                     </td>
                     <td class="am-text-middle sortHandle">
@@ -69,18 +87,24 @@
 
     <fieldset id="out">
         <legend>
-            <div class="am-fl">支出分类</div>
+            <!-- <div class="am-fl">支出分类</div> -->
+            <div class="am-fl">expenses category</div>
             <div class="am-fr">
-                <button class="am-btn am-btn-xs am-btn-success am-round sortOutEnable" style="display: none;" id="sortOutSave">保存排序</button>
+                <!-- <button class="am-btn am-btn-xs am-btn-success am-round sortOutEnable" style="display: none;" id="sortOutSave">保存排序</button> -->
+                <button class="am-btn am-btn-xs am-btn-success am-round sortOutEnable" style="display: none;" id="sortOutSave">save sort</button>
             </div>
         </legend>
         <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
             <thead>
                 <tr>
-                    <th bgcolor="#FFFFFF">分类名称</th>
+                    <!-- <th bgcolor="#FFFFFF">分类名称</th>
                     <th bgcolor="#FFFFFF">支出</th>
                     <th bgcolor="#FFFFFF">操作</th>
-                    <th bgcolor="#FFFFFF">排序</th>
+                    <th bgcolor="#FFFFFF">排序</th> -->
+                    <th bgcolor="#FFFFFF">category name</th>
+                    <th bgcolor="#FFFFFF">expenses</th>
+                    <th bgcolor="#FFFFFF">operation</th>
+                    <th bgcolor="#FFFFFF">sort</th>
                 </tr>
             </thead>
             <tbody id="sortClassOut">
@@ -89,15 +113,18 @@
                     <td class="am-text-middle">{$data}</td>
                     <td class="am-text-middle">
                         <a href="<php>echo U("Home/Class/change?id=".$key);</php>" class="am-btn am-btn-success am-btn-xs">
-                            转为收入
+                            <!-- 转为收入 -->
+                            covert into income
                         </a>
                     </td>
                     <td class="am-text-middle">
                         <a href="<php>echo U("Home/Class/edit?id=".$key);</php>" class="am-btn am-btn-secondary am-btn-xs">
-                            编辑
+                            <!-- 编辑 -->
+                            edit
                         </a>
                         <a href="javascript:void(0);" onclick="isDelete('<php>echo U("Home/Class/del?id=".$key);</php>')" class="am-btn am-btn-danger am-btn-xs">
-                            删除
+                            <!-- 删除 -->
+                            delete
                         </a>
                     </td>
                     <td class="am-text-middle sortHandle">
