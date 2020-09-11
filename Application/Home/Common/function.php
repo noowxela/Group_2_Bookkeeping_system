@@ -1908,9 +1908,11 @@
     function ArrayKeyToNumData($arr){
         $str = "[";
         foreach($arr as $key => $value){
+            if($value > 0){
             $str = "$str {value:$value,name:'$key'} ,";
+            }
         }
-        $str = substr($str,0,-1); // 去除最后一个,
+        //$str = substr($str,0,-1); // 去除最后一个,
         $str = $str."]";
         return $str;
     }
