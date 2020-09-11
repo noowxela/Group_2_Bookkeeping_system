@@ -1,13 +1,13 @@
 <extend name="Public:common"/>
 <block name="main">
 
-<ul class="am-pagination am-pagination-centered" >
+<ul class="year" style="list-style: none;padding: 20px;text-align: center;">
     <!-- <li class="am-pagination-prev"><a href="__APP__/Home/Chart/index/year/{$y-1}">&laquo; {$y-1}年</a></li> -->
-    <li class="am-pagination-prev"><a href="__APP__/Home/Chart/index/year/{$y-1}">&laquo; {$y-1} year</a></li>
+    <li class="prev" style="float:left;font-size:18px;padding-top: 10px;"><a href="__APP__/Home/Chart/index/year/{$y-1}">&#10094;</a></li>
     <!-- <li class=""><a href="__APP__/Home/Chart/index">今年</a></li> -->
-    <li class=""><a href="__APP__/Home/Chart/index">Current year</a></li>
+    <li class="top-year" style="float:left;font-size:25px;padding: 5px 5px 10px 5px;font-family:verdana">{$y}</a></li>
     <!-- <li class="am-pagination-next"><a href="__APP__/Home/Chart/index/year/{$y+1}">{$y+1}年 &raquo;</a></li> -->
-    <li class="am-pagination-next"><a href="__APP__/Home/Chart/index/year/{$y+1}">{$y+1} year &raquo;</a></li>
+    <li class="next" style="float:left;font-size:18px;padding-top: 10px;" ><a href="" onclick="checkDate({$y});return false;">&#10095;</a></li>
 </ul>
 
 <!DOCTYPE html>
@@ -40,6 +40,14 @@
         var inClassDataLength = <?php echo strlen($JsonInClassPer) ?>;
         var outClassDataLength = <?php echo strlen($JsonOutClassPer) ?>;
 
+        function checkDate(current){
+            var maxDate = new Date();
+            if (current != maxDate.getFullYear()){
+                window.location.href = "__APP__/Home/Chart/index/year/{$y+1}"
+            }else{
+                alert("Current latest year is {$y}.")
+            }
+        }
         // 指定图表的配置项和数据
         var optionYear = {
             title: {
@@ -62,7 +70,7 @@
                 selected:{
                     '收入' : true,
                     '支出' : true,
-                    '月剩余' : false,
+                    '月剩余' : true,
                     '年剩余' : false
                 },
                 top: 'bottom',
@@ -96,7 +104,7 @@
             },{
                 name: '月剩余',
                 type: 'line',
-                smooth: true,
+                smooth: false,
                 data: {$JsonSurplusMoney}
             },{
                 name: '年剩余',
