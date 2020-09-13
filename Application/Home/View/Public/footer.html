@@ -27,33 +27,6 @@ $(function(){
         div_money_arr[i].innerText= number_format(div_money_arr[i].innerText,{$Think.config.MONEY_FORMAT_DECIMALS},'{$Think.config.MONEY_FORMAT_POINT}','{$Think.config.MONEY_FORMAT_THOUSANDS}');
     }
 });
-
-
-  document.onkeypress = function (e){
-    e = e || window.event;
-
-    if(e.keyCode === 13){
-
-      document.documentElement.classList.toggle('dark-mode');
-    }
-
-  }
-
-  let button = document.querySelector('#dark_mode_button')
-
-  // press the button to toggle the .dark-mode class
-  button.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark-mode')
-
-    var elem = document.getElementById("dark_mode_button");
-    if (elem.value=="Dark_mode") elem.value = "Light_mode";
-    else elem.value = "Dark_mode";
-
-    // console.log(document.getElementById("dark_mode_button").value); 
-    
-  })
-
-
 </script>
 
 <block name="javascript">

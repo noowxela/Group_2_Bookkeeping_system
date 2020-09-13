@@ -11794,22 +11794,12 @@ tbody.am-collapse.am-in {
   width: auto;
   vertical-align: middle;
 }
-/* .am-header .am-header-nav .right_30{
-  position: absolute;
-  top: 0;
-} */
-
 .am-header .am-header-left {
   left: 10px;
 }
 .am-header .am-header-right {
   right: 10px;
 }
-.am-header .am-header-right_30 {
-  right: 20px;
-}
-
-
 .am-header-fixed {
   position: fixed;
   top: 0;
