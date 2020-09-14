@@ -2,6 +2,14 @@
 <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
     <thead>
         <tr>
+            <th width='80' bgcolor="#FFFFFF">
+            <if condition="$data.classid gt 0">    
+                <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{chk_id[]}')" ><input id="submit" name="submit" type="submit" class="btn btn-danger" value="Delete Selected Row(s)" ></a>
+            <else />
+                <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/')"><input id="submit" name="submit" type="submit" class="btn btn-danger" value="Delete Selected Row(s)" ></a>
+            </if>
+
+            </th>
             <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
             <th width='80' bgcolor="#FFFFFF">Category</th>
             <!--<th width='80' bgcolor="#FFFFFF">金额</th>-->
@@ -19,6 +27,7 @@
     <tbody class="">
         <volist name="ShowData" id="data">
         <tr>
+            <td> <input id="chk_id[]" name="chk_all" type="checkbox" value=$data.id/></td>
             <td class="am-text-middle">{$data.class}</td>
             <td class="am-text-middle">
                 <if condition="$data.classid gt 0">
@@ -46,7 +55,7 @@
                     <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
                     <a href="__APP__/Home/Edit/transfer/id/{$data.id}">Edit</a>
                     <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>-->
-                    <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> Delete</a>
+                    <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/')"> Delete</a>
                 </if>
             </td>
         </tr>
@@ -92,3 +101,36 @@
     <!--<p><a href="__APP__/Home/Index/index#money-table" class="am-btn am-btn-block am-btn-default">更多记账明细</a></p>-->
     <p><a href="__APP__/Home/Index/index#money-table" class="am-btn am-btn-block am-btn-default">More records details</a></p>
 </if>
+
+<?php
+if(isset($_POST['chk_id']))
+{
+    $arr = $_POST['chk_id'];
+    foreach ($arr as $id) {
+        @mysqli_query($con,"DELETE * FROM 'xxjzaccount' WHERE 'acid' = " .$id);
+    }
+    $msg = "Deleted Successfully!";
+    header("Location: index.php?msg=$msg");
+}
+?>
+
+<script src="js/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#chk_all').click(function(){
+        if(this.checked)
+            $(".chkbox").prop("checked", true);
+        else
+            $(".chkbox").prop("checked", false);
+    });
+});
+
+$(document).ready(function(){
+    $('#delete_form').submit(function(e){
+        if(!confirm("Confirm Delete?")){
+            e.preventDefault();
+        }
+    });
+});
+</script>
+
