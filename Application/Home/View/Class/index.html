@@ -7,14 +7,14 @@
             <legend>Create new category</legend>
             <div class="am-input-group">
                 <!-- <span class="am-input-group-label"><b>名称</b></span> -->
-                <span class="am-input-group-label"><b>name</b></span>
+                <span class="am-input-group-label"><b>Category Name</b></span>
                 <!-- <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="输入分类名称"> -->
                 <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="Enter category name">
             </div>
-            <div><p></p></div>
+            <div><p></p></div> <!-- blank -->
             <div class="am-input-group">
                 <!-- <span class="am-input-group-label"><b>类别</b></span> -->
-				<span class="am-input-group-label"><b>category</b></span>
+				<span class="am-input-group-label"><b>Category Type</b></span>
                 <select id="select-type" class="am-form-field" name="class_type" >
                     <if condition="$ClassType eq 1">
                         <!-- <option value="1">收入</option> -->
@@ -28,6 +28,28 @@
                         <option value="1">Income</option>
                     </if>
                 </select>
+            </div>
+            <div><p></p></div> <!-- blank -->
+            <div class="am-input-group">
+                <span class="am-input-group-label"><b>Category</b></span>
+
+
+                <table style="width:100%">
+                  <tr>
+                    <td>
+                      <img src="Images/Icons/Food.jpg" alt="Food">
+                      <br>
+                      <input type="checkbox" id="category1" name="food" value="Food">
+                      <label for="category1"> Food </label>
+                    </td>
+                    <td>
+                      <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
+                      <br>
+                      <input type="checkbox" id="category2" name="bill" value="Bills">
+                      <label for="category2"> Bills </label>
+                    </td>
+                  </tr>
+                </table>
             </div>
             <!-- <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="新建"></p> -->
             <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="create"></p>
