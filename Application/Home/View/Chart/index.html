@@ -5,7 +5,7 @@
     <!-- <li class="am-pagination-prev"><a href="__APP__/Home/Chart/index/year/{$y-1}">&laquo; {$y-1}年</a></li> -->
     <li class="prev" style="float:left;font-size:18px;padding-top: 10px;"><a href="__APP__/Home/Chart/index/year/{$y-1}">&#10094;</a></li>
     <!-- <li class=""><a href="__APP__/Home/Chart/index">今年</a></li> -->
-    <li class="top-year" style="float:left;font-size:25px;padding: 5px 5px 10px 5px;font-family:verdana">{$y}</a></li>
+    <li class="top-year" style="float:left;font-size:25px;padding: 5px 5px 10px 5px;font-family:verdana"><a href="" onclick="resetDate();return false;">{$y}</a></li>
     <!-- <li class="am-pagination-next"><a href="__APP__/Home/Chart/index/year/{$y+1}">{$y+1}年 &raquo;</a></li> -->
     <li class="next" style="float:left;font-size:18px;padding-top: 10px;" ><a href="" onclick="checkDate({$y});return false;">&#10095;</a></li>
 </ul>
@@ -19,15 +19,49 @@
     <!-- <script src="//cdn.bootcss.com/echarts/3.2.1/echarts.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.common.js"></script>
 </head>
-<body style="text-align:center;">
+<body style="text-align:center; ">
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="chart-year" style="height:350px"></div>
+    <div style="height:450px; display: flex;">
+    <div id="chart-year" style="height:420px; flex: 70%; display: 'inline-block';" ></div>
+    <div style=" flex: 30%; float: right; padding-right: 40px;">
+        <label style="padding-bottom: 15px; font-size: 18px;"> Fund Account Summary </label>
+        <table id="fundTable" class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm" >
+        <thead>
+            <tr>
+                <th style="width:'50'; vertical-align: middle;" bgcolor="#FFFFFF">Fund <br/> Account</th>
+                <th style="width:'50'; vertical-align: middle;" bgcolor="#FFFFFF">Initial <br/> Amount(RM)</th>
+                <th style="width:'50'; vertical-align: middle;" bgcolor="#FFFFFF">Income/<br/>Expense(RM)</th>
+                <th style="width:'80'; vertical-align: middle;" bgcolor="#FFFFFF">Balance<br/>(RM)</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <volist name="FundsData" id="data" >
+            <tr>
+                <td class="am-text-middle">{$data.name}</td>
+                <td class="am-text-middle">
+                    <font class="money-format">{$data.money.init}</font>
+                </td>
+                <td class="am-text-middle">
+                    <font class="am-text-success money-format">{$data.money.in}</font>
+                    <br/>
+                    <font class="am-text-danger money-format">-{$data.money.out}</font>
+                </td>
+                <td class="am-text-middle">
+                    <font class="money-format">{$data.money.over}</font>
+                </td>
+            </tr>
+            </volist>
+        </tbody>
+        </table>
+    </div>
+    </div>
     <hr>
-    <div id="chart-InClass" style="height:500px; width:50%; float:left"></div>
-    <!-- <hr> -->
-    <div id="chart-OutClass" style="height:500px; width:50%; float:right;"></div>
-    <hr>
-    <div id="spacing" style="height:100px;"></div>
+    <div id = "chart-Class" style="height:520px;">
+        <div id="chart-InClass" style="height:500px; width:50%; float:left"></div>
+        <!-- <hr> -->
+        <div id="chart-OutClass" style="height:500px; width:50%; float:right; padding"></div>
+    </div>
+    <div id="spacing" style="height:10px;"></div>
     <hr>
 
 
@@ -48,15 +82,23 @@
                 alert("Current latest year is {$y}.")
             }
         }
+
+        function resetDate(){
+            let current = new Date();
+            current = current.getFullYear;
+            window.location.href = "__APP__/Home/Chart/index/year/" + current;
+
+        }
+
         // 指定图表的配置项和数据
         var optionYear = {
             title: {
                 // text: '{$y}年收入与支出金额汇总',
-                text: '{$y} Anualy Income/Expense',
+                text: '{$y} Year Summary',
                 top: 'top',
                 x: 'center'
             },
-            color: ['#90ee7e','#ff0066','#f7a35c','#7cb5ec'],  //蓝色：3398DB 红色：c23531 青色：61a0a8 橙色：d48265 绿色：91c7ae
+            color: ['#00d49d','#ff005d','#3333cc','#ff005d'],  //蓝色：3398DB 红色：c23531 青色：61a0a8 橙色：d48265 绿色：91c7ae
             tooltip : {
                 trigger: 'axis',
                 extraCssText: 'text-align: left;',
@@ -66,43 +108,71 @@
             },
             legend: {
                 // data:['收入','支出','月剩余','年剩余'],
-                data:['Income','Expense','month balance','anual balance'],
+                data:['Income','Expense','Balance','anual balance'],
                 selected:{
                     '收入' : true,
                     '支出' : true,
-                    '月剩余' : true,
+                    'Balance' : true,
                     '年剩余' : false
                 },
                 top: 'bottom',
                 x: 'center'
             },
             grid: {
-                left: '3%',
-                right: '4%',
+                left: '30px',
+                right: '10%',
                 bottom: '12%',
                 containLabel: true
             },
             xAxis: {
                 type: 'category',
                 // data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]
-                data: ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
+                data: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
             },
             yAxis: {
-                type : 'value'
+                type : 'value',
+                gridvalue: 1
             },
-            barGap: '5%',
+            barGap: '10%',
+            
             series: [{
                 // name: '收入',
                 name: 'Income',
                 type: 'bar',
-                data: {$JsonInMoney}
+                data: {$JsonInMoney},
+                barWidth:'25',
+                label:{
+                normal:{
+                    show:true,
+                    position:'top',
+                    formatter: function(e){
+                        if(e.value == 0){ return '';}
+                        else{
+                            return e.value;
+                        }
+                    }
+                }
+            },
             },{
                 // name: '支出',
                 name: 'Expense',
                 type: 'bar',
-                data: {$JsonOutMoney}
+                data: {$JsonOutMoney},
+                barWidth:'25',
+                label:{
+                normal:{
+                    show:true,
+                    position:'top',
+                    formatter: function(e){
+                        if(e.value == 0){ return '';}
+                        else{
+                            return e.value;
+                        }
+                    }
+                }
+            },
             },{
-                name: '月剩余',
+                name: 'Balance',
                 type: 'line',
                 smooth: false,
                 data: {$JsonSurplusMoney}
@@ -117,7 +187,7 @@
             title : {
                 // text: '{$y}年收入分类汇总',
                 // subtext: '总收入{$DataArray.InSumMoney}元',
-                text: '{$y} Year INcome category Show',
+                text: '{$y} Year Income Category',
                 subtext: 'Total Income: RM{$DataArray.InSumMoney}',
                 x:'center',
             },
@@ -218,7 +288,7 @@
             title : {
                 // text: '{$y}年支出分类汇总',
                 // subtext: '总支出{$DataArray.OutSumMoney}元',
-                text: '{$y} year Expenses category show',
+                text: '{$y} Year Expenses Category',
                 subtext: 'Total Expenses : RM{$DataArray.OutSumMoney}',
                 x:'center'
             },
@@ -317,7 +387,7 @@
         };
         var optionNoDataYear ={
             title :{
-                text: '{$y} Annually Income/Expenses',
+                text: '{$y} Year Summary',
                 subtext: 'No Record Found',
                 x:'center',
                 subtextStyle: {
@@ -328,7 +398,7 @@
 
         var optionNoDataIn ={
             title :{
-                text: '{$y} Year Income Summary',
+                text: '{$y} Year Income Category',
                 subtext: 'No Record Found',
                 x:'center',
                 subtextStyle: {
@@ -338,7 +408,7 @@
         }
         var optionNoDataOut ={
             title :{
-                text: '{$y} Year Expenses Summary',
+                text: '{$y} Year Expenses Category',
                 subtext: 'No Record Found',
                 x:'center',
                 subtextStyle: {
@@ -358,6 +428,12 @@
             chartInClass.setOption(optionInClass);
         }
 
+        if(inClassDataLength > 5){
+            chartInClass.clear();
+            chartInClass.hideLoading();
+            chartInClass.setOption(optionInClass);
+        }
+
         if(outClassDataLength > 5){
             chartOutClass.clear();
             chartOutClass.hideLoading();
@@ -367,4 +443,6 @@
     </script>
 </body>
 </html>
+
+<include file="Chart:list_spend" style="margin-top: 20;" />
 </block>
