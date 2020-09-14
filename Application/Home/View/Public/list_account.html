@@ -2,8 +2,14 @@
 <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
     <thead>
         <tr>
+
             <th width='80' bgcolor="#FFFFFF">
-            <if condition="$data.classid gt 0">    
+                <label class="container">
+                <input type="checkbox" class="select-all" id="select-all" onclick="selectAll()"> Select All
+                <span class="checkmark"></span>
+              </label>
+
+              <if condition="$data.classid gt 0">    
                 <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{chk_id[]}')" ><input id="submit" name="submit" type="submit" class="btn btn-danger" value="Delete Selected Row(s)" ></a>
             <else />
                 <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/')"><input id="submit" name="submit" type="submit" class="btn btn-danger" value="Delete Selected Row(s)" ></a>
@@ -27,7 +33,13 @@
     <tbody class="">
         <volist name="ShowData" id="data">
         <tr>
-            <td> <input id="chk_id[]" name="chk_all" type="checkbox" value=$data.id/></td>
+            <!--<td> <input id="chk_id[]" name="chk_all" type="checkbox" value=$data.id/></td>-->
+                    <td>
+                        <label class="container">
+                            <input type="checkbox" class="check-mark" value={$data.id}>
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
             <td class="am-text-middle">{$data.class}</td>
             <td class="am-text-middle">
                 <if condition="$data.classid gt 0">
@@ -58,8 +70,14 @@
                     <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/')"> Delete</a>
                 </if>
             </td>
+
+            <!--code-->
+
+
         </tr>
+
         </volist>
+        <!--<input id="submit" name="submit" type="submit" class="btn btn-danger" value="Delete Selected Row(s)" />-->
     </tbody>
 </table>
 
@@ -134,3 +152,14 @@ $(document).ready(function(){
 });
 </script>
 
+<script>
+function selectAll(){
+    var checkBox = document.getElementById('select-all');
+    
+    if(checkBox.checked == true){
+        $(".check-mark").prop( "checked", true );
+    } else{
+        $(".check-mark").prop( "checked", false );
+    }
+}
+</script>
