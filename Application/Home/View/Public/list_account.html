@@ -1,4 +1,18 @@
 <p></p>
+<volist name='sorted_data' id='data'>
+    <!-- <tr> -->
+
+        <p style='font-weight: bold;'><php>echo date("Y-m-d",$data[0]['time']);</php></p>
+
+    <volist name="data" id="data2">
+        <!-- <td>{$key}</td> -->
+        <p><php>echo date("Y-m-d",$data2['time']);</php></p>
+
+    </volist>
+    <!-- </tr> -->
+
+</volist>
+
 <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
     <thead>
         <tr>
@@ -18,41 +32,46 @@
     </thead>
     <tbody class="">
         <volist name="ShowData" id="data">
-        <tr>
-            <td class="am-text-middle">{$data.class}</td>
-            <td class="am-text-middle">
-                <if condition="$data.classid gt 0">
-                    <if condition="$data.typeid eq 1">
-                        <font class="am-text-success money-format">{$data.money}</font>
-                    <elseif condition="$data.typeid eq 2" />
-                        <font class="am-text-danger money-format">{$data.money}</font>
+
+            <tr>
+                
+                <td class="am-text-middle">{$data.class}</td>
+                <td class="am-text-middle">
+                    <if condition="$data.classid gt 0">
+                        <if condition="$data.typeid eq 1">
+                            <font class="am-text-success money-format">{$data.money}</font>
+                        <elseif condition="$data.typeid eq 2" />
+                            <font class="am-text-danger money-format">{$data.money}</font>
+                        <else />
+                            <font class="money-format">{$data.money}</font>
+                        </if>
                     <else />
                         <font class="money-format">{$data.money}</font>
                     </if>
-                <else />
-                    <font class="money-format">{$data.money}</font>
-                </if>
-            </td>
-            <td class="am-text-middle">{$data.funds} {$data.type}</td>
-            <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
-            <td class="am-text-middle">{$data.mark}</td>
-            <td class="am-text-middle">
-                <if condition="$data.classid gt 0">
-                    <!--<a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>-->
-                    <a href="__APP__/Home/Edit/index/id/{$data.id}">Edit </a>
-                    <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> 删除</a>-->
-                    <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> Delete</a>
-                <else />
-                    <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
-                    <a href="__APP__/Home/Edit/transfer/id/{$data.id}">Edit</a>
-                    <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>-->
-                    <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> Delete</a>
-                </if>
-            </td>
-        </tr>
+                </td>
+                <td class="am-text-middle">{$data.funds} {$data.type}</td>
+                <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
+                <td class="am-text-middle">{$data.mark}</td>
+                <td class="am-text-middle">
+                    <if condition="$data.classid gt 0">
+                        <!--<a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>-->
+                        <a href="__APP__/Home/Edit/index/id/{$data.id}">Edit </a>
+                        <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> 删除</a>-->
+                        <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> Delete</a>
+                    <else />
+                        <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
+                        <a href="__APP__/Home/Edit/transfer/id/{$data.id}">Edit</a>
+                        <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>-->
+                        <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> Delete</a>
+                    </if>
+                </td>
+            </tr>
         </volist>
+
+        
     </tbody>
 </table>
+
 
 <!--分页大于1时显示-->
 <if condition="$PageMax gt 1">

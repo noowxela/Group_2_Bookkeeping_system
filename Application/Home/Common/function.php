@@ -759,9 +759,11 @@
                         EditImageAcid($data['jiid'], $data['uploads'][$i]['id'], $DbData);
                     }
                 }
-                return array(true,'数据添加成功!',$DbData);
+                // return array(true,'数据添加成功!',$DbData);
+                return array(true,'Data successful created!',$DbData);
             }else{
-                return array(false,'写入数据库出错(>_<)');
+                // return array(false,'写入数据库出错(>_<)');
+                return array(false,'cant record in database(>_<)');
             }
         }else{
             return $isCheak;

@@ -15,10 +15,52 @@ class IndexController extends BaseController {
             $this -> assign('PushAdminUrl', '/Home/Push/admin/token/'.$tokenObj['token'].'/time/'.$tokenObj['time']);
         }
 
-        $ListData = FindTransferAccountData(array('jiid'=>$uid), $p);
+        $ListData= FindTransferAccountData(array('jiid'=>$uid), $p);
         $this -> assign('Page', $ListData['page']);
         $this -> assign('PageMax', $ListData['pagemax']);
         $this -> assign('ShowData', $ListData['data']);
+
+        $transaction_data = $ListData['data'];
+        $sorted_data = [];
+        $same_date_data = [];
+        $temp = '';
+        $counter = -1;
+
+        foreach($transaction_data as $value) {
+            // var_dump($value) ;
+            // echo ('<br>');
+            if($value['time'] != $temp){
+
+                $counter+=1;
+                if($counter != 0){
+
+                    array_push($sorted_data,$same_date_data);
+                } 
+
+                $same_date_data = [];
+                $temp = $value['time'];
+                // print_r($counter);
+                array_push($same_date_data,$value);
+
+            }else{
+                array_push($same_date_data,$value);
+
+
+            }
+
+        }
+        $this -> assign('sorted_data', $sorted_data);
+
+        // echo ('<br>');
+
+        // foreach($sorted_data as $value) {
+        //     var_dump($value) ;
+        //     echo ('<br>');
+        //     echo ('<br>');
+        // }    
+        // echo ('<br>');
+
+        // exit();
         
         //输出用户名
         $this -> assign('UserName', session('username'));
