@@ -5,7 +5,8 @@
 #dark_mode_button {
     /* right: 10px; */
     display: inline-block;
-    background-color: rgba(191, 178, 240, 0.3);
+    /* background-color: rgba(191, 178, 240, 0.3); */
+    background-color: rgba(64, 35, 10, 0.8);
     border-radius: 30%;
     padding: 8px;
 }

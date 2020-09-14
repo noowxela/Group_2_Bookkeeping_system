@@ -25,6 +25,8 @@ class IndexController extends BaseController {
         $same_date_data = [];
         $temp = '';
         $counter = -1;
+        $daily_data= [];
+        $daily_spend_income = [];
 
         foreach($transaction_data as $value) {
             // var_dump($value) ;
@@ -33,7 +35,18 @@ class IndexController extends BaseController {
 
                 $counter+=1;
                 if($counter != 0){
+                    $sum_income =0;
+                    $sum_spend  =0;
+                    foreach($same_date_data as $v){
+                        if($v['typeid']==1){
+                            $sum_income+=$v['money'];
+                        }elseif($v['typeid']==2){
+                            $sum_spend+=$v['money'];
+                        }
+                        
+                    }
 
+                    array_push($daily_data,['income'=> number_format($sum_income,2) ,'expenses'=>number_format($sum_spend,2)]);
                     array_push($sorted_data,$same_date_data);
                 } 
 
@@ -50,6 +63,7 @@ class IndexController extends BaseController {
 
         }
         $this -> assign('sorted_data', $sorted_data);
+        $this -> assign('daily_data', $daily_data);
 
         // echo ('<br>');
 
@@ -58,8 +72,17 @@ class IndexController extends BaseController {
         //     echo ('<br>');
         //     echo ('<br>');
         // }    
+        // foreach($daily_data as $value) {
+        //     var_dump($value) ;
+        //     echo ('<br>');
+        //     echo ('<br>');
+        // }    
         // echo ('<br>');
-
+        
+        // var_dump($sorted_data) ;
+        // echo ('<br>');
+        // echo ('<br>');
+        // var_dump($daily_data) ;
         // exit();
         
         //输出用户名

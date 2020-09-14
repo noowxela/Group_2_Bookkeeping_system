@@ -1,17 +1,102 @@
 <p></p>
-<volist name='sorted_data' id='data'>
-    <!-- <tr> -->
+<div class="container my-auto" style="background-color: aliceblue; font-size: 1.5em;">
+    <volist name='sorted_data' id='data'>
+            <div class="row " style="background-color: rgba(99, 85, 85, 0.3);">
+                <div class="col-4 col-md-2 my-auto">
+                    <p class='my-2' style='font-weight: bold;'><php>echo date("d M Y",$data[0]['time']);</php></p>
+                </div>
+                <div class="col-8 col-md-6 my-auto">
+                    <p  class='my-2'>
+                        <php>
+                            $temp = date("N",$data[0]['time']);
+                            if($temp==1){
+                                echo 'Monday';
+                            }else if($temp==2){
+                                echo 'Tuesday';
+                                
+                            }else if($temp==3){
+                                echo 'Wednesday';
+                                
+                            }else if($temp==4){
+                                echo 'Thrusday';
+                                
+                            }else if($temp==5){
+                                echo 'Friday';
+                                
+                            }else if($temp==6){
+                                echo 'Saturday';
+                                
+                            }else if($temp==7){
+                                echo 'Sunday';
 
-        <p style='font-weight: bold;'><php>echo date("Y-m-d",$data[0]['time']);</php></p>
+                            }
+                        </php>
+                    </p>
+                </div>
+                <div class="col-6 col-md-4">
+                        <p  class='my-2'style='text-align:right;'><i> Incomes :</i>  {$daily_data[$key]['income']}  &nbsp; &nbsp;  <i> Expenses :</i>   {$daily_data[$key]['expenses']}</p> 
+                </div>
+            </div>
 
-    <volist name="data" id="data2">
-        <!-- <td>{$key}</td> -->
-        <p><php>echo date("Y-m-d",$data2['time']);</php></p>
+            <volist name="data" id="data2">
+                <div class="row">
+                    <div class="col-4 col-md-2 my-auto" >
+                        <p>{$key}            <i class="am-header-icon am-icon-money" data-am-dropdown-toggle> </i></p>
+                    </div>
+                    <div class="col-7 col-md-5 my-auto">
+                        <div class='my-2'>
+                            <h2 style="font-weight: bold;">{$data2.class}</h2>
+                            <p style="color: gray;">{$data2.mark}</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 my-auto">
+                            <if condition="$data2.classid gt 0">
+                                <if condition="$data2.typeid eq 1">
+                                    <p style="font-size:2em; text-align: right; color: #2ae02a; -webkit-text-stroke-width: 0.2px;
+                                    -webkit-text-stroke-color: black; ">
 
+                                        {$data2.money}
+                                    </p>
+
+                                <elseif condition="$data2.typeid eq 2" />
+                                    <p style="font-size:2em; text-align: right;color:  #ff7171;   -webkit-text-stroke-width: 0.2px;
+                                    -webkit-text-stroke-color: black;">
+
+                                        {$data2.money}
+                                    </p>
+                                <else />
+                                    <p style="font-size:2em; text-align: right; text-shadow: 1px 1px #000000 ">
+
+                                        {$data2.money}
+                                    </p>
+                                </if>
+                            <else />
+                                <p style="font-size:2em; text-align: right; text-shadow: 1px 1px #000000 ">
+
+                                    {$data2.money}
+                                </p>
+                            </if>
+                    </div>
+                    <div class="col-1 col-md-1 my-auto">
+                        <if condition="$data2.classid gt 0">
+                            <!--<a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>-->
+                            <a href="__APP__/Home/Edit/index/id/{$data2.id}"><i class="am-header-icon am-icon-pencil-square-o am-icon-sm" style='color:rgb(241, 164, 47);' > </i> </a>
+                            <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> 删除</a>-->
+                            <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data2.id}')"> <i class="am-header-icon am-icon-trash-o am-icon-sm" style='color:red;'> </i></a>
+                        <else />
+                            <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
+                            <a href="__APP__/Home/Edit/transfer/id/{$data2.id}"><i class="am-header-icon am-icon-pencil-square-o am-icon-sm" style='color:rgb(241, 164, 47);' > </i></a>
+                            <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>-->
+                            <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data2.id}')"> <i class="am-header-icon am-icon-trash-o am-icon-sm" style='color:red;'> </i></a>
+                        </if>
+                    </div>
+                </div>
+                <hr class='my-0'>
+            </volist>
     </volist>
-    <!-- </tr> -->
+    <br>
+</div>
 
-</volist>
 
 <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
     <thead>
