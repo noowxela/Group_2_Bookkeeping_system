@@ -1,5 +1,41 @@
-<p></p>
-<div class="container my-auto" style="background-color: aliceblue; font-size: 1.5em; box-shadow: 0px 0px 35px -16px rgba(0,0,0,0.75);">
+
+
+
+
+<div class="container">
+    <p>
+        <!-- <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a> -->
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#dash_new" aria-expanded="false" aria-controls="dash_new">Toggle new style dashboard</button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#dash_old" aria-expanded="false" aria-controls="dash_old">Toggle table style dashboard</button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="dash_new dash_old">Toggle both elements</button>
+    </p>
+</div>
+
+<!-- <div class="row">
+    <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+        <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+        <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+
+<div id='dash_new' class="container collapse show multi-collapse" 
+    style="background-color: aliceblue; font-size: 1.5em; box-shadow: 0px 0px 35px -16px rgba(0,0,0,0.75);
+            margin-top: 2.5em;margin-bottom: 2.5em;">
     <volist name='sorted_data' id='data'>
             <div class="row " style="background-color: rgba(99, 85, 85, 0.3);">
                 <div class="col-4 col-md-2 my-auto">
@@ -93,69 +129,74 @@
                 </div>
                 <hr class='my-0'>
             </volist>
+            
     </volist>
     <br>
 </div>
 
 
-<table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
-    <thead>
-        <tr>
-            <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
-            <th width='80' bgcolor="#FFFFFF">Category</th>
-            <!--<th width='80' bgcolor="#FFFFFF">金额</th>-->
-            <th width='80' bgcolor="#FFFFFF">Amount</th>
-            <!--<th width='80' bgcolor="#FFFFFF">收支</th>-->
-            <th width='80' bgcolor="#FFFFFF">Income/Expenses</th>
-            <!--<th width='110' bgcolor="#FFFFFF">时间</th>-->
-            <th width='110' bgcolor="#FFFFFF">Time</th>
-            <!--<th width='100' bgcolor="#FFFFFF">备注</th>-->
-            <th width='100' bgcolor="#FFFFFF">Remarks</th>
-            <!--<th width='80' bgcolor="#FFFFFF">操作</th>-->
-            <th width='80' bgcolor="#FFFFFF">Manage</th>
-        </tr>
-    </thead>
-    <tbody class="">
-        <volist name="ShowData" id="data">
+<div id='dash_old' class="collapse multi-collapse">
 
+    <table  class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm " >
+        <thead>
             <tr>
-                
-                <td class="am-text-middle">{$data.class}</td>
-                <td class="am-text-middle">
-                    <if condition="$data.classid gt 0">
-                        <if condition="$data.typeid eq 1">
-                            <font class="am-text-success money-format">{$data.money}</font>
-                        <elseif condition="$data.typeid eq 2" />
-                            <font class="am-text-danger money-format">{$data.money}</font>
+                <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
+                <th width='80' bgcolor="#FFFFFF">Category</th>
+                <!--<th width='80' bgcolor="#FFFFFF">金额</th>-->
+                <th width='80' bgcolor="#FFFFFF">Amount</th>
+                <!--<th width='80' bgcolor="#FFFFFF">收支</th>-->
+                <th width='80' bgcolor="#FFFFFF">Income/Expenses</th>
+                <!--<th width='110' bgcolor="#FFFFFF">时间</th>-->
+                <th width='110' bgcolor="#FFFFFF">Time</th>
+                <!--<th width='100' bgcolor="#FFFFFF">备注</th>-->
+                <th width='100' bgcolor="#FFFFFF">Remarks</th>
+                <!--<th width='80' bgcolor="#FFFFFF">操作</th>-->
+                <th width='80' bgcolor="#FFFFFF">Manage</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <volist name="ShowData" id="data">
+    
+                <tr>
+                    
+                    <td class="am-text-middle">{$data.class}</td>
+                    <td class="am-text-middle">
+                        <if condition="$data.classid gt 0">
+                            <if condition="$data.typeid eq 1">
+                                <font class="am-text-success money-format">{$data.money}</font>
+                            <elseif condition="$data.typeid eq 2" />
+                                <font class="am-text-danger money-format">{$data.money}</font>
+                            <else />
+                                <font class="money-format">{$data.money}</font>
+                            </if>
                         <else />
                             <font class="money-format">{$data.money}</font>
                         </if>
-                    <else />
-                        <font class="money-format">{$data.money}</font>
-                    </if>
-                </td>
-                <td class="am-text-middle">{$data.funds} {$data.type}</td>
-                <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
-                <td class="am-text-middle">{$data.mark}</td>
-                <td class="am-text-middle">
-                    <if condition="$data.classid gt 0">
-                        <!--<a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>-->
-                        <a href="__APP__/Home/Edit/index/id/{$data.id}">Edit </a>
-                        <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> 删除</a>-->
-                        <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> Delete</a>
-                    <else />
-                        <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
-                        <a href="__APP__/Home/Edit/transfer/id/{$data.id}">Edit</a>
-                        <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>-->
-                        <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> Delete</a>
-                    </if>
-                </td>
-            </tr>
-        </volist>
-
-        
-    </tbody>
-</table>
+                    </td>
+                    <td class="am-text-middle">{$data.funds} {$data.type}</td>
+                    <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
+                    <td class="am-text-middle">{$data.mark}</td>
+                    <td class="am-text-middle">
+                        <if condition="$data.classid gt 0">
+                            <!--<a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>-->
+                            <a href="__APP__/Home/Edit/index/id/{$data.id}">Edit </a>
+                            <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> 删除</a>-->
+                            <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> Delete</a>
+                        <else />
+                            <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
+                            <a href="__APP__/Home/Edit/transfer/id/{$data.id}">Edit</a>
+                            <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>-->
+                            <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> Delete</a>
+                        </if>
+                    </td>
+                </tr>
+            </volist>
+    
+            
+        </tbody>
+    </table>
+    
+</div>
 
 
 <!--分页大于1时显示-->
