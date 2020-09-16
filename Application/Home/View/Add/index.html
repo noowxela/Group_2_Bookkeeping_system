@@ -71,10 +71,10 @@
                           <foreach name="outMoneyClass" item="ClassName">
                             <td>
                               <php>
-                                echo '<p><img src="__ICON__/'.$ClassName.'.jpg" alt="'.$ClassName.'" width="150" height="150"><p>';
+                                echo '<label for="'.strtolower($ClassName).'"><img src="__ICON__/'.$ClassName.'.jpg" alt="'.$ClassName.'" width="150" height="150"></label>';
                                 echo '<br>';
-                                echo '<input type="radio" id="category" name="add_class" value="'.$ClassName.'">';
-                                echo '<label for="category">'.$ClassName.'</label>';
+                                echo '<input type="radio" id="'.strtolower($ClassName).'" name="add_class" value="'.$ClassName.'">';
+                                echo '<label for="'.strtolower($ClassName).'">'.$ClassName.'</label>';
                               </php>
                             </td>
                           </foreach>
