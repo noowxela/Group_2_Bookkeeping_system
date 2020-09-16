@@ -1,20 +1,23 @@
 <extend name="Public:common"/>
 <block name="main">
+<style>
+  #icon_box{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+
+</style>
 
     <form class="am-form am-form-horizontal" method="post" data-am-validator="H5validation:false">
         <fieldset id="new">
             <!-- <legend>新建分类</legend> -->
             <legend>Create new category</legend>
-            <div class="am-input-group">
-                <!-- <span class="am-input-group-label"><b>名称</b></span> -->
-                <span class="am-input-group-label"><b>Category Name</b></span>
-                <!-- <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="输入分类名称"> -->
-                <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="Enter category name">
-            </div>
-            <div><p></p></div> <!-- blank -->
+
             <div class="am-input-group">
                 <!-- <span class="am-input-group-label"><b>类别</b></span> -->
-				<span class="am-input-group-label"><b>Category Type</b></span>
+                <span class="am-input-group-label"><b>Category Type</b></span>
                 <select id="select-type" class="am-form-field" name="class_type" >
                     <if condition="$ClassType eq 1">
                         <!-- <option value="1">收入</option> -->
@@ -31,31 +34,110 @@
             </div>
             <div><p></p></div> <!-- blank -->
             <div class="am-input-group">
-                <span class="am-input-group-label"><b>Category</b></span>
+                <span class="am-input-group-label"><b>Select a Category</b></span>
             </div>
             <div><p></p></div> <!-- blank -->
-            <table style="width:100%">
-              <tr>
-                <td>
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Food.jpg" alt="Food" width="100" height="100">
+            <table id="icon_box" style="width:75%">
+              <tr>  <!-- Row 1 -->
+                <td>  <!-- Food -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Food.jpg" alt="Food" width="150" height="150">
                   <br>
-                  <input type="radio" id="food" name="category" value="Food">
+                  <input type="radio" id="food" name="class_name" value="Food">
                   <label for="food"> Food </label>
                 </td>
-                <td>
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Bill.jpg" alt="Bill" width="100" height="100">
+                <td>  <!-- Self-Development -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Self_Development.jpg" alt="Self_Development" width="150" height="150">
                   <br>
-                  <input type="radio" id="bill" name="category" value="Bill">
+                  <input type="radio" id="self_development" name="class_name" value="Self_Development">
+                  <label for="self_development"> Self Development </label>
+                </td>
+                <td>  <!-- Transportation -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Transportation.jpg" alt="Transportation" width="150" height="150">
+                  <br>
+                  <input type="radio" id="transportation" name="class_name" value="Transportation">
+                  <label for="transportation"> Transportation </label>
+                </td>
+                <td>  <!-- Bill -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Bill.jpg" alt="Bill" width="150" height="150">
+                  <br>
+                  <input type="radio" id="bill" name="class_name" value="Bill">
                   <label for="bill"> Bills </label>
                 </td>
-                <td>
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Petrol.jpg" alt="Petrol" width="100" height="100">
+                <td>  <!-- Petrol -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Petrol.jpg" alt="Petrol" width="150" height="150">
                   <br>
-                  <input type="radio" id="petrol" name="category" value="petrol">
+                  <input type="radio" id="petrol" name="class_name" value="Petrol">
                   <label for="petrol"> Petrol </label>
+                </td>
+                <td>  <!-- Allowance -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Allowance.jpg" alt="Allowance" width="150" height="150">
+                  <br>
+                  <input type="radio" id="allowance" name="class_name" value="Allowance">
+                  <label for="allowance"> Allowance </label>
+                </td>
+                <td>  <!-- Salary -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Salary.jpg" alt="Salary" width="150" height="150">
+                  <br>
+                  <input type="radio" id="salary" name="class_name" value="Salary">
+                  <label for="salary"> Salary </label>
+                </td>
+              </tr>
+              <tr>  <!-- Row 2 -->
+                <td>  <!-- Household -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Household.jpg" alt="Household" width="150" height="150">
+                  <br>
+                  <input type="radio" id="household" name="class_name" value="Household">
+                  <label for="household"> Household </label>
+                </td>
+                <td>  <!-- Health -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Health.jpg" alt="Health" width="150" height="150">
+                  <br>
+                  <input type="radio" id="health" name="class_name" value="Health">
+                  <label for="health"> Health </label>
+                </td>
+                <td>  <!-- Clothes -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Clothes.jpg" alt="Clothes" width="150" height="150">
+                  <br>
+                  <input type="radio" id="clothes" name="class_name" value="Clothes">
+                  <label for="clothes"> Clothing </label>
+                </td>
+                <td>  <!-- Education -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Education.jpg" alt="Education" width="150" height="150">
+                  <br>
+                  <input type="radio" id="education" name="class_name" value="Education">
+                  <label for="education"> Education </label>
+                </td>
+                <td>  <!-- Gifts -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Gift.jpg" alt="Gift" width="150" height="150">
+                  <br>
+                  <input type="radio" id="gift" name="class_name" value="Gift">
+                  <label for="gift"> Gifts </label>
+                </td>
+                <td>  <!-- Bonus -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Bonus.jpg" alt="Bonus" width="150" height="150">
+                  <br>
+                  <input type="radio" id="bonus" name="class_name" value="Bonus">
+                  <label for="bonus"> Bonus </label>
+                </td>
+                <td>  <!-- Other -->
+                  <img src="http://localhost/accounting-page/Application/Images/Icons/Other.jpg" alt="Other" width="150" height="150">
+                  <br>
+                  <input type="radio" id="other" name="class_name" value="Other">
+                  <label for="other"> Others </label>
                 </td>
               </tr>
             </table>
+
+
+            <!-- <div><p></p></div> -->
+            <!-- <div class="am-input-group"> -->
+                <!-- <span class="am-input-group-label"><b>名称</b></span> -->
+                <!-- <span class="am-input-group-label"><b>Category Name</b></span> -->
+                <!-- <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="输入分类名称"> -->
+                <!-- <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="Enter category name"> -->
+            <!-- </div> -->
+
+
             <!-- <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="新建"></p> -->
             <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="create"></p>
         </fieldset>
@@ -64,7 +146,7 @@
     <fieldset id="in">
         <legend class="am-cf">
             <!-- <div class="am-fl">收入分类</div> -->
-            <div class="am-fl">income category</div>
+            <div class="am-fl"> Income </div>
             <div class="am-fr">
                 <!-- <button class="am-btn am-btn-xs am-btn-success am-round sortInEnable" style="display: none;" id="sortInSave">保存排序</button> -->
                 <button class="am-btn am-btn-xs am-btn-success am-round sortInEnable" style="display: none;" id="sortInSave">save sort</button>
@@ -77,30 +159,30 @@
                     <th bgcolor="#FFFFFF">收入</th>
                     <th bgcolor="#FFFFFF">操作</th>
                     <th bgcolor="#FFFFFF">排序</th> -->
-                    <th bgcolor="#FFFFFF">category name</th>
-                    <th bgcolor="#FFFFFF">income</th>
-                    <th bgcolor="#FFFFFF">operation</th>
-                    <th bgcolor="#FFFFFF">sort</th>
+                    <th bgcolor="#FFFFFF">Category Name</th>
+                    <th bgcolor="#FFFFFF">Income</th>
+                    <th bgcolor="#FFFFFF">Operation</th>
+                    <th bgcolor="#FFFFFF">Sort</th>
                 </tr>
             </thead>
             <tbody id="sortClassIn">
                 <volist name="inMoneyClass" id="data">
                 <tr data-id="{$key}">
-                    <td class="am-text-middle">{$data}</td>
+                    <td class="am-text-middle" style="color:green">{$data}</td>
                     <td class="am-text-middle">
                         <a href="<php>echo U("Home/Class/change?id=".$key);</php>" class="am-btn am-btn-success am-btn-xs">
                             <!-- 转为支出 -->
-                            convert into expenses
+                            Convert into Expenses
                         </a>
                     </td>
                     <td class="am-text-middle">
                         <a href="<php>echo U("Home/Class/edit?id=".$key);</php>" class="am-btn am-btn-secondary am-btn-xs">
                             <!-- 编辑 -->
-                            edit
+                            Edit
                         </a>
                         <a href="javascript:void(0);" onclick="isDelete('<php>echo U("Home/Class/del?id=".$key);</php>')" class="am-btn am-btn-danger am-btn-xs">
                             <!-- 删除 -->
-                            delete
+                            Delete
                         </a>
                     </td>
                     <td class="am-text-middle sortHandle">
@@ -115,7 +197,7 @@
     <fieldset id="out">
         <legend>
             <!-- <div class="am-fl">支出分类</div> -->
-            <div class="am-fl">expenses category</div>
+            <div class="am-fl">Expenses</div>
             <div class="am-fr">
                 <!-- <button class="am-btn am-btn-xs am-btn-success am-round sortOutEnable" style="display: none;" id="sortOutSave">保存排序</button> -->
                 <button class="am-btn am-btn-xs am-btn-success am-round sortOutEnable" style="display: none;" id="sortOutSave">save sort</button>
@@ -128,30 +210,30 @@
                     <th bgcolor="#FFFFFF">支出</th>
                     <th bgcolor="#FFFFFF">操作</th>
                     <th bgcolor="#FFFFFF">排序</th> -->
-                    <th bgcolor="#FFFFFF">category name</th>
-                    <th bgcolor="#FFFFFF">expenses</th>
-                    <th bgcolor="#FFFFFF">operation</th>
-                    <th bgcolor="#FFFFFF">sort</th>
+                    <th bgcolor="#FFFFFF">Category name</th>
+                    <th bgcolor="#FFFFFF">Expenses</th>
+                    <th bgcolor="#FFFFFF">Operation</th>
+                    <th bgcolor="#FFFFFF">Sort</th>
                 </tr>
             </thead>
             <tbody id="sortClassOut">
                 <volist name="outMoneyClass" id="data">
                 <tr data-id="{$key}">
-                    <td class="am-text-middle">{$data}</td>
+                    <td class="am-text-middle" style="color:red">{$data}</td>
                     <td class="am-text-middle">
                         <a href="<php>echo U("Home/Class/change?id=".$key);</php>" class="am-btn am-btn-success am-btn-xs">
                             <!-- 转为收入 -->
-                            covert into income
+                            Covert into Income
                         </a>
                     </td>
                     <td class="am-text-middle">
                         <a href="<php>echo U("Home/Class/edit?id=".$key);</php>" class="am-btn am-btn-secondary am-btn-xs">
                             <!-- 编辑 -->
-                            edit
+                            Edit
                         </a>
                         <a href="javascript:void(0);" onclick="isDelete('<php>echo U("Home/Class/del?id=".$key);</php>')" class="am-btn am-btn-danger am-btn-xs">
                             <!-- 删除 -->
-                            delete
+                            Delete
                         </a>
                     </td>
                     <td class="am-text-middle sortHandle">

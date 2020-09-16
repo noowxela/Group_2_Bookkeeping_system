@@ -1,5 +1,5 @@
 <?php
-    
+
     function UserShell($user,$key){
         if($user){
             //$StrUser = "username='$user'";
@@ -9,7 +9,7 @@
             if($Shell === $key){
                 return true;
             }else{
-                return false; 
+                return false;
             }
         }else{
             return false;
@@ -22,7 +22,7 @@
             $tokenTime = time();
         }
         return array(
-            'token' => md5($tokenKey.''.$tokenTime), 
+            'token' => md5($tokenKey.''.$tokenTime),
             'time' => $tokenTime,
         );
     }
@@ -34,7 +34,7 @@
             return '2.0.0';
         }
     }
-    
+
     function UserLogin($username,$password){
         // $StrUser = "username='$username'";
         $StrUser = array('username' => $username );
@@ -130,11 +130,11 @@
     }
 
     function isEmail($email) {
-        if (preg_match("/^[-a-zA-Z0-9_.]+@([0-9A-Za-z][0-9A-Za-z-]+\.)+[A-Za-z]{2,5}$/",$email)) { 
+        if (preg_match("/^[-a-zA-Z0-9_.]+@([0-9A-Za-z][0-9A-Za-z-]+\.)+[A-Za-z]{2,5}$/",$email)) {
             return true;
-        } else { 
+        } else {
             return false;
-        } 
+        }
     }
 
     function GetUserEmail($uid,$isAll=false) {
@@ -147,7 +147,7 @@
             $before = substr($Email, 0, 2);
             return $before.'...'.$domain;
         }
-        
+
     }
 
     function UpdataUserName($uid, $Username, $Email ,$Password) {
@@ -222,7 +222,7 @@
             return array(false, '写入数据库出错(>_<)');
         }
     }
-    
+
     function ShowAlert($msg,$url=null)
     {
         if(url){
@@ -232,7 +232,7 @@
         }
         echo '<body href="javascript:void(0);" onload="ShowAlert('.$Alert.');"></body>';
     }
-    
+
     //登陆界面专属消息框
     function LoginMassage($msg,$type="success") {
         //msg:消息内容
@@ -242,10 +242,10 @@
         echo $msg;
         echo '</div>';
     }
-    
+
     //Mail发送函数
     function SendMail($address,$subject,$body,$file){
-        Vendor('PHPMailer.PHPMailerAutoload');    
+        Vendor('PHPMailer.PHPMailerAutoload');
         $mail = new PHPMailer();                  // 建立邮件发送类
         $mail->CharSet    = "UTF-8";              // 编码格式UTF-8
         $mail->IsSMTP();                          // 使用SMTP方式发送
@@ -263,10 +263,10 @@
             $mail->AddAttachment($file); // 添加附件
         }
         $mail->IsHTML(true); // set email format to HTML //是否使用HTML格式
-        
+
         $mail->Subject = $subject; //邮件标题
         $mail->Body = $body; //邮件内容，上面设置HTML，则可以是HTML
-        
+
         if(!$mail->Send())
         {
             echo "邮件发送失败 -- 错误原因: " . $mail->ErrorInfo;
@@ -275,7 +275,7 @@
             return true;
         }
     }
-    
+
     //设置可返回的URL
     function SetRefURL($url) {
         if($url){
@@ -284,7 +284,7 @@
             session('url',null);
         }
     }
-    
+
     //获取可返回的URL
     function GetRefURL() {
         if(session('?url')){
@@ -293,13 +293,13 @@
             return U('Home/Index/index');
         }
     }
-    
+
     //清除全部缓存
     function ClearAllCache() {
         ClearDataCache();
         ClearFindCache();
     }
-    
+
     //清除数据缓存
     function ClearDataCache() {
         $uid = session('uid');
@@ -318,7 +318,7 @@
             S('chart_all_year_'.$uid,null);
         }
     }
-    
+
     //清除查询缓存
     function ClearFindCache() {
         $uid = session('uid');
@@ -365,7 +365,7 @@
         }
         return $arrSQL;
     }
-    
+
     //查询记账数据
     function FindAccountData($data,$p = 0) {
         $strSQL = GetFindSqlArr($data);
@@ -385,7 +385,7 @@
             $data['zhifu'] = null;
         }
         if($p > 0) {
-            $pagesize = C('PAGE_SIZE');  
+            $pagesize = C('PAGE_SIZE');
             $offset = ($p-1)*$pagesize;
             $DbData = M('account')->where($strSQL)->order("actime DESC , acid DESC")->limit("$offset,$pagesize")->select();
             $ret['pagemax'] = intval(($DbCount-1) / $pagesize) + 1;
@@ -402,7 +402,7 @@
         $ret['data']        = $DbData;
         return $ret;
     }
-    
+
     //获取记账数据(用户id,页码)
     function GetAccountData($uid, $p) {
         //dump(S('account_data_'.$p));
@@ -413,7 +413,7 @@
             $DbCount = M('account')->where("jiid='$uid'")->count();
             $DbSQL = M('account')->where("jiid='$uid'")->order("actime DESC , acid DESC");
             if($p > 0) {
-                $pagesize = C('PAGE_SIZE');  
+                $pagesize = C('PAGE_SIZE');
                 $offset = ($p-1)*$pagesize;
                 $DbData = $DbSQL -> limit("$offset,$pagesize") -> select();
                 $ret['pagemax'] = intval(($DbCount-1) / $pagesize) + 1;
@@ -460,7 +460,7 @@
         }
         return $CacheData[$CacheKey];
     }
-    
+
     //获取分类数据(用户id,1=收入 2=支出)
     function GetClassData($uid,$type=0) {
         $strSQL = array();
@@ -468,9 +468,9 @@
         if($type) {
             $strSQL['classtype'] = $type;
         }
-        
+
         $DbClass = M('account_class')->cache('account_class_'.$type.'_'.$uid)->where($strSQL)->order('sort,classid')->select();
-        
+
         //$ret = array();
         foreach($DbClass as $key => $Data) {
             $classId = $Data['classid'];
@@ -479,7 +479,7 @@
         }
         return $ret;
     }
-    
+
     //数据库数组数据 转 显示数据
     function ArrDataToShowData($ArrData, $ArrClass, $ArrFunds = null) {
         $retShowData = array();
@@ -498,7 +498,7 @@
 
         $classId = $ArrData['acclassid'];
         $className = $ArrClass[$classId];
-        
+
         $retShowData['id']      = $ArrData['acid'];
         $retShowData['money']   = $ArrData['acmoney'];
         $retShowData['fundsid'] = $fundsId;
@@ -509,10 +509,10 @@
         $retShowData['time']    = $ArrData['actime'];
         $retShowData['mark']    = $ArrData['acremark'];
         $retShowData['uid']     = $ArrData['jiid'];
-        
+
         return $retShowData;
     }
-    
+
     //整合List表格数组
     function OutListData($ArrAccount, $ArrClass, $ArrFunds = null) {
         $Page = $ArrAccount['page'];
@@ -523,7 +523,7 @@
         }
         return array($Page,$PageMax,$retShowData);
     }
-    
+
     function SumDbAccount($StrSQL) {
         $Ret = M('account')->where($StrSQL)->Sum('acmoney');
         if($Ret == null){
@@ -531,7 +531,7 @@
         }
         return floatval($Ret);
     }
-    
+
     //获取指定时间段的记账结果(开始时间戳,结束时间戳,收支,用户id)
     function GetAccountStatistic($StartTime,$EndTime,$Type,$uid) {
         //收支 : 1收入 / 2支出
@@ -545,15 +545,15 @@
         $StrSQL = $StrSQL."jiid = '$uid' and zhifu = '$Type'";
         return SumDbAccount($StrSQL);
     }
-    
+
     function AccountStatisticProcess($uid) {
         $ArrData = S('account_tatistic_'.$uid);
-        
+
         if($ArrData && ($ArrData['TodayDate'] == date("Y-m-d"))){
             return $ArrData;
         }
         $ArrData = array();
-        
+
         //今日收支统计
         $today = date("Y-m-d");
         $ArrData['TodayDate'] = $today;
@@ -561,19 +561,19 @@
         $EndTime = strtotime($today." 23:59:59");
         $ArrData['TodayInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['TodayOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-        
+
         //本月收支统计
         $EndTime = strtotime(date("Y-m-d",mktime(23,59,59,date("m",time()),date("t"),date("Y",time()))));
         $StartTime = strtotime(date("Y-m-d",mktime(0,0,0,date("m",time()),1,date("Y",time()))));
         $ArrData['MonthInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['MonthOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-        
+
         //本年收支统计
         $EndTime = strtotime(date("Y-m-d",mktime(23,59,59,12,31,date("Y",time()))));
         $StartTime = strtotime(date("Y-m-d",mktime(0,0,0,1,1,date("Y",time()))));
         $ArrData['YearInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['YearOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-        
+
         //最近7天收支统计
         $StartTime = strtotime(date("Y-m-d",strtotime('-7 day'))." 0:0:0");
         $EndTime = strtotime($today." 23:59:59");
@@ -609,37 +609,37 @@
         $EndTime = strtotime($today." 23:59:59");
         $ArrData['Recent365DayInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['Recent365DayOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-        
+
         //昨日收支统计
         $today = date("Y-m-d",strtotime('-1 day'));
         $StartTime = strtotime($today." 0:0:0");
         $EndTime = strtotime($today." 23:59:59");
         $ArrData['LastTodayInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['LastTodayOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-        
+
         //上月收支统计
         $EndTime = strtotime(date("Y-m-d 23:59:59", strtotime(-date('d').' day')));
         $StartTime = strtotime(date("Y-m-01 00:00:00", strtotime('-1 month')));
         $ArrData['LastMonthInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['LastMonthOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-        
+
         //去年收支统计
         $EndTime = strtotime(date("Y-m-d",mktime(23,59,59,12,31,date("Y",time())-1)));
         $StartTime = strtotime(date("Y-m-d",mktime(0,0,0,1,1,date("Y",time())-1)));
         $ArrData['LastYearInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['LastYearOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-        
+
         //总结统计
         $StartTime = strtotime("2000-1-1 0:0:0");
         $EndTime = strtotime(date("Y-m-d")." 23:59:59");
         $ArrData['SumInMoney']  = GetAccountStatistic(null,null,1,$uid);
         $ArrData['SumOutMoney'] = GetAccountStatistic(null,null,2,$uid);
-        
+
         S('account_tatistic_'.$uid,$ArrData);
-        
+
         return $ArrData;
     }
-    
+
     //验证记账id与登录id是否相同
     function CheakIdShell($id,$uid) {
         if(is_numeric($id)){
@@ -657,7 +657,7 @@
             return false;
         }
     }
-    
+
     //获取指定记账id的数据
     function GetIdData($id) {
         if(is_numeric($id)){
@@ -667,7 +667,7 @@
             return null;
         }
     }
-    
+
     //删除指定记账id数据
     function DelIdData($uid, $id) {
         if(is_numeric($id)){
@@ -684,7 +684,7 @@
             return array(false,'非法操作(=_=)');
         }
     }
-    
+
     //获取分类id
     function GetClassId($ClassName) {
         if($ClassName){
@@ -693,7 +693,7 @@
             return $DbClass['classid'];
         }
     }
-    
+
     //校验记账数据
     function CheakAccountData($data,$isID = true) {
         if(!is_array($data)){
@@ -709,7 +709,8 @@
             $data['acclassid'] = GetClassId($data['acclassid']);
         }
         if (intval($data['acclassid']) == 0) {
-            return array(false,'请先添加分类再进行记账...');
+            // return array(false,'请先添加分类再进行记账...');
+            return array(false,'Please select an existing Category');
         }
         $strSQL  = 'classid = '.$data['acclassid'];
         $DbClass = M('account_class')->where($strSQL)->find();
@@ -725,10 +726,10 @@
         if(!is_int($data['actime'])){
             $data['actime'] = strtotime($data['actime']);
         }
-        
+
         return array(true,$data);
     }
-    
+
     //更新记账数据
     function UpdataAccountData($data) {
         $isCheak = CheakAccountData($data);
@@ -745,7 +746,7 @@
             return $isCheak;
         }
     }
-    
+
     //添加记账数据
     function AddAccountData($data) {
         $isCheak = CheakAccountData($data,false);
@@ -755,7 +756,7 @@
             if($DbData > 0){
                 // 增加图片（uploads中是已保存到数据库中的图片数据）
                 if (isset($data['uploads']) && count($data['uploads']) > 0) {
-                    for ($i=0; $i < count($data['uploads']); $i++) { 
+                    for ($i=0; $i < count($data['uploads']); $i++) {
                         EditImageAcid($data['jiid'], $data['uploads'][$i]['id'], $DbData);
                     }
                 }
@@ -786,7 +787,7 @@
         if (is_array($upload) && count($upload) > 0) {
             $count = GetImageCount($uid, $acid);
             $time = time();
-            for ($i=0; $i < count($upload); $i++) { 
+            for ($i=0; $i < count($upload); $i++) {
                 if (i > C('IMAGE_COUNT') + $count) {
                     break; //防止上传文件数量超过限制
                 }
@@ -824,7 +825,7 @@
         }
         $imageData = M("account_image")->where($sql)->select();
         if (is_array($imageData) && count($imageData) > 0) {
-            for ($i=0; $i < count($imageData); $i++) { 
+            for ($i=0; $i < count($imageData); $i++) {
                 if (stripos($imageData[$i]['savepath'], 'http') === 0) {
                     $imageData[$i]['url'] = $imageData[$i]['savepath'].$imageData[$i]['savename'];
                 } elseif (stripos(C('IMAGE_CACHE_URL'), 'http') === 0) {
@@ -855,7 +856,7 @@
     function DelImageData($uid, $acid, $id=false) {
         $imageData = GetImageData($uid, $acid, $id);
         if ($imageData[0]) {
-            for ($i=0; $i < count($imageData[1]); $i++) { 
+            for ($i=0; $i < count($imageData[1]); $i++) {
                 $path = '.'.C('IMAGE_ROOT_PATH').$imageData[1][$i]['savepath'].$imageData[1][$i]['savename'];
                 if (file_exists($path)) {
                     $ret = unlink($path);
@@ -960,7 +961,7 @@
                 array_push($retData, array('name'=>$FundsArr['fundsname'], 'id'=>intval($FundsArr['fundsid']), 'money'=> GetFundsAccountSumData($FundsArr['fundsid'],$uid)));
             }
             S('account_funds_'.$uid, $retData);
-            return $retData;            
+            return $retData;
         }
     }
 
@@ -986,7 +987,7 @@
                     $retData['out'] += $TransferData[1]['out'];
                     $retData['over'] += $TransferData[1]['over'];
                 }
-            }      
+            }
             $CacheData[$FundsId] = $retData;
             S('account_funds_data_'.$uid, $CacheData);
             return $retData;
@@ -1040,7 +1041,7 @@
     //调整账户排序
     function SortFunds($FundsIdList, $uid)
     {
-        for ($i=0; $i < count($FundsIdList); $i++) { 
+        for ($i=0; $i < count($FundsIdList); $i++) {
             $sql = array('uid'=>$uid, 'fundsid' => intval($FundsIdList[$i]));
             if ($sql['fundsid'] > 0) {
                 M("account_funds")->where($sql)->setField('sort', $i + 1);
@@ -1188,10 +1189,10 @@
         }
         // 源账户初始记录和删除
         $sql = array(
-            'uid'=>$uid, 
+            'uid'=>$uid,
             '_complex'=>array(
-                '_logic'=>'or', 
-                'source_fid'=>$source_fid, 
+                '_logic'=>'or',
+                'source_fid'=>$source_fid,
                 'target_fid'=>$source_fid)
         );
         $retDelete = M('account_transfer')->where($sql)->delete();
@@ -1481,7 +1482,7 @@
         }
         return array(true, $ClassName);
     }
-    
+
     //校验新分类
     function CheakNewClass($data) {
         if(!is_array($data)){
@@ -1509,7 +1510,7 @@
         }
         return array(true,$data);
     }
-    
+
     //新建分类
     function AddNewClass($data) {
         $isCheak = CheakNewClass($data);
@@ -1582,7 +1583,7 @@
             return $isCheak;
         }
     }
-    
+
     //改变分类类别
     function ChangeClassType($ClassId,$uid) {
         $sql = array('classid' => intval($ClassId), 'ufid' => intval($uid));
@@ -1610,7 +1611,7 @@
     //调整分类排序
     function SortClass($ClassIdList, $uid)
     {
-        for ($i=0; $i < count($ClassIdList); $i++) { 
+        for ($i=0; $i < count($ClassIdList); $i++) {
             $sql = array('ufid'=>$uid, 'classid' => intval($ClassIdList[$i]));
             if ($sql['classid'] > 0) {
                 M("account_class")->where($sql)->setField('sort', $i + 1);
@@ -1625,7 +1626,7 @@
         $arrSQL = array('acclassid' => intval($ClassId), 'jiid' => intval($uid));
         return M('account')->where($arrSQL)->count();
     }
-    
+
     //删除分类
     function DelClass($ClassId,$uid) {
         $sql = 'classid = '.intval($ClassId).' and ufid = '.$uid;
@@ -1644,7 +1645,7 @@
             return array(false,'你要删除的分类不存在...',0);
         }
     }
-    
+
     //获取指定id分类
     function GetClassIdData($ClassId,$uid) {
         $sql = 'classid = '.intval($ClassId).' and ufid = '.$uid;
@@ -1708,7 +1709,7 @@
             $ArrOutClass = GetClassData($uid, 2);
             //日数据统计
             $numDay = date('d', strtotime($y.'-'.$m.'-01 +1 month -1 day'));
-            for ($d=1; $d <= $numDay; $d++) { 
+            for ($d=1; $d <= $numDay; $d++) {
                 $ArrSQL = array();
                 $fristDayTime = strtotime($y.'-'.$m.'-'.$d.' 0:0:0');
                 $lastDayTime = strtotime($y.'-'.$m.'-'.$d.' 23:59:59');
@@ -1795,7 +1796,7 @@
                     $mOutMoney[$m]  += $mOutClassMoney[$ClassName][$m];
                 }
                 //dump($m.'月支出:'.$mOutMoney[$m]);
-                
+
                 $mSurplusMoney[$m] = $mInMoney[$m] - $mOutMoney[$m];
                 $mInSumMoney  = $mInSumMoney + $mInMoney[$m];
                 $mOutSumMoney = $mOutSumMoney + $mOutMoney[$m];
@@ -1869,7 +1870,7 @@
             $YearMax = $TimeBetween['YearMax'];
             $YearMin = $TimeBetween['YearMin'];
             $arrSQL['jiid'] = $uid;
-            for ($y=$YearMin; $y <= $YearMax; $y++) { 
+            for ($y=$YearMin; $y <= $YearMax; $y++) {
                 $TimeMin = strtotime($y.'-01-01 00:00:00');
                 $TimeMax = strtotime($y.'-12-31 23:59:59');
                 $arrSQL['actime'] = array(array('egt',$TimeMin),array('elt',$TimeMax));
@@ -1892,7 +1893,7 @@
             return $DataJson;
         }
     }
-    
+
     //数组转表格数据
     function ArrayToNumData($arr){
         $str = "[";
@@ -1965,7 +1966,7 @@
         curl_setopt($httph, CURLOPT_SSL_VERIFYHOST, 1);
         curl_setopt($httph,CURLOPT_RETURNTRANSFER,1);
         curl_setopt($httph, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
-        curl_setopt($httph, CURLOPT_POST, 1);//设置为POST方式 
+        curl_setopt($httph, CURLOPT_POST, 1);//设置为POST方式
         curl_setopt($httph, CURLOPT_POSTFIELDS, $param);
         curl_setopt($httph, CURLOPT_RETURNTRANSFER,1);
         curl_setopt($httph, CURLOPT_HEADER,1);
@@ -1973,7 +1974,7 @@
         curl_close($httph);
         return $rst;
     }
-    
+
     //参数1：访问的URL，参数2：post数据(不填则为GET)，参数3：json
     //json $_POST=json_decode(file_get_contents('php://input'), TRUE);
     function request($url, $data='', $type=''){
@@ -1990,7 +1991,7 @@
              curl_setopt($curl, CURLOPT_POSTFIELDS,$data);
          }
          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-         curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers ); 
+         curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
          $output = curl_exec($curl);
          curl_close($curl);
          return $output;
