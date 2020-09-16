@@ -1,448 +1,450 @@
 <extend name="Public:common"/>
 <block name="main">
-
-<ul class="year" style="list-style: none;padding: 20px;text-align: center;">
-    <!-- <li class="am-pagination-prev"><a href="__APP__/Home/Chart/index/year/{$y-1}">&laquo; {$y-1}年</a></li> -->
-    <li class="prev" style="float:left;font-size:18px;padding-top: 10px;"><a href="__APP__/Home/Chart/index/year/{$y-1}">&#10094;</a></li>
-    <!-- <li class=""><a href="__APP__/Home/Chart/index">今年</a></li> -->
-    <li class="top-year" style="float:left;font-size:25px;padding: 5px 5px 10px 5px;font-family:verdana"><a href="" onclick="resetDate();return false;">{$y}</a></li>
-    <!-- <li class="am-pagination-next"><a href="__APP__/Home/Chart/index/year/{$y+1}">{$y+1}年 &raquo;</a></li> -->
-    <li class="next" style="float:left;font-size:18px;padding-top: 10px;" ><a href="" onclick="checkDate({$y});return false;">&#10095;</a></li>
-</ul>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <!-- 引入 echarts.js -->
-    <!-- <script src="echarts.min.js"></script> -->
-    <!-- <script src="//cdn.bootcss.com/echarts/3.2.1/echarts.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.common.js"></script>
-</head>
-<body style="text-align:center; ">
-    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div style="height:450px; display: flex;">
-    <div id="chart-year" style="height:420px; flex: 70%; display: 'inline-block';" ></div>
-    <div style=" flex: 30%; float: right; padding-right: 40px;">
-        <label style="padding-bottom: 15px; font-size: 18px;"> Fund Account Summary </label>
-        <table id="fundTable" class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm" >
-        <thead>
-            <tr>
-                <th style="width:'50'; vertical-align: middle;" bgcolor="#FFFFFF">Fund <br/> Account</th>
-                <th style="width:'50'; vertical-align: middle;" bgcolor="#FFFFFF">Initial <br/> Amount(RM)</th>
-                <th style="width:'50'; vertical-align: middle;" bgcolor="#FFFFFF">Income/<br/>Expense(RM)</th>
-                <th style="width:'80'; vertical-align: middle;" bgcolor="#FFFFFF">Balance<br/>(RM)</th>
-            </tr>
-        </thead>
-        <tbody class="">
-            <volist name="FundsData" id="data" >
-            <tr>
-                <td class="am-text-middle">{$data.name}</td>
-                <td class="am-text-middle">
-                    <font class="money-format">{$data.money.init}</font>
-                </td>
-                <td class="am-text-middle">
-                    <font class="am-text-success money-format">{$data.money.in}</font>
-                    <br/>
-                    <font class="am-text-danger money-format">-{$data.money.out}</font>
-                </td>
-                <td class="am-text-middle">
-                    <font class="money-format">{$data.money.over}</font>
-                </td>
-            </tr>
-            </volist>
-        </tbody>
-        </table>
-    </div>
-    </div>
-    <hr>
-    <div id = "chart-Class" style="height:520px;">
-        <div id="chart-InClass" style="height:500px; width:50%; float:left"></div>
-        <!-- <hr> -->
-        <div id="chart-OutClass" style="height:500px; width:50%; float:right; padding"></div>
-    </div>
-    <div id="spacing" style="height:10px;"></div>
-    <hr>
+ 
+<div class="container-fluid content"  >
 
 
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var chartYear = echarts.init(document.getElementById('chart-year'));
-        var chartInClass = echarts.init(document.getElementById('chart-InClass'));
-        var chartOutClass = echarts.init(document.getElementById('chart-OutClass'));
-        var spacing = echarts.init(document.getElementById('spacing'));
-        var inClassDataLength = <?php echo strlen($JsonInClassPer) ?>;
-        var outClassDataLength = <?php echo strlen($JsonOutClassPer) ?>;
+    <ul class="year" style="list-style: none;padding: 20px;text-align: center;">
+        <!-- <li class="am-pagination-prev"><a href="__APP__/Home/Chart/index/year/{$y-1}">&laquo; {$y-1}年</a></li> -->
+        <li class="prev" style="float:left;font-size:18px;padding-top: 10px;"><a href="__APP__/Home/Chart/index/year/{$y-1}">&#10094;</a></li>
+        <!-- <li class=""><a href="__APP__/Home/Chart/index">今年</a></li> -->
+        <li class="top-year" style="float:left;font-size:25px;padding: 5px 5px 10px 5px;font-family:verdana"><a href="" onclick="resetDate();return false;">{$y}</a></li>
+        <!-- <li class="am-pagination-next"><a href="__APP__/Home/Chart/index/year/{$y+1}">{$y+1}年 &raquo;</a></li> -->
+        <li class="next" style="float:left;font-size:18px;padding-top: 10px;" ><a href="" onclick="checkDate({$y});return false;">&#10095;</a></li>
+    </ul>
 
-        function checkDate(current){
-            var maxDate = new Date();
-            if (current != maxDate.getFullYear()){
-                window.location.href = "__APP__/Home/Chart/index/year/{$y+1}"
-            }else{
-                alert("Current latest year is {$y}.")
+
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height:450px; display: flex;">
+            <div id="chart-year" style="height:420px; flex: 70%; display: 'inline-block';" ></div>
+            <div style=" flex: 30%; float: right; padding-right: 40px;">
+                <label style="padding-bottom: 15px; font-size: 18px;"> Fund Account Summary </label>
+                <table id="fundTable" class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm" >
+                    <thead>
+                        <tr>
+                            <th style="width:'50'; vertical-align: middle;" bgcolor="#FFFFFF">Fund <br/> Account</th>
+                            <th style="width:'50'; vertical-align: middle;" bgcolor="#FFFFFF">Initial <br/> Amount(RM)</th>
+                            <th style="width:'50'; vertical-align: middle;" bgcolor="#FFFFFF">Income/<br/>Expense(RM)</th>
+                            <th style="width:'80'; vertical-align: middle;" bgcolor="#FFFFFF">Balance<br/>(RM)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="">
+                        <volist name="FundsData" id="data" >
+                        <tr>
+                            <td class="am-text-middle">{$data.name}</td>
+                            <td class="am-text-middle">
+                                <font class="money-format">{$data.money.init}</font>
+                            </td>
+                            <td class="am-text-middle">
+                                <font class="am-text-success money-format">{$data.money.in}</font>
+                                <br/>
+                                <font class="am-text-danger money-format">-{$data.money.out}</font>
+                            </td>
+                            <td class="am-text-middle">
+                                <font class="money-format">{$data.money.over}</font>
+                            </td>
+                        </tr>
+                        </volist>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div id = "chart-Class" style="height:520px;">
+            <div id="chart-InClass" style="height:500px; width:50%; float:left"></div>
+            <!-- <hr> -->
+            <div id="chart-OutClass" style="height:500px; width:50%; float:right; "></div>
+        </div>
+        <div id="spacing" style="height:10px;" ></div>
+        <hr>
+
+
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var chartYear = echarts.init(document.getElementById('chart-year'));
+            var chartInClass = echarts.init(document.getElementById('chart-InClass'));
+            var chartOutClass = echarts.init(document.getElementById('chart-OutClass'));
+            var spacing = echarts.init(document.getElementById('spacing'));
+            // var inClassDataLength = <?php echo strlen($JsonInClassPer) ?>;
+            // var outClassDataLength = <?php echo strlen($JsonOutClassPer) ?>;
+            // console.log({$JsonInClassPer});
+            // console.log(inClassDataLength);
+            // console.log(outClassDataLength);
+
+
+            var inClassDataLength = ({$JsonInClassPer}).length;
+            var outClassDataLength = ({$JsonOutClassPer}).length;
+
+
+            function checkDate(current){
+                var maxDate = new Date();
+                if (current != maxDate.getFullYear()){
+                    window.location.href = "__APP__/Home/Chart/index/year/{$y+1}"
+                }else{
+                    alert("Current latest year is {$y}.")
+                }
             }
-        }
 
-        function resetDate(){
-            let current = new Date();
-            current = current.getFullYear;
-            window.location.href = "__APP__/Home/Chart/index/year/" + current;
+            function resetDate(){
+                let current = new Date();
+                current = current.getFullYear;
+                window.location.href = "__APP__/Home/Chart/index/year/" + current;
 
-        }
+            }
 
-        // 指定图表的配置项和数据
-        var optionYear = {
-            title: {
-                // text: '{$y}年收入与支出金额汇总',
-                text: '{$y} Year Summary',
-                top: 'top',
-                x: 'center'
-            },
-            color: ['#00d49d','#ff005d','#3333cc','#ff005d'],  //蓝色：3398DB 红色：c23531 青色：61a0a8 橙色：d48265 绿色：91c7ae
-            tooltip : {
-                trigger: 'axis',
-                extraCssText: 'text-align: left;',
-                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                }
-            },
-            legend: {
-                // data:['收入','支出','月剩余','年剩余'],
-                data:['Income','Expense','Balance','anual balance'],
-                selected:{
-                    '收入' : true,
-                    '支出' : true,
-                    'Balance' : true,
-                    '年剩余' : false
+            // 指定图表的配置项和数据
+            var optionYear = {
+                title: {
+                    // text: '{$y}年收入与支出金额汇总',
+                    text: '{$y} Year Summary',
+                    top: 'top',
+                    x: 'center'
                 },
-                top: 'bottom',
-                x: 'center'
-            },
-            grid: {
-                left: '30px',
-                right: '10%',
-                bottom: '12%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'category',
-                // data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]
-                data: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-            },
-            yAxis: {
-                type : 'value',
-                gridvalue: 1
-            },
-            barGap: '10%',
-            
-            series: [{
-                // name: '收入',
-                name: 'Income',
-                type: 'bar',
-                data: {$JsonInMoney},
-                barWidth:'25',
-                label:{
-                normal:{
-                    show:true,
-                    position:'top',
-                    formatter: function(e){
-                        if(e.value == 0){ return '';}
-                        else{
-                            return e.value;
-                        }
+                color: ['#00d49d','#ff005d','#3333cc','#ff005d'],  //蓝色：3398DB 红色：c23531 青色：61a0a8 橙色：d48265 绿色：91c7ae
+                tooltip : {
+                    trigger: 'axis',
+                    extraCssText: 'text-align: left;',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                     }
-                }
-            },
-            },{
-                // name: '支出',
-                name: 'Expense',
-                type: 'bar',
-                data: {$JsonOutMoney},
-                barWidth:'25',
-                label:{
-                normal:{
-                    show:true,
-                    position:'top',
-                    formatter: function(e){
-                        if(e.value == 0){ return '';}
-                        else{
-                            return e.value;
-                        }
-                    }
-                }
-            },
-            },{
-                name: 'Balance',
-                type: 'line',
-                smooth: false,
-                data: {$JsonSurplusMoney}
-            },{
-                name: '年剩余',
-                type: 'line',
-                smooth: true,
-                data: {$JsonSurplusSumMoney}
-            }]
-        };
-        var optionInClass = {           
-            title : {
-                // text: '{$y}年收入分类汇总',
-                // subtext: '总收入{$DataArray.InSumMoney}元',
-                text: '{$y} Year Income Category',
-                subtext: 'Total Income: RM{$DataArray.InSumMoney}',
-                x:'center',
-            },
-            color: ['#002c85','#016e85','#0194bf','#3af1f7','#7df7ae','#07b216',
-                    '#28dc0b','#141e8f','#6231c1','#bc0136','#2fc971','#ffcc3d',
-                    '#ccef21','#79ffba','#cc4ede','#f66f76','#d60a3d','#ffb236',
-                    '#fc444c','#22ebb7','#0e64cb','#ff6c12','#fe922f','#fe7b2b',],
-            tooltip : {
-                trigger: 'item',
-                formatter: "{b} : RM {c} <br/>({d}%)"
-            },
-            legend: {
-                //type: 'scroll',
-                //orient: 'vertical',
-                bottom: 20,
-                data: {$JsonInClassPer},
-                selectedMode: false,
-                textStyle:{
-
-                    rich:{
-                        color: "black",                       
-                        ab:{
-                            fontSize:16,
-                            //verticalAlign:'top',
-                            align:'center',
-                            padding:[0,15,0,0]
-                        },
-                        b:{
-                            fontSize:14,
-                            align:'center',
-                            padding:[0,15,0,0],
-                            //lineHeight:25,
-                            borderWidth:30
-                        },
-                        c:{
-                            fontSize:14,
-                            align:'center',
-                            padding:[0,15,0,0],
-                            lineHeight:25
+                },
+                legend: {
+                    // data:['收入','支出','月剩余','年剩余'],
+                    data:['Income','Expense','Balance','anual balance'],
+                    selected:{
+                        '收入' : true,
+                        '支出' : true,
+                        'Balance' : true,
+                        '年剩余' : false
+                    },
+                    top: 'bottom',
+                    x: 'center'
+                },
+                grid: {
+                    left: '30px',
+                    right: '10%',
+                    bottom: '12%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    // data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]
+                    data: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+                },
+                yAxis: {
+                    type : 'value',
+                    gridvalue: 1
+                },
+                barGap: '10%',
+                
+                series: [{
+                    // name: '收入',
+                    name: 'Income',
+                    type: 'bar',
+                    data: {$JsonInMoney},
+                    barWidth:'25',
+                    label:{
+                    normal:{
+                        show:true,
+                        position:'top',
+                        formatter: function(e){
+                            if(e.value == 0){ return '';}
+                            else{
+                                return e.value;
+                            }
                         }
                     }
                 },
-                formatter: function(name) {
-                    // pieData is the array data of the pie chart
-                    let data = {$JsonInClassPer};
-                    let total = 0;
-                    let tarValue = 0;
-                    for (let i = 0, l = data.length; i < l; i++) {
-                        total += parseInt(data[i].value);
-                        if (data[i].name == name) {
-                            tarValue = data[i].value;
+                },{
+                    // name: '支出',
+                    name: 'Expense',
+                    type: 'bar',
+                    data: {$JsonOutMoney},
+                    barWidth:'25',
+                    label:{
+                    normal:{
+                        show:true,
+                        position:'top',
+                        formatter: function(e){
+                            if(e.value == 0){ return '';}
+                            else{
+                                return e.value;
+                            }
                         }
                     }
-                    let arr = [
-                        '{ab|'+name+'}',
-                        '{b|RM'+ (tarValue)+'}{c|'+((tarValue/total)*100).toFixed(2)+'%}'
-                    ]
-                    return arr.join('')
-                }
-            },
-            series : [
-                {
-                    name: '收入分类',
-                    type: 'pie',
-                    radius : '45%',
-                    center: ['50%', '45%'],
+                },
+                },{
+                    name: 'Balance',
+                    type: 'line',
+                    smooth: false,
+                    data: {$JsonSurplusMoney}
+                },{
+                    name: '年剩余',
+                    type: 'line',
+                    smooth: true,
+                    data: {$JsonSurplusSumMoney}
+                }]
+            };
+            var optionInClass = {           
+                title : {
+                    // text: '{$y}年收入分类汇总',
+                    // subtext: '总收入{$DataArray.InSumMoney}元',
+                    text: '{$y} Year Income Category',
+                    subtext: 'Total Income: RM{$DataArray.InSumMoney}',
+                    x:'center',
+                },
+                color: ['#002c85','#016e85','#0194bf','#3af1f7','#7df7ae','#07b216',
+                        '#28dc0b','#141e8f','#6231c1','#bc0136','#2fc971','#ffcc3d',
+                        '#ccef21','#79ffba','#cc4ede','#f66f76','#d60a3d','#ffb236',
+                        '#fc444c','#22ebb7','#0e64cb','#ff6c12','#fe922f','#fe7b2b',],
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{b} : RM {c} <br/>({d}%)"
+                },
+                legend: {
+                    //type: 'scroll',
+                    //orient: 'vertical',
+                    bottom: 20,
                     data: {$JsonInClassPer},
-                    label:{
-                        normal:{
-                            formatter: "{b} ({d}%)",
-                            textStyle: {
-                                fontSize: 13
+                    selectedMode: false,
+                    textStyle:{
+
+                        rich:{
+                            color: "black",                       
+                            ab:{
+                                fontSize:16,
+                                //verticalAlign:'top',
+                                align:'center',
+                                padding:[0,15,0,0]
                             },
+                            b:{
+                                fontSize:14,
+                                align:'center',
+                                padding:[0,15,0,0],
+                                //lineHeight:25,
+                                borderWidth:30
+                            },
+                            c:{
+                                fontSize:14,
+                                align:'center',
+                                padding:[0,15,0,0],
+                                lineHeight:25
+                            }
                         }
                     },
-                    labelLine : {
-                        normal: {
-                            smooth: true,
-                        }                       
-                    },
-                    itemStyle: {
-                        normal :{
-                            borderColor: "#FFF",
-                            borderWidth: 1
-                        },
-                        emphasis: {
-                            borderWidth: 0,
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    formatter: function(name) {
+                        // pieData is the array data of the pie chart
+                        let data = {$JsonInClassPer};
+                        let total = 0;
+                        let tarValue = 0;
+                        for (let i = 0, l = data.length; i < l; i++) {
+                            total += parseInt(data[i].value);
+                            if (data[i].name == name) {
+                                tarValue = data[i].value;
+                            }
                         }
-                    }
-                }
-            ]
-        };
-
-        var optionOutClass = {
-            title : {
-                // text: '{$y}年支出分类汇总',
-                // subtext: '总支出{$DataArray.OutSumMoney}元',
-                text: '{$y} Year Expenses Category',
-                subtext: 'Total Expenses : RM{$DataArray.OutSumMoney}',
-                x:'center'
-            },
-            color: ['#002c85','#016e85','#0194bf','#3af1f7','#7df7ae',
-                    '#07b216','#28dc0b','#141e8f','#6231c1','#bc0136',
-                    '#2fc971','#ffcc3d','#ccef21','#79ffba','#cc4ede',
-                    '#f66f76','#d60a3d','#ffb236','#fc444c','#22ebb7',
-                    '#0e64cb','#ff6c12','#fe922f','#fe7b2b',],
-            tooltip : {
-                trigger: 'item',
-                formatter: "{b} : RM {c} <br/>({d}%)"
-            },
-            legend: {
-                //type: 'scroll',
-                //orient: 'vertical',
-                bottom: 10,
-                data: {$JsonOutClassPer},
-                selectedMode: false,
-                textStyle:{
-
-                    rich:{
-                        color: "black",                       
-                        ab:{
-                            fontSize:16,
-                            //verticalAlign:'top',
-                            align:'center',
-                            padding:[0,15,0,0]
-                        },
-                        b:{
-                            fontSize:14,
-                            align:'center',
-                            padding:[0,15,0,0],
-                            //lineHeight:25,
-                            borderWidth:30
-                        },
-                        c:{
-                            fontSize:14,
-                            align:'center',
-                            padding:[0,15,0,0],
-                            lineHeight:25
-                        }
+                        let arr = [
+                            '{ab|'+name+'}',
+                            '{b|RM'+ (tarValue)+'}{c|'+((tarValue/total)*100).toFixed(2)+'%}'
+                        ]
+                        return arr.join('')
                     }
                 },
-                formatter: function(name) {
-                    // pieData is the array data of the pie chart
-                    let data = {$JsonOutClassPer};
-                    let total = 0;
-                    let tarValue = 0;
-                    for (let i = 0, l = data.length; i < l; i++) {
-                        total += parseInt(data[i].value);
-                        if (data[i].name == name) {
-                            tarValue = data[i].value;
+                series : [
+                    {
+                        name: '收入分类',
+                        type: 'pie',
+                        radius : '45%',
+                        center: ['50%', '45%'],
+                        data: {$JsonInClassPer},
+                        label:{
+                            normal:{
+                                formatter: "{b} ({d}%)",
+                                textStyle: {
+                                    fontSize: 13
+                                },
+                            }
+                        },
+                        labelLine : {
+                            normal: {
+                                smooth: true,
+                            }                       
+                        },
+                        itemStyle: {
+                            normal :{
+                                borderColor: "#FFF",
+                                borderWidth: 1
+                            },
+                            emphasis: {
+                                borderWidth: 0,
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
                         }
                     }
-                    let arr = [
-                        '{ab|'+name+'}',
-                        '{b|RM'+ (tarValue)+'}{c|'+((tarValue/total)*100).toFixed(2)+'%}'
-                    ]
-                    return arr.join('')
-                }    
-            },
-            series : [
-                {
-                    name: '支出分类',
-                    type: 'pie',
-                    radius : '45%',
-                    center: ['50%', '45%'],
+                ]
+            };
+
+            var optionOutClass = {
+                title : {
+                    // text: '{$y}年支出分类汇总',
+                    // subtext: '总支出{$DataArray.OutSumMoney}元',
+                    text: '{$y} Year Expenses Category',
+                    subtext: 'Total Expenses : RM{$DataArray.OutSumMoney}',
+                    x:'center'
+                },
+                color: ['#002c85','#016e85','#0194bf','#3af1f7','#7df7ae',
+                        '#07b216','#28dc0b','#141e8f','#6231c1','#bc0136',
+                        '#2fc971','#ffcc3d','#ccef21','#79ffba','#cc4ede',
+                        '#f66f76','#d60a3d','#ffb236','#fc444c','#22ebb7',
+                        '#0e64cb','#ff6c12','#fe922f','#fe7b2b',],
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{b} : RM {c} <br/>({d}%)"
+                },
+                legend: {
+                    //type: 'scroll',
+                    //orient: 'vertical',
+                    bottom: 10,
                     data: {$JsonOutClassPer},
-                    label:{
-                        normal:{
-                            formatter: "{b} ({d}%)",
-                            textStyle: {
-                                fontSize: 13
+                    selectedMode: false,
+                    textStyle:{
+
+                        rich:{
+                            color: "black",                       
+                            ab:{
+                                fontSize:16,
+                                //verticalAlign:'top',
+                                align:'center',
+                                padding:[0,15,0,0]
                             },
+                            b:{
+                                fontSize:14,
+                                align:'center',
+                                padding:[0,15,0,0],
+                                //lineHeight:25,
+                                borderWidth:30
+                            },
+                            c:{
+                                fontSize:14,
+                                align:'center',
+                                padding:[0,15,0,0],
+                                lineHeight:25
+                            }
                         }
                     },
-                    labelLine : {
-                        normal: {
-                            smooth: true
+                    formatter: function(name) {
+                        // pieData is the array data of the pie chart
+                        let data = {$JsonOutClassPer};
+                        let total = 0;
+                        let tarValue = 0;
+                        for (let i = 0, l = data.length; i < l; i++) {
+                            total += parseInt(data[i].value);
+                            if (data[i].name == name) {
+                                tarValue = data[i].value;
+                            }
                         }
-                    },
-                    itemStyle: {
-                        normal :{
-                            borderColor: "#FFF",
-                            borderWidth: 1
+                        let arr = [
+                            '{ab|'+name+'}',
+                            '{b|RM'+ (tarValue)+'}{c|'+((tarValue/total)*100).toFixed(2)+'%}'
+                        ]
+                        return arr.join('')
+                    }    
+                },
+                series : [
+                    {
+                        name: '支出分类',
+                        type: 'pie',
+                        radius : '45%',
+                        center: ['50%', '45%'],
+                        data: {$JsonOutClassPer},
+                        label:{
+                            normal:{
+                                formatter: "{b} ({d}%)",
+                                textStyle: {
+                                    fontSize: 13
+                                },
+                            }
                         },
-                        emphasis: {
-                            borderWidth: 0,
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        labelLine : {
+                            normal: {
+                                smooth: true
+                            }
+                        },
+                        itemStyle: {
+                            normal :{
+                                borderColor: "#FFF",
+                                borderWidth: 1
+                            },
+                            emphasis: {
+                                borderWidth: 0,
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
                         }
                     }
+                ]
+            };
+            var optionNoDataYear ={
+                title :{
+                    text: '{$y} Year Summary',
+                    subtext: 'No Record Found',
+                    x:'center',
+                    subtextStyle: {
+                        fontSize: 18,
+                    },
                 }
-            ]
-        };
-        var optionNoDataYear ={
-            title :{
-                text: '{$y} Year Summary',
-                subtext: 'No Record Found',
-                x:'center',
-                subtextStyle: {
-                    fontSize: 18,
-                },
             }
-        }
 
-        var optionNoDataIn ={
-            title :{
-                text: '{$y} Year Income Category',
-                subtext: 'No Record Found',
-                x:'center',
-                subtextStyle: {
-                    fontSize: 18,
-                },
+            var optionNoDataIn ={
+                title :{
+                    text: '{$y} Year Income Category',
+                    subtext: 'No Record Found',
+                    x:'center',
+                    subtextStyle: {
+                        fontSize: 18,
+                    },
+                }
             }
-        }
-        var optionNoDataOut ={
-            title :{
-                text: '{$y} Year Expenses Category',
-                subtext: 'No Record Found',
-                x:'center',
-                subtextStyle: {
-                    fontSize: 18,
-                },
+            var optionNoDataOut ={
+                title :{
+                    text: '{$y} Year Expenses Category',
+                    subtext: 'No Record Found',
+                    x:'center',
+                    subtextStyle: {
+                        fontSize: 18,
+                    },
+                }
             }
-        }
 
-        // 使用刚指定的配置项和数据显示图表。
-        chartYear.setOption(optionYear);
-        chartInClass.setOption(optionNoDataIn);
-        chartOutClass.setOption(optionNoDataOut);
+            // 使用刚指定的配置项和数据显示图表。
+            chartYear.setOption(optionYear);
+            chartInClass.setOption(optionNoDataIn);
+            chartOutClass.setOption(optionNoDataOut);
 
-        if(inClassDataLength > 5){
-            chartInClass.clear();
-            chartInClass.hideLoading();
-            chartInClass.setOption(optionInClass);
-        }
+            if(inClassDataLength < 5){
+                chartInClass.clear();
+                chartInClass.hideLoading();
+                chartInClass.setOption(optionInClass);
+            }
 
-        if(inClassDataLength > 5){
-            chartInClass.clear();
-            chartInClass.hideLoading();
-            chartInClass.setOption(optionInClass);
-        }
+            if(inClassDataLength > 5){
+                chartInClass.clear();
+                chartInClass.hideLoading();
+                chartInClass.setOption(optionInClass);
+            }
 
-        if(outClassDataLength > 5){
-            chartOutClass.clear();
-            chartOutClass.hideLoading();
-            chartOutClass.setOption(optionOutClass);
-        }
+            if(outClassDataLength < 5){
+                chartOutClass.clear();
+                chartOutClass.hideLoading();
+                chartOutClass.setOption(optionOutClass);
+            }
 
-    </script>
-</body>
-</html>
+        </script>
 
-<include file="Chart:list_spend" style="margin-top: 20;" />
+    <include file="Chart:list_spend" style="margin-top: 20;" />
+</div>
+
 </block>

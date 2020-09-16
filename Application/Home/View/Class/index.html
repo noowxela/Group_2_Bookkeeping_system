@@ -13,229 +13,233 @@
 
 </style>
 
-    <form class="am-form am-form-horizontal" method="post" data-am-validator="H5validation:false">
-        <fieldset id="new">
-            <!-- <legend>新建分类</legend> -->
-            <legend>Create new category</legend>
-
-            <div class="am-input-group">
-                <!-- <span class="am-input-group-label"><b>类别</b></span> -->
-                <span class="am-input-group-label"><b>Category Type</b></span>
-                <select id="select-type" class="am-form-field" name="class_type" onchange="changeType()">
-                    <if condition="$ClassType eq 1">
-                        <!-- <option value="1">收入</option> -->
-                        <option value="1">Income</option>
-                        <!-- <option value="2">支出</option> -->
-                        <option value="2">Expense</option>
-                    <else/>
-                        <!-- <option value="2">支出</option> -->
-                        <option value="2">Expense</option>
-                        <!-- <option value="1">收入</option> -->
-                        <option value="1">Income</option>
-                    </if>
-                </select>
-            </div>
-            <div><p></p></div> <!-- blank -->
-
-            <div class="am-input-group" id="income" style="display: none">
-              <span class="am-input-group-label"><b>Category Name</b></span>
-              <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="Enter category name" >
-            </div>
-
-            <div class="am-input-group" id="expense">
-                <span class="am-input-group-label"><b>Select a Category</b></span>
-                <table id="expense_icon" style="width:75%">
-                  <tr>  <!-- Row 1 -->
-                    <td>  <!-- Food -->
-                      <label for="food"><img src="__ICON__/Food.jpg" alt="Food" width="150" height="150"></label>
-                      <br>
-                      <input type="radio" id="food"  name="class_name" value="Food"/>
-                      <label for="food">Food</label>
-
-                    </td>
-                    <td>  <!-- Self-Development -->
-                      <label for="self_development"><img src="__ICON__/Self Development.jpg" alt="Self Development" width="150" height="150"></label>
-                      <br>
-                      <input type="radio" id="self_development" name="class_name" value="Self Development">
-                      <label for="self_development"> Self Development </label>
-                    </td>
-                    <td>  <!-- Transportation -->
-                      <label for="transportation"><img src="__ICON__/Transportation.jpg" alt="Transportation" width="150" height="150"></label>
-                      <br>
-                      <input type="radio" id="transportation" name="class_name" value="Transportation">
-                      <label for="transportation"> Transportation </label>
-                    </td>
-                    <td>  <!-- Bill -->
-                      <label for="bill"><img src="__ICON__/Bill.jpg" alt="Bill" width="150" height="150"></label>
-                      <br>
-                      <input type="radio" id="bill" name="class_name" value="Bill">
-                      <label for="bill"> Bills </label>
-                    </td>
-                    <td>  <!-- Petrol -->
-                      <label for="petrol"><img src="__ICON__/Petrol.jpg" alt="Petrol" width="150" height="150"></label>
-                      <br>
-                      <input type="radio" id="petrol" name="class_name" value="Petrol">
-                      <label for="petrol"> Petrol </label>
-                    </td>
-                  </tr>
-                  <tr>  <!-- Row 2 -->
-                    <td>  <!-- Household -->
-                      <label for="household"><img src="__ICON__/Household.jpg" alt="Household" width="150" height="150"></label>
-                      <br>
-                      <input type="radio" id="household" name="class_name" value="Household">
-                      <label for="household"> Household </label>
-                    </td>
-                    <td>  <!-- Health -->
-                      <label for="health"><img src="__ICON__/Health.jpg" alt="Health" width="150" height="150"></label>
-                      <br>
-                      <input type="radio" id="health" name="class_name" value="Health">
-                      <label for="health"> Health </label>
-                    </td>
-                    <td>  <!-- Clothes -->
-                      <label for="clothes"><img src="__ICON__/Clothes.jpg" alt="Clothes" width="150" height="150"></label>
-                      <br>
-                      <input type="radio" id="clothes" name="class_name" value="Clothes">
-                      <label for="clothes"> Clothing </label>
-                    </td>
-                    <td>  <!-- Education -->
-                      <label for="education"><img src="__ICON__/Education.jpg" alt="Education" width="150" height="150"></label>
-                      <br>
-                      <input type="radio" id="education" name="class_name" value="Education">
-                      <label for="education"> Education </label>
-                    </td>
-                    <td>  <!-- Gifts -->
-                      <label for="gift"><img src="__ICON__/Gift.jpg" alt="Gift" width="150" height="150"></label>
-                      <br>
-                      <input type="radio" id="gift" name="class_name" value="Gift">
-                      <label for="gift"> Gifts </label>
-                    </td>
-                    <td>  <!-- Other -->
-                      <label for="other"><img src="__ICON__/Others.jpg" alt="Others" width="150" height="150"></label>
-                      <br>
-                      <input type="radio" id="other" name="class_name" value="Others">
-                      <label for="other"> Others </label>
-                    </td>
-                  </tr>
-                </table>
-            </div>
+    <div class="container-fluid content"  >
 
 
+        <form class="am-form am-form-horizontal" method="post" data-am-validator="H5validation:false">
+            <fieldset id="new">
+                <!-- <legend>新建分类</legend> -->
+                <legend>Create new category</legend>
 
-            <!-- <div><p></p></div> -->
-            <!-- <div class="am-input-group"> -->
-                <!-- <span class="am-input-group-label"><b>名称</b></span> -->
-                <!-- <span class="am-input-group-label"><b>Category Name</b></span> -->
-                <!-- <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="输入分类名称"> -->
-                <!-- <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="Enter category name"> -->
-            <!-- </div> -->
+                <div class="am-input-group">
+                    <!-- <span class="am-input-group-label"><b>类别</b></span> -->
+                    <span class="am-input-group-label"><b>Category Type</b></span>
+                    <select id="select-type" class="am-form-field" name="class_type" onchange="changeType()">
+                        <if condition="$ClassType eq 1">
+                            <!-- <option value="1">收入</option> -->
+                            <option value="1">Income</option>
+                            <!-- <option value="2">支出</option> -->
+                            <option value="2">Expense</option>
+                        <else/>
+                            <!-- <option value="2">支出</option> -->
+                            <option value="2">Expense</option>
+                            <!-- <option value="1">收入</option> -->
+                            <option value="1">Income</option>
+                        </if>
+                    </select>
+                </div>
+                <div><p></p></div> <!-- blank -->
+
+                <div class="am-input-group" id="income" style="display: none">
+                <span class="am-input-group-label"><b>Category Name</b></span>
+                <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="Enter category name" >
+                </div>
+
+                <div class="am-input-group" id="expense">
+                    <span class="am-input-group-label"><b>Select a Category</b></span>
+                    <table id="expense_icon" style="width:75%">
+                    <tr>  <!-- Row 1 -->
+                        <td>  <!-- Food -->
+                        <label for="food"><img src="__ICON__/Food.jpg" alt="Food" width="150" height="150"></label>
+                        <br>
+                        <input type="radio" id="food"  name="class_name" value="Food"/>
+                        <label for="food">Food</label>
+
+                        </td>
+                        <td>  <!-- Self-Development -->
+                        <label for="self_development"><img src="__ICON__/Self Development.jpg" alt="Self Development" width="150" height="150"></label>
+                        <br>
+                        <input type="radio" id="self_development" name="class_name" value="Self Development">
+                        <label for="self_development"> Self Development </label>
+                        </td>
+                        <td>  <!-- Transportation -->
+                        <label for="transportation"><img src="__ICON__/Transportation.jpg" alt="Transportation" width="150" height="150"></label>
+                        <br>
+                        <input type="radio" id="transportation" name="class_name" value="Transportation">
+                        <label for="transportation"> Transportation </label>
+                        </td>
+                        <td>  <!-- Bill -->
+                        <label for="bill"><img src="__ICON__/Bill.jpg" alt="Bill" width="150" height="150"></label>
+                        <br>
+                        <input type="radio" id="bill" name="class_name" value="Bill">
+                        <label for="bill"> Bills </label>
+                        </td>
+                        <td>  <!-- Petrol -->
+                        <label for="petrol"><img src="__ICON__/Petrol.jpg" alt="Petrol" width="150" height="150"></label>
+                        <br>
+                        <input type="radio" id="petrol" name="class_name" value="Petrol">
+                        <label for="petrol"> Petrol </label>
+                        </td>
+                    </tr>
+                    <tr>  <!-- Row 2 -->
+                        <td>  <!-- Household -->
+                        <label for="household"><img src="__ICON__/Household.jpg" alt="Household" width="150" height="150"></label>
+                        <br>
+                        <input type="radio" id="household" name="class_name" value="Household">
+                        <label for="household"> Household </label>
+                        </td>
+                        <td>  <!-- Health -->
+                        <label for="health"><img src="__ICON__/Health.jpg" alt="Health" width="150" height="150"></label>
+                        <br>
+                        <input type="radio" id="health" name="class_name" value="Health">
+                        <label for="health"> Health </label>
+                        </td>
+                        <td>  <!-- Clothes -->
+                        <label for="clothes"><img src="__ICON__/Clothes.jpg" alt="Clothes" width="150" height="150"></label>
+                        <br>
+                        <input type="radio" id="clothes" name="class_name" value="Clothes">
+                        <label for="clothes"> Clothing </label>
+                        </td>
+                        <td>  <!-- Education -->
+                        <label for="education"><img src="__ICON__/Education.jpg" alt="Education" width="150" height="150"></label>
+                        <br>
+                        <input type="radio" id="education" name="class_name" value="Education">
+                        <label for="education"> Education </label>
+                        </td>
+                        <td>  <!-- Gifts -->
+                        <label for="gift"><img src="__ICON__/Gift.jpg" alt="Gift" width="150" height="150"></label>
+                        <br>
+                        <input type="radio" id="gift" name="class_name" value="Gift">
+                        <label for="gift"> Gifts </label>
+                        </td>
+                        <td>  <!-- Other -->
+                        <label for="other"><img src="__ICON__/Others.jpg" alt="Others" width="150" height="150"></label>
+                        <br>
+                        <input type="radio" id="other" name="class_name" value="Others">
+                        <label for="other"> Others </label>
+                        </td>
+                    </tr>
+                    </table>
+                </div>
 
 
-            <!-- <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="新建"></p> -->
-            <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="create"></p>
+
+                <!-- <div><p></p></div> -->
+                <!-- <div class="am-input-group"> -->
+                    <!-- <span class="am-input-group-label"><b>名称</b></span> -->
+                    <!-- <span class="am-input-group-label"><b>Category Name</b></span> -->
+                    <!-- <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="输入分类名称"> -->
+                    <!-- <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="Enter category name"> -->
+                <!-- </div> -->
+
+
+                <!-- <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="新建"></p> -->
+                <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="create"></p>
+            </fieldset>
+        </form>
+
+        <fieldset id="in">
+            <legend class="am-cf">
+                <!-- <div class="am-fl">收入分类</div> -->
+                <div class="am-fl"> Income </div>
+                <div class="am-fr">
+                    <!-- <button class="am-btn am-btn-xs am-btn-success am-round sortInEnable" style="display: none;" id="sortInSave">保存排序</button> -->
+                    <button class="am-btn am-btn-xs am-btn-success am-round sortInEnable" style="display: none;" id="sortInSave">save sort</button>
+                </div>
+            </legend>
+            <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
+                <thead>
+                    <tr>
+                        <!-- <th bgcolor="#FFFFFF">分类名称</th>
+                        <th bgcolor="#FFFFFF">收入</th>
+                        <th bgcolor="#FFFFFF">操作</th>
+                        <th bgcolor="#FFFFFF">排序</th> -->
+                        <th bgcolor="#FFFFFF">Category Name</th>
+                        <th bgcolor="#FFFFFF">Income</th>
+                        <th bgcolor="#FFFFFF">Operation</th>
+                        <th bgcolor="#FFFFFF">Sort</th>
+                    </tr>
+                </thead>
+                <tbody id="sortClassIn">
+                    <volist name="inMoneyClass" id="data">
+                    <tr data-id="{$key}">
+                        <td class="am-text-middle" style="color:green">{$data}</td>
+                        <td class="am-text-middle">
+                            <a href="<php>echo U("Home/Class/change?id=".$key);</php>" class="am-btn am-btn-success am-btn-xs">
+                                <!-- 转为支出 -->
+                                Convert into Expenses
+                            </a>
+                        </td>
+                        <td class="am-text-middle">
+                            <a href="<php>echo U("Home/Class/edit?id=".$key);</php>" class="am-btn am-btn-secondary am-btn-xs">
+                                <!-- 编辑 -->
+                                Edit
+                            </a>
+                            <a href="javascript:void(0);" onclick="isDelete('<php>echo U("Home/Class/del?id=".$key);</php>')" class="am-btn am-btn-danger am-btn-xs">
+                                <!-- 删除 -->
+                                Delete
+                            </a>
+                        </td>
+                        <td class="am-text-middle sortHandle">
+                            <i class="am-icon-arrows"></i>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
         </fieldset>
-    </form>
 
-    <fieldset id="in">
-        <legend class="am-cf">
-            <!-- <div class="am-fl">收入分类</div> -->
-            <div class="am-fl"> Income </div>
-            <div class="am-fr">
-                <!-- <button class="am-btn am-btn-xs am-btn-success am-round sortInEnable" style="display: none;" id="sortInSave">保存排序</button> -->
-                <button class="am-btn am-btn-xs am-btn-success am-round sortInEnable" style="display: none;" id="sortInSave">save sort</button>
-            </div>
-        </legend>
-        <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
-            <thead>
-                <tr>
-                    <!-- <th bgcolor="#FFFFFF">分类名称</th>
-                    <th bgcolor="#FFFFFF">收入</th>
-                    <th bgcolor="#FFFFFF">操作</th>
-                    <th bgcolor="#FFFFFF">排序</th> -->
-                    <th bgcolor="#FFFFFF">Category Name</th>
-                    <th bgcolor="#FFFFFF">Income</th>
-                    <th bgcolor="#FFFFFF">Operation</th>
-                    <th bgcolor="#FFFFFF">Sort</th>
-                </tr>
-            </thead>
-            <tbody id="sortClassIn">
-                <volist name="inMoneyClass" id="data">
-                <tr data-id="{$key}">
-                    <td class="am-text-middle" style="color:green">{$data}</td>
-                    <td class="am-text-middle">
-                        <a href="<php>echo U("Home/Class/change?id=".$key);</php>" class="am-btn am-btn-success am-btn-xs">
-                            <!-- 转为支出 -->
-                            Convert into Expenses
-                        </a>
-                    </td>
-                    <td class="am-text-middle">
-                        <a href="<php>echo U("Home/Class/edit?id=".$key);</php>" class="am-btn am-btn-secondary am-btn-xs">
-                            <!-- 编辑 -->
-                            Edit
-                        </a>
-                        <a href="javascript:void(0);" onclick="isDelete('<php>echo U("Home/Class/del?id=".$key);</php>')" class="am-btn am-btn-danger am-btn-xs">
-                            <!-- 删除 -->
-                            Delete
-                        </a>
-                    </td>
-                    <td class="am-text-middle sortHandle">
-                        <i class="am-icon-arrows"></i>
-                    </td>
-                </tr>
-                </volist>
-            </tbody>
-        </table>
-    </fieldset>
-
-    <fieldset id="out">
-        <legend>
-            <!-- <div class="am-fl">支出分类</div> -->
-            <div class="am-fl">Expenses</div>
-            <div class="am-fr">
-                <!-- <button class="am-btn am-btn-xs am-btn-success am-round sortOutEnable" style="display: none;" id="sortOutSave">保存排序</button> -->
-                <button class="am-btn am-btn-xs am-btn-success am-round sortOutEnable" style="display: none;" id="sortOutSave">save sort</button>
-            </div>
-        </legend>
-        <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
-            <thead>
-                <tr>
-                    <!-- <th bgcolor="#FFFFFF">分类名称</th>
-                    <th bgcolor="#FFFFFF">支出</th>
-                    <th bgcolor="#FFFFFF">操作</th>
-                    <th bgcolor="#FFFFFF">排序</th> -->
-                    <th bgcolor="#FFFFFF">Category name</th>
-                    <th bgcolor="#FFFFFF">Expenses</th>
-                    <th bgcolor="#FFFFFF">Operation</th>
-                    <th bgcolor="#FFFFFF">Sort</th>
-                </tr>
-            </thead>
-            <tbody id="sortClassOut">
-                <volist name="outMoneyClass" id="data">
-                <tr data-id="{$key}">
-                    <td class="am-text-middle" style="color:red">{$data}</td>
-                    <td class="am-text-middle">
-                        <a href="<php>echo U("Home/Class/change?id=".$key);</php>" class="am-btn am-btn-success am-btn-xs">
-                            <!-- 转为收入 -->
-                            Covert into Income
-                        </a>
-                    </td>
-                    <td class="am-text-middle">
-                        <a href="<php>echo U("Home/Class/edit?id=".$key);</php>" class="am-btn am-btn-secondary am-btn-xs">
-                            <!-- 编辑 -->
-                            Edit
-                        </a>
-                        <a href="javascript:void(0);" onclick="isDelete('<php>echo U("Home/Class/del?id=".$key);</php>')" class="am-btn am-btn-danger am-btn-xs">
-                            <!-- 删除 -->
-                            Delete
-                        </a>
-                    </td>
-                    <td class="am-text-middle sortHandle">
-                        <i class="am-icon-arrows"></i>
-                    </td>
-                </tr>
-                </volist>
-            </tbody>
-        </table>
-    </fieldset>
+        <fieldset id="out">
+            <legend>
+                <!-- <div class="am-fl">支出分类</div> -->
+                <div class="am-fl">Expenses</div>
+                <div class="am-fr">
+                    <!-- <button class="am-btn am-btn-xs am-btn-success am-round sortOutEnable" style="display: none;" id="sortOutSave">保存排序</button> -->
+                    <button class="am-btn am-btn-xs am-btn-success am-round sortOutEnable" style="display: none;" id="sortOutSave">save sort</button>
+                </div>
+            </legend>
+            <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
+                <thead>
+                    <tr>
+                        <!-- <th bgcolor="#FFFFFF">分类名称</th>
+                        <th bgcolor="#FFFFFF">支出</th>
+                        <th bgcolor="#FFFFFF">操作</th>
+                        <th bgcolor="#FFFFFF">排序</th> -->
+                        <th bgcolor="#FFFFFF">Category name</th>
+                        <th bgcolor="#FFFFFF">Expenses</th>
+                        <th bgcolor="#FFFFFF">Operation</th>
+                        <th bgcolor="#FFFFFF">Sort</th>
+                    </tr>
+                </thead>
+                <tbody id="sortClassOut">
+                    <volist name="outMoneyClass" id="data">
+                    <tr data-id="{$key}">
+                        <td class="am-text-middle" style="color:red">{$data}</td>
+                        <td class="am-text-middle">
+                            <a href="<php>echo U("Home/Class/change?id=".$key);</php>" class="am-btn am-btn-success am-btn-xs">
+                                <!-- 转为收入 -->
+                                Covert into Income
+                            </a>
+                        </td>
+                        <td class="am-text-middle">
+                            <a href="<php>echo U("Home/Class/edit?id=".$key);</php>" class="am-btn am-btn-secondary am-btn-xs">
+                                <!-- 编辑 -->
+                                Edit
+                            </a>
+                            <a href="javascript:void(0);" onclick="isDelete('<php>echo U("Home/Class/del?id=".$key);</php>')" class="am-btn am-btn-danger am-btn-xs">
+                                <!-- 删除 -->
+                                Delete
+                            </a>
+                        </td>
+                        <td class="am-text-middle sortHandle">
+                            <i class="am-icon-arrows"></i>
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
 </block>
 
 <block name="javascript">

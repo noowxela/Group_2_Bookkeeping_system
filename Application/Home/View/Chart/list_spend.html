@@ -1,119 +1,125 @@
 
-<label> {$y} Year Income/Expenses Detail </label>
+<div class="container-fluid mx-10">
 
-<div data-am-widget="tabs" class="am-tabs am-tabs-secondary" >
-<ul class="am-tabs-nav am-cf">
 
-        <li id="table-tab-outTable" style="background-color: #3bb4f2; color: #fff;" onclick="myfunction('outTable','inTable');" >Expense</li>
-        <li id="table-tab-inTable" style="" onclick="myfunction('inTable','outTable');">Income</li>
-</ul>
-</div>
-<div style="overflow-x:auto;">
-    <table id="outTable" class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm" style="width: 90%;margin-left: auto;margin-right: auto; display:inline-table;">
-    <thead>
-        <tr style="white-space: nowrap;">
-            <th width='80' bgcolor="#FFFFFF">Category</th>
-            <th width='50' bgcolor="#FFFFFF">Jan (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Feb (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Mar (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Apr (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">May (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Jun (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Jul (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Aug (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Sep (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Oct (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Nov (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Dec (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">{$y} Expenses</th>
-        </tr>
-    </thead>
-    <tbody class="">
-        <volist name="OutClassMoney" id="data" key = "k" >
-        <tr>
-            <td class="am-text-middle">{$key}</td>
-            <volist name="data" id="month" empty = "No Data">
-            <td class="am-text-middle">
-                <font class="money-format">{$month}</font>
-            </td>
+    <label> {$y} Year Income/Expenses Detail </label>
+
+    <div data-am-widget="tabs" class="am-tabs am-tabs-secondary" >
+    <ul class="am-tabs-nav am-cf">
+    
+            <li id="table-tab-outTable" style="background-color: #3bb4f2; color: #fff;" onclick="myfunction('outTable','inTable');" >Expense</li>
+            <li id="table-tab-inTable" style="" onclick="myfunction('inTable','outTable');">Income</li>
+    </ul>
+    </div>
+    <div style="overflow-x:auto;">
+        <table id="outTable" class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm" style="width: 90%;margin-left: auto;margin-right: auto; display:inline-table;">
+        <thead>
+            <tr style="white-space: nowrap;">
+                <th width='80' bgcolor="#FFFFFF">Category</th>
+                <th width='50' bgcolor="#FFFFFF">Jan (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Feb (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Mar (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Apr (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">May (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Jun (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Jul (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Aug (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Sep (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Oct (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Nov (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Dec (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">{$y} Expenses</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <volist name="OutClassMoney" id="data" key = "k" >
+            <tr>
+                <td class="am-text-middle">{$key}</td>
+                <volist name="data" id="month" empty = "No Data">
+                <td class="am-text-middle">
+                    <font class="money-format">{$month}</font>
+                </td>
+                </volist>
+                <volist name="OutSumClassMoney" id="data1" key ="k2">
+                    <if condition="($k eq $k2)">
+                        <td class="am-text-middle">
+                            <font class="money-format">{$data1}</font>
+                        </td>
+                    </if>
+                </volist>
+            </tr>
             </volist>
-            <volist name="OutSumClassMoney" id="data1" key ="k2">
-                <if condition="($k eq $k2)">
-                    <td class="am-text-middle">
-                        <font class="money-format">{$data1}</font>
-                    </td>
-                </if>
-            </volist>
-        </tr>
-        </volist>
-    </tbody>
-    <tfoot>
-        <tr>
-            <th width='80' style="white-space: nowrap;" bgcolor="#FFFFFF">Total Expenses<br/>(per month)</th>
-            <volist name="OutMoney" id="data" >
+        </tbody>
+        <tfoot>
+            <tr>
+                <th width='80' style="white-space: nowrap;" bgcolor="#FFFFFF">Total Expenses<br/>(per month)</th>
+                <volist name="OutMoney" id="data" >
+                    <td class="am-text-middle"><b>
+                        <font class="money-format" >{$data}</font>
+                    </b></td>
+                </volist>
                 <td class="am-text-middle"><b>
-                    <font class="money-format" >{$data}</font>
-                </b></td>
+                    <font class="money-format">{$OutSumMoney}</font>
+                </b></td>          
+            </tr>
+        </tfoot>
+    </table>
+    
+    <table id="inTable" class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm" style="width: 90%;margin-left: auto;margin-right: auto;display:none;">
+        <thead>
+            <tr style="white-space: nowrap;">
+                <th width='80' bgcolor="#FFFFFF">Category</th>
+                <th width='50' bgcolor="#FFFFFF">Jan (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Feb (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Mar (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Apr (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">May (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Jun (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Jul (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Aug (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Sep (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Oct (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Nov (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">Dec (RM)</th>
+                <th width='50' bgcolor="#FFFFFF">{$y} Income</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <volist name="InClassMoney" id="data" key = "k" >
+            <tr>
+                <td class="am-text-middle">{$key}</td>
+                <volist name="data" id="month" empty = "No Data">
+                <td class="am-text-middle">
+                    <font class="money-format">{$month}</font>
+                </td>
+                </volist>
+                <volist name="InSumClassMoney" id="data1" key ="k2">
+                    <if condition="($k eq $k2)">
+                        <td class="am-text-middle">
+                            <font class="money-format">{$data1}</font>
+                        </td>
+                    </if>
+                </volist>
+            </tr>
             </volist>
-            <td class="am-text-middle"><b>
-                <font class="money-format">{$OutSumMoney}</font>
-            </b></td>          
-        </tr>
-    </tfoot>
-</table>
-
-<table id="inTable" class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm" style="width: 90%;margin-left: auto;margin-right: auto;display:none;">
-    <thead>
-        <tr style="white-space: nowrap;">
-            <th width='80' bgcolor="#FFFFFF">Category</th>
-            <th width='50' bgcolor="#FFFFFF">Jan (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Feb (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Mar (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Apr (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">May (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Jun (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Jul (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Aug (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Sep (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Oct (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Nov (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">Dec (RM)</th>
-            <th width='50' bgcolor="#FFFFFF">{$y} Income</th>
-        </tr>
-    </thead>
-    <tbody class="">
-        <volist name="InClassMoney" id="data" key = "k" >
-        <tr>
-            <td class="am-text-middle">{$key}</td>
-            <volist name="data" id="month" empty = "No Data">
-            <td class="am-text-middle">
-                <font class="money-format">{$month}</font>
-            </td>
-            </volist>
-            <volist name="InSumClassMoney" id="data1" key ="k2">
-                <if condition="($k eq $k2)">
-                    <td class="am-text-middle">
-                        <font class="money-format">{$data1}</font>
-                    </td>
-                </if>
-            </volist>
-        </tr>
-        </volist>
-    </tbody>
-    <tfoot>
-        <tr>
-            <th width='80' style="white-space: nowrap;" bgcolor="#FFFFFF">Total Income<br/>(per month)</th>
-            <volist name="InMoney" id="data" >
+        </tbody>
+        <tfoot>
+            <tr>
+                <th width='80' style="white-space: nowrap;" bgcolor="#FFFFFF">Total Income<br/>(per month)</th>
+                <volist name="InMoney" id="data" >
+                    <td class="am-text-middle"><b>
+                        <font class="money-format" >{$data}</font>
+                    </b></td>
+                </volist>
                 <td class="am-text-middle"><b>
-                    <font class="money-format" >{$data}</font>
-                </b></td>
-            </volist>
-            <td class="am-text-middle"><b>
-                <font class="money-format">{$InSumMoney}</font>
-            </b></td>          
-        </tr>
-    </tfoot>
-</table>
+                    <font class="money-format">{$InSumMoney}</font>
+                </b></td>          
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+    
+
 </div>
 
 <script type="text/javascript">
