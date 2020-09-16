@@ -71,8 +71,8 @@
                           <foreach name="outMoneyClass" item="ClassName">
                             <td>
                               <php>
-                                echo '<p><img src="http://localhost/accounting-page/Application/Images/Icons/'.$ClassName.'.jpg" alt="'.$ClassName.'" width="150" height="150"><p>';
-                                echo "<br>";
+                                echo '<p><img src="__ICON__/'.$ClassName.'.jpg" alt="'.$ClassName.'" width="150" height="150"><p>';
+                                echo '<br>';
                                 echo '<input type="radio" id="category" name="add_class" value="'.$ClassName.'">';
                                 echo '<label for="category">'.$ClassName.'</label>';
                               </php>
