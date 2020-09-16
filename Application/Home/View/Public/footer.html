@@ -47,10 +47,10 @@ $(function(){
   // press the button to toggle the .dark-mode class
   button.addEventListener('click', () => {
     document.documentElement.classList.toggle('dark-mode')
-
     var elem = document.getElementById("dark_mode_button");
-    if (elem.value=="Dark_mode") elem.value = "Light_mode";
-    else elem.value = "Dark_mode";
+    console.log(elem.innerHTML);
+    if (elem.innerHTML=="Dark_mode") elem.innerHTML = "Light_mode";
+    else elem.innerHTML = "Dark_mode";
 
     // console.log(document.getElementById("dark_mode_button").value); 
     
