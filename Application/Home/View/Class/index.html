@@ -1,7 +1,7 @@
 <extend name="Public:common"/>
 <block name="main">
 <style>
-  #icon_box{
+  #expense_icon{
     margin-left: auto;
     margin-right: auto;
   }
@@ -18,7 +18,7 @@
             <div class="am-input-group">
                 <!-- <span class="am-input-group-label"><b>类别</b></span> -->
                 <span class="am-input-group-label"><b>Category Type</b></span>
-                <select id="select-type" class="am-form-field" name="class_type" >
+                <select id="select-type" class="am-form-field" name="class_type" onchange="changeType()">
                     <if condition="$ClassType eq 1">
                         <!-- <option value="1">收入</option> -->
                         <option value="1">Income</option>
@@ -33,100 +33,88 @@
                 </select>
             </div>
             <div><p></p></div> <!-- blank -->
-            <div class="am-input-group">
-                <span class="am-input-group-label"><b>Select a Category</b></span>
+
+            <div class="am-input-group" id="income" style="display: none">
+              <span class="am-input-group-label"><b>Category Name</b></span>
+              <input type="text" class="am-form-field" id="text-class" name="class_name" placeholder="Enter category name" >
             </div>
-            <div><p></p></div> <!-- blank -->
-            <table id="icon_box" style="width:75%">
-              <tr>  <!-- Row 1 -->
-                <td>  <!-- Food -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Food.jpg" alt="Food" width="150" height="150">
-                  <br>
-                  <input type="radio" id="food" name="class_name" value="Food">
-                  <label for="food"> Food </label>
-                </td>
-                <td>  <!-- Self-Development -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Self_Development.jpg" alt="Self_Development" width="150" height="150">
-                  <br>
-                  <input type="radio" id="self_development" name="class_name" value="Self_Development">
-                  <label for="self_development"> Self Development </label>
-                </td>
-                <td>  <!-- Transportation -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Transportation.jpg" alt="Transportation" width="150" height="150">
-                  <br>
-                  <input type="radio" id="transportation" name="class_name" value="Transportation">
-                  <label for="transportation"> Transportation </label>
-                </td>
-                <td>  <!-- Bill -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Bill.jpg" alt="Bill" width="150" height="150">
-                  <br>
-                  <input type="radio" id="bill" name="class_name" value="Bill">
-                  <label for="bill"> Bills </label>
-                </td>
-                <td>  <!-- Petrol -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Petrol.jpg" alt="Petrol" width="150" height="150">
-                  <br>
-                  <input type="radio" id="petrol" name="class_name" value="Petrol">
-                  <label for="petrol"> Petrol </label>
-                </td>
-                <td>  <!-- Allowance -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Allowance.jpg" alt="Allowance" width="150" height="150">
-                  <br>
-                  <input type="radio" id="allowance" name="class_name" value="Allowance">
-                  <label for="allowance"> Allowance </label>
-                </td>
-                <td>  <!-- Salary -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Salary.jpg" alt="Salary" width="150" height="150">
-                  <br>
-                  <input type="radio" id="salary" name="class_name" value="Salary">
-                  <label for="salary"> Salary </label>
-                </td>
-              </tr>
-              <tr>  <!-- Row 2 -->
-                <td>  <!-- Household -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Household.jpg" alt="Household" width="150" height="150">
-                  <br>
-                  <input type="radio" id="household" name="class_name" value="Household">
-                  <label for="household"> Household </label>
-                </td>
-                <td>  <!-- Health -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Health.jpg" alt="Health" width="150" height="150">
-                  <br>
-                  <input type="radio" id="health" name="class_name" value="Health">
-                  <label for="health"> Health </label>
-                </td>
-                <td>  <!-- Clothes -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Clothes.jpg" alt="Clothes" width="150" height="150">
-                  <br>
-                  <input type="radio" id="clothes" name="class_name" value="Clothes">
-                  <label for="clothes"> Clothing </label>
-                </td>
-                <td>  <!-- Education -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Education.jpg" alt="Education" width="150" height="150">
-                  <br>
-                  <input type="radio" id="education" name="class_name" value="Education">
-                  <label for="education"> Education </label>
-                </td>
-                <td>  <!-- Gifts -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Gift.jpg" alt="Gift" width="150" height="150">
-                  <br>
-                  <input type="radio" id="gift" name="class_name" value="Gift">
-                  <label for="gift"> Gifts </label>
-                </td>
-                <td>  <!-- Bonus -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Bonus.jpg" alt="Bonus" width="150" height="150">
-                  <br>
-                  <input type="radio" id="bonus" name="class_name" value="Bonus">
-                  <label for="bonus"> Bonus </label>
-                </td>
-                <td>  <!-- Other -->
-                  <img src="http://localhost/accounting-page/Application/Images/Icons/Other.jpg" alt="Other" width="150" height="150">
-                  <br>
-                  <input type="radio" id="other" name="class_name" value="Other">
-                  <label for="other"> Others </label>
-                </td>
-              </tr>
-            </table>
+
+            <div class="am-input-group" id="expense">
+                <span class="am-input-group-label"><b>Select a Category</b></span>
+                <table id="expense_icon" style="width:75%">
+                  <tr>  <!-- Row 1 -->
+                    <td>  <!-- Food -->
+                      <img src="http://localhost/accounting-page/Application/Images/Icons/Food.jpg" alt="Food" width="150" height="150">
+                      <br>
+                      <input type="radio" id="food" name="class_name" value="Food">
+                      <label for="food"> Food </label>
+                    </td>
+                    <td>  <!-- Self-Development -->
+                      <img src="http://localhost/accounting-page/Application/Images/Icons/Self Development.jpg" alt="Self Development" width="150" height="150">
+                      <br>
+                      <input type="radio" id="self_development" name="class_name" value="Self Development">
+                      <label for="self_development"> Self Development </label>
+                    </td>
+                    <td>  <!-- Transportation -->
+                      <img src="http://localhost/accounting-page/Application/Images/Icons/Transportation.jpg" alt="Transportation" width="150" height="150">
+                      <br>
+                      <input type="radio" id="transportation" name="class_name" value="Transportation">
+                      <label for="transportation"> Transportation </label>
+                    </td>
+                    <td>  <!-- Bill -->
+                      <img src="http://localhost/accounting-page/Application/Images/Icons/Bill.jpg" alt="Bill" width="150" height="150">
+                      <br>
+                      <input type="radio" id="bill" name="class_name" value="Bill">
+                      <label for="bill"> Bills </label>
+                    </td>
+                    <td>  <!-- Petrol -->
+                      <img src="http://localhost/accounting-page/Application/Images/Icons/Petrol.jpg" alt="Petrol" width="150" height="150">
+                      <br>
+                      <input type="radio" id="petrol" name="class_name" value="Petrol">
+                      <label for="petrol"> Petrol </label>
+                    </td>
+                  </tr>
+                  <tr>  <!-- Row 2 -->
+                    <td>  <!-- Household -->
+                      <img src="http://localhost/accounting-page/Application/Images/Icons/Household.jpg" alt="Household" width="150" height="150">
+                      <br>
+                      <input type="radio" id="household" name="class_name" value="Household">
+                      <label for="household"> Household </label>
+                    </td>
+                    <td>  <!-- Health -->
+                      <img src="http://localhost/accounting-page/Application/Images/Icons/Health.jpg" alt="Health" width="150" height="150">
+                      <br>
+                      <input type="radio" id="health" name="class_name" value="Health">
+                      <label for="health"> Health </label>
+                    </td>
+                    <td>  <!-- Clothes -->
+                      <img src="http://localhost/accounting-page/Application/Images/Icons/Clothes.jpg" alt="Clothes" width="150" height="150">
+                      <br>
+                      <input type="radio" id="clothes" name="class_name" value="Clothes">
+                      <label for="clothes"> Clothing </label>
+                    </td>
+                    <td>  <!-- Education -->
+                      <img src="http://localhost/accounting-page/Application/Images/Icons/Education.jpg" alt="Education" width="150" height="150">
+                      <br>
+                      <input type="radio" id="education" name="class_name" value="Education">
+                      <label for="education"> Education </label>
+                    </td>
+                    <td>  <!-- Gifts -->
+                      <img src="http://localhost/accounting-page/Application/Images/Icons/Gift.jpg" alt="Gift" width="150" height="150">
+                      <br>
+                      <input type="radio" id="gift" name="class_name" value="Gift">
+                      <label for="gift"> Gifts </label>
+                    </td>
+                    <td>  <!-- Other -->
+                      <img src="http://localhost/accounting-page/Application/Images/Icons/Others.jpg" alt="Others" width="150" height="150">
+                      <br>
+                      <input type="radio" id="other" name="class_name" value="Others">
+                      <label for="other"> Others </label>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+
 
 
             <!-- <div><p></p></div> -->
@@ -277,6 +265,20 @@
             $("#sortOutSave").click(function(){
                 SaveSort(sortableOut.toArray(), 'out');
             });
+        }
+
+        function changeType() {
+          var x = document.getElementById("select-type").value;
+          if(x == 1)
+          {
+            document.getElementById("expense").style.display = "none";
+            document.getElementById("income").style.display = "";
+          }
+          else if(x == 2)
+          {
+            document.getElementById("expense").style.display = "";
+            document.getElementById("income").style.display = "none";
+          }
         }
 
         function SaveSort(order, type) {

@@ -38,93 +38,7 @@
                     <input type="hidden" name="add_type" value="2">
 
 
-                    <div class="am-input-group">
-                        <!-- <span class="am-input-group-label"><b>分类</b></span> -->
-                        <span class="am-input-group-label"><b>Select a Category</b></span>
-                    </div>
-                    <div><p></p></div>
-                    <div>
-                        <table id="icon_box" style="width:75%">
-                          <tr>  <!-- Row 1 -->
-                            <td>  <!-- Food -->
-                              <img src="http://localhost/accounting-page/Application/Images/Icons/Food.jpg" alt="Food" width="150" height="150">
-                              <br>
-                              <input type="radio" id="food" name="add_class" value="Food">
-                              <label for="food"> Food </label>
-                            </td>
-                            <td>  <!-- Self-Development -->
-                              <img src="http://localhost/accounting-page/Application/Images/Icons/Self_Development.jpg" alt="Self_Development" width="150" height="150">
-                              <br>
-                              <input type="radio" id="self_development" name="add_class" value="Self_Development">
-                              <label for="self_development"> Self Development </label>
-                            </td>
-                            <td>  <!-- Transportation -->
-                              <img src="http://localhost/accounting-page/Application/Images/Icons/Transportation.jpg" alt="Transportation" width="150" height="150">
-                              <br>
-                              <input type="radio" id="transportation" name="add_class" value="Transportation">
-                              <label for="transportation"> Transportation </label>
-                            </td>
-                            <td>  <!-- Bill -->
-                              <img src="http://localhost/accounting-page/Application/Images/Icons/Bill.jpg" alt="Bill" width="150" height="150">
-                              <br>
-                              <input type="radio" id="bill" name="add_class" value="Bill">
-                              <label for="bill"> Bills </label>
-                            </td>
-                            <td>  <!-- Petrol -->
-                              <img src="http://localhost/accounting-page/Application/Images/Icons/Petrol.jpg" alt="Petrol" width="150" height="150">
-                              <br>
-                              <input type="radio" id="petrol" name="add_class" value="Petrol">
-                              <label for="petrol"> Petrol </label>
-                            </td>
-                          </tr>
-                          <tr>  <!-- Row 2 -->
-                            <td>  <!-- Household -->
-                              <img src="http://localhost/accounting-page/Application/Images/Icons/Household.jpg" alt="Household" width="150" height="150">
-                              <br>
-                              <input type="radio" id="household" name="add_class" value="Household">
-                              <label for="household"> Household </label>
-                            </td>
-                            <td>  <!-- Health -->
-                              <img src="http://localhost/accounting-page/Application/Images/Icons/Health.jpg" alt="Health" width="150" height="150">
-                              <br>
-                              <input type="radio" id="health" name="add_class" value="Health">
-                              <label for="health"> Health </label>
-                            </td>
-                            <td>  <!-- Clothes -->
-                              <img src="http://localhost/accounting-page/Application/Images/Icons/Clothes.jpg" alt="Clothes" width="150" height="150">
-                              <br>
-                              <input type="radio" id="clothes" name="add_class" value="Clothes">
-                              <label for="clothes"> Clothing </label>
-                            </td>
-                            <td>  <!-- Education -->
-                              <img src="http://localhost/accounting-page/Application/Images/Icons/Education.jpg" alt="Education" width="150" height="150">
-                              <br>
-                              <input type="radio" id="education" name="add_class" value="Education">
-                              <label for="education"> Education </label>
-                            </td>
-                            <td>  <!-- Gifts -->
-                              <img src="http://localhost/accounting-page/Application/Images/Icons/Gift.jpg" alt="Gift" width="150" height="150">
-                              <br>
-                              <input type="radio" id="gift" name="add_class" value="Gift">
-                              <label for="gift"> Gifts </label>
-                            </td>
-                            <td>  <!-- Other -->
-                              <img src="http://localhost/accounting-page/Application/Images/Icons/Other.jpg" alt="Other" width="150" height="150">
-                              <br>
-                              <input type="radio" id="other" name="add_class" value="Other">
-                              <label for="other"> Others </label>
-                            </td>
-                          </tr>
-                        </table>
-                        <!-- <select id="select-class" class="am-form-field" name="add_class">
-                        <foreach name="outMoneyClass" item="ClassName">
-                            <option value="{$key}">{$ClassName}</option>
-                        </foreach>
-                        </select> -->
 
-
-                        <!-- <span class="am-form-caret"></span> -->
-                    </div>
 
 
                     <div><p></p></div>
@@ -149,6 +63,34 @@
                     </div>
                     <div><p></p></div>
                     <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>分类</b></span> -->
+                        <span class="am-input-group-label"><b>Select a Category</b></span>
+                    </div>
+                    <div><p></p></div>
+                    <div>
+                      <table id="icon_box" style="width:75%">
+                        <tr>
+                          <foreach name="outMoneyClass" item="ClassName">
+                            <td>
+                              <php>
+                                echo '<p><img src="http://localhost/accounting-page/Application/Images/Icons/'.$ClassName.'.jpg" alt="'.$ClassName.'" width="150" height="150"><p>';
+                                echo "<br>";
+                                echo '<input type="radio" id="category" name="add_class" value="'.$ClassName.'">';
+                                echo '<label for="category">'.$ClassName.'</label>';
+                              </php>
+                            </td>
+                          </foreach>
+                        </tr>
+                      </table>
+                        <!-- <select id="select-class" class="am-form-field" name="add_class">
+                        <foreach name="outMoneyClass" item="ClassName">
+                            <option value="{$key}">{$ClassName}</option>
+                        </foreach>
+                        </select> -->
+                        <!-- <span class="am-form-caret"></span> -->
+                    </div>
+                    <div><p></p></div>
+                    <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>备注</b></span> -->
                         <span class="am-input-group-label"><b>Remarks</b></span>
                         <!-- <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="输入支出信息"> -->
@@ -162,7 +104,7 @@
                     <div class="file-group-out" style="display: none;"><p></p></div>
                     <div class="am-input-group file-group-out" style="display: none;">
                         <!-- <span class="am-input-group-label"><b>附件</b></span> -->
-                        <span class="am-input-group-label"><b>attachment</b></span>
+                        <span class="am-input-group-label"><b>Attachment</b></span>
                         <div id="file-list-out" class="am-form-field" style="height: auto;"></div>
                     </div>
                     <div><p></p></div>
@@ -189,47 +131,7 @@
                 <form class="am-form am-form-horizontal" enctype="multipart/form-data" method="post" data-am-validator="H5validation:false">
                     <!-- <legend>添加收入</legend> -->
                     <legend>Income</legend>
-                    <div class="am-input-group">
-                        <!-- <span class="am-input-group-label"><b>分类</b></span> -->
-                        <span class="am-input-group-label"><b>Select a Category</b></span>
-                        <!-- <select id="select-class" class="am-form-field" name="add_class">
-                        <foreach name="inMoneyClass" item="ClassName">
-                            <option value="{$key}">{$ClassName}</option>
-                        </foreach>
-                        </select>
-                        <span class="am-form-caret"></span> -->
-                    </div>
-                    <div><p></p></div>
-                    <div>
-                      <table id="icon_box" style="width:75%">
-                        <tr>  <!-- Row 1 -->
-                          <td>  <!-- Allowance -->
-                            <img src="http://localhost/accounting-page/Application/Images/Icons/Allowance.jpg" alt="Allowance" width="150" height="150">
-                            <br>
-                            <input type="radio" id="allowance" name="add_class" value="Allowance">
-                            <label for="allowance"> Allowance </label>
-                          </td>
-                          <td>  <!-- Salary -->
-                            <img src="http://localhost/accounting-page/Application/Images/Icons/Salary.jpg" alt="Salary" width="150" height="150">
-                            <br>
-                            <input type="radio" id="salary" name="add_class" value="Salary">
-                            <label for="salary"> Salary </label>
-                          </td>
-                          <td>  <!-- Bonus -->
-                            <img src="http://localhost/accounting-page/Application/Images/Icons/Bonus.jpg" alt="Bonus" width="150" height="150">
-                            <br>
-                            <input type="radio" id="bonus" name="add_class" value="Bonus">
-                            <label for="bonus"> Bonus </label>
-                          </td>
-                          <td>  <!-- Other -->
-                            <img src="http://localhost/accounting-page/Application/Images/Icons/Other.jpg" alt="Other" width="150" height="150">
-                            <br>
-                            <input type="radio" id="other" name="add_class" value="Other">
-                            <label for="other"> Others </label>
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
+
                     <div><p></p></div>
                     <input type="hidden" name="add_type" value="1">
                     <div class="am-input-group">
@@ -251,7 +153,18 @@
                         <span class="am-form-caret"></span>
                     </div>
                     <div><p></p></div>
+                    <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>分类</b></span> -->
+                        <span class="am-input-group-label"><b>Category</b></span>
+                        <select id="select-class" class="am-form-field" name="add_class">
+                        <foreach name="inMoneyClass" item="ClassName">
+                            <option value="{$key}">{$ClassName}</option>
+                        </foreach>
+                        </select>
 
+                        <span class="am-form-caret"></span>
+                    </div>
+                    <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>备注</b></span> -->
                         <span class="am-input-group-label"><b>Remarks</b></span>
