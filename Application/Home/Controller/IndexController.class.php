@@ -151,6 +151,29 @@ class IndexController extends BaseController {
         // var_dump($daily_data) ;
         // exit();
         
+
+        // if(IS_POST){
+        if(isset($_POST['chk_id'])){
+            $chk_id = array();
+            $chk_id = $_POST['chk_id'];
+            $uid = session('uid');
+
+
+            $refURL = GetRefURL();
+            $Msg = DelMultipleIdData($uid, $chk_id);
+
+            if($Msg[0]) {
+                ClearDataCache(); //清除缓存
+                ShowAlert($Msg[1],$refURL);
+                $this -> display('Public/common');
+            }else{
+                ShowAlert($Msg[1],$refURL);
+                $this -> display('Public/common');
+            }
+
+        }
+
+
         //输出用户名
         $this -> assign('UserName', session('username'));
         
@@ -159,6 +182,7 @@ class IndexController extends BaseController {
         
         //实例化显示
         $this -> display();
+
     }
     
     public function test(){
