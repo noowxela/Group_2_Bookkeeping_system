@@ -15,17 +15,17 @@
         <ul class="am-tabs-nav am-cf">
             <if condition="$type eq 1">
                 <!-- <li class=""><a href="[data-tab-panel-2]">支出</a></li> -->
-                <li class=""><a href="[data-tab-panel-2]">Expense</a></li>
+                <li class=""><a href="[data-tab-panel-2]"><i class="am-icon-minus-circle"></i> Expense</a></li>
                 <!-- <li class="am-active"><a href="[data-tab-panel-1]">收入</a></li> -->
-                <li class="am-active"><a href="[data-tab-panel-1]">Income</a></li>
+                <li class="am-active"><a href="[data-tab-panel-1]"><i class="am-icon-plus-circle"></i> Income</a></li>
             <else/>
                 <!-- <li class="am-active"><a href="[data-tab-panel-2]">支出</a></li> -->
-                <li class="am-active"><a href="[data-tab-panel-2]">Expense</a></li>
+                <li class="am-active"><a href="[data-tab-panel-2]"><i class="am-icon-minus-circle"></i> Expense</a></li>
                 <!-- <li class=""><a href="[data-tab-panel-1]">收入</a></li> -->
-                <li class=""><a href="[data-tab-panel-1]">Income</a></li>
+                <li class=""><a href="[data-tab-panel-1]"><i class="am-icon-plus-circle"></i> Income</a></li>
             </if>
             <!-- <li class=""><a href="__APP__/Home/Add/transfer">转账</a></li> -->
-            <li class=""><a href="__APP__/Home/Add/transfer">transfer</a></li>
+            <li class=""><a href="__APP__/Home/Add/transfer"><i class="am-icon-random"></i> Transfer</a></li>
 
         </ul>
         <div class="am-tabs-bd">
@@ -45,7 +45,7 @@
 
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>金额</b></span> -->
-                        <span class="am-input-group-label"><b>Amount</b></span>
+                        <span class="am-input-group-label"><b><i class="am-icon-money"></i> Amount</b></span>
 
                         <!-- <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="输入支出金额"> -->
                         <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="Key In Expense Amount">
@@ -54,7 +54,7 @@
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>账户</b></span> -->
-                        <span class="am-input-group-label"><b>Account</b></span>
+                        <span class="am-input-group-label"><b><i class="am-icon-bank"></i> Account</b></span>
                         <select id="select-funds" class="am-form-field" name="add_funds">
                         <foreach name="FundsData" item="data">
                             <option value="{$data.id}">{$data.name}</option>
@@ -65,7 +65,7 @@
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>分类</b></span> -->
-                        <span class="am-input-group-label"><b>Select a Category</b></span>
+                        <span class="am-input-group-label"><b><i class="am-icon-bars"></i> Select a Category</b></span>
                     </div>
                     <div><p></p></div>
                     <div>
@@ -93,7 +93,7 @@
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>备注</b></span> -->
-                        <span class="am-input-group-label"><b>Remarks</b></span>
+                        <span class="am-input-group-label"><b><i class="am-icon-comments"></i> Remarks</b></span>
                         <!-- <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="输入支出信息"> -->
                         <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="Key In Expense info">
                         <span class="am-input-group-btn am-form-file">
@@ -111,7 +111,7 @@
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>时间</b></span> -->
-                        <span class="am-input-group-label"><b>Time</b></span>
+                        <span class="am-input-group-label"><b><i class="am-icon-clock-o"></i> Date</b></span>
                         <input type="date" class="am-form-field" id="text-time" name="add_time" value="<php>echo date('Y-m-d',time());</php>" style="height: auto;" />
                     </div>
 
@@ -137,7 +137,7 @@
                     <input type="hidden" name="add_type" value="1">
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>金额</b></span> -->
-                        <span class="am-input-group-label"><b>Amount</b></span>
+                        <span class="am-input-group-label"><b><i class="am-icon-money"></i> Amount</b></span>
                         <!-- <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="输入收入金额"> -->
                         <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="Key In Income Amount">
                         <p></p>
@@ -145,7 +145,7 @@
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>账户</b></span> -->
-                        <span class="am-input-group-label"><b>Account</b></span>
+                        <span class="am-input-group-label"><b><i class="am-icon-bank"></i> Account</b></span>
                         <select id="select-funds" class="am-form-field" name="add_funds">
                         <foreach name="FundsData" item="data">
                             <option value="{$data.id}">{$data.name}</option>
@@ -156,7 +156,7 @@
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>分类</b></span> -->
-                        <span class="am-input-group-label"><b>Category</b></span>
+                        <span class="am-input-group-label"><b><i class="am-icon-bars"></i> Category</b></span>
                         <select id="select-class" class="am-form-field" name="add_class">
                         <foreach name="inMoneyClass" item="ClassName">
                             <option value="{$key}">{$ClassName}</option>
@@ -168,7 +168,7 @@
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>备注</b></span> -->
-                        <span class="am-input-group-label"><b>Remarks</b></span>
+                        <span class="am-input-group-label"><b><i class="am-icon-comments"></i> Remarks</b></span>
                         <!-- <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="输入支出信息"> -->
                         <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="Key In Income info">
                         <span class="am-input-group-btn am-form-file">
@@ -186,7 +186,7 @@
                     <div><p></p></div>
                     <div class="am-input-group">
                         <!-- <span class="am-input-group-label"><b>时间</b></span> -->
-                        <span class="am-input-group-label"><b>Time</b></span>
+                        <span class="am-input-group-label"><b><i class="am-icon-clock-o"></i> Date</b></span>
                         <input type="date" class="am-form-field" id="text-time" name="add_time" value="<php>echo date('Y-m-d',time());</php>" style="height: auto;"/>
                     </div>
                     <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
