@@ -1,85 +1,90 @@
 <p></p>
-<table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
-    <thead>
-        <tr>
+<form class="am-form am-form-horizontal" method="post" data-am-validator="H5validation:false">
 
-            <th width='80' bgcolor="#FFFFFF">
-                <label class="container">
-                <input type="checkbox" class="select-all" id="select-all" onclick="selectAll()"> Select All
-                <span class="checkmark"></span>
-              </label>
+    <table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm">
+        <thead>
+            <tr>
 
-              <if condition="$data.classid gt 0">    
-                <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{chk_id[]}')" ><input id="submit" name="submit" type="submit" class="btn btn-danger" value="Delete Selected Row(s)" ></a>
-            <else />
-                <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/')"><input id="submit" name="submit" type="submit" class="btn btn-danger" value="Delete Selected Row(s)" ></a>
-            </if>
+            
+                <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
+                <th width='80' bgcolor="#FFFFFF">Category</th>
+                <!--<th width='80' bgcolor="#FFFFFF">金额</th>-->
+                <th width='80' bgcolor="#FFFFFF">Amount</th>
+                <!--<th width='80' bgcolor="#FFFFFF">收支</th>-->
+                <th width='80' bgcolor="#FFFFFF">Income/Expenses</th>
+                <!--<th width='110' bgcolor="#FFFFFF">时间</th>-->
+                <th width='110' bgcolor="#FFFFFF">Time</th>
+                <!--<th width='100' bgcolor="#FFFFFF">备注</th>-->
+                <th width='100' bgcolor="#FFFFFF">Remarks</th>
+                <!--<th width='80' bgcolor="#FFFFFF">操作</th>-->
+                <th width='80' bgcolor="#FFFFFF">Manage</th>
+                <th width='80' bgcolor="#FFFFFF">
+                    <label class="container">
+                        <input type="checkbox" class="select-all" id="select-all" onclick="selectAll()"> Select All
+                        <span class="checkmark"></span>
+                    </label>
+                    <p><input type="submit" class="am-btn am-btn-secondary am-btn-block" name="class_submit" value="Delete Selected Rows"></p>
 
-            </th>
-            <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
-            <th width='80' bgcolor="#FFFFFF">Category</th>
-            <!--<th width='80' bgcolor="#FFFFFF">金额</th>-->
-            <th width='80' bgcolor="#FFFFFF">Amount</th>
-            <!--<th width='80' bgcolor="#FFFFFF">收支</th>-->
-            <th width='80' bgcolor="#FFFFFF">Income/Expenses</th>
-            <!--<th width='110' bgcolor="#FFFFFF">时间</th>-->
-            <th width='110' bgcolor="#FFFFFF">Time</th>
-            <!--<th width='100' bgcolor="#FFFFFF">备注</th>-->
-            <th width='100' bgcolor="#FFFFFF">Remarks</th>
-            <!--<th width='80' bgcolor="#FFFFFF">操作</th>-->
-            <th width='80' bgcolor="#FFFFFF">Manage</th>
-        </tr>
-    </thead>
-    <tbody class="">
-        <volist name="ShowData" id="data">
-        <tr>
-            <!--<td> <input id="chk_id[]" name="chk_all" type="checkbox" value=$data.id/></td>-->
-                    <td>
-                        <label class="container">
-                            <input type="checkbox" class="check-mark" value={$data.id}>
-                            <span class="checkmark"></span>
-                        </label>
-                    </td>
-            <td class="am-text-middle">{$data.class}</td>
-            <td class="am-text-middle">
-                <if condition="$data.classid gt 0">
-                    <if condition="$data.typeid eq 1">
-                        <font class="am-text-success money-format">{$data.money}</font>
-                    <elseif condition="$data.typeid eq 2" />
-                        <font class="am-text-danger money-format">{$data.money}</font>
+
+                    <!-- <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{chk_id[]}')" ><input id="submit" name="submit" type="submit" class="btn btn-danger" value="Delete Selected Row(s)" ></a> -->
+
+                </th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <volist name="ShowData" id="data">
+            <tr>
+                <!--<td> <input id="chk_id[]" name="chk_all" type="checkbox" value=$data.id/></td>-->
+            
+                <td class="am-text-middle">{$data.class}</td>
+                <td class="am-text-middle">
+                    <if condition="$data.classid gt 0">
+                        <if condition="$data.typeid eq 1">
+                            <font class="am-text-success money-format">{$data.money}</font>
+                        <elseif condition="$data.typeid eq 2" />
+                            <font class="am-text-danger money-format">{$data.money}</font>
+                        <else />
+                            <font class="money-format">{$data.money}</font>
+                        </if>
                     <else />
                         <font class="money-format">{$data.money}</font>
                     </if>
-                <else />
-                    <font class="money-format">{$data.money}</font>
-                </if>
-            </td>
-            <td class="am-text-middle">{$data.funds} {$data.type}</td>
-            <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
-            <td class="am-text-middle">{$data.mark}</td>
-            <td class="am-text-middle">
-                <if condition="$data.classid gt 0">
-                    <!--<a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>-->
-                    <a href="__APP__/Home/Edit/index/id/{$data.id}">Edit </a>
-                    <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> 删除</a>-->
-                    <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> Delete</a>
-                <else />
-                    <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
-                    <a href="__APP__/Home/Edit/transfer/id/{$data.id}">Edit</a>
-                    <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>-->
-                    <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/')"> Delete</a>
-                </if>
-            </td>
+                </td>
+                <td class="am-text-middle">{$data.funds} {$data.type}</td>
+                <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
+                <td class="am-text-middle">{$data.mark}</td>
+                <td class="am-text-middle">
+                    <if condition="$data.classid gt 0">
+                        <!--<a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>-->
+                        <a href="__APP__/Home/Edit/index/id/{$data.id}">Edit </a>
+                        <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> 删除</a>-->
+                        <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> Delete</a>
+                    <else />
+                        <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
+                        <a href="__APP__/Home/Edit/transfer/id/{$data.id}">Edit</a>
+                        <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>-->
+                        <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> Delete</a>
+                    </if>
+                </td>
 
-            <!--code-->
+                <!--code-->
+                <td>
+                    <label class="container">
+                        <input type="checkbox" class="check-mark" name='chk_id[]' value={$data.id}>
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
 
 
-        </tr>
+            </tr>
 
-        </volist>
-        <!--<input id="submit" name="submit" type="submit" class="btn btn-danger" value="Delete Selected Row(s)" />-->
-    </tbody>
-</table>
+            </volist>
+            <!--<input id="submit" name="submit" type="submit" class="btn btn-danger" value="Delete Selected Row(s)" />-->
+        </tbody>
+    </table>
+</form>
+
+
 
 <!--分页大于1时显示-->
 <if condition="$PageMax gt 1">
@@ -120,17 +125,6 @@
     <p><a href="__APP__/Home/Index/index#money-table" class="am-btn am-btn-block am-btn-default">More records details</a></p>
 </if>
 
-<?php
-if(isset($_POST['chk_id']))
-{
-    $arr = $_POST['chk_id'];
-    foreach ($arr as $id) {
-        @mysqli_query($con,"DELETE * FROM 'xxjzaccount' WHERE 'acid' = " .$id);
-    }
-    $msg = "Deleted Successfully!";
-    header("Location: index.php?msg=$msg");
-}
-?>
 
 <script src="js/jquery-1.10.2.js"></script>
 <script type="text/javascript">

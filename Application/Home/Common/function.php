@@ -684,6 +684,30 @@
             return array(false,'非法操作(=_=)');
         }
     }
+
+    //删除指定记账id数据
+    function DelMultipleIdData($uid, $ids) {
+        
+        
+        $where = array();
+        $where['acid'] = array('in', implode(",",$ids));
+
+
+        if(is_numeric($ids[0])){
+            $DbData = M('account')->where($where)->delete();
+            if($DbData > 0){
+                DelImageData($uid, $id);
+                return array(true,'已成功删除'.$DbData.'条数据(^_^)');
+            }elseif($DbData === 0){
+                return array(false,'未找到你要删除的数据(@_@)');
+            }else{
+                return array(false,'数据库异常(*_*)');
+            }
+        }else{
+            return array(false,'非法操作(=_=)');
+        }
+        
+    }
     
     //获取分类id
     function GetClassId($ClassName) {
