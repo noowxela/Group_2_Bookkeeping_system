@@ -18,7 +18,7 @@
         <div style="height:450px; display: flex;">
             <div id="chart-year" style="height:420px; flex: 70%; display: 'inline-block';" ></div>
             <div style=" flex: 30%; float: right; padding-right: 40px;">
-                <label style="padding-bottom: 15px; font-size: 18px;"> Fund Account Summary </label>
+                <label class='table-title' style="padding-bottom: 15px;"> Fund Account Summary </label>
                 <table id="fundTable" class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm" >
                     <thead>
                         <tr>
@@ -424,19 +424,14 @@
             chartInClass.setOption(optionNoDataIn);
             chartOutClass.setOption(optionNoDataOut);
 
-            if(inClassDataLength < 5){
+
+            if(inClassDataLength > 0){
                 chartInClass.clear();
                 chartInClass.hideLoading();
                 chartInClass.setOption(optionInClass);
             }
 
-            if(inClassDataLength > 5){
-                chartInClass.clear();
-                chartInClass.hideLoading();
-                chartInClass.setOption(optionInClass);
-            }
-
-            if(outClassDataLength < 5){
+            if(outClassDataLength > 0){
                 chartOutClass.clear();
                 chartOutClass.hideLoading();
                 chartOutClass.setOption(optionOutClass);

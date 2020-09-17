@@ -2,17 +2,17 @@
 <div class="container-fluid mx-10">
 
 
-    <label> {$y} Year Income/Expenses Detail </label>
+    <label class="table-title"> {$y} Year Income/Expenses Detail </label>
 
     <div data-am-widget="tabs" class="am-tabs am-tabs-secondary" >
     <ul class="am-tabs-nav am-cf">
     
-            <li id="table-tab-outTable" style="background-color: #3bb4f2; color: #fff;" onclick="myfunction('outTable','inTable');" >Expense</li>
-            <li id="table-tab-inTable" style="" onclick="myfunction('inTable','outTable');">Income</li>
+            <li id="table-tab-outTable" style="font-size: 13px; background-color: #3bb4f2; color: #fff;" onclick="myfunction('outTable','inTable');" >Expense</li>
+            <li id="table-tab-inTable" style="font-size: 13px;" onclick="myfunction('inTable','outTable');">Income</li>
     </ul>
     </div>
     <div style="overflow-x:auto;">
-        <table id="outTable" class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm" style="width: 90%;margin-left: auto;margin-right: auto; display:inline-table;">
+        <table id="outTable" class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm" style="width: 90%;margin-left: auto;margin-right: auto; display:table;">
         <thead>
             <tr style="white-space: nowrap;">
                 <th width='80' bgcolor="#FFFFFF">Category</th>
@@ -31,7 +31,7 @@
                 <th width='50' bgcolor="#FFFFFF">{$y} Expenses</th>
             </tr>
         </thead>
-        <tbody class="">
+        <tbody>
             <volist name="OutClassMoney" id="data" key = "k" >
             <tr>
                 <td class="am-text-middle">{$key}</td>
@@ -129,9 +129,9 @@ function myfunction(newTable, currentTable){
     // document.getElementById(currentTable).style.visibility = 'hidden';
     // document.getElementById(newTable).style.visibility = 'visible';
     document.getElementById(currentTable).style.display = 'none';
-    document.getElementById(newTable).style.display = 'inline-table';
-    document.getElementById("table-tab-"+newTable).style = "background-color: #3bb4f2; color: #fff;";
-    document.getElementById("table-tab-"+currentTable).style = "";
+    document.getElementById(newTable).style.display = 'table';
+    document.getElementById("table-tab-"+newTable).style = "font-size: 13px; background-color: #3bb4f2; color: #fff;";
+    document.getElementById("table-tab-"+currentTable).style = "font-size: 13px";
     
 }
 </script>
