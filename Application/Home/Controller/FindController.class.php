@@ -84,4 +84,6 @@ class FindController extends BaseController {
         ClearFindCache(); //清除查询缓存
         $this -> redirect('Home/Find/index');
     }
+
+
 }
