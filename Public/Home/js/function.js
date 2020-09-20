@@ -6,7 +6,8 @@ function SelectChange(){
 } 
 
 function isDelete(id){
-    var r=confirm("是否要删除？");
+    // var r=confirm("是否要删除？");
+    var r=confirm("Comfirm wanna delete");
     if (r===true)
     {
         location.href = id;
