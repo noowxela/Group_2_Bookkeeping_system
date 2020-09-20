@@ -6,8 +6,6 @@
         <legend data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">Check Account</legend>
         <if condition="$ShowFind eq 1">
             <div id="do-not-say-1" class="am-collapse am-in">
-        <else/>
-            <div id="do-not-say-1" class="am-collapse">
         </if>
         <div class="am-input-group">
             <!-- <span class="am-input-group-label"><b>资金账户</b></span> -->
@@ -24,7 +22,7 @@
         <div><p></p></div>
         <div class="am-input-group">
             <!-- <span class="am-input-group-label"><b>选择分类</b></span> -->
-            <span class="am-input-group-label"><b>Select category</b></span>
+            <span class="am-input-group-label"><b>Select Category</b></span>
             <select id="select-type" class="am-form-field" name="find_class">
                 <!-- <option value="all">全部分类</option> -->
                 <option value="all">All category</option>
@@ -69,10 +67,12 @@
     </div>
         <!-- <p><a href="__APP__/Home/Find/reboot" class="am-btn am-btn-block am-btn-danger">重置</a></p>
         <p><a href="__APP__/Home/Index/index" class="am-btn am-btn-block am-btn-default">返回</a></p> -->
+        <p><a href="__APP__/Home/Index/index" class="am-btn am-btn-block am-btn-default">Back to Homepage</a></p>
         <p><a href="__APP__/Home/Find/reboot" class="am-btn am-btn-block am-btn-danger">Reset</a></p>
-        <p><a href="__APP__/Home/Index/index" class="am-btn am-btn-block am-btn-default">Back</a></p>
         </fieldset>
     </form>
+
+    
 
     <div id="money-table" class="am-alert am-alert-secondary" data-am-alert>
         <button type="button" class="am-close">&times;</button>
@@ -93,9 +93,70 @@
         </p>
     </div>
     
-    <include file="Public:list_account"/>
+    <div>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+        <figure class="highcharts-figure">
+            <div id="container"></div>
+        </figure>
+        <script type="text/javascript">
+        Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Expenses / Income Chart'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Percentage',
+            colorByPoint: true,
+            data: [{
+                name: 'Income',
+                y: {$SumInMoney},
+                sliced: true,
+                selected: true,
+                color:'#5eb95e'
+            }, {
+                name: 'Expenses',
+                y: {$SumOutMoney},
+                color: '#dd514c'
+            }]
+        }]
+    });
+        </script>
+    </div>
     
+
+    <include file="table_find"/>
 </block>
+
+
+
 
 <block name="javascript">
     <script type="text/javascript">

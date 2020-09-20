@@ -1,0 +1,155 @@
+<p></p>
+<table class="am-table am-table-bordered am-table-radius am-table-centered am-text-sm">
+    <thead>
+        <tr>
+            <H1 class="am-text-danger">Expenses</H1>
+        </tr>
+        <tr>
+            <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
+            <th width='80' bgcolor="#FFFFFF">Category</th>
+            <!--<th width='80' bgcolor="#FFFFFF">金额</th>-->
+            <th width='80' bgcolor="#FFFFFF">Amount</th>
+            <!--<th width='80' bgcolor="#FFFFFF">收支</th>-->
+            <th width='80' bgcolor="#FFFFFF">Account</th>
+            <!--<th width='110' bgcolor="#FFFFFF">时间</th>-->
+            <th width='110' bgcolor="#FFFFFF">Time</th>
+            <!--<th width='100' bgcolor="#FFFFFF">备注</th>-->
+            <th width='100' bgcolor="#FFFFFF">Remarks</th>
+            <!--<th width='80' bgcolor="#FFFFFF">操作</th>-->
+            <th width='80' bgcolor="#FFFFFF">Manage</th>
+        </tr>
+    </thead>
+    <tbody class="">
+        <volist name="ShowData" id="data">
+        <tr>
+            <if condition="$data.classid gt 0">
+                <if condition="$data.typeid eq 2">   
+                    <td class="am-text-middle">{$data.class}</td>
+                    <td class="am-text-middle">
+                            <font class="am-text-danger money-format">{$data.money}</font>
+                    </td>
+                    <td class="am-text-middle">{$data.funds} {$data.type}</td>
+                    <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
+                    <td class="am-text-middle">{$data.mark}</td>
+                    <td class="am-text-middle">
+                        <if condition="$data.classid gt 0">
+                            <!--<a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>-->
+                            <a href="__APP__/Home/Edit/index/id/{$data.id}">Edit </a>
+                            <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> 删除</a>-->
+                            <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> Delete</a>
+                        <else />
+                            <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
+                            <a href="__APP__/Home/Edit/transfer/id/{$data.id}">Edit</a>
+                            <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>-->
+                            <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> Delete</a>
+                        </if>
+                    </td>
+                </if>
+            </if>
+        </tr>
+        </volist>
+    </tbody>
+</table>
+
+<table class="am-table am-table-bordered am-table-radius am-table-centered am-text-sm">
+    <thead>
+        <tr>
+            <H1 class="am-text-success">Income</H1>
+        </tr>
+        <tr>
+            <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
+            <th width='80' bgcolor="#FFFFFF">Category</th>
+            <!--<th width='80' bgcolor="#FFFFFF">金额</th>-->
+            <th width='80' bgcolor="#FFFFFF">Amount</th>
+            <!--<th width='80' bgcolor="#FFFFFF">收支</th>-->
+            <th width='80' bgcolor="#FFFFFF">Account</th>
+            <!--<th width='110' bgcolor="#FFFFFF">时间</th>-->
+            <th width='110' bgcolor="#FFFFFF">Time</th>
+            <!--<th width='100' bgcolor="#FFFFFF">备注</th>-->
+            <th width='100' bgcolor="#FFFFFF">Remarks</th>
+            <!--<th width='80' bgcolor="#FFFFFF">操作</th>-->
+            <th width='80' bgcolor="#FFFFFF">Manage</th>
+        </tr>
+    </thead>
+    <tbody class="">
+        <volist name="ShowData" id="data">
+        <tr>
+            <if condition="$data.classid gt 0">
+                <if condition="$data.typeid eq 1">   
+                    <td class="am-text-middle">{$data.class}</td>
+                    <td class="am-text-middle">
+                            <font class="am-text-success money-format">{$data.money}</font>
+                    </td>
+                    <td class="am-text-middle">{$data.funds} {$data.type}</td>
+                    <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
+                    <td class="am-text-middle">{$data.mark}</td>
+                    <td class="am-text-middle">
+                        <if condition="$data.classid gt 0">
+                            <!--<a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>-->
+                            <a href="__APP__/Home/Edit/index/id/{$data.id}">Edit </a>
+                            <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> 删除</a>-->
+                            <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> Delete</a>
+                        <else />
+                            <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
+                            <a href="__APP__/Home/Edit/transfer/id/{$data.id}">Edit</a>
+                            <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>-->
+                            <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> Delete</a>
+                        </if>
+                    </td>
+                </if>
+            </if>
+        </tr>
+        </volist>
+    </tbody>
+</table>
+
+<table class="am-table am-table-bordered am-table-radius am-table-centered am-text-sm">
+    <thead>
+        <tr>
+            <H1>Transfer</H1>
+        </tr>
+        <tr>
+            <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
+            <th width='80' bgcolor="#FFFFFF">Category</th>
+            <!--<th width='80' bgcolor="#FFFFFF">金额</th>-->
+            <th width='80' bgcolor="#FFFFFF">Amount</th>
+            <!--<th width='80' bgcolor="#FFFFFF">收支</th>-->
+            <th width='80' bgcolor="#FFFFFF">Account</th>
+            <!--<th width='110' bgcolor="#FFFFFF">时间</th>-->
+            <th width='110' bgcolor="#FFFFFF">Time</th>
+            <!--<th width='100' bgcolor="#FFFFFF">备注</th>-->
+            <th width='100' bgcolor="#FFFFFF">Remarks</th>
+            <!--<th width='80' bgcolor="#FFFFFF">操作</th>-->
+            <th width='80' bgcolor="#FFFFFF">Manage</th>
+        </tr>
+    </thead>
+    <tbody class="">
+        <volist name="ShowData" id="data">
+        <tr>
+            <if condition="$data.classid == 0"> 
+                    <td class="am-text-middle">{$data.class}</td>
+                    <td class="am-text-middle">
+                        <font class="money-format">{$data.money}</font>
+                    </td>
+                    <td class="am-text-middle">{$data.funds} {$data.type}</td>
+                    <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
+                    <td class="am-text-middle">{$data.mark}</td>
+                    <td class="am-text-middle">
+                        <if condition="$data.classid gt 0">
+                            <!--<a href="__APP__/Home/Edit/index/id/{$data.id}">编辑 </a>-->
+                            <a href="__APP__/Home/Edit/index/id/{$data.id}">Edit </a>
+                            <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> 删除</a>-->
+                            <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/del/id/{$data.id}')"> Delete</a>
+                        <else />
+                            <!--<a href="__APP__/Home/Edit/transfer/id/{$data.id}">编辑</a>-->
+                            <a href="__APP__/Home/Edit/transfer/id/{$data.id}">Edit</a>
+                            <!--<a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> 删除</a>-->
+                            <a href="javascript:void(0);" onclick="isDelete('__APP__/Home/Edit/deleteTransfer/id/{$data.id}')"> Delete</a>
+                        </if>
+                    </td>
+            </if>
+        </tr>
+        </volist>
+    </tbody>
+</table>
+
