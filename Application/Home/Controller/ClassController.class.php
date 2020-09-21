@@ -55,8 +55,7 @@ class ClassController extends BaseController {
                 }
             }
         }else{
-            //$this -> error('非法操作...');
-            $this -> error('Invalid operation...');
+            $this -> error('非法操作...');
         }
     }
 
@@ -68,12 +67,10 @@ class ClassController extends BaseController {
             if (count($classIdList) > 0) {
                 SortClass($classIdList, $uid);
             }
-            //ShowAlert("分类排序修改完成！",U('Home/Class/index#'.$classType));
-            ShowAlert("Category arrangement changed！",U('Home/Class/index#'.$classType));
+            ShowAlert("分类排序修改完成！",U('Home/Class/index#'.$classType));
             $this -> display('Public/base');
         } else {
-            //$this -> error('非法操作...');
-            $this -> error('Invalid operation...');
+            $this -> error('非法操作...');
         }
     }
     
@@ -84,8 +81,8 @@ class ClassController extends BaseController {
             $Change = ChangeClassType($ClassId,$uid);
             if($Change[0]){
                 ClearDataCache(); //清除缓存
-                //ShowAlert("分类变更成功!",U('Home/Class/index/type/'.$Change[1]));
-                ShowAlert("Category is updated!",U('Home/Class/index/type/'.$Change[1]));
+                // ShowAlert("分类变更成功!",U('Home/Class/index/type/'.$Change[1]));
+                ShowAlert("category transfer sucess!",U('Home/Class/index/type/'.$Change[1]));
                 $this -> display('Public/base');
                 // $this -> success("分类变更成功!",U('Home/Class/index/type/'.$Change[1]));
             }else{
@@ -94,8 +91,7 @@ class ClassController extends BaseController {
                 // $this -> error($Change[1],U('Home/Class/index/type/'.$ClassId));
             }
         }else{
-            //$this -> error('非法操作');
-            $this -> error('Invalid operation');
+            $this -> error('非法操作');
         }
     }
     
@@ -105,8 +101,7 @@ class ClassController extends BaseController {
         if($ClassId){
             if (intval(GetClassAccountNum($ClassId,$uid)) > 0) {
                 $DbData = GetClassIdData($ClassId,$uid);
-                //ShowAlert('【'.$DbData[1]['classname'].'】分类数据不为空，请先处理记账数据！',U('Home/Class/proc/id/'.$ClassId));
-                ShowAlert('【'.$DbData[1]['classname'].'】Account type data cannot be empty, please settle the account data！',U('Home/Class/proc/id/'.$ClassId));
+                ShowAlert('【'.$DbData[1]['classname'].'】分类数据不为空，请先处理记账数据！',U('Home/Class/proc/id/'.$ClassId));
                 $this -> display('Public/base');
             }else{
                 $retData = DelClass($ClassId,$uid);
@@ -122,8 +117,7 @@ class ClassController extends BaseController {
                 }
             }
         }else{
-            //$this -> error('非法操作');
-            $this -> error('Invalid operation');
+            $this -> error('非法操作');
         }
     }
 
@@ -132,25 +126,21 @@ class ClassController extends BaseController {
         $ClassId = intval(I('get.id','','int'));
         if($ClassId){
             if(IS_POST){
-                //if (I('post.proc_submit') === '转移并删除') 
-                if (I('post.proc_submit') === 'Move and delete') {
+                if (I('post.proc_submit') === '转移并删除') {
                     $ClassId2 = I('post.class_id_2','','int');
                     $ClassData2 = GetClassIdData($ClassId2, $uid);
                     if($ClassData2[0]){
                         $ClassName2 = $ClassData2[1]['classname'];
                         $ret = MoveClassAccount($ClassId, $ClassId2, $uid);
-                        //ShowAlert('已成功转移'.$ret.'条数据到【'.$ClassName2.'】中！',U('Home/Class/del/id/'.$ClassId));
-                        ShowAlert('Moved succesfully'.$ret.'data is move to【'.$ClassName2.'】！',U('Home/Class/del/id/'.$ClassId));
+                        ShowAlert('已成功转移'.$ret.'条数据到【'.$ClassName2.'】中！',U('Home/Class/del/id/'.$ClassId));
                         $this -> display('Public/base');
                     }else{
-                        //ShowAlert('没有检测到可转移的分类，请添加分类再试...', U('Home/Class/index'));
-                        ShowAlert('No movable category detected, please add category and try again...', U('Home/Class/index'));
+                        ShowAlert('没有检测到可转移的分类，请添加分类再试...', U('Home/Class/index'));
                         $this -> display('Public/base');
                     }
                 }
             }elseif(!GetClassAccountNum($ClassId,$uid)) {
-                //ShowAlert('未检测到分类数据！',U('Home/Class/del/id/'.$ClassId));
-                ShowAlert('No category data detected！',U('Home/Class/del/id/'.$ClassId));
+                ShowAlert('未检测到分类数据！',U('Home/Class/del/id/'.$ClassId));
                 $this -> display('Public/base');
             }else{
                 $DbData = GetClassIdData($ClassId,$uid);
@@ -162,8 +152,7 @@ class ClassController extends BaseController {
                     $this -> assign('ClassData',$ClassData);
 
                     if (count($ClassData) <= 1) {
-                        //ShowAlert('没有检测到可转移的分类!');
-                        ShowAlert('No movable category detected!');
+                        ShowAlert('没有检测到可转移的分类!');
                     }
 
                     //不显示搜索
@@ -190,8 +179,7 @@ class ClassController extends BaseController {
                 }
             }
         }else{
-            //$this -> error('非法操作');
-            $this -> error('Invalid operation');
+            $this -> error('非法操作');
         }
     }
 

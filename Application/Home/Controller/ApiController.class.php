@@ -22,11 +22,9 @@ class ApiController extends Controller {
             ClearAllCache(); //清除缓存
             $arrData = array('uid'=>session('uid'),'uname'=>session('username'));
         }elseif(intval(S('login_times_'.$username)) > C('USER_LOGIN_TIMES')){
-            //$arrData = array('uid'=>'0','uname'=>'你的账号已被锁定，请联系管理员解锁！');
-            $arrData = array('uid'=>'0','uname'=>'Your account is locked, please contact adminstrator to unlock your account！');
+            $arrData = array('uid'=>'0','uname'=>'你的账号已被锁定，请联系管理员解锁！');
         }else{
-            //$arrData = array('uid'=>'0','uname'=>'用户名或密码错误！');
-            $arrData = array('uid'=>'0','uname'=>'Username or Password is incorrect！');
+            $arrData = array('uid'=>'0','uname'=>'用户名或密码错误！');
         }
         die(json_encode($arrData));
     }
@@ -68,8 +66,7 @@ class ApiController extends Controller {
                 }
             } else if ($type == 'updataEmail') {
                 $arrData['uid'] = 0;
-                //$arrData['username'] = '邮箱不可修改，请联系管理员！';
-                $arrData['username'] = 'Email cannot be changed, please contact adminstrator！';
+                $arrData['username'] = '邮箱不可修改，请联系管理员！';
             } else{
                 $arrData['uid'] = 0;
             }
@@ -97,8 +94,7 @@ class ApiController extends Controller {
             $arrData['data'] = AccountStatisticProcess($uid);
         } else {
             $arrData['uid'] = 0;
-            //$arrData['data'] = "用户未登录，请重新登录！";
-            $arrData['data'] = "Please login！";
+            $arrData['data'] = "用户未登录，请重新登录！";
         }
         die(json_encode($arrData));
     }
@@ -119,8 +115,7 @@ class ApiController extends Controller {
             $arrData['uid'] = $uid;
         } else {
             $arrData['uid'] = 0;
-            //$arrData['data'] = "用户未登录，请重新登录！";
-            $arrData['data'] = "Please login！";
+            $arrData['data'] = "用户未登录，请重新登录！";
             die(json_encode($arrData));
         }
 
@@ -145,8 +140,7 @@ class ApiController extends Controller {
                 $arrData['data'] = DeleteFunds($data['fundsid_old'], $uid, $data['fundsid_new']);
                 break;
             default:
-                //$arrData['data'] = '非法操作！';
-                $arrData['data'] = 'Invalid operation！';
+                $arrData['data'] = '非法操作！';
                 break;
         }
         die(json_encode($arrData));
@@ -168,8 +162,7 @@ class ApiController extends Controller {
             $arrData['uid'] = $uid;
         } else {
             $arrData['uid'] = 0;
-            //$arrData['data'] = "用户未登录，请重新登录！";
-            $arrData['data'] = "Please login！";
+            $arrData['data'] = "用户未登录，请重新登录！";
             die(json_encode($arrData));
         }
 
@@ -239,8 +232,7 @@ class ApiController extends Controller {
                 break;
 
             default:
-                //$arrData['data'] = '非法操作！';
-                $arrData['data'] = 'Invalid operation！';
+                $arrData['data'] = '非法操作！';
                 break;
         }
         die(json_encode($arrData));
@@ -263,8 +255,7 @@ class ApiController extends Controller {
             $arrData['uid'] = $uid;
         } else {
             $arrData['uid'] = 0;
-            //$arrData['data'] = "用户未登录，请重新登录！";
-            $arrData['data'] = "Please login！";
+            $arrData['data'] = "用户未登录，请重新登录！";
             die(json_encode($arrData));
         }
         
@@ -289,8 +280,7 @@ class ApiController extends Controller {
                 $arrData['data'] = NumTimeToStrTime(GetIdData($data['acid']));
                 if ($data['jiid'] != $uid) {
                     $arrData['uid'] = 0;
-                    //$arrData['data'] = '用户验证未通过，请重新登录！';
-                    $arrData['data'] = 'User verification failed, please log in again！';
+                    $arrData['data'] = '用户验证未通过，请重新登录！';
                 }
                 break;
             
@@ -310,8 +300,7 @@ class ApiController extends Controller {
                     ClearDataCache(); //清除缓存
                 } else {
                     $arrData['data']['ret'] = false;
-                    //$arrData['data']['msg'] = '未通过合法性验证！';
-                    $arrData['data']['msg'] = 'Failed to verify！';
+                    $arrData['data']['msg'] = '未通过合法性验证！';
                 }
                 break;
 
@@ -323,8 +312,7 @@ class ApiController extends Controller {
                     ClearDataCache(); //清除缓存
                 } else {
                     $arrData['data']['ret'] = false;
-                    //$arrData['data']['msg'] = '未通过合法性验证！';
-                    $arrData['data']['msg'] = 'Failed to verify！';
+                    $arrData['data']['msg'] = '未通过合法性验证！';
                 }
                 break;
 
@@ -335,8 +323,7 @@ class ApiController extends Controller {
                     $arrData['data']['msg'] = $ret;
                 } else {
                     $arrData['data']['ret'] = false;
-                    //$arrData['data']['msg'] = '未通过用户验证！';
-                    $arrData['data']['msg'] = 'Failed to verify！';
+                    $arrData['data']['msg'] = '未通过用户验证！';
                 }
                 break;
 
@@ -349,8 +336,7 @@ class ApiController extends Controller {
             case 'set_image':
                 $ret = EditImageAcid($uid, $data['id'], $data['acid']);
                 $arrData['data']['ret'] = $ret;
-                //$arrData['data']['msg'] = $ret == false ? '目标账单无法添加图片。' : 'OK';
-                $arrData['data']['msg'] = $ret == false ? 'Picture cannot be added to the target account' : 'OK';
+                $arrData['data']['msg'] = $ret == false ? '目标账单无法添加图片。' : 'OK';
                 break;
 
             case 'del_image':
@@ -382,8 +368,7 @@ class ApiController extends Controller {
             $arrData['uid'] = $uid;
         } else {
             $arrData['uid'] = 0;
-            //$arrData['data'] = "用户未登录，请重新登录！";
-            $arrData['data'] = "Please login！";
+            $arrData['data'] = "用户未登录，请重新登录！";
             die(json_encode($arrData));
         }
 
@@ -429,8 +414,7 @@ class ApiController extends Controller {
                     $arrData['data']['msg'] = $ret;
                 } else {
                     $arrData['data']['ret'] = false;
-                    //$arrData['data']['msg'] = '未通过用户验证！';
-                    $arrData['data']['msg'] = 'Failed to verify！';
+                    $arrData['data']['msg'] = '未通过用户验证！';
                 }
                 break;
 
@@ -456,8 +440,7 @@ class ApiController extends Controller {
             $arrData['uid'] = $uid;
         } else {
             $arrData['uid'] = 0;
-            //$arrData['data'] = "用户未登录，请重新登录！";
-            $arrData['data'] = "Please login！";
+            $arrData['data'] = "用户未登录，请重新登录！";
             die(json_encode($arrData));
         }
 
@@ -469,8 +452,7 @@ class ApiController extends Controller {
                     $arrData['data']['msg'] = $ret;
                 } else {
                     $arrData['data']['ret'] = false;
-                    //$arrData['data']['msg'] = '未通过用户验证！';
-                    $arrData['data']['msg'] = 'Failed to verify！';
+                    $arrData['data']['msg'] = '未通过用户验证！';
                 }
                 break;
 
@@ -481,8 +463,7 @@ class ApiController extends Controller {
                     $arrData['data']['msg'] = $ret;
                 } else {
                     $arrData['data']['ret'] = false;
-                    //$arrData['data']['msg'] = '未通过用户验证！';
-                    $arrData['data']['msg'] = 'Failed to verify！';
+                    $arrData['data']['msg'] = '未通过用户验证！';
                 }
                 break;
 
@@ -493,8 +474,7 @@ class ApiController extends Controller {
                     $arrData['data']['msg'] = $ret;
                 } else {
                     $arrData['data']['ret'] = false;
-                    //$arrData['data']['msg'] = '未通过用户验证！';
-                    $arrData['data']['msg'] = 'Failed to verify！';
+                    $arrData['data']['msg'] = '未通过用户验证！';
                 }
                 break;
 
@@ -527,8 +507,7 @@ class ApiController extends Controller {
                 break;
             
             default:
-               // die('非法操作！');
-                die('invalid operation！');
+                die('非法操作！');
                 break;
         }
     }
@@ -609,16 +588,13 @@ class ApiController extends Controller {
                 if(UserLogin($username, $password)){
                     session('submit',$_POST['login_submit']);
                     ClearAllCache(); //清除缓存
-                    //echo '登陆成功';
-                    echo 'Login succesfully';
+                    echo '登陆成功';
                     $this -> redirect('Home/Index/index');
                 }else if(intval(S('login_times_'.$username)) > C('USER_LOGIN_TIMES')){
-                    //ShowAlert('你的账号已被锁定，请联系管理员解锁！',U('Home/Login/index'));
-                    ShowAlert('Your account is locked, please contact adminstrator to unlock account！',U('Home/Login/index'));
+                    ShowAlert('你的账号已被锁定，请联系管理员解锁！',U('Home/Login/index'));
                     $this -> display('Public/base');
                 }else{
-                    //ShowAlert('用户名或密码错误！',U('Home/Login/index'));
-                    ShowAlert('Username or Password incorrect！',U('Home/Login/index'));
+                    ShowAlert('用户名或密码错误！',U('Home/Login/index'));
                     $this -> display('Public/base');
                     // $this -> error('用户名或密码错误！');
                 }
@@ -626,8 +602,7 @@ class ApiController extends Controller {
         	    //验证Email的正确性
         	    $email = I('post.forget_email','','htmlspecialchars');
             	if ( empty($email)|| !preg_match("/^[-a-zA-Z0-9_.]+@([0-9A-Za-z][0-9A-Za-z-]+\.)+[A-Za-z]{2,5}$/",$email)) {
-                    //LoginMassage("邮箱格式不正确！","danger");
-                    LoginMassage("Invalid Email format！","danger");
+                    LoginMassage("邮箱格式不正确！","danger");
                     $this -> display();
                     exit;
                 } 
@@ -645,26 +620,20 @@ class ApiController extends Controller {
                     $StrHtml = U('Home/Login/forget','p='.$String,'',true);
                     //发送邮件
                     $address = $from;
-                    //$subject = "找回密码 - 小歆记账APP";
-                    $subject = "Find password - XXJZAPP";
-                    //$body    = "<br>".$username."：<br />请点击下面的链接，按流程进行密码重设。<br><a href=\"".$StrHtml."\">确认密码找回</a><p><pre>".$StrHtml."</pre></br>"; 
-                    $body    = "<br>".$username."：<br />Please use the link below to reset the password. <br><a href=\"".$StrHtml."\">Find password</a><p><pre>".$StrHtml."</pre></br>";   
+                    $subject = "找回密码 - 小歆记账APP";
+                    $body    = "<br>".$username."：<br />请点击下面的链接，按流程进行密码重设。<br><a href=\"".$StrHtml."\">确认密码找回</a><p><pre>".$StrHtml."</pre></br>";   
                     $file    = null;
                     if (!SendMail($address,$subject,$body,$file)) {
-                        //LoginMassage("服务器出错，请稍后再试！","danger");
-                        LoginMassage("Server error, please try again later！","danger");
+                        LoginMassage("服务器出错，请稍后再试！","danger");
                     }else{ 
-                        //LoginMassage("找回密码的链接已发送至您的邮箱，请查收！");
-                        LoginMassage("Please check the Email to reset the password！");
+                        LoginMassage("找回密码的链接已发送至您的邮箱，请查收！");
                     }
                 }else{
-                    //LoginMassage("该邮箱未注册过账号！","danger");
-                    LoginMassage("Unregistered email！","danger");
+                    LoginMassage("该邮箱未注册过账号！","danger");
                 }
                 $this -> display();
             }else{
-                //LoginMassage("非法操作！","danger");
-                LoginMassage("Invalid operation！","danger");
+                LoginMassage("非法操作！","danger");
                 $this -> display();
             }
         }elseif(UserShell(session('username'),session('user_shell'))){
@@ -697,12 +666,10 @@ class ApiController extends Controller {
                     $umima=md5($password);
                     $DbUser-> where($StrUser)->setField('password',$umima);
                     // $this -> success('OK，修改成功！马上为你跳转登录页面...', U('/Home/Login/index'), 2);
-                    //ShowAlert('OK，修改成功！',U('/Home/Login/index'));
-                    ShowAlert('New password is updated！',U('/Home/Login/index'));
+                    ShowAlert('OK，修改成功！',U('/Home/Login/index'));
                     $this -> display('Public/base');
                 }else{
-                    //$this -> error('密码格式错误！');
-                    $this -> error('Invalid password format！');
+                    $this -> error('密码格式错误！');
                 }
             }else{
                 //执行重置程序，一般给出三个输入框。
@@ -710,8 +677,7 @@ class ApiController extends Controller {
                 $this -> display();
             }
         }else{
-            //$this -> error('非法操作！', U('/Home/Login/index'));
-            $this -> error('Invalid operation！', U('/Home/Login/index'));
+            $this -> error('非法操作！', U('/Home/Login/index'));
         }
     }
     

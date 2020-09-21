@@ -37,11 +37,9 @@ class AddController extends BaseController {
         $MoneyClass[1] = GetClassData($uid,1);
         $MoneyClass[2] = GetClassData($uid,2);
         if (!is_array($MoneyClass[2])) {
-            //ShowAlert('请先添加记账分类', U('/Home/Class/index'));
-            ShowAlert('Please add account type first!', U('/Home/Class/index'));
+            ShowAlert('请先添加记账分类', U('/Home/Class/index'));
         } elseif (!is_array($MoneyClass[1])) {
-            //ShowAlert('【收入】分类也要添加的！', U('/Home/Class/index/class/in'));
-            ShowAlert('【income】type also need to be added!', U('/Home/Class/index/class/in'));
+            ShowAlert('【收入】分类也要添加的！', U('/Home/Class/index/class/in'));
         }
         $this -> assign('type',$type);
         $this -> assign('refURL',$refURL);
@@ -108,18 +106,14 @@ class AddController extends BaseController {
             if ($upload) {
                 $ret = AddImageData($uid, $upload, $acid);
                 $arrData['upload'] = $ret;
-                //$arrData['data'] = "上传成功！";
-                $arrData['data'] = "upload successfully！";
+                $arrData['data'] = "上传成功！";
             } else {
                 $arrData['upload'] = false;
-                //$arrData['data'] = "上传失败，文件不符合服务器要求，请检查后再试。";
-                $arrData['data'] = "upload fail, file is not compatible for the server, please check and try it later!";
+                $arrData['data'] = "上传失败，文件不符合服务器要求，请检查后再试。";
             }
         } else {
             $arrData['uid'] = 0;
-            //$arrData['data'] = "无效的请求，请根据协议发送请求！";
-            $arrData['data'] = "Invalid request, please send the request according to the agreement！";
-            $arrData['data'] = "";
+            $arrData['data'] = "无效的请求，请根据协议发送请求！";
         }
         die(json_encode($arrData));
     }
