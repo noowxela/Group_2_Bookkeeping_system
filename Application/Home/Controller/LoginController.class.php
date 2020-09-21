@@ -13,18 +13,20 @@ class LoginController extends Controller {
                     ClearAllCache(); //清除缓存
                     $this -> redirect('Home/Index/index');
                 }else if(intval(S('login_times_'.$username)) > C('USER_LOGIN_TIMES')){
-                    ShowAlert('你的账号已被锁定，请联系管理员解锁！',U('Home/Login/index'));
+                    //ShowAlert('你的账号已被锁定，请联系管理员解锁！',U('Home/Login/index'));
+                    ShowAlert('Your account is locked, please contact adminstrator to unlock your account！',U('Home/Login/index'));
                     $this -> display('Public/base');
                 }else{
-                    // ShowAlert('用户名或密码错误！',U('Home/Login/index'));
-                    ShowAlert('Wrong username or password！',U('Home/Login/index'));
+                    //ShowAlert('用户名或密码错误！',U('Home/Login/index'));
+                    ShowAlert('Username or Password is incorrect！',U('Home/Login/index'));
                     $this -> display('Public/base');
                 }
             }elseif($_POST['forget_submit']){
         	    //验证Email的正确性
         	    $email = I('post.forget_email','','htmlspecialchars');
             	if ( empty($email)|| !preg_match("/^[-a-zA-Z0-9_.]+@([0-9A-Za-z][0-9A-Za-z-]+\.)+[A-Za-z]{2,5}$/",$email)) {
-                    LoginMassage("邮箱格式不正确！","danger");
+                    //LoginMassage("邮箱格式不正确！","danger");
+                    LoginMassage("Email format is incorrect！","danger");
                     $this -> display();
                     exit;
                 } 
@@ -43,32 +45,42 @@ class LoginController extends Controller {
                     $StrHtml = U('Home/Login/forget','p='.$String,'',true);
                     //发送邮件
                     $address = $from;
-                    $subject = "找回密码 - 小歆记账APP";
-                    $body    = "<br>".$username."：<br />请点击下面的链接，按流程进行密码重设。（两小时内有效）<br><a href=\"".$StrHtml."\">确认密码找回</a></br><pre>".$StrHtml."</pre></br>";   
+                    //$subject = "找回密码 - 小歆记账APP";
+                    $subject = "Find password - XXJZAPP";
+                    //$body    = "<br>".$username."：<br />请点击下面的链接，按流程进行密码重设。（两小时内有效）<br><a href=\"".$StrHtml."\">确认密码找回</a></br><pre>".$StrHtml."</pre></br>";  
+                    $body    = "<br>".$username."：<br />Please use the link below to reset the password.<br><a href=\"".$StrHtml."\">Find password</a></br><pre>".$StrHtml."</pre></br>";    
                     $file    = null;
                     if (!SendMail($address,$subject,$body,$file)) {
                         if (I('post.forget_submit') == 'xxjzAUI') {
-                            die(json_encode(array('uid'=>false, 'msg'=>'服务器出错，请稍后再试！')));
+                            //die(json_encode(array('uid'=>false, 'msg'=>'服务器出错，请稍后再试！')));
+                            die(json_encode(array('uid'=>false, 'msg'=>'Server error, try again later！')));
                         } else {
-                            LoginMassage("服务器出错，请稍后再试！","danger");
+                            //LoginMassage("服务器出错，请稍后再试！","danger");
+                            LoginMassage("Server error, try again later！","danger");
                         }
                     }else{ 
                         if (I('post.forget_submit') == 'xxjzAUI') {
                             die(json_encode(array('uid'=>true, 'msg'=>'找回密码的链接已发送至您的邮箱！')));
+                            die(json_encode(array('uid'=>true, 'msg'=>'Please check the Email to reset the password！')));
                         } else {
-                            LoginMassage("找回密码的链接已发送至您的邮箱，请查收！");
+                            //LoginMassage("找回密码的链接已发送至您的邮箱，请查收！");
+                            LoginMassage("Please check the Email to reset the password！");
+                            
                         }
                     }
                 }else{
                     if (I('post.forget_submit') == 'xxjzAUI') {
-                        die(json_encode(array('uid'=>false, 'msg'=>'该邮箱未注册过账号！')));
+                        //die(json_encode(array('uid'=>false, 'msg'=>'该邮箱未注册过账号！')));
+                        die(json_encode(array('uid'=>false, 'msg'=>'Unregistered email！')));
                     } else {
-                        LoginMassage("该邮箱未注册过账号！","danger");
+                        //LoginMassage("该邮箱未注册过账号！","danger");
+                        LoginMassage("Unregistered email！","danger");
                     }
                 }
                 $this -> display();
             }else{
-                LoginMassage("非法操作！","danger");
+                //LoginMassage("非法操作！","danger");
+                LoginMassage("Invalid operation！","danger");
                 $this -> display();
             }
         }elseif(UserShell(session('username'),session('user_shell'))){
@@ -113,12 +125,14 @@ class LoginController extends Controller {
             }
         } else if(intval(S('login_times_'.$username)) > C('USER_LOGIN_TIMES')) {
             if ($submit == "xxjzAUI") {
-                $arrData = array('uid'=>'0','uname'=>'你的账号已被锁定，请联系管理员解锁！');
+                //$arrData = array('uid'=>'0','uname'=>'你的账号已被锁定，请联系管理员解锁！');
+                $arrData = array('uid'=>'0','uname'=>'Your account is locked, please contact adminstrator to unlock account！');
                 die(json_encode($arrData));
             }
         } else {
             if ($submit == "xxjzAUI") {
-                $arrData = array('uid'=>'0','uname'=>'用户名或密码错误！');
+                //$arrData = array('uid'=>'0','uname'=>'用户名或密码错误！');
+                $arrData = array('uid'=>'0','uname'=>'Username or Password incorrect！');
                 die(json_encode($arrData));
             } else {
                 $this -> redirect('Home/Login/index');
@@ -128,7 +142,8 @@ class LoginController extends Controller {
 
     public function bind_weixin(){
         if (!C('WX_ENABLE')) {
-            $arrData = array('uid'=>'0','uname'=>'功能未开启，请联系管理员。');
+            //$arrData = array('uid'=>'0','uname'=>'功能未开启，请联系管理员。');
+            $arrData = array('uid'=>'0','uname'=>'Function is not usable, please contact adminstrator');
             die(json_encode($arrData)); 
         }
         if(IS_POST){
@@ -141,7 +156,8 @@ class LoginController extends Controller {
             $js_code  = I('get.js_code','','htmlspecialchars');
         }
         if (session('wx_code') != $js_code) {
-            $arrData = array('uid'=>'0','uname'=>'请先使用微信登陆后再绑定。');
+            //$arrData = array('uid'=>'0','uname'=>'请先使用微信登陆后再绑定。');
+            $arrData = array('uid'=>'0','uname'=>'Please use WeChat to login before bind account');
             die(json_encode($arrData)); 
         }
         $openid = session('wx_openid');
@@ -160,21 +176,24 @@ class LoginController extends Controller {
             session('wx_openid',$openid);
             session('wx_session_key',$session_key);
             session('wx_unionid',$unionid);
-            $arrData = array('uid'=>'0','uname'=>'你的账号已被锁定，请联系管理员解锁！');
+            //$arrData = array('uid'=>'0','uname'=>'你的账号已被锁定，请联系管理员解锁！');
+            $arrData = array('uid'=>'0','uname'=>'Your account is locked, please contact adminstrator to unlock account！');
             die(json_encode($arrData));
         } else {
             session('wx_code', $js_code);
             session('wx_openid',$openid);
             session('wx_session_key',$session_key);
             session('wx_unionid',$unionid);
-            $arrData = array('uid'=>'0','uname'=>'用户名或密码错误！');
+            //$arrData = array('uid'=>'0','uname'=>'用户名或密码错误！');
+            $arrData = array('uid'=>'0','uname'=>'Username and Password is incorrect！');
             die(json_encode($arrData));
         }
     }
 
     public function login_weixin(){
         if (!C('WX_ENABLE')) {
-            $arrData = array('uid'=>'0','uname'=>'功能未开启，请联系管理员。');
+            //$arrData = array('uid'=>'0','uname'=>'功能未开启，请联系管理员。');
+            $arrData = array('uid'=>'0','uname'=>'Function is not usable, please contact adminstrator');
             die(json_encode($arrData)); 
         }
         if(IS_POST){
@@ -184,7 +203,8 @@ class LoginController extends Controller {
         }
         session(null); //清空session
         if ($js_code == '') {
-            $arrData = array('uid'=>'0','uname'=>'非法访问。');
+            //$arrData = array('uid'=>'0','uname'=>'非法访问。');
+            $arrData = array('uid'=>'0','uname'=>'Unauthorized access.');
             die(json_encode($arrData));        
         }
         $str_data = request('https://api.weixin.qq.com/sns/jscode2session?appid='.C('WX_OPENID').'&secret='.C('WX_SECRET').'&js_code='.$js_code.'&grant_type=authorization_code');
@@ -213,16 +233,19 @@ class LoginController extends Controller {
             die(json_encode($arrData));        
         }
         else{
-            $arrData = array('uid'=>'0','uname'=>'无法连接到微信服务器。。。');
+            //$arrData = array('uid'=>'0','uname'=>'无法连接到微信服务器。。。');
+            $arrData = array('uid'=>'0','uname'=>'Fail to connect to WeChat server');
             die(json_encode($arrData));   
         }
-        $arrData = array('uid'=>'0','uname'=>'服务器出错，请重试！');
+        //$arrData = array('uid'=>'0','uname'=>'服务器出错，请重试！');
+        $arrData = array('uid'=>'0','uname'=>'Server eror, please try again later！');
         die(json_encode($arrData));   
     }
 
     public function regist_weixin(){
         if (!C('WX_ENABLE')) {
-            $arrData = array('uid'=>'0','msg'=>'功能未开启，请联系管理员。');
+            //$arrData = array('uid'=>'0','msg'=>'功能未开启，请联系管理员。');
+            $arrData = array('uid'=>'0','uname'=>'Function is not usable, please contact adminstrator');
             die(json_encode($arrData)); 
         }
         if(IS_POST){
@@ -237,7 +260,8 @@ class LoginController extends Controller {
             $email = I('get.regist_email','','htmlspecialchars');
         }
         if ($js_code != session('wx_code')) {
-            $arrData = array('uid'=>'0','msg'=>'微信登陆验证失败，请重新使用微信登陆。');
+            //$arrData = array('uid'=>'0','msg'=>'微信登陆验证失败，请重新使用微信登陆。');
+            $arrData = array('uid'=>'0','msg'=>'Fail to verify WeChat login, please try again');
             die(json_encode($arrData)); 
         } else {
             $ret = WeixinUserRegist($username, $password, $email);
@@ -252,12 +276,14 @@ class LoginController extends Controller {
 
     public function shell_weixin() {
         if (!C('WX_ENABLE')) {
-            $arrData = array('uid'=>'0','uname'=>'功能未开启，请联系管理员。');
+            //$arrData = array('uid'=>'0','uname'=>'功能未开启，请联系管理员。');
+            $arrData = array('uid'=>'0','uname'=>'Function is not usable, please contact adminstrator');
         } else {
             if (UserShell(session('username'),session('user_shell'))) {
                 $arrData = array('uid'=>session('uid'),'uname'=>session('username'));
             } else {
-                $arrData = array('uid'=>'0','uname'=>'用户验证失败，请重新登陆。');
+                //$arrData = array('uid'=>'0','uname'=>'用户验证失败，请重新登陆。');
+                $arrData = array('uid'=>'0','uname'=>'Fail to verify user, please log in again.');
             }
         }
         die(json_encode($arrData)); 
@@ -273,7 +299,8 @@ class LoginController extends Controller {
         $endtime = intval(trim($array['2']));
         $nowtime = time();
         if ($nowtime > $endtime) {
-            $this -> error('找回密码链接已过期，请重新获取！', U('/Home/Login/index'));
+            //$this -> error('找回密码链接已过期，请重新获取！', U('/Home/Login/index'));
+            $this -> error('Expired find password link, please try again！', U('/Home/Login/index'));
             return;
         }
         $StrUser = "username='$username'";
@@ -290,10 +317,12 @@ class LoginController extends Controller {
                 if($password <> ""){
                     $umima=md5($password);
                     $DbUser-> where($StrUser)->setField('password',$umima);
-                    ShowAlert('OK，修改成功！',U('/Home/Login/index'));
+                    //ShowAlert('OK，修改成功！',U('/Home/Login/index'));
+                    ShowAlert('OK，Password updated！',U('/Home/Login/index'));
                     $this -> display('Public/base');
                 }else{
-                    $this -> error('密码格式错误！');
+                    //$this -> error('密码格式错误！');
+                    $this -> error('Invalid password format！');
                 }
             }else{
                 //执行重置程序，一般给出三个输入框。
@@ -301,7 +330,8 @@ class LoginController extends Controller {
                 $this -> display();
             }
         }else{
-            $this -> error('找回密码链接错误，请重新获取链接或联系管理员！', U('/Home/Login/index'));
+            //$this -> error('找回密码链接错误，请重新获取链接或联系管理员！', U('/Home/Login/index'));
+            $this -> error('Error find password link, please try again or contact adminstrator！', U('/Home/Login/index'));
         }
     }
     
