@@ -15,6 +15,20 @@ class ChartController extends BaseController {
         }elseif ($DataArray['InSumMoney'] + $DataArray['OutSumMoney'] === 0) {
             //无数据
         }
+        $this -> assign('FundsData', $FundsData);
+        $this -> assign('OutMoney',$DataArray['OutMoney']);
+        $this -> assign('OutSumMoney',$DataArray['OutSumMoney']);
+        $this -> assign('OutClassMoney',$DataArray['OutClassMoney']);
+        $this -> assign('OutSumClassMoney',$DataArray['OutSumClassMoney']);
+
+        $this -> assign('InMoney',$DataArray['InMoney']);
+        $this -> assign('InSumMoney',$DataArray['InSumMoney']);
+        $this -> assign('InClassMoney',$DataArray['InClassMoney']);
+        $this -> assign('InSumClassMoney',$DataArray['InSumClassMoney']);
+
+        arsort($DataArray['InSumClassMoney']);
+        arsort($DataArray['OutSumClassMoney']);
+
         $JsonInMoney = ArrayToNumData($DataArray['InMoney']);
         $JsonOutMoney = ArrayToNumData($DataArray['OutMoney']);
         $JsonInClassPer = ArrayKeyToNumData($DataArray['InSumClassMoney']);
