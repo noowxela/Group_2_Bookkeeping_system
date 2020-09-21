@@ -81,7 +81,8 @@ class ClassController extends BaseController {
             $Change = ChangeClassType($ClassId,$uid);
             if($Change[0]){
                 ClearDataCache(); //清除缓存
-                ShowAlert("分类变更成功!",U('Home/Class/index/type/'.$Change[1]));
+                // ShowAlert("分类变更成功!",U('Home/Class/index/type/'.$Change[1]));
+                ShowAlert("category transfer sucess!",U('Home/Class/index/type/'.$Change[1]));
                 $this -> display('Public/base');
                 // $this -> success("分类变更成功!",U('Home/Class/index/type/'.$Change[1]));
             }else{

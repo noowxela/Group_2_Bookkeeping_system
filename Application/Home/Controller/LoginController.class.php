@@ -16,7 +16,8 @@ class LoginController extends Controller {
                     ShowAlert('你的账号已被锁定，请联系管理员解锁！',U('Home/Login/index'));
                     $this -> display('Public/base');
                 }else{
-                    ShowAlert('用户名或密码错误！',U('Home/Login/index'));
+                    // ShowAlert('用户名或密码错误！',U('Home/Login/index'));
+                    ShowAlert('Wrong username or password！',U('Home/Login/index'));
                     $this -> display('Public/base');
                 }
             }elseif($_POST['forget_submit']){

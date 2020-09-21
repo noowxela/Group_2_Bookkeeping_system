@@ -727,7 +727,8 @@
             return array(false,'操作的id无效...');
         }
         if(!(is_numeric($data['acmoney'])&&($data['acmoney'] >= 0.01)&&($data['acmoney'] <= C('MAX_MONEY_VALUE')))){
-            return array(false,'输入的金额无效，请输入0.01到' . C('MAX_MONEY_VALUE') . '范围内的有效数字。');
+            // return array(false,'输入的金额无效，请输入0.01到' . C('MAX_MONEY_VALUE') . '范围内的有效数字。');
+            return array(false,'The amount enter is invalid, pls valid amount in range from 0.01 to ' . C('MAX_MONEY_VALUE') . ' .');
         }
         if(!is_numeric($data['acclassid'])){
             $data['acclassid'] = GetClassId($data['acclassid']);
@@ -739,7 +740,8 @@
         $strSQL  = 'classid = '.$data['acclassid'];
         $DbClass = M('account_class')->where($strSQL)->find();
         if(!is_array($DbClass)){
-            return array(false,'选择的分类无效!');
+            // return array(false,'选择的分类无效!');
+            return array(false,'invalid category!');
         }
         if($DbClass['classtype'] != $data['zhifu']){
             return array(false,'选择的分类与收支类别不匹配~');
