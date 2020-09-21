@@ -5,7 +5,7 @@ class ClassController extends BaseController {
     public function index(){
         $uid = session('uid');
         $ClassType = I('get.class', 2);
-        
+
         if(IS_POST){
             $data = array();
             $data['classname'] = I('post.class_name');
@@ -16,7 +16,7 @@ class ClassController extends BaseController {
             $ClassType = $data['classtype'];
             ShowAlert($Updata[1]);
         }
-        
+
         $MoneyClass[1] = GetClassData($uid,1);
         $MoneyClass[2] = GetClassData($uid,2);
         $this -> assign('ClassType',$ClassType);
@@ -24,7 +24,7 @@ class ClassController extends BaseController {
         $this -> assign('outMoneyClass',$MoneyClass[2]);
         $this -> display();
     }
-    
+
     public function edit(){
         $uid = session('uid');
         $ClassId = I('get.id/d');
@@ -76,7 +76,7 @@ class ClassController extends BaseController {
             $this -> error('Invalid operation...');
         }
     }
-    
+
     public function change(){
         $uid = session('uid');
         $ClassId = I('get.id');
@@ -98,7 +98,7 @@ class ClassController extends BaseController {
             $this -> error('Invalid operation');
         }
     }
-    
+
     public function del(){
         $uid = session('uid');
         $ClassId = intval(I('get.id'));
@@ -132,8 +132,8 @@ class ClassController extends BaseController {
         $ClassId = intval(I('get.id','','int'));
         if($ClassId){
             if(IS_POST){
-                //if (I('post.proc_submit') === '转移并删除') 
-                if (I('post.proc_submit') === 'Move and delete') {
+                //if (I('post.proc_submit') === '转移并删除') {
+                if (I('post.proc_submit') === 'convert and delete') {
                     $ClassId2 = I('post.class_id_2','','int');
                     $ClassData2 = GetClassIdData($ClassId2, $uid);
                     if($ClassData2[0]){
