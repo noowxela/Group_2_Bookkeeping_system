@@ -1,9 +1,6 @@
 
 <extend name="Public:common"/>
 <block name="main">
-
-  <div class="container-fluid content"  >
-
     <if condition="$refresh eq true">
         <script language="JavaScript">
             location=location;
@@ -105,7 +102,7 @@
                 <if condition="$ImageData neq false ">
                 <p><hr data-am-widget="divider" class="am-divider am-divider-dashed" /></p>
                 <ul data-am-widget="gallery" class="am-gallery am-avg-sm-3
-                    am-avg-md-4 am-avg-lg-5 am-gallery-bordered" data-am-gallery="{pureview:{target: 'a'}}" id="doc-image-list" >
+  am-avg-md-4 am-avg-lg-5 am-gallery-bordered" data-am-gallery="{pureview:{target: 'a'}}" id="doc-image-list" >
                     <foreach name="ImageData" item="image">
                       <li id="doc-image-{$image.id}">
                         <a href="javascript:void(0);" data-id="{$image.id}" data-acid="{$acid}" class="am-close am-close-alt am-close-spin am-icon-times" style="position: absolute; margin: 5px;"></a>
@@ -158,8 +155,6 @@
     <div style="display: none;">
         <button type="button" class="am-btn am-btn-warning" id="doc-confirm-toggle">Close</button>
     </div>
-  </div>
-
 </block>
 
 <block name="javascript">
@@ -262,5 +257,3 @@
 
     </script>
 </block>
-
-

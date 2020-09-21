@@ -30,7 +30,7 @@ class FundsController extends BaseController {
         if ($fundsid) {
             if (IS_POST) {
                 $fundsSubmit = I('post.funds_submit','');
-                //if ($fundsSubmit === '编辑')
+                // if ($fundsSubmit === '编辑') {
                 if ($fundsSubmit === 'Edit') {
                     $fundsName = I('post.funds_name','');
                     $fundsMoney = I('post.funds_money', 0, 'float');
@@ -38,8 +38,7 @@ class FundsController extends BaseController {
                     if ($ret[0]) {
                         $ret = EditFundsDefaultMoney($fundsid, $fundsMoney, $uid);
                         if ($ret[0]) {
-                            //ShowAlert('账户编辑完成',U('Home/Funds/index'));
-                            ShowAlert('Account edit complete',U('Home/Funds/index'));
+                            ShowAlert('Account update complete !',U('Home/Funds/index'));
                         } else {
                             ShowAlert($ret[1],U('Home/Funds/edit/id/'.$fundsid));
                         }
@@ -47,16 +46,15 @@ class FundsController extends BaseController {
                         ShowAlert($ret[1],U('Home/Funds/edit/id/'.$fundsid));
                     }
                     $this -> display('Public/base');
-                } 
-                //elseif ($fundsSubmit === '删除')
-                elseif ($fundsSubmit === 'Delete') {
+                // } elseif ($fundsSubmit === '删除') {
+                } elseif ($fundsSubmit === 'Delete') {
                     $fundsChange = I('post.funds_change','',int);
                     $ret = DeleteFunds($fundsid, $uid, $fundsChange);
                     ShowAlert($ret[1],U('Home/Funds/index'));
                     $this -> display('Public/base');
                 } else {
-                    //$this -> error('非法操作...');
-                    $this -> error('Invalid operation');
+                    // $this -> error('非法操作...');
+                    $this -> error('Abnormal operation...');
                 }
             } else {
                 $this -> assign('FundsId', $fundsid);
@@ -74,7 +72,7 @@ class FundsController extends BaseController {
             }
         } else {
             //$this -> error('非法操作...');
-            $this -> error('Invalid operation');
+            $this -> error('Abnormal operation...');
         }
     }
 
@@ -86,11 +84,11 @@ class FundsController extends BaseController {
                 SortFunds($fundsIdList, $uid);
             }
             //ShowAlert("账户排序修改完成！",U('Home/Funds/index'));
-            ShowAlert("Account arrangement change complete！",U('Home/Funds/index'));
+            ShowAlert("Account sequence change complete！",U('Home/Funds/index'));
             $this -> display('Public/base');
         } else {
             //$this -> error('非法操作...');
-            $this -> error('Invalid operation');
+            $this -> error('Abnormal operation...');
         }
     }
 }

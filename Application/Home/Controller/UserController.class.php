@@ -7,47 +7,42 @@ class UserController extends BaseController {
         $type = I('get.type',0);
         if(IS_POST) {
             if(session('username') == C('APP_DEMO_USERNAME')){
-                //ShowAlert('抱歉Demo账号无法进行账号信息修改！',U('Home/User/index/type/1'));
-                ShowAlert('Demo account is unable to change user profile',U('Home/User/index/type/1'));
+                ShowAlert('抱歉Demo账号无法进行账号信息修改！',U('Home/User/index/type/1'));
                 $this -> display('Public/base');
                 exit;
             }
             $Submit = I('post.user_submit');
-            //if($Submit === '修改账号') 
-            if($Submit === 'Change user profile') {
+            // if($Submit === '修改账号') {
+                if($Submit === 'Change username') {
                 $Username = I('post.user_name');
                 $Email = I('post.user_email');
                 $Password = I('post.user_password');
                 $Updata = UpdataUserName($uid, $Username, $Email ,$Password);
                 if($Updata[0]) {
                     //ShowAlert('登录账号已改为【'.$Updata[1].'】请重新登录!',U('Home/Login/logout'));
-                    ShowAlert('Username is changed to【'.$Updata[1].'】please login again!',U('Home/Login/logout'));
+                    ShowAlert('The login account username has been changed to ['.$Updata[1].'] Please log in again!',U('Home/Login/logout'));
                     $this -> display('Public/base');
                 }else{
                     ShowAlert($Updata[1],U('Home/User/index'));
                     $this -> display('Public/base');
                 }
-            }
-            //elseif($Submit === '修改密码') 
-            elseif($Submit === 'Change password') {
+            // }elseif($Submit === '修改密码') {
+            }elseif($Submit === 'Change password') {
                 $OldPassword = I('post.user_password');
                 $NewPassword = I('post.user_password_new');
                 $Updata = UpdataPassword($uid, $OldPassword, $NewPassword);
                 if($Updata[0]) {
-                    //ShowAlert('【'.$Updata[1].'】登录密码修改成功，请重新登录!',U('Home/Login/logout'));
-                    ShowAlert('【'.$Updata[1].'】password updated，please login again!',U('Home/Login/logout'));
+                    // ShowAlert('【'.$Updata[1].'】登录密码修改成功，请重新登录!',U('Home/Login/logout'));
+                    ShowAlert('['.$Updata[1].'] The login password is changed successfully, please log in again!',U('Home/Login/logout'));
                     $this -> display('Public/base');
                 }else{
                     ShowAlert($Updata[1],U('Home/User/index/type/1'));
                     $this -> display('Public/base');
                 }
-            }
-            //elseif($Submit === '提交') 
-            elseif($Submit === 'Submit'){
+            }elseif($Submit === '提交') {
 
             }else{
-                //$this -> error('非法操作!');
-                $this -> error('Invalid operation!');
+                $this -> error('非法操作!');
             }
         }else{
             $Email = GetUserEmail($uid);

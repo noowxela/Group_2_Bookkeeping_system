@@ -10,203 +10,199 @@
     cursor: pointer;
   }
 </style>
-    <div class="container-fluid content"  >
 
+    <div data-am-widget="tabs" class="am-tabs am-tabs-secondary" id="doc-form-tabs" >
+        <ul class="am-tabs-nav am-cf">
+            <if condition="$type eq 1">
+                <!-- <li class=""><a href="[data-tab-panel-2]">支出</a></li> -->
+                <li class=""><a href="[data-tab-panel-2]"><i class="am-icon-minus-circle"></i> Expense</a></li>
+                <!-- <li class="am-active"><a href="[data-tab-panel-1]">收入</a></li> -->
+                <li class="am-active"><a href="[data-tab-panel-1]"><i class="am-icon-plus-circle"></i> Income</a></li>
+            <else/>
+                <!-- <li class="am-active"><a href="[data-tab-panel-2]">支出</a></li> -->
+                <li class="am-active"><a href="[data-tab-panel-2]"><i class="am-icon-minus-circle"></i> Expense</a></li>
+                <!-- <li class=""><a href="[data-tab-panel-1]">收入</a></li> -->
+                <li class=""><a href="[data-tab-panel-1]"><i class="am-icon-plus-circle"></i> Income</a></li>
+            </if>
+            <!-- <li class=""><a href="__APP__/Home/Add/transfer">转账</a></li> -->
+            <li class=""><a href="__APP__/Home/Add/transfer"><i class="am-icon-random"></i> Transfer</a></li>
 
-      <div data-am-widget="tabs" class="am-tabs am-tabs-secondary" id="doc-form-tabs" >
-          <ul class="am-tabs-nav am-cf">
-              <if condition="$type eq 1">
-                  <!-- <li class=""><a href="[data-tab-panel-2]">支出</a></li> -->
-                  <li class=""><a href="[data-tab-panel-2]"><i class="am-icon-minus-circle"></i> Expense</a></li>
-                  <!-- <li class="am-active"><a href="[data-tab-panel-1]">收入</a></li> -->
-                  <li class="am-active"><a href="[data-tab-panel-1]"><i class="am-icon-plus-circle"></i> Income</a></li>
-              <else/>
-                  <!-- <li class="am-active"><a href="[data-tab-panel-2]">支出</a></li> -->
-                  <li class="am-active"><a href="[data-tab-panel-2]"><i class="am-icon-minus-circle"></i> Expense</a></li>
-                  <!-- <li class=""><a href="[data-tab-panel-1]">收入</a></li> -->
-                  <li class=""><a href="[data-tab-panel-1]"><i class="am-icon-plus-circle"></i> Income</a></li>
-              </if>
-              <!-- <li class=""><a href="__APP__/Home/Add/transfer">转账</a></li> -->
-              <li class=""><a href="__APP__/Home/Add/transfer"><i class="am-icon-random"></i> Transfer</a></li>
+        </ul>
+        <div class="am-tabs-bd">
+            <if condition="$type eq 1">
+                <div data-tab-panel-2 class="am-tab-panel">
+            <else/>
+                <div data-tab-panel-2 class="am-tab-panel am-active">
+            </if>
+                <form class="am-form am-form-horizontal" enctype="multipart/form-data" method="post" data-am-validator="H5validation:false">
+                    <!-- <legend>添加支出</legend> -->
+                    <legend>Add Expenses</legend>
 
-          </ul>
-          <div class="am-tabs-bd">
-              <if condition="$type eq 1">
-                  <div data-tab-panel-2 class="am-tab-panel">
-              <else/>
-                  <div data-tab-panel-2 class="am-tab-panel am-active">
-              </if>
-                  <form class="am-form am-form-horizontal" enctype="multipart/form-data" method="post" data-am-validator="H5validation:false">
-                      <!-- <legend>添加支出</legend> -->
-                      <legend>Add Expenses</legend>
-
-                      <input type="hidden" name="add_type" value="2">
+                    <input type="hidden" name="add_type" value="2">
 
 
 
 
-                      <div class="am-input-group">
-                          <!-- <span class="am-input-group-label"><b>金额</b></span> -->
-                          <span class="am-input-group-label"><b><i class="am-icon-money"></i> Amount</b></span>
+                    <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>金额</b></span> -->
+                        <span class="am-input-group-label"><b><i class="am-icon-money"></i> Amount</b></span>
 
-                          <!-- <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="输入支出金额"> -->
-                          <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="Key In Expense Amount">
-                          <p></p>
-                      </div>
-                      <div><p></p></div>
-                      <div class="am-input-group">
-                          <!-- <span class="am-input-group-label"><b>账户</b></span> -->
-                          <span class="am-input-group-label"><b><i class="am-icon-bank"></i> Account</b></span>
-                          <select id="select-funds" class="am-form-field" name="add_funds">
-                          <foreach name="FundsData" item="data">
-                              <option value="{$data.id}">{$data.name}</option>
-                          </foreach>
-                          </select>
-                          <span class="am-form-caret"></span>
-                      </div>
-                      <div><p></p></div>
-                      <div class="am-input-group">
-                          <!-- <span class="am-input-group-label"><b>分类</b></span> -->
-                          <span class="am-input-group-label"><b><i class="am-icon-bars"></i> Select a Category</b></span>
-                      </div>
-                      <div><p></p></div>
-                      <div>
-                        <table id="icon_box" style="width:75%">
-                          <tr>
-                            <foreach name="outMoneyClass" item="ClassName">
-                              <td>
-                                <php>
-                                  echo '<label for="'.strtolower($ClassName).'"><img src="__ICON__/'.$ClassName.'.jpg" alt="'.$ClassName.'" width="150" height="150"></label>';
-                                  echo '<br>';
-                                  echo '<input type="radio" id="'.strtolower($ClassName).'" name="add_class" value="'.$ClassName.'">';
-                                  echo '<label for="'.strtolower($ClassName).'">'.$ClassName.'</label>';
-                                </php>
-                              </td>
-                            </foreach>
-                          </tr>
-                        </table>
-                          <!-- <select id="select-class" class="am-form-field" name="add_class">
+                        <!-- <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="输入支出金额"> -->
+                        <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="Key In Expense Amount">
+                        <p></p>
+                    </div>
+                    <div><p></p></div>
+                    <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>账户</b></span> -->
+                        <span class="am-input-group-label"><b><i class="am-icon-bank"></i> Account</b></span>
+                        <select id="select-funds" class="am-form-field" name="add_funds">
+                        <foreach name="FundsData" item="data">
+                            <option value="{$data.id}">{$data.name}</option>
+                        </foreach>
+                        </select>
+                        <span class="am-form-caret"></span>
+                    </div>
+                    <div><p></p></div>
+                    <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>分类</b></span> -->
+                        <span class="am-input-group-label"><b><i class="am-icon-bars"></i> Select a Category</b></span>
+                    </div>
+                    <div><p></p></div>
+                    <div>
+                      <table id="icon_box" style="width:75%">
+                        <tr>
                           <foreach name="outMoneyClass" item="ClassName">
-                              <option value="{$key}">{$ClassName}</option>
+                            <td>
+                              <php>
+                                echo '<label for="'.strtolower($ClassName).'"><img src="__ICON__/'.$ClassName.'.jpg" alt="'.$ClassName.'" width="150" height="150"></label>';
+                                echo '<br>';
+                                echo '<input type="radio" id="'.strtolower($ClassName).'" name="add_class" value="'.$ClassName.'">';
+                                echo '<label for="'.strtolower($ClassName).'">'.$ClassName.'</label>';
+                              </php>
+                            </td>
                           </foreach>
-                          </select> -->
-                          <!-- <span class="am-form-caret"></span> -->
-                      </div>
-                      <div><p></p></div>
-                      <div class="am-input-group">
-                          <!-- <span class="am-input-group-label"><b>备注</b></span> -->
-                          <span class="am-input-group-label"><b><i class="am-icon-comments"></i> Remarks</b></span>
-                          <!-- <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="输入支出信息"> -->
-                          <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="Key In Expense info">
-                          <span class="am-input-group-btn am-form-file">
-                              <!-- <button type="button" class="am-btn am-btn-default"><i class="am-icon-cloud-upload"></i> 上传图片</button> -->
-                              <button type="button" class="am-btn am-btn-default"><i class="am-icon-cloud-upload"></i> Upload Picture</button>
-                              <input id="doc-form-file-out" type="file" name="add_photo[]" accept=".jpg, .gif, .png, .jpeg" multiple />
-                          </span>
-                      </div>
-                      <div class="file-group-out" style="display: none;"><p></p></div>
-                      <div class="am-input-group file-group-out" style="display: none;">
-                          <!-- <span class="am-input-group-label"><b>附件</b></span> -->
-                          <span class="am-input-group-label"><b>Attachment</b></span>
-                          <div id="file-list-out" class="am-form-field" style="height: auto;"></div>
-                      </div>
-                      <div><p></p></div>
-                      <div class="am-input-group">
-                          <!-- <span class="am-input-group-label"><b>时间</b></span> -->
-                          <span class="am-input-group-label"><b><i class="am-icon-clock-o"></i> Date</b></span>
-                          <input type="date" class="am-form-field" id="text-time" name="add_time" value="<php>echo date('Y-m-d',time());</php>" style="height: auto;" />
-                      </div>
+                        </tr>
+                      </table>
+                        <!-- <select id="select-class" class="am-form-field" name="add_class">
+                        <foreach name="outMoneyClass" item="ClassName">
+                            <option value="{$key}">{$ClassName}</option>
+                        </foreach>
+                        </select> -->
+                        <!-- <span class="am-form-caret"></span> -->
+                    </div>
+                    <div><p></p></div>
+                    <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>备注</b></span> -->
+                        <span class="am-input-group-label"><b><i class="am-icon-comments"></i> Remarks</b></span>
+                        <!-- <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="输入支出信息"> -->
+                        <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="Key In Expense info">
+                        <span class="am-input-group-btn am-form-file">
+                            <!-- <button type="button" class="am-btn am-btn-default"><i class="am-icon-cloud-upload"></i> 上传图片</button> -->
+                            <button type="button" class="am-btn am-btn-default"><i class="am-icon-cloud-upload"></i> Upload Picture</button>
+                            <input id="doc-form-file-out" type="file" name="add_photo[]" accept=".jpg, .gif, .png, .jpeg" multiple />
+                        </span>
+                    </div>
+                    <div class="file-group-out" style="display: none;"><p></p></div>
+                    <div class="am-input-group file-group-out" style="display: none;">
+                        <!-- <span class="am-input-group-label"><b>附件</b></span> -->
+                        <span class="am-input-group-label"><b>Attachment</b></span>
+                        <div id="file-list-out" class="am-form-field" style="height: auto;"></div>
+                    </div>
+                    <div><p></p></div>
+                    <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>时间</b></span> -->
+                        <span class="am-input-group-label"><b><i class="am-icon-clock-o"></i> Date</b></span>
+                        <input type="date" class="am-form-field" id="text-time" name="add_time" value="<php>echo date('Y-m-d',time());</php>" style="height: auto;" />
+                    </div>
 
-                      <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
+                    <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
 
-                      <!-- <p><button type="submit" name="submit" class="am-btn am-btn-warning am-btn-block">添加</button></p> -->
-                      <p><button type="submit" name="submit" class="am-btn am-btn-warning am-btn-block">Add Transaction</button></p>
-                      <!-- <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">返回</a></p> -->
-                      <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">Return to Homepage</a></p>
-                  </form>
-              </div>
-              <if condition="$type eq 1">
-                  <div data-tab-panel-1 class="am-tab-panel am-active">
-              <else/>
-                  <div data-tab-panel-1 class="am-tab-panel ">
-              </if>
+                    <!-- <p><button type="submit" name="submit" class="am-btn am-btn-warning am-btn-block">添加</button></p> -->
+                    <p><button type="submit" name="submit" class="am-btn am-btn-warning am-btn-block">Add Transaction</button></p>
+                    <!-- <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">返回</a></p> -->
+                    <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">Return to Homepage</a></p>
+                </form>
+            </div>
+            <if condition="$type eq 1">
+                <div data-tab-panel-1 class="am-tab-panel am-active">
+            <else/>
+                <div data-tab-panel-1 class="am-tab-panel ">
+            </if>
 
-                  <form class="am-form am-form-horizontal" enctype="multipart/form-data" method="post" data-am-validator="H5validation:false">
-                      <!-- <legend>添加收入</legend> -->
-                      <legend>Income</legend>
+                <form class="am-form am-form-horizontal" enctype="multipart/form-data" method="post" data-am-validator="H5validation:false">
+                    <!-- <legend>添加收入</legend> -->
+                    <legend>Income</legend>
 
-                      <div><p></p></div>
-                      <input type="hidden" name="add_type" value="1">
-                      <div class="am-input-group">
-                          <!-- <span class="am-input-group-label"><b>金额</b></span> -->
-                          <span class="am-input-group-label"><b><i class="am-icon-money"></i> Amount</b></span>
-                          <!-- <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="输入收入金额"> -->
-                          <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="Key In Income Amount">
-                          <p></p>
-                      </div>
-                      <div><p></p></div>
-                      <div class="am-input-group">
-                          <!-- <span class="am-input-group-label"><b>账户</b></span> -->
-                          <span class="am-input-group-label"><b><i class="am-icon-bank"></i> Account</b></span>
-                          <select id="select-funds" class="am-form-field" name="add_funds">
-                          <foreach name="FundsData" item="data">
-                              <option value="{$data.id}">{$data.name}</option>
-                          </foreach>
-                          </select>
-                          <span class="am-form-caret"></span>
-                      </div>
-                      <div><p></p></div>
-                      <div class="am-input-group">
-                          <!-- <span class="am-input-group-label"><b>分类</b></span> -->
-                          <span class="am-input-group-label"><b><i class="am-icon-bars"></i> Category</b></span>
-                          <select id="select-class" class="am-form-field" name="add_class">
-                          <foreach name="inMoneyClass" item="ClassName">
-                              <option value="{$key}">{$ClassName}</option>
-                          </foreach>
-                          </select>
+                    <div><p></p></div>
+                    <input type="hidden" name="add_type" value="1">
+                    <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>金额</b></span> -->
+                        <span class="am-input-group-label"><b><i class="am-icon-money"></i> Amount</b></span>
+                        <!-- <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="输入收入金额"> -->
+                        <input type="number" class="am-form-field" id="text-money" name="add_money" step=0.01 placeholder="Key In Income Amount">
+                        <p></p>
+                    </div>
+                    <div><p></p></div>
+                    <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>账户</b></span> -->
+                        <span class="am-input-group-label"><b><i class="am-icon-bank"></i> Account</b></span>
+                        <select id="select-funds" class="am-form-field" name="add_funds">
+                        <foreach name="FundsData" item="data">
+                            <option value="{$data.id}">{$data.name}</option>
+                        </foreach>
+                        </select>
+                        <span class="am-form-caret"></span>
+                    </div>
+                    <div><p></p></div>
+                    <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>分类</b></span> -->
+                        <span class="am-input-group-label"><b><i class="am-icon-bars"></i> Category</b></span>
+                        <select id="select-class" class="am-form-field" name="add_class">
+                        <foreach name="inMoneyClass" item="ClassName">
+                            <option value="{$key}">{$ClassName}</option>
+                        </foreach>
+                        </select>
 
-                          <span class="am-form-caret"></span>
-                      </div>
-                      <div><p></p></div>
-                      <div class="am-input-group">
-                          <!-- <span class="am-input-group-label"><b>备注</b></span> -->
-                          <span class="am-input-group-label"><b><i class="am-icon-comments"></i> Remarks</b></span>
-                          <!-- <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="输入支出信息"> -->
-                          <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="Key In Income info">
-                          <span class="am-input-group-btn am-form-file">
-                              <!-- <button type="button" class="am-btn am-btn-default"><i class="am-icon-cloud-upload"></i> 上传图片</button> -->
-                              <button type="button" class="am-btn am-btn-default"><i class="am-icon-cloud-upload"></i> Upload Picture</button>
-                              <input id="doc-form-file-in" type="file" name="add_photo[]" accept=".jpg, .gif, .png, .jpeg" multiple />
-                          </span>
-                      </div>
-                      <div class="file-group-in" style="display: none;"><p></p></div>
-                      <div class="am-input-group file-group-in" style="display: none;">
-                          <!-- <span class="am-input-group-label"><b>附件</b></span> -->
-                          <span class="am-input-group-label"><b>Attachment</b></span>
-                          <div id="file-list-in" class="am-form-field" style="height: auto;"></div>
-                      </div>
-                      <div><p></p></div>
-                      <div class="am-input-group">
-                          <!-- <span class="am-input-group-label"><b>时间</b></span> -->
-                          <span class="am-input-group-label"><b><i class="am-icon-clock-o"></i> Date</b></span>
-                          <input type="date" class="am-form-field" id="text-time" name="add_time" value="<php>echo date('Y-m-d',time());</php>" style="height: auto;"/>
-                      </div>
-                      <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
+                        <span class="am-form-caret"></span>
+                    </div>
+                    <div><p></p></div>
+                    <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>备注</b></span> -->
+                        <span class="am-input-group-label"><b><i class="am-icon-comments"></i> Remarks</b></span>
+                        <!-- <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="输入支出信息"> -->
+                        <input type="text" class="am-form-field" id="text-mark" name="add_mark" placeholder="Key In Income info">
+                        <span class="am-input-group-btn am-form-file">
+                            <!-- <button type="button" class="am-btn am-btn-default"><i class="am-icon-cloud-upload"></i> 上传图片</button> -->
+                            <button type="button" class="am-btn am-btn-default"><i class="am-icon-cloud-upload"></i> Upload Picture</button>
+                            <input id="doc-form-file-in" type="file" name="add_photo[]" accept=".jpg, .gif, .png, .jpeg" multiple />
+                        </span>
+                    </div>
+                    <div class="file-group-in" style="display: none;"><p></p></div>
+                    <div class="am-input-group file-group-in" style="display: none;">
+                        <!-- <span class="am-input-group-label"><b>附件</b></span> -->
+                        <span class="am-input-group-label"><b>Attachment</b></span>
+                        <div id="file-list-in" class="am-form-field" style="height: auto;"></div>
+                    </div>
+                    <div><p></p></div>
+                    <div class="am-input-group">
+                        <!-- <span class="am-input-group-label"><b>时间</b></span> -->
+                        <span class="am-input-group-label"><b><i class="am-icon-clock-o"></i> Date</b></span>
+                        <input type="date" class="am-form-field" id="text-time" name="add_time" value="<php>echo date('Y-m-d',time());</php>" style="height: auto;"/>
+                    </div>
+                    <p><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" /></p>
 
-                      <!-- <p><button type="submit" name="submit" class="am-btn am-btn-success am-btn-block">添加</button></p> -->
-                      <p><button type="submit" name="submit" class="am-btn am-btn-success am-btn-block">Add Transaction</button></p>
-                      <!-- <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">返回</a></p> -->
-                      <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">Return to Homepage</a></p>
-                  </form>
-              </div>
-              <div data-tab-panel-3 class="am-tab-panel">
-                  <include file="Public:loading"/>
-              </div>
-          </div>
-      </div>
-      <p><a href="__APP__/Home/Index/index#money-table" class="am-btn am-btn-block am-btn-default">More records details</a></p>
+                    <!-- <p><button type="submit" name="submit" class="am-btn am-btn-success am-btn-block">添加</button></p> -->
+                    <p><button type="submit" name="submit" class="am-btn am-btn-success am-btn-block">Add Transaction</button></p>
+                    <!-- <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">返回</a></p> -->
+                    <p><a href="{$refURL}" class="am-btn am-btn-block am-btn-default">Return to Homepage</a></p>
+                </form>
+            </div>
+            <div data-tab-panel-3 class="am-tab-panel">
+                <include file="Public:loading"/>
+            </div>
+        </div>
     </div>
-
+    <p><a href="__APP__/Home/Index/index#money-table" class="am-btn am-btn-block am-btn-default">More records details</a></p>
 
 </block>
 
