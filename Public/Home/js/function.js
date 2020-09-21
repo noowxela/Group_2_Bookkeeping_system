@@ -1,13 +1,14 @@
-function SelectChange(){ 
-    var objS = document.getElementById("pid"); 
-    var grade = objS.options[objS.selectedIndex].value; 
+function SelectChange(){
+    var objS = document.getElementById("pid");
+    var grade = objS.options[objS.selectedIndex].value;
     var url = grade;
     location.href=url;
-} 
+}
 
 function isDelete(id){
     // var r=confirm("是否要删除？");
-    var r=confirm("Comfirm wanna delete");
+
+    var r=confirm("Comfirm delete?");
     if (r===true)
     {
         location.href = id;
@@ -34,7 +35,7 @@ function ShowConfirm(msg,url){
 
 //改变分类下拉列表(json数据,类别框id,分类框id)
 function ChangClass(s,sid,oid){
-    var arr = JSON.parse(decodeURI(s)); 
+    var arr = JSON.parse(decodeURI(s));
     var type = document.getElementById(sid).value;
     var acclass = arr[type];
     //alert(acclass["8"]);
@@ -81,7 +82,7 @@ function FormPost(url, args) {
     var form = $('<form method="post" style="display: none;"></form>');
     var input;
     form.attr({"action":url});
-    $.each(args,function(key,value){ 
+    $.each(args,function(key,value){
         input = $("<input type='hidden'>");
         input.attr({"name":key});
         input.val(value);

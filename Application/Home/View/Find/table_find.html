@@ -1,9 +1,12 @@
 <p></p>
-<table class="am-table am-table-bordered am-table-radius am-table-centered am-text-sm">
+<label class='table-title'  style="padding-bottom: 15px;  color:#dd514c"> Expenses </label>
+
+<label class='table-title' style="padding-bottom: 15px;"> Fund Account Summary </label>
+
+<!-- <table class="am-table am-table-bordered am-table-radius am-table-centered am-text-sm"> -->
+<table class="am-table am-table-bordered am-table-radius am-table-striped am-table-centered am-text-sm" >
+
     <thead>
-        <tr>
-            <H1 class="am-text-danger">Expenses</H1>
-        </tr>
         <tr>
             <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
             <th width='80' bgcolor="#FFFFFF">Category</th>
@@ -26,7 +29,7 @@
                 <if condition="$data.typeid eq 2">   
                     <td class="am-text-middle">{$data.class}</td>
                     <td class="am-text-middle">
-                            <font class="am-text-danger money-format">{$data.money}</font>
+                        <font class="am-text-danger money-format">{$data.money}</font>
                     </td>
                     <td class="am-text-middle">{$data.funds} {$data.type}</td>
                     <td class="am-text-middle am-text-xs"><php>echo date("Y-m-d",$data['time']);</php></td>
@@ -50,12 +53,11 @@
         </volist>
     </tbody>
 </table>
+<label class='table-title '  style="padding-bottom: 15px; color:#5eb95e"> Income </label>
 
 <table class="am-table am-table-bordered am-table-radius am-table-centered am-text-sm">
     <thead>
-        <tr>
-            <H1 class="am-text-success">Income</H1>
-        </tr>
+
         <tr>
             <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
             <th width='80' bgcolor="#FFFFFF">Category</th>
@@ -102,12 +104,11 @@
         </volist>
     </tbody>
 </table>
+<label class='table-title '  style="padding-bottom: 15px;"> Transfer </label>
 
 <table class="am-table am-table-bordered am-table-radius am-table-centered am-text-sm">
     <thead>
-        <tr>
-            <H1>Transfer</H1>
-        </tr>
+        
         <tr>
             <!--<th width='80' bgcolor="#FFFFFF">分类</th>-->
             <th width='80' bgcolor="#FFFFFF">Category</th>
