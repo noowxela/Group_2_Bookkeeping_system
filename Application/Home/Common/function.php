@@ -158,17 +158,21 @@
         $isShell = UserShell($user, md5($user.md5($Password)));
         //dump($user.$Password);
         if(!$isShell) {
-            return array(false, '验证密码失败，请重新输入登录密码！');
+            // return array(false, '验证密码失败，请重新输入登录密码！');
+            return array(false, 'password invalid, pls key in the registed password');
         }
         if($Email !== GetUserEmail($uid, true)) {
-            return array(false, '验证邮箱失败，请输入注册时填写的Email。');
+            // return array(false, '验证邮箱失败，请输入注册时填写的Email。');
+            return array(false, 'email invalid, pls key in the registed email for this account');
         }
         if(strlen($Username) < 2) {
-            return array(false, '用户名不合法！');
+            // return array(false, '用户名不合法！');
+            return array(false, 'username invalid');
         }
         $isCheak = intval(M("user")->where(array('username' => $Username))->getField('uid'));
         if((intval($uid) !== $isCheak) && ($isCheak > 0)) {
-            return array(false, '用户名已存在，请更换用户名再试！');
+            // return array(false, '用户名已存在，请更换用户名再试！');
+            return array(false, 'username aldready exist, pls use other username~');
         }
         S('user_key_'.$user,null); //清除登录验证缓存
         M("user")->where(array('uid' => intval($uid)))->setField('username',$Username);
@@ -182,10 +186,12 @@
         }
         $isShell = UserShell($user, md5($user.md5($old)));
         if(!$isShell) {
-            return array(false, '验证密码失败，请重新输入登录密码！');
+            // return array(false, '验证密码失败，请重新输入登录密码！');
+            return array(false, 'password invalid, pls key in the registed password');
         }
         if(strlen($new) < 6) {
-            return array(false, '密码长度过短，请重新输入新密码！');
+            // return array(false, '密码长度过短，请重新输入新密码！');
+            return array(false, 'Password to shor, pls use a longer password~');
         }
         S('user_key_'.$user,null); //清除登录验证缓存
         M("user")->where(array('uid' => intval($uid)))->setField('password',md5($new));
@@ -674,7 +680,8 @@
             $DbData = M('account')->where("acid='$id'")->delete();
             if($DbData > 0){
                 DelImageData($uid, $id);
-                return array(true,'已成功删除'.$DbData.'条数据(^_^)');
+                // return array(true,'已成功删除'.$DbData.'条数据(^_^)');
+                return array(true,'Sucessful delete '.$DbData.'data (^_^)');
             }elseif($DbData === 0){
                 return array(false,'未找到你要删除的数据(@_@)');
             }else{
@@ -697,7 +704,8 @@
             $DbData = M('account')->where($where)->delete();
             if($DbData > 0){
                 DelImageData($uid, $id);
-                return array(true,'已成功删除'.$DbData.'条数据(^_^)');
+                // return array(true,'已成功删除'.$DbData.'条数据(^_^)');
+                return array(true,'Sucessful delete'.$DbData.' records(^_^)');
             }elseif($DbData === 0){
                 return array(false,'未找到你要删除的数据(@_@)');
             }else{
@@ -915,11 +923,13 @@
     //校验资金账户名
     function CheakFundsName($FundsName, $uid, $FundsId = -1) {
         if(strlen($FundsName) < 1){
-            return array(false, '资金账户名不得为空！');
+            // return array(false, '资金账户名不得为空！');
+            return array(false, 'Pls key in the funding account name');
         }
 
         if(strlen($FundsName) > C('MAX_FUNDS_NAME')){
-            return array(false, '资金账户名太长，请控制在' . C('MAX_FUNDS_NAME') . '个字符以内。');
+            // return array(false, '资金账户名太长，请控制在' . C('MAX_FUNDS_NAME') . '个字符以内。');
+            return array(false, 'Founcding account name too long, pls make sure the length is in ' . C('MAX_FUNDS_NAME') . 'chracaters');
         }
 
         if (IsShowDefaultFunds($uid) && ($FundsName == "默认")) {
@@ -933,10 +943,12 @@
                 foreach ($FundsData as $key => $FundsArr) {
                     if (intval($FundsData[$key]['fundsid']) !== intval($FundsId)) {
                         return array(false, '资金账户名已存在!');
+                        // return array(false, 'Founding account name already exist!');
                     }
                 }
             } else {
-                return array(false, '资金账户名已存在...');
+                // return array(false, '资金账户名已存在...');
+                return array(false, 'Founding account name already exist...');
             }
         }
         return array(true, $FundsName);
@@ -964,7 +976,8 @@
                         return array(false, $ret[1]);
                     }
                 }
-                return array(true,'新建资金账户成功!');
+                // return array(true,'新建资金账户成功!');
+                return array(true,'New funding account create sucessfully!');
             }else{
                 return array(false,'写入数据库出错(&_&)');
             }
@@ -1092,9 +1105,11 @@
             ClearDataCache();
             MoveFundsTransferData($oldFundsId, $newFundsId, $uid);
             if ($retCount==0 && $retDelete==1) {
-                return array(true, "资金账户删除成功。");
+                // return array(true, "资金账户删除成功。");
+                return array(true, "Funding account sucessfuly deleted.");
             } elseif ($retCount>0 && $retDelete==1) {
-                return array(true, "记账数据转移". $retCount ."条，资金账户删除成功。");
+                // return array(true, "记账数据转移". $retCount ."条，资金账户删除成功。");
+                return array(true, "". $retCount ." record ald transered ,Funding account sucessfuly deleted.");
             } else {
                 return array(false,'资金账户删除失败，请返回重试。'. $retCount);
             }
@@ -1373,7 +1388,8 @@
             if ($data['fid']) {
                 $arrSQL['transfer.source_fid'] = intval($data['fid']);
             }
-            $DbSQL = $DbSQL->field(" transfer.tid, transfer.money, 0, '转账', transfer.mark, transfer.time, 2, '支出', transfer.source_fid, funds.fundsname as funds, transfer.uid")
+            // $DbSQL = $DbSQL->field(" transfer.tid, transfer.money, 0, '转账', transfer.mark, transfer.time, 2, '支出', transfer.source_fid, funds.fundsname as funds, transfer.uid")
+            $DbSQL = $DbSQL->field(" transfer.tid, transfer.money, 0, 'interbank transfer', transfer.mark, transfer.time, 2, 'expenses', transfer.source_fid, funds.fundsname as funds, transfer.uid")
             ->join('__ACCOUNT_FUNDS__ AS funds ON funds.fundsid = transfer.source_fid', 'LEFT')
             ->where($arrSQL);
         }
@@ -1381,7 +1397,8 @@
             if ($data['fid']) {
                 $arrSQL['transfer.target_fid'] = intval($data['fid']);
             }
-            $DbSQL = $DbSQL->field(" transfer.tid, transfer.money, 0, '转账', transfer.mark, transfer.time, 1, '收入', transfer.target_fid, funds.fundsname as funds, transfer.uid")
+            // $DbSQL = $DbSQL->field(" transfer.tid, transfer.money, 0, '转账/', transfer.mark, transfer.time, 1, '收入', transfer.target_fid, funds.fundsname as funds, transfer.uid")
+            $DbSQL = $DbSQL->field(" transfer.tid, transfer.money, 0, 'interbank transfer', transfer.mark, transfer.time, 1, 'income', transfer.target_fid, funds.fundsname as funds, transfer.uid")
             ->join('__ACCOUNT_FUNDS__ AS funds ON funds.fundsid = transfer.target_fid', 'LEFT')
             ->where($arrSQL);
         }
@@ -1423,7 +1440,8 @@
     //获取搜索记账数据库对象
     function GetFindTransferAccountDb($data) {
         $ret = M('account')->alias('account')
-            ->field("account.acid as id, account.acmoney as money, account.acclassid as classid, class.classname as class, account.acremark as mark, account.actime as time, account.zhifu as typeid, case account.zhifu when 1 then '收入'  when 2 then '支出' end as type, account.fid as fundsid, funds.fundsname as funds, account.jiid as uid")
+            // ->field("account.acid as id, account.acmoney as money, account.acclassid as classid, class.classname as class, account.acremark as mark, account.actime as time, account.zhifu as typeid, case account.zhifu when 1 then '收入'  when 2 then '支出' end as type, account.fid as fundsid, funds.fundsname as funds, account.jiid as uid")
+            ->field("account.acid as id, account.acmoney as money, account.acclassid as classid, class.classname as class, account.acremark as mark, account.actime as time, account.zhifu as typeid, case account.zhifu when 1 then 'income'  when 2 then 'expenses' end as type, account.fid as fundsid, funds.fundsname as funds, account.jiid as uid")
             ->join('__ACCOUNT_FUNDS__ AS funds ON funds.fundsid = account.fid', 'LEFT')
             ->join('__ACCOUNT_CLASS__ AS class ON class.classid = account.acclassid', 'LEFT');
         if ((!isset($data['acclassid']) && !isset($data['zhifu'])) || stripos($data['acclassid'], "transfer")!==false) {
@@ -1484,7 +1502,8 @@
     //校验分类名
     function CheakClassName($ClassName, $uid, $ClassType=0, $ClassId=0) {
         if(strlen($ClassName) < 1){
-            return array(false, '分类名不得为空！');
+            // return array(false, '分类名不得为空！');
+            return array(false, 'Category name cant be blank!');
         }
 
         if(strlen($ClassName) > C('MAX_CLASS_NAME')){
@@ -1517,7 +1536,8 @@
             return array(false,'非法操作233');
         }
         if(strlen($data['classname']) < 1){
-            return array(false,'分类名不得为空！');
+            // return array(false,'分类名不得为空！');
+            return array(false,'Category name cant be blank!');
         }
         if(strlen($data['classname']) > C('MAX_CLASS_NAME')){
             return array(false, '分类名太长，请控制在' . C('MAX_CLASS_NAME') . '个字符以内。');
@@ -1547,7 +1567,8 @@
             $DbData = M('account_class')->add($data);
             ClearDataCache();
             if($DbData > 0){
-                return array(true,'新建分类成功!');
+                // return array(true,'新建分类成功!');
+                return array(true,'New category created sucessfully!');
             }else{
                 return array(false,'写入数据库出错(&_&)');
             }
@@ -1573,7 +1594,8 @@
                     return array(false, '非法操作233', $key);
                 }
                 if(strlen($value['classname']) < 1){
-                    return array(false, '分类名不得为空！', $key);
+                    // return array(false, '分类名不得为空！', $key);
+                    return array(false, 'Category name cant be blank!', $key);
                 }
                 if(strlen($value['classname']) > C('MAX_CLASS_NAME')){
                     return array(false, '分类名太长，请控制在' . C('MAX_CLASS_NAME') . '个字符以内。', $key);
@@ -1606,7 +1628,8 @@
             $sql = array('classid' => intval($ClassId), 'ufid' => intval($uid));
             $ret = M("account_class")->where($sql)->setField('classname',$ClassName);
             ClearDataCache();
-            return array(true,'分类名修改成功！');
+            // return array(true,'分类名修改成功！');
+            return array(true,'Category name edit sucessly');
         }else{
             return $isCheak;
         }
@@ -1663,7 +1686,8 @@
             $DbData = M("account_class")->where($sql)->delete();
             if($DbData > 0){
                 ClearDataCache();
-                return array(true,'已成功删除【'.$ClassData['classname'].'】分类!',$ClassData['classtype']);
+                // return array(true,'已成功删除【'.$ClassData['classname'].'】分类!',$ClassData['classtype']);
+                return array(true,'Sucessful delete【'.$ClassData['classname'].'】category!',$ClassData['classtype']);
             }elseif($DbData === 0){
                 return array(false,'未找到你要删除的分类(@_@)',$ClassData['classtype']);
             }else{

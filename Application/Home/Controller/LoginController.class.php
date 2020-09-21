@@ -63,7 +63,8 @@ class LoginController extends Controller {
                     if (I('post.forget_submit') == 'xxjzAUI') {
                         die(json_encode(array('uid'=>false, 'msg'=>'该邮箱未注册过账号！')));
                     } else {
-                        LoginMassage("该邮箱未注册过账号！","danger");
+                        // LoginMassage("该邮箱未注册过账号！","danger");
+                        LoginMassage("invalid email or username and password！","danger");
                     }
                 }
                 $this -> display();

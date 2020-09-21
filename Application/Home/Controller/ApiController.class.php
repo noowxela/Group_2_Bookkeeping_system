@@ -221,7 +221,8 @@ class ApiController extends Controller {
             case 'del':
                 if (intval(GetClassAccountNum($data['classid'],$uid)) > 0) {
                     $DbData = GetClassIdData($data['classid'],$uid);
-                    $arrData['data'] = array(false, '【'.$DbData[1]['classname'].'】分类数据不为空，请先处理记账数据！');
+                    // $arrData['data'] = array(false, '【'.$DbData[1]['classname'].'】分类数据不为空，请先处理记账数据！');
+                    $arrData['data'] = array(false, '【'.$DbData[1]['classname'].'category still have some transaction record, pls delete the transaction in this category first!');
                 }else{
                     $arrData['data'] = DelClass($data['classid'],$uid);
                 }

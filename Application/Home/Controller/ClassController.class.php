@@ -101,7 +101,8 @@ class ClassController extends BaseController {
         if($ClassId){
             if (intval(GetClassAccountNum($ClassId,$uid)) > 0) {
                 $DbData = GetClassIdData($ClassId,$uid);
-                ShowAlert('【'.$DbData[1]['classname'].'】分类数据不为空，请先处理记账数据！',U('Home/Class/proc/id/'.$ClassId));
+                // ShowAlert('【'.$DbData[1]['classname'].'】分类数据不为空，请先处理记账数据！',U('Home/Class/proc/id/'.$ClassId));
+                ShowAlert('【'.$DbData[1]['classname'].'category still have some transaction record, pls delete the transaction in this category first!',U('Home/Class/proc/id/'.$ClassId));
                 $this -> display('Public/base');
             }else{
                 $retData = DelClass($ClassId,$uid);
