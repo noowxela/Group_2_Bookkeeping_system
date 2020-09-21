@@ -30,7 +30,8 @@ class PushController extends Controller {
                 $this->token_key = $key;
                 $this->token_auth = 1;
             } else {
-                die(json_encode(array('err'=>'10010','msg'=>'权限验证失败'), true));
+                //die(json_encode(array('err'=>'10010','msg'=>'权限验证失败'), true));
+                die(json_encode(array('err'=>'10010','msg'=>'Permission verification failed'), true));
             }
         }
         S('push_time', $times);
@@ -39,7 +40,8 @@ class PushController extends Controller {
     // 推送管理，必须使用管理权限登录
     public function admin() {
         if ($this->token_auth < 255) {
-            die(json_encode(array('err'=>'10011','msg'=>'权限不足，请使用管理员权限登录。'), true));
+            //die(json_encode(array('err'=>'10011','msg'=>'权限不足，请使用管理员权限登录。'), true));
+            die(json_encode(array('err'=>'10011','msg'=>'Permission denied, please log in with administrator account'), true));
         }
         S('push_time', null);
 
@@ -57,7 +59,8 @@ class PushController extends Controller {
                     # code...
                     break;
             }
-            $this -> assign('message', '表单提交完成。');
+            //$this -> assign('message', '表单提交完成。');
+            $this -> assign('message', 'Form submission completed。');
         }
         // 更新Token密钥
         $tokenObj = PushApiToken($this->token_key);
@@ -78,7 +81,8 @@ class PushController extends Controller {
         // $year = ($month == 12) ? intval(date('Y')) - 1 : intval(date('Y'));
         $month = intval(date('m'));
         $year = intval(date('Y'));
-        $template_id = D('UserPush')->getWeixinTemplateId('本月记账成功通知');
+       // $template_id = D('UserPush')->getWeixinTemplateId('本月记账成功通知');
+        $template_id = D('UserPush')->getWeixinTemplateId('Succesfully notify account for current month');
         if ($template_id == false) {
             die("Error weixin template id not found.");
         }
@@ -88,7 +92,8 @@ class PushController extends Controller {
         foreach ($uidList as $key => $uid) {
             //检测推送权限
             if (D('UserConfig')->getConfig('push_month', 'Weixin', $uid) != 1) {
-                dump('uid='.$uid.'未开启推送，跳过推送。');
+                //dump('uid='.$uid.'未开启推送，跳过推送。');
+                dump('uid='.$uid.'Push is not developed, skip push.');
                 continue;
             }
             //枚举uid获取数据库数据
@@ -103,11 +108,16 @@ class PushController extends Controller {
             $countData = number_format($data['count'], 0);
             //发送推送
             $arrData = array();
-            $arrData[0] = $outMoney . "元";
-            $arrData[1] = $inMoney . "元";
-            $arrData[2] = "本月共记账" . $countData . "笔";
-            $arrData[3] = $year . "年" . $month . "月份";
-            dump('uid='.$uid.'触发推送。');
+            //$arrData[0] = $outMoney . "元";
+            $arrData[0] = $outMoney . "Ringgit";
+            //$arrData[1] = $inMoney . "元";
+            $arrData[1] = $inMoney . "Ringgit";
+            //$arrData[2] = "本月共记账" . $countData . "笔";
+            $arrData[2] = "This month account total are " . $countData;
+            //$arrData[3] = $year . "年" . $month . "月份";
+            $arrData[3] = $year . "Year" . $month . "Month";
+            //dump('uid='.$uid.'触发推送。');
+            dump('uid='.$uid.'Trigger push');
             dump($arrData);
             $push = D('UserPush')->sendWeixinPush($template_id, $uid, 'month', $arrData);
             dump($push);
@@ -116,7 +126,8 @@ class PushController extends Controller {
 
     // 打卡提醒
     public function punch() {
-        $template_id = D('UserPush')->getWeixinTemplateId('打卡提醒');
+        //$template_id = D('UserPush')->getWeixinTemplateId('打卡提醒');
+        $template_id = D('UserPush')->getWeixinTemplateId('Attendance reminder');
         if ($template_id == false) {
             die("Error weixin template id not found.");
         }
@@ -127,7 +138,8 @@ class PushController extends Controller {
             //获取用户打卡推送配置
             $punchNum = intval(D('UserConfig')->getConfig('push_punch', 'Weixin', $uid));
             if ($punchNum <= 0) {
-                dump('uid='.$uid.'未开启推送，跳过推送。');
+                //dump('uid='.$uid.'未开启推送，跳过推送。');
+                dump('uid='.$uid.'Push is not developed, skip push.');
                 continue;
             }
             $punchDay = date("Y-m-d",strtotime('-'.$punchNum.' day'));
@@ -143,7 +155,8 @@ class PushController extends Controller {
             );
             $dbData = M('UserPush')->where($arrSql)->order('time desc')->find();
             if ($dbData == null) {
-                dump('uid='.$uid.'没有可推送的数据，跳过推送。');
+                //dump('uid='.$uid.'没有可推送的数据，跳过推送。');
+                dump('uid='.$uid.'There is no data to push, skip push.');
                 continue;
             }
             $dbData['time'] = date("Y-m-d H:i:s", $dbData['time']);
@@ -151,11 +164,15 @@ class PushController extends Controller {
 
             //发送推送
             $arrData = array();
-            $arrData[0] = "小歆记账打卡"; //打卡名称
-            $arrData[1] = "记账"; //打卡方式
+            //$arrData[0] = "小歆记账打卡"; //打卡名称
+            $arrData[0] = "XXJZ accounting attendance";
+            //$arrData[1] = "记账"; //打卡方式
+            $arrData[1] = "Accounting";
             $arrData[2] = $dbData['time']; //打卡时间
-            $arrData[3] = "您已经".$punchNum."天没有记账了，赶紧“进入小程序”开始记账吧。"; //完成情况
-            dump('uid='.$uid.'触发推送。');
+            //$arrData[3] = "您已经".$punchNum."天没有记账了，赶紧“进入小程序”开始记账吧。"; //完成情况
+            $arrData[3] = "You have been ".$punchNum." days did not do accounting already，quickly go to mini application to start accounting"; //完成情况
+            //dump('uid='.$uid.'触发推送。');
+            dump('uid='.$uid.'Trigger push');
             dump($arrData);
             $push = D('UserPush')->sendWeixinPush($template_id, $uid, 'add', $arrData);
         }

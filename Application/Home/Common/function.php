@@ -1,5 +1,5 @@
 <?php
-
+    
     function UserShell($user,$key){
         if($user){
             //$StrUser = "username='$user'";
@@ -9,7 +9,7 @@
             if($Shell === $key){
                 return true;
             }else{
-                return false;
+                return false; 
             }
         }else{
             return false;
@@ -22,7 +22,7 @@
             $tokenTime = time();
         }
         return array(
-            'token' => md5($tokenKey.''.$tokenTime),
+            'token' => md5($tokenKey.''.$tokenTime), 
             'time' => $tokenTime,
         );
     }
@@ -34,7 +34,7 @@
             return '2.0.0';
         }
     }
-
+    
     function UserLogin($username,$password){
         // $StrUser = "username='$username'";
         $StrUser = array('username' => $username );
@@ -70,7 +70,8 @@
             return array(true, $userData['uid'], $userData['username']);
         } else {
             //不存在用户，转为注册或绑定
-            return array(true, '-1', '新用户，请提交信息注册登陆。');
+            //return array(true, '-1', '新用户，请提交信息注册登陆。');
+            return array(true, '-1', 'New user, please submit information to register and login.');
         }
     }
 
@@ -85,12 +86,15 @@
                 $data['login_key'] = $session_key ? $session_key : 'null';
                 $data['login_token'] = $unionid ? $unionid : 'null';
                 $lid = M('user_login')->add($data);
-                return array(true, '绑定成功', $uid);
+                //return array(true, '绑定成功', $uid);
+                return array(true, 'Bind succesfully', $uid);
             } else {
-                return array(false, '绑定出错，该微信已绑定。', $uid);
+                //return array(false, '绑定出错，该微信已绑定。', $uid);
+                return array(false, 'WeChat account has been bind, please use another WeChat account.', $uid);
             }
         } else {
-            return array(false, '绑定失败，账号未登陆。', $uid);
+            //return array(false, '绑定失败，账号未登陆。', $uid);
+            return array(false, 'Bind account unsuccessfully, account is not logged in.', $uid);
         }
 
     }
@@ -100,13 +104,16 @@
         $session_key = session('wx_session_key');
         $unionid = session('wx_unionid');
         if (!$openid) {
-            return array(false, '非法操作openid。');
+            //return array(false, '非法操作openid。');
+            return array(false, 'Invalid operation openid。');
         }
         if (!$session_key) {
-            return array(false, '非法操作session_key。');
+            //return array(false, '非法操作session_key。');
+            return array(false, 'Invalid operation session_key。');
         }
         if (intval(M('user_login')->where(array('login_name'=>'Weixin', 'login_id'=>$openid))->getField('uid')) > 0) {
-            return array(false, '绑定出错，该微信被已绑定。');
+            //return array(false, '绑定出错，该微信被已绑定。');
+            return array(false, 'Binding error, WeChat account is binded.');
         }
         $ret = RegistShell($Username, $Password, $Email);
         if ($ret[0] === true) {
@@ -119,7 +126,8 @@
             $ret = WeixinUserBind($userData['uid'], $openid, $session_key, $unionid);
             if($ret[0] === true) {
                 //绑定成功
-                return array(true, '注册并绑定成功。', $ret[2]);
+                //return array(true, '注册并绑定成功。', $ret[2]);
+                return array(true, 'register and bind successfully', $ret[2]);
             } else {
                 return $ret;
             }
@@ -130,11 +138,11 @@
     }
 
     function isEmail($email) {
-        if (preg_match("/^[-a-zA-Z0-9_.]+@([0-9A-Za-z][0-9A-Za-z-]+\.)+[A-Za-z]{2,5}$/",$email)) {
+        if (preg_match("/^[-a-zA-Z0-9_.]+@([0-9A-Za-z][0-9A-Za-z-]+\.)+[A-Za-z]{2,5}$/",$email)) { 
             return true;
-        } else {
+        } else { 
             return false;
-        }
+        } 
     }
 
     function GetUserEmail($uid,$isAll=false) {
@@ -147,32 +155,34 @@
             $before = substr($Email, 0, 2);
             return $before.'...'.$domain;
         }
-
+        
     }
 
     function UpdataUserName($uid, $Username, $Email ,$Password) {
         $user = session('username');
         if($user == C('APP_DEMO_USERNAME')) {
-            return array(false, '抱歉Demo账号无法进行用户名修改！');
+            //return array(false, '抱歉Demo账号无法进行用户名修改！');
+            return array(false, 'Demo account cannot change username！');
         }
         $isShell = UserShell($user, md5($user.md5($Password)));
         //dump($user.$Password);
         if(!$isShell) {
-            // return array(false, '验证密码失败，请重新输入登录密码！');
-            return array(false, 'password invalid, pls key in the registed password');
+
+            //return array(false, '验证密码失败，请重新输入登录密码！');
+            return array(false, 'Fail to verify password, please try again！');
         }
         if($Email !== GetUserEmail($uid, true)) {
-            // return array(false, '验证邮箱失败，请输入注册时填写的Email。');
-            return array(false, 'email invalid, pls key in the registed email for this account');
+            //return array(false, '验证邮箱失败，请输入注册时填写的Email。');
+            return array(false, 'Fail to verify email, please try again');
         }
         if(strlen($Username) < 2) {
-            // return array(false, '用户名不合法！');
-            return array(false, 'username invalid');
+            //return array(false, '用户名不合法！');
+            return array(false, 'Invalid username！');
         }
         $isCheak = intval(M("user")->where(array('username' => $Username))->getField('uid'));
         if((intval($uid) !== $isCheak) && ($isCheak > 0)) {
-            // return array(false, '用户名已存在，请更换用户名再试！');
-            return array(false, 'username aldready exist, pls use other username~');
+            //return array(false, '用户名已存在，请更换用户名再试！');
+            return array(false, 'The username already exists, please try another username！');
         }
         S('user_key_'.$user,null); //清除登录验证缓存
         M("user")->where(array('uid' => intval($uid)))->setField('username',$Username);
@@ -182,16 +192,18 @@
     function UpdataPassword($uid, $old, $new) {
         $user = session('username');
         if($user == C('APP_DEMO_USERNAME')) {
-            return array(false, '抱歉Demo账号无法进行密码修改！');
+            //return array(false, '抱歉Demo账号无法进行密码修改！');
+            return array(false, 'Demo account cannot change username！');
         }
         $isShell = UserShell($user, md5($user.md5($old)));
         if(!$isShell) {
-            // return array(false, '验证密码失败，请重新输入登录密码！');
-            return array(false, 'password invalid, pls key in the registed password');
+
+            //return array(false, '验证密码失败，请重新输入登录密码！');
+            return array(false, 'Fail to verify password, please try again！');
         }
         if(strlen($new) < 6) {
-            // return array(false, '密码长度过短，请重新输入新密码！');
-            return array(false, 'Password to shor, pls use a longer password~');
+            //return array(false, '密码长度过短，请重新输入新密码！');
+            return array(false, 'Password is too short, please try again！');
         }
         S('user_key_'.$user,null); //清除登录验证缓存
         M("user")->where(array('uid' => intval($uid)))->setField('password',md5($new));
@@ -200,21 +212,26 @@
 
     function RegistShell($Username, $Password, $Email) {
         if(strlen($Username) < 2) {
-            return array(false, '用户名不合法！');
+            //return array(false, '用户名不合法！');
+            return array(false, 'Invalid username！');
         }
         if(strlen($Password) < 4) {
-            return array(false, '密码长度过短，请重新输入新密码！');
+            //return array(false, '密码长度过短，请重新输入新密码！');
+            return array(false, 'Password is too long, please try again！');
         }
         if (!isEmail($Email)) {
-            return array(false, '邮箱格式有误，请重新输入邮箱。');
+            //return array(false, '邮箱格式有误，请重新输入邮箱。');
+            return array(false, 'Email format is invalid, please try again!');
         }
         $isCheak = intval(M("user")->where(array('username' => $Username))->getField('uid'));
         if($isCheak > 0) {
-            return array(false, '用户名已存在，请更换用户名再试！');
+            //return array(false, '用户名已存在，请更换用户名再试！');
+            return array(false, 'The username already exists, please try another username！');
         }
         $isCheak = intval(M("user")->where(array('email' => $Email))->getField('uid'));
         if($isCheak > 0) {
-            return array(false, '该邮箱已注册过，如忘记密码请尝试找回密码。');
+            //return array(false, '该邮箱已注册过，如忘记密码请尝试找回密码。');
+            return array(false, 'The email already registered, please try another email！');
         }
         $data = array();
         $data['username'] = $Username;
@@ -223,12 +240,14 @@
         $data['utime'] = time();
         $DbData = M('user')->add($data);
         if($DbData > 0){
-            return array(true, '新账号注册成功!', $DbData);
+            //return array(true, '新账号注册成功!', $DbData);
+            return array(true, 'Account has been created!', $DbData);
         }else{
-            return array(false, '写入数据库出错(>_<)');
+            //return array(false, '写入数据库出错(>_<)');
+            return array(false, 'Error writing to the database');
         }
     }
-
+    
     function ShowAlert($msg,$url=null)
     {
         if(url){
@@ -238,7 +257,7 @@
         }
         echo '<body href="javascript:void(0);" onload="ShowAlert('.$Alert.');"></body>';
     }
-
+    
     //登陆界面专属消息框
     function LoginMassage($msg,$type="success") {
         //msg:消息内容
@@ -248,10 +267,10 @@
         echo $msg;
         echo '</div>';
     }
-
+    
     //Mail发送函数
     function SendMail($address,$subject,$body,$file){
-        Vendor('PHPMailer.PHPMailerAutoload');
+        Vendor('PHPMailer.PHPMailerAutoload');    
         $mail = new PHPMailer();                  // 建立邮件发送类
         $mail->CharSet    = "UTF-8";              // 编码格式UTF-8
         $mail->IsSMTP();                          // 使用SMTP方式发送
@@ -269,19 +288,20 @@
             $mail->AddAttachment($file); // 添加附件
         }
         $mail->IsHTML(true); // set email format to HTML //是否使用HTML格式
-
+        
         $mail->Subject = $subject; //邮件标题
         $mail->Body = $body; //邮件内容，上面设置HTML，则可以是HTML
-
+        
         if(!$mail->Send())
         {
-            echo "邮件发送失败 -- 错误原因: " . $mail->ErrorInfo;
+            //echo "邮件发送失败 -- 错误原因: " . $mail->ErrorInfo;
+            echo "Error sent email, Reason: " . $mail->ErrorInfo;
             return false;
         }else{
             return true;
         }
     }
-
+    
     //设置可返回的URL
     function SetRefURL($url) {
         if($url){
@@ -290,7 +310,7 @@
             session('url',null);
         }
     }
-
+    
     //获取可返回的URL
     function GetRefURL() {
         if(session('?url')){
@@ -299,13 +319,13 @@
             return U('Home/Index/index');
         }
     }
-
+    
     //清除全部缓存
     function ClearAllCache() {
         ClearDataCache();
         ClearFindCache();
     }
-
+    
     //清除数据缓存
     function ClearDataCache() {
         $uid = session('uid');
@@ -324,7 +344,7 @@
             S('chart_all_year_'.$uid,null);
         }
     }
-
+    
     //清除查询缓存
     function ClearFindCache() {
         $uid = session('uid');
@@ -371,7 +391,7 @@
         }
         return $arrSQL;
     }
-
+    
     //查询记账数据
     function FindAccountData($data,$p = 0) {
         $strSQL = GetFindSqlArr($data);
@@ -391,7 +411,7 @@
             $data['zhifu'] = null;
         }
         if($p > 0) {
-            $pagesize = C('PAGE_SIZE');
+            $pagesize = C('PAGE_SIZE');  
             $offset = ($p-1)*$pagesize;
             $DbData = M('account')->where($strSQL)->order("actime DESC , acid DESC")->limit("$offset,$pagesize")->select();
             $ret['pagemax'] = intval(($DbCount-1) / $pagesize) + 1;
@@ -408,7 +428,7 @@
         $ret['data']        = $DbData;
         return $ret;
     }
-
+    
     //获取记账数据(用户id,页码)
     function GetAccountData($uid, $p) {
         //dump(S('account_data_'.$p));
@@ -419,7 +439,7 @@
             $DbCount = M('account')->where("jiid='$uid'")->count();
             $DbSQL = M('account')->where("jiid='$uid'")->order("actime DESC , acid DESC");
             if($p > 0) {
-                $pagesize = C('PAGE_SIZE');
+                $pagesize = C('PAGE_SIZE');  
                 $offset = ($p-1)*$pagesize;
                 $DbData = $DbSQL -> limit("$offset,$pagesize") -> select();
                 $ret['pagemax'] = intval(($DbCount-1) / $pagesize) + 1;
@@ -466,7 +486,7 @@
         }
         return $CacheData[$CacheKey];
     }
-
+    
     //获取分类数据(用户id,1=收入 2=支出)
     function GetClassData($uid,$type=0) {
         $strSQL = array();
@@ -474,9 +494,9 @@
         if($type) {
             $strSQL['classtype'] = $type;
         }
-
+        
         $DbClass = M('account_class')->cache('account_class_'.$type.'_'.$uid)->where($strSQL)->order('sort,classid')->select();
-
+        
         //$ret = array();
         foreach($DbClass as $key => $Data) {
             $classId = $Data['classid'];
@@ -485,16 +505,16 @@
         }
         return $ret;
     }
-
+    
     //数据库数组数据 转 显示数据
     function ArrDataToShowData($ArrData, $ArrClass, $ArrFunds = null) {
         $retShowData = array();
         if($ArrData['zhifu'] == 1){
-            // $classType = '收入';
-            $classType = '<< Income >>';
+            //$classType = '收入';
+            $classType = 'Income';
         }else{
-            // $classType = '支出';
-            $classType = '<< Expense >>';
+            //$classType = '支出';
+            $classType = 'Expense';
         }
 
         if (is_array($ArrFunds)) {
@@ -504,7 +524,7 @@
 
         $classId = $ArrData['acclassid'];
         $className = $ArrClass[$classId];
-
+        
         $retShowData['id']      = $ArrData['acid'];
         $retShowData['money']   = $ArrData['acmoney'];
         $retShowData['fundsid'] = $fundsId;
@@ -515,10 +535,10 @@
         $retShowData['time']    = $ArrData['actime'];
         $retShowData['mark']    = $ArrData['acremark'];
         $retShowData['uid']     = $ArrData['jiid'];
-
+        
         return $retShowData;
     }
-
+    
     //整合List表格数组
     function OutListData($ArrAccount, $ArrClass, $ArrFunds = null) {
         $Page = $ArrAccount['page'];
@@ -529,7 +549,7 @@
         }
         return array($Page,$PageMax,$retShowData);
     }
-
+    
     function SumDbAccount($StrSQL) {
         $Ret = M('account')->where($StrSQL)->Sum('acmoney');
         if($Ret == null){
@@ -537,7 +557,7 @@
         }
         return floatval($Ret);
     }
-
+    
     //获取指定时间段的记账结果(开始时间戳,结束时间戳,收支,用户id)
     function GetAccountStatistic($StartTime,$EndTime,$Type,$uid) {
         //收支 : 1收入 / 2支出
@@ -551,15 +571,15 @@
         $StrSQL = $StrSQL."jiid = '$uid' and zhifu = '$Type'";
         return SumDbAccount($StrSQL);
     }
-
+    
     function AccountStatisticProcess($uid) {
         $ArrData = S('account_tatistic_'.$uid);
-
+        
         if($ArrData && ($ArrData['TodayDate'] == date("Y-m-d"))){
             return $ArrData;
         }
         $ArrData = array();
-
+        
         //今日收支统计
         $today = date("Y-m-d");
         $ArrData['TodayDate'] = $today;
@@ -567,19 +587,19 @@
         $EndTime = strtotime($today." 23:59:59");
         $ArrData['TodayInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['TodayOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-
+        
         //本月收支统计
         $EndTime = strtotime(date("Y-m-d",mktime(23,59,59,date("m",time()),date("t"),date("Y",time()))));
         $StartTime = strtotime(date("Y-m-d",mktime(0,0,0,date("m",time()),1,date("Y",time()))));
         $ArrData['MonthInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['MonthOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-
+        
         //本年收支统计
         $EndTime = strtotime(date("Y-m-d",mktime(23,59,59,12,31,date("Y",time()))));
         $StartTime = strtotime(date("Y-m-d",mktime(0,0,0,1,1,date("Y",time()))));
         $ArrData['YearInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['YearOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-
+        
         //最近7天收支统计
         $StartTime = strtotime(date("Y-m-d",strtotime('-7 day'))." 0:0:0");
         $EndTime = strtotime($today." 23:59:59");
@@ -615,37 +635,37 @@
         $EndTime = strtotime($today." 23:59:59");
         $ArrData['Recent365DayInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['Recent365DayOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-
+        
         //昨日收支统计
         $today = date("Y-m-d",strtotime('-1 day'));
         $StartTime = strtotime($today." 0:0:0");
         $EndTime = strtotime($today." 23:59:59");
         $ArrData['LastTodayInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['LastTodayOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-
+        
         //上月收支统计
         $EndTime = strtotime(date("Y-m-d 23:59:59", strtotime(-date('d').' day')));
         $StartTime = strtotime(date("Y-m-01 00:00:00", strtotime('-1 month')));
         $ArrData['LastMonthInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['LastMonthOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-
+        
         //去年收支统计
         $EndTime = strtotime(date("Y-m-d",mktime(23,59,59,12,31,date("Y",time())-1)));
         $StartTime = strtotime(date("Y-m-d",mktime(0,0,0,1,1,date("Y",time())-1)));
         $ArrData['LastYearInMoney']  = GetAccountStatistic($StartTime,$EndTime,1,$uid);
         $ArrData['LastYearOutMoney'] = GetAccountStatistic($StartTime,$EndTime,2,$uid);
-
+        
         //总结统计
         $StartTime = strtotime("2000-1-1 0:0:0");
         $EndTime = strtotime(date("Y-m-d")." 23:59:59");
         $ArrData['SumInMoney']  = GetAccountStatistic(null,null,1,$uid);
         $ArrData['SumOutMoney'] = GetAccountStatistic(null,null,2,$uid);
-
+        
         S('account_tatistic_'.$uid,$ArrData);
-
+        
         return $ArrData;
     }
-
+    
     //验证记账id与登录id是否相同
     function CheakIdShell($id,$uid) {
         if(is_numeric($id)){
@@ -663,7 +683,7 @@
             return false;
         }
     }
-
+    
     //获取指定记账id的数据
     function GetIdData($id) {
         if(is_numeric($id)){
@@ -673,22 +693,26 @@
             return null;
         }
     }
-
+    
     //删除指定记账id数据
     function DelIdData($uid, $id) {
         if(is_numeric($id)){
             $DbData = M('account')->where("acid='$id'")->delete();
             if($DbData > 0){
                 DelImageData($uid, $id);
-                // return array(true,'已成功删除'.$DbData.'条数据(^_^)');
-                return array(true,'Sucessful delete '.$DbData.'data (^_^)');
+
+                //return array(true,'已成功删除'.$DbData.'条数据(^_^)');
+                return array(true,$DbData.' data has been deleted');
             }elseif($DbData === 0){
-                return array(false,'未找到你要删除的数据(@_@)');
+                //return array(false,'未找到你要删除的数据(@_@)');
+                return array(false,'Data is not found');
             }else{
-                return array(false,'数据库异常(*_*)');
+                //return array(false,'数据库异常(*_*)');
+                return array(false,'Database error');
             }
         }else{
-            return array(false,'非法操作(=_=)');
+            //return array(false,'非法操作(=_=)');
+            return array(false,'Invalid operation');
         }
     }
 
@@ -716,7 +740,7 @@
         }
         
     }
-    
+
     //获取分类id
     function GetClassId($ClassName) {
         if($ClassName){
@@ -725,45 +749,49 @@
             return $DbClass['classid'];
         }
     }
-
+    
     //校验记账数据
     function CheakAccountData($data,$isID = true) {
         if(!is_array($data)){
-            return array(false,'非法操作~~~');
+            //return array(false,'非法操作~~~');
+            return array(false,'Invalid operation');
         }
         if($isID && !(is_numeric($data['acid'])&&($data['acid'] > 0))){
-            return array(false,'操作的id无效...');
+            //return array(false,'操作的id无效...');
+            return array(false,'Invalid operation ID...');
         }
         if(!(is_numeric($data['acmoney'])&&($data['acmoney'] >= 0.01)&&($data['acmoney'] <= C('MAX_MONEY_VALUE')))){
-            // return array(false,'输入的金额无效，请输入0.01到' . C('MAX_MONEY_VALUE') . '范围内的有效数字。');
-            return array(false,'The amount enter is invalid, pls valid amount in range from 0.01 to ' . C('MAX_MONEY_VALUE') . ' .');
+            //return array(false,'输入的金额无效，请输入0.01到' . C('MAX_MONEY_VALUE') . '范围内的有效数字。');
+            return array(false,'Invalid ammount, please enter 0.01 to ' . C('MAX_MONEY_VALUE') . ' range.');
         }
         if(!is_numeric($data['acclassid'])){
             $data['acclassid'] = GetClassId($data['acclassid']);
         }
         if (intval($data['acclassid']) == 0) {
-            // return array(false,'请先添加分类再进行记账...');
-            return array(false,'Please select an existing Category');
+            //return array(false,'请先添加分类再进行记账...');
+            return array(false,'Please add category before start accounting...');
         }
         $strSQL  = 'classid = '.$data['acclassid'];
         $DbClass = M('account_class')->where($strSQL)->find();
         if(!is_array($DbClass)){
-            // return array(false,'选择的分类无效!');
-            return array(false,'invalid category!');
+            //return array(false,'选择的分类无效!');
+            return array(false,'Invalid chosen category!');
         }
         if($DbClass['classtype'] != $data['zhifu']){
-            return array(false,'选择的分类与收支类别不匹配~');
+            //return array(false,'选择的分类与收支类别不匹配~');
+            return array(false,'The selected category does not match the income and expense category');
         }
         if (strlen($data['acremark']) > C('MAX_MARK_VALUE')) {
-            return array(false,'备注信息太长，请把长度控制在' . C('MAX_MARK_VALUE') . '个字符以内。');
+            //return array(false,'备注信息太长，请把长度控制在' . C('MAX_MARK_VALUE') . '个字符以内。');
+            return array(false,'The remark is too long, please decrease the length to ' . C('MAX_MARK_VALUE'. 'and below.'));
         }
         if(!is_int($data['actime'])){
             $data['actime'] = strtotime($data['actime']);
         }
-
+        
         return array(true,$data);
     }
-
+    
     //更新记账数据
     function UpdataAccountData($data) {
         $isCheak = CheakAccountData($data);
@@ -772,15 +800,17 @@
             $strSQL  = 'acid = '.$data['acid'];
             $DbData = M('account')->where($strSQL)->find();
             if(!is_array($DbData)){
-                return array(false,'该记账信息不存在!');
+                //return array(false,'该记账信息不存在!');
+                return array(false,'The accounting information does not exist!');
             }
             $DbSQL = M('account')->where($strSQL)->data($data)->save();
-            return array(true,'数据更新成功!');
+            //return array(true,'数据更新成功!');
+            return array(true,'Data updated successfully!');
         }else{
             return $isCheak;
         }
     }
-
+    
     //添加记账数据
     function AddAccountData($data) {
         $isCheak = CheakAccountData($data,false);
@@ -790,15 +820,15 @@
             if($DbData > 0){
                 // 增加图片（uploads中是已保存到数据库中的图片数据）
                 if (isset($data['uploads']) && count($data['uploads']) > 0) {
-                    for ($i=0; $i < count($data['uploads']); $i++) {
+                    for ($i=0; $i < count($data['uploads']); $i++) { 
                         EditImageAcid($data['jiid'], $data['uploads'][$i]['id'], $DbData);
                     }
                 }
-                // return array(true,'数据添加成功!',$DbData);
-                return array(true,'Data successful created!',$DbData);
+                //return array(true,'数据添加成功!',$DbData);
+                return array(true,'Data added successfully!',$DbData);
             }else{
-                // return array(false,'写入数据库出错(>_<)');
-                return array(false,'cant record in database(>_<)');
+                //return array(false,'写入数据库出错(>_<)');
+                return array(false,'Error writing to the database');
             }
         }else{
             return $isCheak;
@@ -823,7 +853,7 @@
         if (is_array($upload) && count($upload) > 0) {
             $count = GetImageCount($uid, $acid);
             $time = time();
-            for ($i=0; $i < count($upload); $i++) {
+            for ($i=0; $i < count($upload); $i++) { 
                 if (i > C('IMAGE_COUNT') + $count) {
                     break; //防止上传文件数量超过限制
                 }
@@ -861,7 +891,7 @@
         }
         $imageData = M("account_image")->where($sql)->select();
         if (is_array($imageData) && count($imageData) > 0) {
-            for ($i=0; $i < count($imageData); $i++) {
+            for ($i=0; $i < count($imageData); $i++) { 
                 if (stripos($imageData[$i]['savepath'], 'http') === 0) {
                     $imageData[$i]['url'] = $imageData[$i]['savepath'].$imageData[$i]['savename'];
                 } elseif (stripos(C('IMAGE_CACHE_URL'), 'http') === 0) {
@@ -872,7 +902,8 @@
             }
             return array(true, $imageData);
         } else {
-            return array(false, "此记账无对应的图片附件。");
+            //return array(false, "此记账无对应的图片附件。");
+            return array(false, "There is no corresponding picture attachment for this accounting apps");
         }
     }
 
@@ -892,7 +923,7 @@
     function DelImageData($uid, $acid, $id=false) {
         $imageData = GetImageData($uid, $acid, $id);
         if ($imageData[0]) {
-            for ($i=0; $i < count($imageData[1]); $i++) {
+            for ($i=0; $i < count($imageData[1]); $i++) { 
                 $path = '.'.C('IMAGE_ROOT_PATH').$imageData[1][$i]['savepath'].$imageData[1][$i]['savename'];
                 if (file_exists($path)) {
                     $ret = unlink($path);
@@ -904,7 +935,8 @@
             }
             return array(true, $ret, M("account_image")->where($sql)->delete());
         }
-        return array(false, "删除图片失败，图片数据不存在。");
+        //return array(false, "删除图片失败，图片数据不存在。");
+        return array(false, "Failed to delete picture, picture data does not exist.");
     }
 
     //是否要显示默认账户
@@ -923,17 +955,20 @@
     //校验资金账户名
     function CheakFundsName($FundsName, $uid, $FundsId = -1) {
         if(strlen($FundsName) < 1){
-            // return array(false, '资金账户名不得为空！');
-            return array(false, 'Pls key in the funding account name');
+
+            //return array(false, '资金账户名不得为空！');
+            return array(false, 'The fund account name cannot be empty！');
         }
 
         if(strlen($FundsName) > C('MAX_FUNDS_NAME')){
-            // return array(false, '资金账户名太长，请控制在' . C('MAX_FUNDS_NAME') . '个字符以内。');
-            return array(false, 'Founcding account name too long, pls make sure the length is in ' . C('MAX_FUNDS_NAME') . 'chracaters');
+            //return array(false, '资金账户名太长，请控制在' . C('MAX_FUNDS_NAME') . '个字符以内。');
+            return array(false, 'The fund account name is too long, please control it to within ' . C('MAX_FUNDS_NAME') . ' character');
         }
 
-        if (IsShowDefaultFunds($uid) && ($FundsName == "默认")) {
-            return array(false, '资金账户名不可为默认。');
+        //if (IsShowDefaultFunds($uid) && ($FundsName == "默认"))
+        if (IsShowDefaultFunds($uid) && ($FundsName == "Default")) {
+            //return array(false, '资金账户名不可为默认。');
+            return array(false, 'The fund account name cannot be default.');
         }
 
         $sql = array('fundsname' => $FundsName, 'uid' => $uid);
@@ -942,13 +977,14 @@
             if ($FundsId > 0) {
                 foreach ($FundsData as $key => $FundsArr) {
                     if (intval($FundsData[$key]['fundsid']) !== intval($FundsId)) {
-                        return array(false, '资金账户名已存在!');
-                        // return array(false, 'Founding account name already exist!');
+
+                        //return array(false, '资金账户名已存在!');
+                        return array(false, 'Fund account name already exists!');
                     }
                 }
             } else {
-                // return array(false, '资金账户名已存在...');
-                return array(false, 'Founding account name already exist...');
+                //return array(false, '资金账户名已存在...');
+                return array(false, 'Fund account name already exists...');
             }
         }
         return array(true, $FundsName);
@@ -969,17 +1005,19 @@
                         'source_fid' => 0,
                         'target_fid' => $fid,
                         'time' => strtotime(date('Y-m-d', time())),
-                        // 'mark' => $FundsName.' 账户的默认金额',
-                        'mark' => $FundsName.' Account Default Amount',
+                        //'mark' => $FundsName.'账户的默认金额'
+                        'mark' => $FundsName.'Default amount of the account',
                     ));
                     if ($ret[0] == false) {
                         return array(false, $ret[1]);
                     }
                 }
-                // return array(true,'新建资金账户成功!');
-                return array(true,'New funding account create sucessfully!');
+
+                //return array(true,'新建资金账户成功!');
+                return array(true,'New fund account added successfully!');
             }else{
-                return array(false,'写入数据库出错(&_&)');
+                //return array(false,'写入数据库出错(&_&)');
+                return array(false,'Error writing to the database');
             }
         }else{
             return $isCheak;
@@ -995,14 +1033,15 @@
             $sql = array('uid' => $uid);
             $retData = array();
             if (IsShowDefaultFunds($uid)) {
-                array_push($retData, array('name'=>'默认', 'id'=> -1, 'money'=> GetFundsAccountSumData(-1,$uid)));
+                //array_push($retData, array('name'=>'默认', 'id'=> -1, 'money'=> GetFundsAccountSumData(-1,$uid)));
+                array_push($retData, array('name'=>'Default', 'id'=> -1, 'money'=> GetFundsAccountSumData(-1,$uid)));
             }
             $DbData = M('account_funds')->where($sql)->order('sort,fundsid')->select();
             foreach ($DbData as $key => $FundsArr) {
                 array_push($retData, array('name'=>$FundsArr['fundsname'], 'id'=>intval($FundsArr['fundsid']), 'money'=> GetFundsAccountSumData($FundsArr['fundsid'],$uid)));
             }
             S('account_funds_'.$uid, $retData);
-            return $retData;
+            return $retData;            
         }
     }
 
@@ -1028,7 +1067,7 @@
                     $retData['out'] += $TransferData[1]['out'];
                     $retData['over'] += $TransferData[1]['over'];
                 }
-            }
+            }      
             $CacheData[$FundsId] = $retData;
             S('account_funds_data_'.$uid, $CacheData);
             return $retData;
@@ -1043,7 +1082,8 @@
         if(is_array($FundsData)){
             return array(true,$FundsData);
         }else{
-            return array(false,'资金账户id不存在~');
+            //return array(false,'资金账户id不存在~');
+            return array(false,'Fund account id does not exist');
         }
     }
 
@@ -1054,7 +1094,8 @@
             $sql = array('fundsid' => intval($FundsId), 'uid' => intval($uid));
             $ret = M("account_funds")->where($sql)->setField('fundsname',$FundsName);
             ClearDataCache();
-            return array(true,'资金账户名称修改成功!');
+            //return array(true,'资金账户名称修改成功!');
+            return array(true,'Fund account has been modified!');
         }else{
             return $isCheak;
         }
@@ -1074,7 +1115,8 @@
                 'source_fid' => 0,
                 'target_fid' => $FundsId,
                 'time' => strtotime(date('Y-m-d', time())),
-                'mark' => '更新账户初始金额',
+                //'mark' => '更新账户初始金额'
+                'mark' => 'Update the initial amount of the account',
             ));
         }
     }
@@ -1082,7 +1124,7 @@
     //调整账户排序
     function SortFunds($FundsIdList, $uid)
     {
-        for ($i=0; $i < count($FundsIdList); $i++) {
+        for ($i=0; $i < count($FundsIdList); $i++) { 
             $sql = array('uid'=>$uid, 'fundsid' => intval($FundsIdList[$i]));
             if ($sql['fundsid'] > 0) {
                 M("account_funds")->where($sql)->setField('sort', $i + 1);
@@ -1094,7 +1136,8 @@
     //删除资金账户并转移记账数据
     function DeleteFunds($oldFundsId, $uid, $newFundsId = -1) {
         if ($oldFundsId == $newFundsId) {
-            return array(false, '转移资金账户错误，无法删除资金账户!');
+            //return array(false, '转移资金账户错误，无法删除资金账户!');
+            return array(false, 'The transfer fund account is invalid, the fund account cannot be deleted!');
         } elseif (($newFundsId === -1)||(M("account_funds")->where(array('fundsid' => $newFundsId, 'uid' => $uid))->find())) {
             $retCount = M('account')->where(array('fid' => $oldFundsId, 'uid' => $uid))->setField('fid', $newFundsId);
             if ($oldFundsId === -1) {
@@ -1105,37 +1148,47 @@
             ClearDataCache();
             MoveFundsTransferData($oldFundsId, $newFundsId, $uid);
             if ($retCount==0 && $retDelete==1) {
-                // return array(true, "资金账户删除成功。");
-                return array(true, "Funding account sucessfuly deleted.");
+
+                //return array(true, "资金账户删除成功。");
+                return array(true, "The fund account was deleted successfully.");
             } elseif ($retCount>0 && $retDelete==1) {
-                // return array(true, "记账数据转移". $retCount ."条，资金账户删除成功。");
-                return array(true, "". $retCount ." record ald transered ,Funding account sucessfuly deleted.");
+                //return array(true, "记账数据转移". $retCount ."条，资金账户删除成功。");
+                return array(true, $retCount ."records of accounting data were transferred, and the fund account was successfully deleted.");
             } else {
-                return array(false,'资金账户删除失败，请返回重试。'. $retCount);
+                //return array(false,'资金账户删除失败，请返回重试。'. $retCount);
+                return array(false,'Failed to delete fund account, please try again. '. $retCount);
             }
         } else {
-            return array(false,'待转移的资金账户不存在!');
+            //return array(false,'待转移的资金账户不存在!');
+            return array(false,'The fund account to be transferred does not exist!');
         }
     }
 
     //校验转账信息
     function CheakTransferData($data) {
         if (!is_array($data)) {
-            return array(false,'非法操作~~~');
+            //return array(false,'非法操作~~~');
+            return array(false,'Invalid operation');
         }
         $uid = $data['uid'];
         if (!(is_numeric($uid) && $uid > 0)) {
-            return array(false,'未授权的访问！');
+            //return array(false,'未授权的访问！');
+            return array(false,'Unauthorized access！');
         } elseif (!(is_numeric($data['money'])&&($data['money'] >= ($data['source_fid'] == 0 ? 0 : 0.01))&&($data['money'] <= C('MAX_MONEY_VALUE')))) {
-            return array(false,'输入的金额无效，请输入'.($data['source_fid'] == 0 ? 0 : 0.01).'到' . C('MAX_MONEY_VALUE') . '范围内的有效数字。');
+            //return array(false,'输入的金额无效，请输入'.($data['source_fid'] == 0 ? 0 : 0.01).'到' . C('MAX_MONEY_VALUE') . '范围内的有效数字。');
+            return array(false,'The amount entered is invalid. Please enter a valid number within the range of '.($data['source_fid'] == 0 ? 0 : 0.01).' to ' . C('MAX_MONEY_VALUE'));
         } elseif (strlen($data['mark']) > C('MAX_MARK_VALUE')) {
-            return array(false,'备注信息太长，请把长度控制在' . C('MAX_MARK_VALUE') . '个字符以内。');
+            //return array(false,'备注信息太长，请把长度控制在' . C('MAX_MARK_VALUE') . '个字符以内。');
+            return array(false,'The remarks are too long, please keep the length within ' . C('MAX_MARK_VALUE') . ' characters.');
         } elseif ($data['source_fid'] == $data['target_fid']) {
-            return array(false,'转出账户与转入账户不能相同，请重新选择。');
+            //return array(false,'转出账户与转入账户不能相同，请重新选择。');
+            return array(false,'The transfer-out account and transfer-in account cannot be the same, please select again.');
         } elseif ($data['source_fid'] > 0 && GetFundsIdData($data['source_fid'], $uid)[0] == false) {
-            return array(false,'转出账户不存在，请重新选择。');
+            //return array(false,'转出账户不存在，请重新选择。');
+            return array(false,'The transfer account does not exist, please select again.');
         } elseif (GetFundsIdData($data['target_fid'], $uid)[0] == false) {
-            return array(false,'转入账户不存在，请重新选择。');
+            //return array(false,'转入账户不存在，请重新选择。');
+            return array(false,'The transfer account does not exist, please select again.');
         }
         if(!is_int($data['time'])){
             $data['time'] = strtotime($data['time']);
@@ -1150,7 +1203,8 @@
         if(is_array($DbData)){
             return array(true,$DbData);
         }else{
-            return array(false,'转账id不存在~');
+            //return array(false,'转账id不存在~');
+            return array(false,'The transfer id does not exist.');
         }
     }
 
@@ -1161,9 +1215,11 @@
             $DbData = M('account_transfer')->add($ret[1]);
             ClearDataCache();
             if($DbData > 0){
-                return array(true,'资金转账成功!');
+                //return array(true,'资金转账成功!');
+                return array(true,'The fund transfer is successful!');
             }else{
-                return array(false,'写入数据库出错(T_T)');
+                //return array(false,'写入数据库出错(T_T)');
+                return array(false,'Error writing to the database');
             }
         } else {
             return $ret;
@@ -1179,7 +1235,8 @@
             ClearDataCache();
             if ($ret[0]) {
                 $DbData = M('account_transfer')->where(array('tid'=>intval($tid), 'uid'=>$data['uid']))->data($data)->save();
-                return array(true,'转账记录更新成功!');
+                //return array(true,'转账记录更新成功!');
+                return array(true,'The transfer record was updated successfully!');
             } else {
                 return $ret;
             }
@@ -1195,11 +1252,14 @@
         ClearDataCache();
         if($DbData > 0){
             ClearDataCache();
-            return array(true,'转账记录删除成功！');
+            //return array(true,'转账记录删除成功！');
+            return array(true,'The transfer record was deleted successfully！');
         }elseif($DbData === 0){
-            return array(false,'未找到你要删除的转账记录(@_@)');
+            //return array(false,'未找到你要删除的转账记录(@_@)');
+            return array(false,'The transfer record you want to delete was not found');
         }else{
-            return array(false,'转账数据库异常(*_*)');
+            //return array(false,'转账数据库异常(*_*)');
+            return array(false,'Abnormal transfer database');
         }
     }
 
@@ -1232,10 +1292,10 @@
         }
         // 源账户初始记录和删除
         $sql = array(
-            'uid'=>$uid,
+            'uid'=>$uid, 
             '_complex'=>array(
-                '_logic'=>'or',
-                'source_fid'=>$source_fid,
+                '_logic'=>'or', 
+                'source_fid'=>$source_fid, 
                 'target_fid'=>$source_fid)
         );
         $retDelete = M('account_transfer')->where($sql)->delete();
@@ -1278,7 +1338,8 @@
             $count += intval(M("account_transfer")->where($sql)->count());
             return array(true, array('in'=>$inSum, 'out'=>$outSum, 'init'=> $initMoney, 'over'=>$initMoney+$inSum-$outSum, 'count'=>$count));
         } else {
-            return array(false, '资金账户id不存在~');
+            //return array(false, '资金账户id不存在~');
+            return array(false, 'The fund account id does not exist');
         }
     }
 
@@ -1502,12 +1563,14 @@
     //校验分类名
     function CheakClassName($ClassName, $uid, $ClassType=0, $ClassId=0) {
         if(strlen($ClassName) < 1){
-            // return array(false, '分类名不得为空！');
-            return array(false, 'Category name cant be blank!');
+
+            //return array(false, '分类名不得为空！');
+            return array(false, 'Category name cannot be empty！');
         }
 
         if(strlen($ClassName) > C('MAX_CLASS_NAME')){
-            return array(false, '分类名太长，请控制在' . C('MAX_CLASS_NAME') . '个字符以内。');
+            //return array(false, '分类名太长，请控制在' . C('MAX_CLASS_NAME') . '个字符以内。');
+            return array(false, 'The category name is too long, please keep it within ' . C('MAX_CLASS_NAME') . ' characters.');
         }
 
         $sql = array('classname' => $ClassName, 'ufid' => $uid);
@@ -1520,45 +1583,54 @@
             if($ClassId > 0) {
                 foreach ($ClassData as $key => $ClassArr) {
                     if(intval($ClassData[$key]['classid']) !== intval($ClassId)){
-                        return array(false, '分类名已存在!');
+                        //return array(false, '分类名已存在!');
+                        return array(false, 'Category name already exists!');
                     }
                 }
             }else{
-                return array(false, '分类名已存在...');
+                //return array(false, '分类名已存在...');
+                return array(false, 'Category name already exists...');
             }
         }
         return array(true, $ClassName);
     }
-
+    
     //校验新分类
     function CheakNewClass($data) {
         if(!is_array($data)){
-            return array(false,'非法操作233');
+            //return array(false,'非法操作233');
+            return array(false,'Invalid operation 233');
         }
         if(strlen($data['classname']) < 1){
-            // return array(false,'分类名不得为空！');
-            return array(false,'Category name cant be blank!');
+
+            //return array(false,'分类名不得为空！');
+            return array(false,'Category name cannot be empty！');
         }
         if(strlen($data['classname']) > C('MAX_CLASS_NAME')){
-            return array(false, '分类名太长，请控制在' . C('MAX_CLASS_NAME') . '个字符以内。');
+            //return array(false, '分类名太长，请控制在' . C('MAX_CLASS_NAME') . '个字符以内。');
+            return array(false, 'The category name is too long, please keep it within ' . C('MAX_CLASS_NAME') . ' characters.');
         }
         if($data['classtype'] == 0){
-            return array(false,'非法操作223');
+            //return array(false,'非法操作223');
+            return array(false,'Invalid operation 233');
         }
         if($data['classtype'] > 2){
-            return array(false,'无效的分类类别{\/}');
+            //return array(false,'无效的分类类别{\/}');
+            return array(false,'Invalid classification category{\/}');
         }
         if($data['ufid'] == 0){
-            return array(false,'非法操作333');
+            //return array(false,'非法操作333');
+            return array(false,'Invalid operation 333');
         }
         $condition['ufid'] = $data['ufid'];
         $condition['classname'] = $data['classname'];
         if(M("account_class")->where($condition)->select()){
-            return array(false,'分类已存在(@_@)');
+            //return array(false,'分类已存在(@_@)');
+            return array(false,'Category already exist');
         }
         return array(true,$data);
     }
-
+    
     //新建分类
     function AddNewClass($data) {
         $isCheak = CheakNewClass($data);
@@ -1567,10 +1639,12 @@
             $DbData = M('account_class')->add($data);
             ClearDataCache();
             if($DbData > 0){
-                // return array(true,'新建分类成功!');
-                return array(true,'New category created sucessfully!');
+
+                //return array(true,'新建分类成功!');
+                return array(true,'Added new category sucessfully!');
             }else{
-                return array(false,'写入数据库出错(&_&)');
+                //return array(false,'写入数据库出错(&_&)');
+                return array(false,'Error writing to the database');
             }
         }else{
             return $isCheak;
@@ -1586,36 +1660,44 @@
             $condition = array();
             //判断用户分类是否为空
             if(M("account_class")->where(array('ufid' => intval($uid)))->find()){
-                return array(false, '已经创建过分类，无法使用快速创建。', 0);
+                //return array(false, '已经创建过分类，无法使用快速创建。', 0);
+                return array(false, 'Category has already been created, quick creation cannot be used.', 0);
             }
             //检查分类名合法性
             foreach ($data as $key => $value) {
                 if(!is_array($value)){
-                    return array(false, '非法操作233', $key);
+                    //return array(false, '非法操作233', $key);
+                    return array(false, 'Invalid operation 233', $key);
                 }
                 if(strlen($value['classname']) < 1){
-                    // return array(false, '分类名不得为空！', $key);
-                    return array(false, 'Category name cant be blank!', $key);
+
+                    //return array(false, '分类名不得为空！', $key);
+                    return array(false, 'Category name cannot be empty！', $key);
                 }
                 if(strlen($value['classname']) > C('MAX_CLASS_NAME')){
-                    return array(false, '分类名太长，请控制在' . C('MAX_CLASS_NAME') . '个字符以内。', $key);
+                    //return array(false, '分类名太长，请控制在' . C('MAX_CLASS_NAME') . '个字符以内。', $key);
+                    return array(false, 'The category name is too long, please keep it within ' . C('MAX_CLASS_NAME') . ' characters.', $key);
                 }
                 if($value['classtype'] == 0){
-                    return array(false, '非法操作223', $key);
+                    //return array(false, '非法操作223', $key);
+                    return array(false, 'Invalid operation 233', $key);
                 }
                 if($value['classtype'] > 2){
-                    return array(false, '无效的分类类别{\/}', $key);
+                    //return array(false, '无效的分类类别{\/}', $key);
+                    return array(false, 'Invalid classification category{\/}', $key);
                 }
                 array_push($condition, array('classname'=>$value['classname'], 'classtype'=>$value['classtype'], 'ufid'=>$uid));
             }
             //判断缓存数组长度
             if (count($condition) == 0) {
-                return array(false, '有效写入数据为空', 0);
+                //return array(false, '有效写入数据为空', 0);
+                return array(false, 'The write data is empty', 0);
             }
             //批量写入数据库
             $DbData = M('account_class')->addAll($condition);
             ClearDataCache();
-            return array(true, '快速新建分类完成！', intval($DbData));
+            //return array(true, '快速新建分类完成！', intval($DbData));
+            return array(true, 'Quickly create a new category！', intval($DbData));
         } else {
             return array(false, '非法操作234', 0);
         }
@@ -1628,13 +1710,14 @@
             $sql = array('classid' => intval($ClassId), 'ufid' => intval($uid));
             $ret = M("account_class")->where($sql)->setField('classname',$ClassName);
             ClearDataCache();
-            // return array(true,'分类名修改成功！');
-            return array(true,'Category name edit sucessly');
+
+            //return array(true,'分类名修改成功！');
+            return array(true,'Category name modified successfully！');
         }else{
             return $isCheak;
         }
     }
-
+    
     //改变分类类别
     function ChangeClassType($ClassId,$uid) {
         $sql = array('classid' => intval($ClassId), 'ufid' => intval($uid));
@@ -1645,7 +1728,8 @@
         }elseif($ClassType === 2){
             $Type = 1;
         }else{
-            return array(false,'分类id不存在...');
+            //return array(false,'分类id不存在...');
+            return array(false,'Category id does not exist');
         }
         $isCheak = CheakClassName($ClassName, $uid, $Type, $ClassId);
         if($isCheak[0]) {
@@ -1662,7 +1746,7 @@
     //调整分类排序
     function SortClass($ClassIdList, $uid)
     {
-        for ($i=0; $i < count($ClassIdList); $i++) {
+        for ($i=0; $i < count($ClassIdList); $i++) { 
             $sql = array('ufid'=>$uid, 'classid' => intval($ClassIdList[$i]));
             if ($sql['classid'] > 0) {
                 M("account_class")->where($sql)->setField('sort', $i + 1);
@@ -1677,7 +1761,7 @@
         $arrSQL = array('acclassid' => intval($ClassId), 'jiid' => intval($uid));
         return M('account')->where($arrSQL)->count();
     }
-
+    
     //删除分类
     function DelClass($ClassId,$uid) {
         $sql = 'classid = '.intval($ClassId).' and ufid = '.$uid;
@@ -1686,18 +1770,22 @@
             $DbData = M("account_class")->where($sql)->delete();
             if($DbData > 0){
                 ClearDataCache();
-                // return array(true,'已成功删除【'.$ClassData['classname'].'】分类!',$ClassData['classtype']);
-                return array(true,'Sucessful delete【'.$ClassData['classname'].'】category!',$ClassData['classtype']);
+
+                //return array(true,'已成功删除【'.$ClassData['classname'].'】分类!',$ClassData['classtype']);
+                return array(true,'Successful deleted 【'.$ClassData['classname'].'】 category!',$ClassData['classtype']);
             }elseif($DbData === 0){
-                return array(false,'未找到你要删除的分类(@_@)',$ClassData['classtype']);
+                //return array(false,'未找到你要删除的分类(@_@)',$ClassData['classtype']);
+                return array(false,'The category you want to delete was not found',$ClassData['classtype']);
             }else{
-                return array(false,'分类数据库异常(*_*)',$ClassData['classtype']);
+                //return array(false,'分类数据库异常(*_*)',$ClassData['classtype']);
+                return array(false,'Classification database abnormal',$ClassData['classtype']);
             }
         }else{
-            return array(false,'你要删除的分类不存在...',0);
+            //return array(false,'你要删除的分类不存在...',0);
+            return array(false,'The category you want to delete does not exist...',0);
         }
     }
-
+    
     //获取指定id分类
     function GetClassIdData($ClassId,$uid) {
         $sql = 'classid = '.intval($ClassId).' and ufid = '.$uid;
@@ -1705,7 +1793,8 @@
         if(is_array($ClassData)){
             return array(true,$ClassData);
         }else{
-            return array(false,'分类id不存在~');
+            //return array(false,'分类id不存在~');
+            return array(false,'Category id does not exist~');
         }
     }
 
@@ -1761,7 +1850,7 @@
             $ArrOutClass = GetClassData($uid, 2);
             //日数据统计
             $numDay = date('d', strtotime($y.'-'.$m.'-01 +1 month -1 day'));
-            for ($d=1; $d <= $numDay; $d++) {
+            for ($d=1; $d <= $numDay; $d++) { 
                 $ArrSQL = array();
                 $fristDayTime = strtotime($y.'-'.$m.'-'.$d.' 0:0:0');
                 $lastDayTime = strtotime($y.'-'.$m.'-'.$d.' 23:59:59');
@@ -1848,7 +1937,7 @@
                     $mOutMoney[$m]  += $mOutClassMoney[$ClassName][$m];
                 }
                 //dump($m.'月支出:'.$mOutMoney[$m]);
-
+                
                 $mSurplusMoney[$m] = $mInMoney[$m] - $mOutMoney[$m];
                 $mInSumMoney  = $mInSumMoney + $mInMoney[$m];
                 $mOutSumMoney = $mOutSumMoney + $mOutMoney[$m];
@@ -1922,7 +2011,7 @@
             $YearMax = $TimeBetween['YearMax'];
             $YearMin = $TimeBetween['YearMin'];
             $arrSQL['jiid'] = $uid;
-            for ($y=$YearMin; $y <= $YearMax; $y++) {
+            for ($y=$YearMin; $y <= $YearMax; $y++) { 
                 $TimeMin = strtotime($y.'-01-01 00:00:00');
                 $TimeMax = strtotime($y.'-12-31 23:59:59');
                 $arrSQL['actime'] = array(array('egt',$TimeMin),array('elt',$TimeMax));
@@ -1945,7 +2034,7 @@
             return $DataJson;
         }
     }
-
+    
     //数组转表格数据
     function ArrayToNumData($arr){
         $str = "[";
@@ -1961,11 +2050,9 @@
     function ArrayKeyToNumData($arr){
         $str = "[";
         foreach($arr as $key => $value){
-            if($value > 0){
             $str = "$str {value:$value,name:'$key'} ,";
-            }
         }
-        //$str = substr($str,0,-1); // 去除最后一个,
+        $str = substr($str,0,-1); // 去除最后一个,
         $str = $str."]";
         return $str;
     }
@@ -2013,14 +2100,15 @@
     //发送post
     function post($url, $param=array()){
         if(!is_array($param)){
-            throw new Exception("参数必须为array");
+            //throw new Exception("参数必须为array");
+            throw new Exception("Parameter must be array");
         }
         $httph =curl_init($url);
         curl_setopt($httph, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($httph, CURLOPT_SSL_VERIFYHOST, 1);
         curl_setopt($httph,CURLOPT_RETURNTRANSFER,1);
         curl_setopt($httph, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
-        curl_setopt($httph, CURLOPT_POST, 1);//设置为POST方式
+        curl_setopt($httph, CURLOPT_POST, 1);//设置为POST方式 
         curl_setopt($httph, CURLOPT_POSTFIELDS, $param);
         curl_setopt($httph, CURLOPT_RETURNTRANSFER,1);
         curl_setopt($httph, CURLOPT_HEADER,1);
@@ -2028,7 +2116,7 @@
         curl_close($httph);
         return $rst;
     }
-
+    
     //参数1：访问的URL，参数2：post数据(不填则为GET)，参数3：json
     //json $_POST=json_decode(file_get_contents('php://input'), TRUE);
     function request($url, $data='', $type=''){
@@ -2045,7 +2133,7 @@
              curl_setopt($curl, CURLOPT_POSTFIELDS,$data);
          }
          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-         curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
+         curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers ); 
          $output = curl_exec($curl);
          curl_close($curl);
          return $output;
