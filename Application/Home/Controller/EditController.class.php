@@ -9,7 +9,8 @@ class EditController extends BaseController {
     //检测acid与uid是否匹配
     private function cheak_acid() {
         if(!CheakIdShell($this->id, $this->uid)){
-            $this -> error("非法操作!");
+            //$this -> error("非法操作!");
+            $this -> error("Invalid operation!");
         }
     }
 
@@ -78,7 +79,8 @@ class EditController extends BaseController {
                 $this -> assign('MoneyClass',"'".htmlspecialchars(json_encode($MoneyClass))."'");
                 $this -> display();
             }else{
-                ShowAlert("非法操作~",$refURL);
+                //ShowAlert("非法操作~",$refURL);
+                ShowAlert("Invalid operation",$refURL);
                 $this -> display('Public/common');
                 // $this -> error("非法操作~",$refURL);
             }
@@ -111,7 +113,8 @@ class EditController extends BaseController {
         if(IS_POST && $acid > 0 && $id > 0) {
             die(json_encode(EditImageAcid($uid, $id, $acid)));
         } else {
-            ShowAlert('无效的操作。' ,GetRefURL());
+            //ShowAlert('无效的操作。' ,GetRefURL());
+            ShowAlert('Invalid operation' ,GetRefURL());
             $this -> display('Public/common');
         }
     }
@@ -125,7 +128,8 @@ class EditController extends BaseController {
         if(IS_POST && $acid > 0 && $id > 0) {
             die(json_encode(DelImageData($uid, $acid, $id)));
         } else {
-            ShowAlert('无效的操作。' ,GetRefURL());
+            //ShowAlert('无效的操作。' ,GetRefURL());
+            ShowAlert('Invalid operation' ,GetRefURL());
             $this -> display('Public/common');
         }
     }
