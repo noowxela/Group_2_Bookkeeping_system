@@ -1006,7 +1006,7 @@
                         'target_fid' => $fid,
                         'time' => strtotime(date('Y-m-d', time())),
                         //'mark' => $FundsName.'账户的默认金额'
-                        'mark' => $FundsName.'Default amount of the account',
+                        'mark' => $FundsName.' Default amount of the account',
                     ));
                     if ($ret[0] == false) {
                         return array(false, $ret[1]);
