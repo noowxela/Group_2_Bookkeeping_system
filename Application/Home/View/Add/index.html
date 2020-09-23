@@ -19,15 +19,15 @@
                   <!-- <li class=""><a href="[data-tab-panel-2]">支出</a></li> -->
                   <li class=""><a href="[data-tab-panel-2]"><i class="am-icon-minus-circle"></i> Expense</a></li>
                   <!-- <li class="am-active"><a href="[data-tab-panel-1]">收入</a></li> -->
-                  <li class="am-active"><a href="[data-tab-panel-1]"><i class="am-icon-plus-circle"></i> Income</a></li>
+                  <li class="am-active"><a href="[data-tab-panel-1]"><i class="am-icon-plus-circle"></i>Income</a></li>
               <else/>
                   <!-- <li class="am-active"><a href="[data-tab-panel-2]">支出</a></li> -->
-                  <li class="am-active"><a href="[data-tab-panel-2]"><i class="am-icon-minus-circle"></i> Expense</a></li>
+                  <li class="am-active"><a href="[data-tab-panel-2]"><i class="am-icon-minus-circle"></i>Expense</a></li>
                   <!-- <li class=""><a href="[data-tab-panel-1]">收入</a></li> -->
-                  <li class=""><a href="[data-tab-panel-1]"><i class="am-icon-plus-circle"></i> Income</a></li>
+                  <li class=""><a href="[data-tab-panel-1]"><i class="am-icon-plus-circle"></i>Income</a></li>
               </if>
               <!-- <li class=""><a href="__APP__/Home/Add/transfer">转账</a></li> -->
-              <li class=""><a href="__APP__/Home/Add/transfer"><i class="am-icon-random"></i> Transfer</a></li>
+              <li class=""><a href="__APP__/Home/Add/transfer"><i class="am-icon-random"></i>Transfer</a></li>
 
           </ul>
           <div class="am-tabs-bd">
@@ -223,7 +223,10 @@
       $(function() {
         $('#doc-form-tabs').find('a').on('opened.tabs.amui', function(e) {
         //   if ($(this).text() == '转账') {
-          if ($(this).text() == 'transfer') {
+          // console.log($(this).text())
+          // if ($(this).text() == 'transfer') {
+          if ($(this).text() == 'Transfer') {
+
             window.location.href=$(this).context.href;
           }
         });
